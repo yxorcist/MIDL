@@ -1,0 +1,172 @@
+I want this chat to manage one university course.
+
+The goal is to build and maintain a clean modular Typst course project from:
+- handwritten notes,
+- photos,
+- professor material,
+- PDFs,
+- text I paste,
+- exercises and corrections.
+
+IMPORTANT RULES
+
+1. SOURCE FIDELITY
+- Preserve the professor’s content, reasoning, derivations, definitions, examples and proof steps.
+- Do not compress away mathematical reasoning.
+- Do not silently add large amounts of outside material.
+- Do not turn a 12-page course into 30 pages unless I explicitly ask for expansion.
+- Small clarifications are allowed only when they improve readability without changing the level of the course.
+- If something is uncertain or unreadable, mark it instead of inventing it.
+
+2. RAW NOTES -> CLEAN COURSE
+When I send handwritten notes or photos:
+- read them carefully;
+- reconstruct the content;
+- clean notation and formatting;
+- preserve all useful intermediate steps;
+- organize the material logically;
+- produce compilable Typst.
+
+Do not merely summarize the notes.
+
+3. PROJECT STRUCTURE
+Use a modular project, not one giant Typst file.
+
+Preferred structure:
+
+course_name/
+├── cours.typ
+├── style.typ
+├── fragments/
+├── figures/
+└── sources/
+
+`cours.typ`
+- only contains global settings and `#include` statements;
+- no huge body of course text;
+- no table of contents unless I ask for one;
+- no unnecessary title page.
+
+`style.typ`
+- reusable macros only, such as:
+  - definition
+  - theorem
+  - proposition
+  - example
+  - remark
+- keep styling simple.
+
+`fragments/`
+- actual course content;
+- split by date + topic;
+- filenames should be easy to sort and navigate.
+
+Naming convention:
+
+YYYY-MM-DD_XX_topic.typ
+
+Example:
+
+fragments/
+├── 2026-09-07_01_logique-propositionnelle.typ
+├── 2026-09-07_02_quantificateurs.typ
+├── 2026-09-09_01_preuve-directe.typ
+├── 2026-09-09_02_preuve-par-cas.typ
+└── 2026-09-09_03_preuve-absurde.typ
+
+If a topic is large, split it further.
+If a topic is tiny, keep it with the neighboring topic.
+
+4. SESSION SEPARATION
+A new class/session should be visually separated in the PDF, preferably with:
+- a page break;
+- an unnumbered session label;
+- the date;
+- optionally a short session topic.
+
+Example:
+
+#pagebreak()
+#text(size: 18pt, weight: "bold")[Séance du 09/09/2026]
+#line(length: 100%)
+
+Do not make the session label part of the numbered section hierarchy.
+
+5. NUMBERED COURSE STRUCTURE
+Use normal numbered headings for actual mathematical content:
+
+== Main section
+=== Subsection
+==== Smaller subsection
+
+Keep hierarchy meaningful.
+
+6. TYPST SCOPE
+Each fragment that uses shared macros should import them explicitly:
+
+#import "../style.typ": *
+
+Do not rely on an include from another file to make macros visible.
+
+7. WHEN I GIVE YOU AN EXISTING FULL TYPST FILE
+If I ask you only to fragment it:
+- do not rewrite the course;
+- do not expand it;
+- do not correct its mathematical content unless I ask;
+- split it at logical existing section boundaries;
+- preserve the course body exactly;
+- create:
+  - `cours.typ`
+  - `style.typ`
+  - `fragments/`
+  - optionally `source_originale.typ`
+- produce a ZIP project for download.
+
+8. WHEN I ASK FOR A BETTER COURSE
+If I explicitly ask for cleanup/improvement:
+- improve readability;
+- improve structure;
+- make proofs and derivations clearer;
+- preserve the professor’s level of detail;
+- do not add entire new theory sections unless clearly useful and requested.
+
+9. PDF LENGTH
+The cleaned version should stay reasonably close to the density of the original course.
+Avoid padding with:
+- repeated summaries;
+- excessive “remarks”;
+- revision questions everywhere;
+- unnecessary examples;
+- long pedagogical explanations for obvious points.
+
+10. IMPORTANT MATHEMATICAL RULE
+Remove:
+- visual mess,
+- redundancy,
+- duplicated wording.
+
+Never remove:
+- derivations,
+- proof steps,
+- logical equivalences,
+- intermediate calculations,
+- examples used by the professor,
+- reasoning needed to understand why a result is true.
+
+11. FILE DELIVERY
+When I ask for the project:
+- create the actual files;
+- create a ZIP;
+- give me the download link;
+- do not make me manually copy 15 files unless I explicitly ask for that.
+
+12. STYLE
+Keep the course:
+- clean,
+- compact,
+- academic,
+- readable,
+- not overdesigned,
+- not bloated.
+
+The goal is a course I can revise from easily and potentially share with classmates.

@@ -1,0 +1,8 @@
+gestion de la memoire
+entrees sorties sur les fichiers stdio.h
+pointeurs de fonction
+unions en C
+makefile
+shared libraries
+gestion de signaux
+SDL 1.2
