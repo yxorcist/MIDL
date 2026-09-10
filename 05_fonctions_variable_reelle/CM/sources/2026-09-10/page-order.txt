@@ -1,0 +1,5 @@
+page-01.jpg <- image 1 (header: CM, 10/9/26, page 1)
+page-02.jpg <- image 2 (page 2)
+page-03.jpg <- image 3 (page 3)
+page-04.jpg <- image 4 (page 4)
+page-05.jpg <- image 5 (page 5)
