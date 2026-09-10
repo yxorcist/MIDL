@@ -15,8 +15,4 @@
 
 #set heading(numbering: "1.1")
 
-#include "fragments/2026-09-09_00_organisation-du-cours.typ"
-#include "fragments/2026-09-09_01_series-definitions.typ"
-#include "fragments/2026-09-09_02_series-telescopiques.typ"
-#include "fragments/2026-09-09_03_series-geometriques.typ"
-#include "fragments/2026-09-09_04_reste-d-une-serie.typ"
+#include "sessions/2026-09-09.typ"
