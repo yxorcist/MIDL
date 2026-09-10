@@ -16,3 +16,4 @@
 #set heading(numbering: "1.1")
 
 #include "sessions/2026-09-09.typ"
+#include "sessions/2026-09-10.typ"
