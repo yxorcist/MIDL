@@ -10,12 +10,5 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: typst-community/setup-typst@v5
-      - name: Compile every course
-        shell: bash
-        run: |
-          set -euo pipefail
-          while IFS= read -r file; do
-            echo "Compiling $file"
-            output="/tmp/$(echo "$file" | tr '/ ' '__').pdf"
-            typst compile "$file" "$output"
-          done < <(find . -type f -name 'cours.typ' | sort)
+      - name: Compile every course through Makefile
+        run: make compile DIST_ROOT=/tmp/midl-dist TIMESTAMP=ci
