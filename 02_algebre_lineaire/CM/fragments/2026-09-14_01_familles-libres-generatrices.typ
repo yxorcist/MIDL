@@ -78,7 +78,7 @@ Soit $U$ une famille libre et soit $v in E$.
 La famille obtenue en ajoutant $v$ à $U$ est libre si et seulement si
 
 $
-v notin "Vect"(U).
+v ∉ "Vect"(U).
 $
 
 == Exemple 1.5.8 — $CC$ comme espace vectoriel sur $CC$ ou sur $RR$
