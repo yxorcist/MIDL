@@ -37,5 +37,5 @@ Alors :
 3. cette famille est une base de $E$ si et seulement si
 
    $
-   E = F_1 direct-sum ... direct-sum F_p.
+   E = F_1 ⊕ ... ⊕ F_p.
    $
