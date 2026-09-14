@@ -122,7 +122,7 @@ $
 
 === 2. Critère d'égalité
 
-Si $F subset E$ est un sous-espace vectoriel de $E$, alors
+Si $F ⊂ E$ est un sous-espace vectoriel de $E$, alors
 
 $
 F = E
@@ -141,7 +141,7 @@ $
 +
 "dim"_K(F_2)
 -
-"dim"_K(F_1 inter F_2).
+"dim"_K(F_1 ∩ F_2).
 $
 
 === 4. Somme de $p$ sous-espaces
@@ -153,7 +153,7 @@ $
 =
 sum_(i=1)^p "dim"_K(F_i)
 -
-sum_(i=2)^p "dim"_K(F_i inter (F_1 + ... + F_(i-1))).
+sum_(i=2)^p "dim"_K(F_i ∩ (F_1 + ... + F_(i-1))).
 $
 
 === 5. Majoration de la dimension d'une somme
