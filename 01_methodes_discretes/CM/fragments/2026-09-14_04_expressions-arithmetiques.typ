@@ -21,9 +21,9 @@ $
 N = {1, 2, dots, 9, 10, 11, 12, dots}.
 $
 
-== Définition inductive de $Arith$
+== Définition inductive de $"Arith"$
 
-L'ensemble $Arith$ des expressions arithmétiques contient comme cas de base :
+L'ensemble $"Arith"$ des expressions arithmétiques contient comme cas de base :
 
 - $0$ ;
 - les entiers de $N$.
@@ -31,14 +31,14 @@ L'ensemble $Arith$ des expressions arithmétiques contient comme cas de base :
 Autrement dit,
 
 $
-N union {0} subset.eq Arith.
+N union {0} subset.eq "Arith".
 $
 
-Puis, si $g, d in Arith$, alors les expressions construites avec les quatre
-opérations appartiennent encore à $Arith$ :
+Puis, si $g, d in "Arith"$, alors les expressions construites avec les quatre
+opérations appartiennent encore à $"Arith"$ :
 
 $
-(g + d), quad (g * d), quad (g / d), quad (g - d) in Arith.
+(g + d), quad (g * d), quad (g / d), quad (g - d) in "Arith".
 $
 
 == Arbre syntaxique d'une expression
@@ -46,7 +46,7 @@ $
 Le tableau donne l'exemple
 
 $
-E = ((2 + 5) * (3 + 8)) in Arith.
+E = ((2 + 5) * (3 + 8)) in "Arith".
 $
 
 La structure de construction de $E$ peut être représentée par l'arbre suivant :
