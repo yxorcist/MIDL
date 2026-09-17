@@ -24,11 +24,13 @@ Thème : systèmes linéaires, rappels matriciels, méthodes directes et Gauss
   SHA-256 : `ffd568b6bf46b5749590f16d4e56ce012bee10f1c2b98e0057b814a535c9b91f`
 - `8908.jpg` — principe des méthodes directes et début de la méthode de Gauss  
   SHA-256 : `5e22d81a9b628208fac6974a9f19f47d8d05632080487b9026c39f45ff16006a`
-- `8911.jpg` — schéma algorithmique de l'élimination de Gauss  
+- `8911.jpg` — première vue du schéma algorithmique de l'élimination de Gauss  
   SHA-256 : `3551080be43f9e487db8295b5a2594e7deadc5ecdb88b3206b4275d0f5429352`
+- `8914.jpg` — dernière vue du tableau : bornes des boucles de Gauss, mise à jour de `b` et complexité `O(n^3)`  
+  SHA-256 : `b7bbbc1171da4b32375e5fd586570c16fae3b6ea0bd3958b6e327bd0479bad50`
 
-Archive locale des 10 originaux : `prog-numerique-2026-09-17-sources.zip`  
-SHA-256 : `db5f51cde131a3fc6a2f226acb675867ccd9eac256629fdf62c94dbb33a28ee5`
+Archive locale des 11 originaux : `prog-numerique-2026-09-17-sources.zip`  
+SHA-256 : `4e8590cf0cde6341a29aa81d5900477b56d549a4c30b6ed84ecd46501f73dec5`
 
 ## Correspondance vers les notes Typst
 
@@ -36,8 +38,8 @@ SHA-256 : `db5f51cde131a3fc6a2f226acb675867ccd9eac256629fdf62c94dbb33a28ee5`
 - `8892.jpg`, `8895.jpg` → `2026-09-17_02_inversibilite-determinant.typ`
 - `8898.jpg` → `2026-09-17_03_valeurs-propres-systemes.typ`
 - `8901.jpg`, `8904.jpg`, `8905.jpg` → `2026-09-17_04_cramer-matrices-particulieres.typ`
-- `8908.jpg`, `8911.jpg` → `2026-09-17_05_principe-gauss.typ`
+- `8908.jpg`, `8911.jpg`, `8914.jpg` → `2026-09-17_05_principe-gauss.typ`
 
 ## Fidélité
 
-Le contenu a été nettoyé et restructuré sans développement théorique extérieur. Les parties lisibles ont été conservées. Sur la dernière page, la borne exacte de la boucle interne de l'algorithme de Gauss est difficile à lire ; le schéma est donc reformulé sans inventer cette borne.
+Le contenu a été nettoyé et restructuré sans développement théorique extérieur. Les parties lisibles ont été conservées. La dernière photographie `8914.jpg` complète le schéma de Gauss : boucle interne `j = k, ..., n`, mise à jour du second membre et complexité `O(n^3)`.
