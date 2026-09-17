@@ -63,7 +63,7 @@ Les propriétés suivantes sont équivalentes :
 
 1. $A$ est inversible ;
 2. $det(A) != 0$ ;
-3. $rank(A) = n$ ;
+3. $"rang"(A) = n$ ;
 4. le système homogène $A x = 0$ admet comme unique solution $x = 0$ ;
 5. pour tout $b in K^n$, le système $A x = b$ admet exactement une solution.
 ]
