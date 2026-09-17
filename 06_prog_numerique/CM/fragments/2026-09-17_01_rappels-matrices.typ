@@ -31,7 +31,7 @@ $
 alors le produit $A B$ est défini et appartient à $"M"_(n,p)(K)$. Ses coefficients sont
 
 $
-(AB)_(i,j) = sum_(k=1)^m a_(i,k) b_(k,j).
+(A B)_(i,j) = sum_(k=1)^m a_(i,k) b_(k,j).
 $
 
 La condition importante est donc que le nombre de colonnes de $A$ soit égal au nombre de lignes de $B$.
