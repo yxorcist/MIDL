@@ -25,13 +25,18 @@ CM/
 
 ## Chapitres
 
-Le chapitre 1 est clos au 17/09/2026 :
-
 ```text
-chapitres/01_series-positives/chapitre.typ
+chapitres/
+├── 01_series-positives/
+│   └── chapitre.typ
+└── 02_nombres-reels-et-suite-reelle/
+    └── chapitre.typ
 ```
 
-Le `Makefile` racine compile automatiquement ce point d'entrée en PDF séparé, en plus du cours complet.
+- **Chapitre 1 — Séries positives** : clos le 17/09/2026.
+- **Chapitre 2 — Nombres réels et suite réelle** : commencé le 17/09/2026 et complété au fil des prochaines séances.
+
+Le `Makefile` racine compile chaque `chapitre.typ` en PDF séparé, en plus du cours complet.
 
 ## Compilation
 
@@ -41,8 +46,8 @@ Depuis la racine du dépôt :
 make compile
 ```
 
-Pour compiler uniquement le chapitre 1 manuellement :
+Compilation manuelle d'un chapitre :
 
 ```bash
-typst compile 05_fonctions_variable_reelle/CM/chapitres/01_series-positives/chapitre.typ
+typst compile --root . 05_fonctions_variable_reelle/CM/chapitres/02_nombres-reels-et-suite-reelle/chapitre.typ
 ```
