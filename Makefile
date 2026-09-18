@@ -13,11 +13,11 @@ REMOTE ?= gdrive:MIDL
 help:
 	@printf '%s\n' \
 	  'MIDL publishing commands:' \
-	  '  make                 Compile all courses and upload a timestamped snapshot to Google Drive' \
-	  '  make compile         Compile all courses locally only' \
+	  '  make                 Compile courses + chapter PDFs and upload a timestamped snapshot to Google Drive' \
+	  '  make compile         Compile courses + chapter PDFs locally only' \
 	  '  make publish         Same as make' \
 	  '  make publish-dry-run Compile, then show what rclone would upload' \
-	  '  make list            List cours.typ entry points' \
+	  '  make list            List cours.typ and chapitre.typ entry points' \
 	  '  make clean           Remove generated local snapshots' \
 	  '' \
 	  'Defaults:' \
@@ -30,9 +30,9 @@ help:
 
 check:
 	@command -v typst >/dev/null 2>&1 || { echo 'error: typst is not installed or not in PATH' >&2; exit 1; }
-	@count="$$(find . -type f -name 'cours.typ' -not -path './$(DIST_ROOT)/*' -not -path './.git/*' | wc -l)"
+	@count="$$(find . -type f \( -name 'cours.typ' -o -name 'chapitre.typ' \) -not -path './$(DIST_ROOT)/*' -not -path './.git/*' | wc -l)"
 	if [[ "$$count" -eq 0 ]]; then
-	  echo 'error: no cours.typ files found' >&2
+	  echo 'error: no cours.typ or chapitre.typ files found' >&2
 	  exit 1
 	fi
 
@@ -50,19 +50,28 @@ check-rclone:
 	fi
 
 list:
-	@find . -type f -name 'cours.typ' -not -path './$(DIST_ROOT)/*' -not -path './.git/*' | sort
+	@find . -type f \( -name 'cours.typ' -o -name 'chapitre.typ' \) -not -path './$(DIST_ROOT)/*' -not -path './.git/*' | sort
 
 compile: check
 	@echo "Creating snapshot: $(SNAPSHOT_DIR)"
 	@mkdir -p '$(SNAPSHOT_DIR)'
 	@while IFS= read -r -d '' src; do
 	  rel="$${src#./}"
-	  course_dir="$${rel%/cours.typ}"
-	  out='$(SNAPSHOT_DIR)'/"$$course_dir"/cours.pdf
+	  base="$${rel##*/}"
+	  if [[ "$$base" == 'chapitre.typ' ]]; then
+	    chapter_dir="$${rel%/chapitre.typ}"
+	    chapter_dir="$${chapter_dir%/}"
+	    chapter_name="$${chapter_dir##*/}"
+	    chapter_parent="$${chapter_dir%/*}"
+	    out='$(SNAPSHOT_DIR)'/"$$chapter_parent"/"$$chapter_name".pdf
+	  else
+	    course_dir="$${rel%/cours.typ}"
+	    out='$(SNAPSHOT_DIR)'/"$$course_dir"/cours.pdf
+	  fi
 	  mkdir -p "$$(dirname "$$out")"
 	  echo "[typst] $$src -> $$out"
-	  typst compile "$$src" "$$out"
-	done < <(find . -type f -name 'cours.typ' -not -path './$(DIST_ROOT)/*' -not -path './.git/*' -print0 | sort -z)
+	  typst compile --root "`pwd`" "$$src" "$$out"
+	done < <(find . -type f \( -name 'cours.typ' -o -name 'chapitre.typ' \) -not -path './$(DIST_ROOT)/*' -not -path './.git/*' -print0 | sort -z)
 	@{
 	  echo 'MIDL PDF snapshot'
 	  echo 'timestamp=$(TIMESTAMP)'

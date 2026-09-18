@@ -1,17 +1,48 @@
 # Fonctions d'une variable réelle et intégrale
 
-Projet Typst reconstruit à partir des notes manuscrites de la séance du 09/09/2026.
+Projet Typst reconstruit à partir des notes manuscrites du CM.
 
-## Structure
+## Organisation
 
-- `cours.typ` : réglages globaux et inclusions.
+```text
+CM/
+├── cours.typ
+├── style.typ
+├── sessions/
+├── fragments/
+├── chapitres/
+├── figures/
+└── sources/
+```
+
+- `cours.typ` : cours complet dans l'ordre chronologique des séances.
+- `sessions/` : une agrégation par date.
+- `fragments/` : contenu mathématique source, découpé par thème.
+- `chapitres/` : vues de publication ; chaque chapitre réutilise les fragments existants et possède son propre `chapitre.typ`.
 - `style.typ` : macros réutilisables.
-- `fragments/` : contenu du cours.
-- `figures/` : réservé aux figures futures.
-- `sources/` : photographies originales.
+- `sources/` : provenance des photographies originales.
+- `figures/` : figures utilisées par le cours lorsqu'il y en a.
+
+## Chapitres
+
+Le chapitre 1 est clos au 17/09/2026 :
+
+```text
+chapitres/01_series-positives/chapitre.typ
+```
+
+Le `Makefile` racine compile automatiquement ce point d'entrée en PDF séparé, en plus du cours complet.
 
 ## Compilation
 
+Depuis la racine du dépôt :
+
 ```bash
-typst compile cours.typ
+make compile
+```
+
+Pour compiler uniquement le chapitre 1 manuellement :
+
+```bash
+typst compile 05_fonctions_variable_reelle/CM/chapitres/01_series-positives/chapitre.typ
 ```
