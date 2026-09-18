@@ -11,7 +11,7 @@ Comme $B_F$ est une famille libre de $E$, on peut la compléter en une base de $
 Si les vecteurs ajoutés engendrent un sous-espace $F'$, alors on obtient
 
 $
-F plus.direct F' = E.
+F ⊕ F' = E.
 $
 
 Autrement dit, tout sous-espace de dimension finie admet un sous-espace supplémentaire obtenu en complétant une base.
