@@ -21,15 +21,35 @@ CM/
 ├── style.typ
 ├── sessions/
 ├── fragments/
+├── chapitres/       # optionnel, vues de publication par chapitre
 ├── figures/
 └── sources/
 ```
 
-- `cours.typ` contient les réglages globaux et inclut uniquement les fichiers de `sessions/`.
+- `cours.typ` contient les réglages globaux et construit le cours complet dans l'ordre chronologique des `sessions/`.
 - `sessions/YYYY-MM-DD.typ` représente une séance et inclut ses fragments dans l'ordre.
 - `fragments/YYYY-MM-DD_XX_topic.typ` contient le contenu réel du cours.
-- `sources/YYYY-MM-DD/` contient les photos originales de la séance.
+- `sources/YYYY-MM-DD/` contient les photos originales de la séance ou, lorsque l'upload binaire n'est pas possible, un manifeste de provenance vers l'archive des originaux.
 - `figures/` contient uniquement les figures utilisées par le cours.
+
+### Vues par chapitre
+
+Lorsqu'une matière est organisée en chapitres, utiliser :
+
+```text
+chapitres/
+└── 01_nom-du-chapitre/
+    └── chapitre.typ
+```
+
+Le fichier `chapitre.typ` est un **point d'entrée de publication**. Il réutilise les fragments existants ; il ne doit pas dupliquer ni devenir une seconde source du contenu.
+
+Cette séparation permet de conserver simultanément :
+
+- le cours complet et chronologique via `cours.typ` ;
+- un PDF autonome pour chaque chapitre via `chapitre.typ`.
+
+Lorsqu'un chapitre est terminé, son point d'entrée doit rester stable. Les nouvelles séances du chapitre suivant sont ajoutées au cours complet sans modifier le PDF du chapitre précédent, sauf correction explicitement demandée.
 
 ## Conversion des notes manuscrites
 
@@ -42,7 +62,8 @@ Pour chaque nouvelle série de photos :
 5. découper le contenu en fragments logiques ;
 6. créer ou mettre à jour le fichier de séance ;
 7. ajouter la séance à `cours.typ` si nécessaire ;
-8. compiler le cours complet avant intégration dans `main`.
+8. si la séance clôt un chapitre, créer ou mettre à jour son point d'entrée `chapitre.typ` ;
+9. compiler tous les points d'entrée avant intégration dans `main`.
 
 ## Nommage
 
@@ -65,6 +86,12 @@ sources/YYYY-MM-DD/page-01.jpg
 sources/YYYY-MM-DD/page-02.jpg
 ```
 
+Chapitres :
+
+```text
+chapitres/01_nom-du-chapitre/chapitre.typ
+```
+
 ## Validation
 
-La branche `main` ne doit recevoir que des modifications dont les cours Typst concernés compilent avec succès. Le workflow GitHub Actions du dépôt compile automatiquement tous les fichiers `cours.typ`.
+La branche `main` ne doit recevoir que des modifications dont les points d'entrée Typst concernés compilent avec succès. Le workflow GitHub Actions du dépôt compile automatiquement les fichiers `cours.typ` et `chapitre.typ`.
