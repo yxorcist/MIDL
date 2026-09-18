@@ -61,6 +61,9 @@ doctor:
 
 compile: check
 	@$(MIDL_TOOL) publish --all --no-upload
+	@mkdir -p '.midl'
+	@typst compile --root "`pwd`" '00_admin/tests/session-note-smoke.typ' '.midl/session-note-smoke.pdf'
+	@rm -f '.midl/session-note-smoke.pdf'
 
 drive-bootstrap: check-rclone
 	@test -f '$(DRIVE_LAYOUT)' || { echo 'error: missing $(DRIVE_LAYOUT)' >&2; exit 1; }
