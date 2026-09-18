@@ -352,18 +352,15 @@ def cmd_publish(args: argparse.Namespace) -> int:
             print(f"[upload]  {item['output']}")
             run(["rclone", "copyto", str(output), destination])
 
-        entries[item["source_rel"]] = {
-            "fingerprint": item["fingerprint"],
-            "output": item["output"],
-            "published_at": (
-                now
-                if not args.no_upload
-                else entries.get(item["source_rel"], {}).get("published_at")
-            ),
-        }
+        if not args.no_upload:
+            entries[item["source_rel"]] = {
+                "fingerprint": item["fingerprint"],
+                "output": item["output"],
+                "published_at": now,
+            }
 
-    save_local_state(state)
     if not args.no_upload:
+        save_local_state(state)
         push_remote_state(args.remote)
 
     print(
