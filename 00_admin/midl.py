@@ -323,11 +323,15 @@ def cmd_publish(args: argparse.Namespace) -> int:
 
     state = load_local_state()
     current, orphans = classify(state)
-    dirty = [
-        item
-        for item in current
-        if item["status"] in {"NEW", "CHANGED"}
-    ]
+    dirty = (
+        list(current)
+        if args.all
+        else [
+            item
+            for item in current
+            if item["status"] in {"NEW", "CHANGED"}
+        ]
+    )
 
     print_status(current, orphans)
 
@@ -494,6 +498,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--no-upload",
         action="store_true",
         help="compile dirty entrypoints locally only",
+    )
+    publish.add_argument(
+        "--all",
+        action="store_true",
+        help="compile every publishable entrypoint, ignoring fingerprints",
     )
     publish.set_defaults(func=cmd_publish)
 
