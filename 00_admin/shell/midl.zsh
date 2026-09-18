@@ -1,7 +1,7 @@
 # MIDL shell helpers for zsh.
 # Source this file from ~/.zshrc after cloning the repository.
 
-typeset -g MIDL_ROOT="${MIDL_ROOT:-${${(%):-%N}:A:h:h}}"
+typeset -g MIDL_ROOT="${MIDL_ROOT:-${${(%):-%N}:A:h:h:h}}"
 typeset -g MIDL_REMOTE="${MIDL_REMOTE:-gdrive:MIDL}"
 
 _midl_subject_dir() {
