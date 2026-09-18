@@ -1,6 +1,6 @@
 # Chapitres
 
-Ce dossier contient des **vues de publication par chapitre**.
+Ce dossier contient les **vues de publication par chapitre**.
 
 Principe :
 
@@ -9,12 +9,14 @@ Principe :
 - un chapitre ne duplique pas le contenu : son `chapitre.typ` réutilise les fragments existants ;
 - chaque `chapitre.typ` est compilé séparément en un PDF par le `Makefile` racine.
 
-Structure :
+Structure actuelle :
 
 ```text
 chapitres/
-└── 01_series-positives/
+├── 01_series-positives/
+│   └── chapitre.typ
+└── 02_nombres-reels-et-suite-reelle/
     └── chapitre.typ
 ```
 
-Les chapitres suivants doivent suivre le même modèle.
+Le chapitre 1 est clos. Le chapitre 2 reste ouvert et son point d'entrée sera complété avec les futurs fragments du même chapitre.
