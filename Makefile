@@ -70,7 +70,7 @@ compile: check
 	  fi
 	  mkdir -p "$$(dirname "$$out")"
 	  echo "[typst] $$src -> $$out"
-	  typst compile --root "$(pwd)" "$src" "$out"
+	  typst compile --root "`pwd`" "$src" "$out"
 	done < <(find . -type f \( -name 'cours.typ' -o -name 'chapitre.typ' \) -not -path './$(DIST_ROOT)/*' -not -path './.git/*' -print0 | sort -z)
 	@{
 	  echo 'MIDL PDF snapshot'
