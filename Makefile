@@ -35,7 +35,7 @@ check:
 check-rclone:
 	@command -v rclone >/dev/null 2>&1 || { echo 'error: rclone is not installed or not in PATH' >&2; exit 1; }
 	@remote='$(REMOTE)'
-	remote_name="${remote%%:*}:"
+	remote_name="$${remote%%:*}:"
 	if ! rclone listremotes | grep -Fxq "$$remote_name"; then
 	  echo "error: rclone remote $$remote_name is not configured" >&2
 	  exit 1
