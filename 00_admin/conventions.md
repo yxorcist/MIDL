@@ -125,3 +125,30 @@ Une évolution du workspace ne doit pas provoquer une migration destructive.
 - ne pas supprimer les PDF ou ressources déjà présents sur Drive ;
 - créer les nouvelles structures de façon additive ;
 - conserver les mêmes dossiers de matières que dans le dépôt lorsque cela améliore la correspondance Git ↔ Drive.
+
+
+## Notes personnelles de TD et TP
+
+Les notes personnelles de séance sont des points d'entrée Typst autonomes :
+
+```text
+<matiere>/TD/notes/YYYY-MM-DD_TDNN.typ
+<matiere>/TP/notes/YYYY-MM-DD_TPNN.typ
+```
+
+Elles doivent importer le style partagé `00_admin/note-style.typ` sauf besoin spécifique.
+
+Le PDF généré n'est pas versionné dans Git. Il est publié dans Drive au même chemin logique.
+
+### Politique de conservation
+
+- un PDF déjà publié reste sur Drive tant qu'une suppression explicite n'est pas demandée ;
+- une modification de source remplace le PDF correspondant ;
+- supprimer ou renommer une source ne supprime jamais automatiquement l'ancien PDF ;
+- `00_INBOX` est réservé aux fichiers entrants non classés, jamais aux sorties générées.
+
+### Publication incrémentale
+
+Le publisher `00_admin/midl.py` utilise des empreintes de contenu et dépendances locales. L'état effectivement publié est partagé entre appareils via `MIDL/00_ADMIN/build-state.json`.
+
+La compilation CI reste indépendante de Drive.
