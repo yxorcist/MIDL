@@ -98,7 +98,7 @@ Exemple mathématique :
 │   └── sources/
 ├── TD/
 │   ├── sujets/
-│   ├── travail/
+│   ├── notes/
 │   └── corrections/
 └── resources/
 ```
@@ -110,7 +110,7 @@ Exemple programmation :
 ├── CM/
 ├── TP/
 │   ├── sujets/
-│   ├── travail/
+│   ├── notes/
 │   └── corrections/
 ├── PROJECTS/
 └── resources/
@@ -191,3 +191,71 @@ ALG — terminer TD3 ex. 6 à 10
 ```
 
 La description ou un commentaire peut contenir le lien Drive vers le sujet et, si utile, vers le dossier de travail.
+
+
+## Notes TD / TP permanentes
+
+Les notes de TD et TP sont des sources Typst versionnées dans Git :
+
+```text
+<matiere>/TD/notes/YYYY-MM-DD_TD01.typ
+<matiere>/TP/notes/YYYY-MM-DD_TP01.typ
+```
+
+Leur PDF est publié au même chemin logique dans Drive :
+
+```text
+MIDL/<matiere>/TD/notes/YYYY-MM-DD_TD01.pdf
+MIDL/<matiere>/TP/notes/YYYY-MM-DD_TP01.pdf
+```
+
+Les anciens PDF restent en place. Une modification d'une source remplace uniquement le PDF correspondant. Une suppression de source ne provoque aucune suppression automatique sur Drive.
+
+## Commandes terminal
+
+Après installation des helpers zsh :
+
+```bash
+midl al td
+midl-note al td
+midl-status
+midl-publish
+midl-doctor
+```
+
+Alias matières :
+
+```text
+md   méthodes discrètes
+al   algèbre linéaire
+si   systèmes d'information
+pa   programmation avancée
+fvr  fonctions d'une variable réelle
+pn   programmation numérique
+en   anglais
+```
+
+`midl-note` crée ou rouvre la note de la date courante puis l'ouvre dans `$EDITOR` (sinon `nvim`).
+
+## Publication incrémentale
+
+`midl-publish` ne recompilera pas tout le dépôt à chaque fois.
+
+Pour chaque point d'entrée publiable, le système calcule une empreinte SHA-256 de la source et de ses dépendances locales Typst/images. Il compare cette empreinte à l'état partagé stocké dans :
+
+```text
+MIDL/00_ADMIN/build-state.json
+```
+
+États possibles :
+
+```text
+NEW        jamais publié
+CHANGED    source ou dépendance modifiée
+UNCHANGED  rien à faire
+ORPHAN     source supprimée ; PDF Drive conservé
+```
+
+Seuls `NEW` et `CHANGED` sont compilés et envoyés. Le système utilise `rclone copyto` vers un chemin précis ; il n'utilise jamais `rclone sync`.
+
+`00_INBOX` reste réservé aux fichiers externes/non classés. Les PDF générés n'y passent jamais.

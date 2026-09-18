@@ -3,48 +3,39 @@ SHELL := /bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
 .DEFAULT_GOAL := publish
 
-DIST_ROOT ?= dist
-TIMESTAMP ?= $(shell date '+%Y-%m-%d_%H-%M-%S')
-SNAPSHOT_DIR := $(DIST_ROOT)/$(TIMESTAMP)
 REMOTE ?= gdrive:MIDL
 DRIVE_LAYOUT ?= 00_admin/drive-layout.txt
+TIMESTAMP ?= $(shell date '+%Y-%m-%d_%H-%M-%S')
 ARCHIVE_REMOTE := $(REMOTE)/99_ARCHIVE/generated
+MIDL_TOOL := python3 00_admin/midl.py
 
-.PHONY: help check check-rclone list compile drive-bootstrap publish-current publish publish-dry-run clean
+.PHONY: help check check-rclone list status doctor compile publish publish-dry-run drive-bootstrap snapshot shell-install clean clean-state
 
 help:
 	@printf '%s\n' \
-	  'MIDL publishing commands:' \
-	  '  make                 Compile, update stable Drive PDFs, then archive a timestamped snapshot' \
-	  '  make compile         Compile courses + chapter PDFs locally only' \
-	  '  make drive-bootstrap Create the non-destructive MIDL Drive folder skeleton' \
-	  '  make publish-current Compile and update only the stable daily-use PDFs in Drive' \
-	  '  make publish         Same as make: stable PDFs + archived snapshot' \
-	  '  make publish-dry-run Compile, then show stable + archive uploads without changing Drive' \
-	  '  make list            List cours.typ and chapitre.typ entry points' \
-	  '  make clean           Remove generated local snapshots' \
+	  'MIDL commands:' \
+	  '  make / make publish   Incremental compile + upload of NEW/CHANGED PDFs only' \
+	  '  make status           Show NEW / CHANGED / UNCHANGED / ORPHAN entrypoints' \
+	  '  make publish-dry-run  Show what would be compiled/uploaded' \
+	  '  make compile          Compile every publishable Typst entrypoint; no Drive access' \
+	  '  make snapshot         Full local rebuild + timestamped archive copy to Drive' \
+	  '  make drive-bootstrap  Create missing Drive folders; never delete files' \
+	  '  make shell-install    Add MIDL zsh helpers to ~/.zshrc' \
+	  '  make doctor           Check git/python/typst/rclone and the Drive remote' \
+	  '  make list             List publishable Typst entrypoints' \
+	  '  make clean            Remove local generated PDFs but keep build state' \
+	  '  make clean-state      Remove local build state; next publish will re-evaluate all files' \
 	  '' \
-	  'Defaults:' \
-	  '  DIST_ROOT=dist' \
-	  '  REMOTE=gdrive:MIDL' \
-	  '  DRIVE_LAYOUT=00_admin/drive-layout.txt' \
-	  '  TIMESTAMP=YYYY-MM-DD_HH-MM-SS' \
-	  '' \
-	  'Example override:' \
-	  '  make publish REMOTE=gdrive:documents/MIDL'
+	  'Default remote: $(REMOTE)'
 
 check:
+	@command -v python3 >/dev/null 2>&1 || { echo 'error: python3 is not installed or not in PATH' >&2; exit 1; }
 	@command -v typst >/dev/null 2>&1 || { echo 'error: typst is not installed or not in PATH' >&2; exit 1; }
-	@count="$$(find . -type f \( -name 'cours.typ' -o -name 'chapitre.typ' \) -not -path './$(DIST_ROOT)/*' -not -path './.git/*' | wc -l)"
-	if [[ "$$count" -eq 0 ]]; then
-	  echo 'error: no cours.typ or chapitre.typ files found' >&2
-	  exit 1
-	fi
 
 check-rclone:
 	@command -v rclone >/dev/null 2>&1 || { echo 'error: rclone is not installed or not in PATH' >&2; exit 1; }
 	@remote='$(REMOTE)'
-	remote_name="$${remote%%:*}:"
+	remote_name="${remote%%:*}:"
 	if ! rclone listremotes | grep -Fxq "$$remote_name"; then
 	  echo "error: rclone remote $$remote_name is not configured" >&2
 	  exit 1
@@ -55,100 +46,61 @@ check-rclone:
 	fi
 
 list:
-	@find . -type f \( -name 'cours.typ' -o -name 'chapitre.typ' \) -not -path './$(DIST_ROOT)/*' -not -path './.git/*' | sort
+	@find . -type f \( \
+	  -name 'cours.typ' -o \
+	  -name 'chapitre.typ' -o \
+	  -path '*/TD/notes/*.typ' -o \
+	  -path '*/TP/notes/*.typ' \
+	\) -not -path './.git/*' -not -path './.midl/*' | sort
+
+status:
+	@$(MIDL_TOOL) status --remote '$(REMOTE)'
+
+doctor:
+	@$(MIDL_TOOL) doctor --remote '$(REMOTE)'
 
 compile: check
-	@echo "Creating snapshot: $(SNAPSHOT_DIR)"
-	@mkdir -p '$(SNAPSHOT_DIR)'
-	@while IFS= read -r -d '' src; do
-	  rel="$${src#./}"
-	  base="$${rel##*/}"
-	  if [[ "$$base" == 'chapitre.typ' ]]; then
-	    chapter_dir="$${rel%/chapitre.typ}"
-	    chapter_dir="$${chapter_dir%/}"
-	    chapter_name="$${chapter_dir##*/}"
-	    chapter_parent="$${chapter_dir%/*}"
-	    out='$(SNAPSHOT_DIR)'/"$$chapter_parent"/"$$chapter_name".pdf
-	  else
-	    course_dir="$${rel%/cours.typ}"
-	    out='$(SNAPSHOT_DIR)'/"$$course_dir"/cours.pdf
-	  fi
-	  mkdir -p "$$(dirname "$$out")"
-	  echo "[typst] $$src -> $$out"
-	  typst compile --root "`pwd`" "$$src" "$$out"
-	done < <(find . -type f \( -name 'cours.typ' -o -name 'chapitre.typ' \) -not -path './$(DIST_ROOT)/*' -not -path './.git/*' -print0 | sort -z)
-	@{
-	  echo 'MIDL PDF snapshot'
-	  echo 'timestamp=$(TIMESTAMP)'
-	  echo "git_commit=$$(git rev-parse HEAD 2>/dev/null || echo unknown)"
-	  echo "git_branch=$$(git branch --show-current 2>/dev/null || echo unknown)"
-	} > '$(SNAPSHOT_DIR)/manifest.txt'
-	@echo "Local snapshot ready: $(SNAPSHOT_DIR)"
+	@$(MIDL_TOOL) publish --all --no-upload
+	@mkdir -p '.midl'
+	@typst compile --root "`pwd`" '00_admin/tests/session-note-smoke.typ' '.midl/session-note-smoke.pdf'
+	@rm -f '.midl/session-note-smoke.pdf'
 
 drive-bootstrap: check-rclone
 	@test -f '$(DRIVE_LAYOUT)' || { echo 'error: missing $(DRIVE_LAYOUT)' >&2; exit 1; }
 	@echo "Ensuring MIDL Drive workspace exists under $(REMOTE)"
 	@while IFS= read -r path || [[ -n "$$path" ]]; do
 	  [[ -z "$$path" || "$$path" == \#* ]] && continue
-	  echo "[mkdir] $(REMOTE)/$$path"
 	  rclone mkdir "$(REMOTE)/$$path"
 	done < '$(DRIVE_LAYOUT)'
 	@echo 'Drive workspace ready.'
 
-publish-current: compile drive-bootstrap
-	@echo "Updating stable daily-use PDFs under $(REMOTE)"
-	@root='$(SNAPSHOT_DIR)'
-	@while IFS= read -r -d '' pdf; do
-	  rel="$${pdf#$$root/}"
-	  subject="$${rel%%/*}"
-	  rest="$${rel#*/}"
-	  kind="$${rest%%/*}"
-	  tail="$${rest#*/}"
-	  if [[ "$$tail" == 'cours.pdf' ]]; then
-	    dest='$(REMOTE)'/"$$subject"/"$$kind"/notes/cours-complet.pdf
-	  elif [[ "$$tail" == chapitres/*.pdf ]]; then
-	    chapter="$${tail#chapitres/}"
-	    dest='$(REMOTE)'/"$$subject"/"$$kind"/notes/chapitres/"$$chapter"
-	  else
-	    dest='$(REMOTE)'/"$$subject"/"$$kind"/notes/"$$tail"
-	  fi
-	  echo "[current] $$rel -> $$dest"
-	  rclone copyto "$$pdf" "$$dest" --progress
-	done < <(find "$$root" -type f -name '*.pdf' -print0 | sort -z)
-	@echo 'Stable PDFs updated.'
+publish: check check-rclone drive-bootstrap
+	@$(MIDL_TOOL) publish --remote '$(REMOTE)'
 
-publish: publish-current
-	@echo "Archiving snapshot to $(ARCHIVE_REMOTE)/$(TIMESTAMP)"
-	@rclone copy '$(SNAPSHOT_DIR)' '$(ARCHIVE_REMOTE)/$(TIMESTAMP)' --progress
-	@echo "Published current workspace + archive $(TIMESTAMP)"
+publish-dry-run:
+	@$(MIDL_TOOL) publish --remote '$(REMOTE)' --dry-run
 
-publish-dry-run: compile check-rclone
-	@echo "Dry run for stable daily-use PDFs under $(REMOTE)"
-	@root='$(SNAPSHOT_DIR)'
-	@while IFS= read -r -d '' pdf; do
-	  rel="$${pdf#$$root/}"
-	  subject="$${rel%%/*}"
-	  rest="$${rel#*/}"
-	  kind="$${rest%%/*}"
-	  tail="$${rest#*/}"
-	  if [[ "$$tail" == 'cours.pdf' ]]; then
-	    dest='$(REMOTE)'/"$$subject"/"$$kind"/notes/cours-complet.pdf
-	  elif [[ "$$tail" == chapitres/*.pdf ]]; then
-	    chapter="$${tail#chapitres/}"
-	    dest='$(REMOTE)'/"$$subject"/"$$kind"/notes/chapitres/"$$chapter"
-	  else
-	    dest='$(REMOTE)'/"$$subject"/"$$kind"/notes/"$$tail"
-	  fi
-	  echo "[dry-current] $$rel -> $$dest"
-	  rclone copyto "$$pdf" "$$dest" --dry-run --progress
-	done < <(find "$$root" -type f -name '*.pdf' -print0 | sort -z)
-	@echo "Dry run for archive: $(SNAPSHOT_DIR) -> $(ARCHIVE_REMOTE)/$(TIMESTAMP)"
-	@rclone copy '$(SNAPSHOT_DIR)' '$(ARCHIVE_REMOTE)/$(TIMESTAMP)' --dry-run --progress
+snapshot: check check-rclone drive-bootstrap
+	@$(MIDL_TOOL) publish --all --no-upload
+	@echo "Archiving complete generated library to $(ARCHIVE_REMOTE)/$(TIMESTAMP)"
+	@rclone copy '.midl/build' '$(ARCHIVE_REMOTE)/$(TIMESTAMP)' --progress
+	@echo "Snapshot archived: $(ARCHIVE_REMOTE)/$(TIMESTAMP)"
+
+shell-install:
+	@touch "$$HOME/.zshrc"
+	@line="source '$$(pwd)/00_admin/shell/midl.zsh'"
+	@if grep -Fqx "$$line" "$$HOME/.zshrc"; then
+	  echo 'MIDL shell helpers already installed.'
+	else
+	  printf '\n%s\n' "$$line" >> "$$HOME/.zshrc"
+	  echo 'Installed MIDL shell helpers in ~/.zshrc'
+	  echo 'Run: source ~/.zshrc'
+	fi
 
 clean:
-	@if [[ -z '$(DIST_ROOT)' || '$(DIST_ROOT)' == '/' || '$(DIST_ROOT)' == '.' ]]; then
-	  echo 'error: refusing to remove unsafe DIST_ROOT' >&2
-	  exit 1
-	fi
-	@rm -rf -- '$(DIST_ROOT)'
-	@echo "Removed $(DIST_ROOT)"
+	@rm -rf -- '.midl/build'
+	@echo 'Removed local generated PDFs; build state preserved.'
+
+clean-state:
+	@rm -f -- '.midl/build-state.json'
+	@echo 'Removed local build state. Remote state is untouched.'
