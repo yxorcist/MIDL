@@ -150,9 +150,9 @@ $
 
 $
 =
-lambda (x_1u_1 + ... + x_pu_p)
+lambda (x_1 u_1 + ... + x_p u_p)
 +
-(y_1u_1 + ... + y_pu_p)
+(y_1 u_1 + ... + y_p u_p)
 $
 
 $
