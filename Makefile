@@ -7,22 +7,27 @@ DIST_ROOT ?= dist
 TIMESTAMP ?= $(shell date '+%Y-%m-%d_%H-%M-%S')
 SNAPSHOT_DIR := $(DIST_ROOT)/$(TIMESTAMP)
 REMOTE ?= gdrive:MIDL
+DRIVE_LAYOUT ?= 00_admin/drive-layout.txt
+ARCHIVE_REMOTE := $(REMOTE)/99_ARCHIVE/generated
 
-.PHONY: help check check-rclone list compile publish publish-dry-run clean
+.PHONY: help check check-rclone list compile drive-bootstrap publish-current publish publish-dry-run clean
 
 help:
 	@printf '%s\n' \
 	  'MIDL publishing commands:' \
-	  '  make                 Compile courses + chapter PDFs and upload a timestamped snapshot to Google Drive' \
+	  '  make                 Compile, update stable Drive PDFs, then archive a timestamped snapshot' \
 	  '  make compile         Compile courses + chapter PDFs locally only' \
-	  '  make publish         Same as make' \
-	  '  make publish-dry-run Compile, then show what rclone would upload' \
+	  '  make drive-bootstrap Create the non-destructive MIDL Drive folder skeleton' \
+	  '  make publish-current Compile and update only the stable daily-use PDFs in Drive' \
+	  '  make publish         Same as make: stable PDFs + archived snapshot' \
+	  '  make publish-dry-run Compile, then show stable + archive uploads without changing Drive' \
 	  '  make list            List cours.typ and chapitre.typ entry points' \
 	  '  make clean           Remove generated local snapshots' \
 	  '' \
 	  'Defaults:' \
 	  '  DIST_ROOT=dist' \
 	  '  REMOTE=gdrive:MIDL' \
+	  '  DRIVE_LAYOUT=00_admin/drive-layout.txt' \
 	  '  TIMESTAMP=YYYY-MM-DD_HH-MM-SS' \
 	  '' \
 	  'Example override:' \
@@ -80,14 +85,65 @@ compile: check
 	} > '$(SNAPSHOT_DIR)/manifest.txt'
 	@echo "Local snapshot ready: $(SNAPSHOT_DIR)"
 
-publish: compile check-rclone
-	@echo "Uploading to $(REMOTE)/$(TIMESTAMP)"
-	@rclone copy '$(SNAPSHOT_DIR)' '$(REMOTE)/$(TIMESTAMP)' --progress
-	@echo "Published: $(REMOTE)/$(TIMESTAMP)"
+drive-bootstrap: check-rclone
+	@test -f '$(DRIVE_LAYOUT)' || { echo 'error: missing $(DRIVE_LAYOUT)' >&2; exit 1; }
+	@echo "Ensuring MIDL Drive workspace exists under $(REMOTE)"
+	@while IFS= read -r path || [[ -n "$$path" ]]; do
+	  [[ -z "$$path" || "$$path" == \#* ]] && continue
+	  echo "[mkdir] $(REMOTE)/$$path"
+	  rclone mkdir "$(REMOTE)/$$path"
+	done < '$(DRIVE_LAYOUT)'
+	@echo 'Drive workspace ready.'
+
+publish-current: compile drive-bootstrap
+	@echo "Updating stable daily-use PDFs under $(REMOTE)"
+	@root='$(SNAPSHOT_DIR)'
+	@while IFS= read -r -d '' pdf; do
+	  rel="$${pdf#$$root/}"
+	  subject="$${rel%%/*}"
+	  rest="$${rel#*/}"
+	  kind="$${rest%%/*}"
+	  tail="$${rest#*/}"
+	  if [[ "$$tail" == 'cours.pdf' ]]; then
+	    dest='$(REMOTE)'/"$$subject"/"$$kind"/notes/cours-complet.pdf
+	  elif [[ "$$tail" == chapitres/*.pdf ]]; then
+	    chapter="$${tail#chapitres/}"
+	    dest='$(REMOTE)'/"$$subject"/"$$kind"/notes/chapitres/"$$chapter"
+	  else
+	    dest='$(REMOTE)'/"$$subject"/"$$kind"/notes/"$$tail"
+	  fi
+	  echo "[current] $$rel -> $$dest"
+	  rclone copyto "$$pdf" "$$dest" --progress
+	done < <(find "$$root" -type f -name '*.pdf' -print0 | sort -z)
+	@echo 'Stable PDFs updated.'
+
+publish: publish-current
+	@echo "Archiving snapshot to $(ARCHIVE_REMOTE)/$(TIMESTAMP)"
+	@rclone copy '$(SNAPSHOT_DIR)' '$(ARCHIVE_REMOTE)/$(TIMESTAMP)' --progress
+	@echo "Published current workspace + archive $(TIMESTAMP)"
 
 publish-dry-run: compile check-rclone
-	@echo "Dry run: $(SNAPSHOT_DIR) -> $(REMOTE)/$(TIMESTAMP)"
-	@rclone copy '$(SNAPSHOT_DIR)' '$(REMOTE)/$(TIMESTAMP)' --dry-run --progress
+	@echo "Dry run for stable daily-use PDFs under $(REMOTE)"
+	@root='$(SNAPSHOT_DIR)'
+	@while IFS= read -r -d '' pdf; do
+	  rel="$${pdf#$$root/}"
+	  subject="$${rel%%/*}"
+	  rest="$${rel#*/}"
+	  kind="$${rest%%/*}"
+	  tail="$${rest#*/}"
+	  if [[ "$$tail" == 'cours.pdf' ]]; then
+	    dest='$(REMOTE)'/"$$subject"/"$$kind"/notes/cours-complet.pdf
+	  elif [[ "$$tail" == chapitres/*.pdf ]]; then
+	    chapter="$${tail#chapitres/}"
+	    dest='$(REMOTE)'/"$$subject"/"$$kind"/notes/chapitres/"$$chapter"
+	  else
+	    dest='$(REMOTE)'/"$$subject"/"$$kind"/notes/"$$tail"
+	  fi
+	  echo "[dry-current] $$rel -> $$dest"
+	  rclone copyto "$$pdf" "$$dest" --dry-run --progress
+	done < <(find "$$root" -type f -name '*.pdf' -print0 | sort -z)
+	@echo "Dry run for archive: $(SNAPSHOT_DIR) -> $(ARCHIVE_REMOTE)/$(TIMESTAMP)"
+	@rclone copy '$(SNAPSHOT_DIR)' '$(ARCHIVE_REMOTE)/$(TIMESTAMP)' --dry-run --progress
 
 clean:
 	@if [[ -z '$(DIST_ROOT)' || '$(DIST_ROOT)' == '/' || '$(DIST_ROOT)' == '.' ]]; then

@@ -95,3 +95,33 @@ chapitres/01_nom-du-chapitre/chapitre.typ
 ## Validation
 
 La branche `main` ne doit recevoir que des modifications dont les points d'entrée Typst concernés compilent avec succès. Le workflow GitHub Actions du dépôt compile automatiquement les fichiers `cours.typ` et `chapitre.typ`.
+
+
+## Workspace externe
+
+Le dépôt Git et le workspace Google Drive ont des rôles différents.
+
+- GitHub reste la source de vérité pour Typst, code, configuration, provenance et historique.
+- Drive est l'espace de consommation et de travail multi-appareils : PDF générés, sujets, corrections, documents professeur, ressources et fichiers en cours.
+- Todoist contient uniquement les actions et des liens vers les supports ; il ne remplace ni Git ni Drive.
+
+La structure Drive est décrite dans `00_admin/workspace.md` et `00_admin/drive-layout.txt`.
+
+### Inbox
+
+Tout fichier reçu sans classement certain peut être déposé dans :
+
+```text
+MIDL/00_INBOX/
+```
+
+Il doit être inspecté avant renommage et déplacement. Ne pas déduire le sujet ou le type de séance à partir du seul nom de fichier lorsque le contenu permet une vérification.
+
+### Compatibilité avec l'existant
+
+Une évolution du workspace ne doit pas provoquer une migration destructive.
+
+- ne pas déplacer automatiquement les anciens snapshots ;
+- ne pas supprimer les PDF ou ressources déjà présents sur Drive ;
+- créer les nouvelles structures de façon additive ;
+- conserver les mêmes dossiers de matières que dans le dépôt lorsque cela améliore la correspondance Git ↔ Drive.

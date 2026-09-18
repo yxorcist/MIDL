@@ -1,8 +1,17 @@
 # Publication des PDF vers Google Drive
 
-Le dépôt contient un `Makefile` à la racine pour compiler les points d'entrée Typst et publier un snapshot PDF daté dans Google Drive via rclone.
+Le dépôt contient un `Makefile` à la racine pour compiler les points d'entrée Typst et publier les PDF vers Google Drive via rclone.
 
-Les points d'entrée reconnus sont :
+L'évolution actuelle ajoute une couche de **workspace stable** sans supprimer l'ancien principe de snapshots.
+
+## Principe
+
+Deux sorties sont produites :
+
+1. des chemins stables destinés au travail quotidien ;
+2. un snapshot daté destiné à l'archive.
+
+Les points d'entrée reconnus restent :
 
 - `cours.typ` : cours complet d'une matière ;
 - `chapitre.typ` : PDF autonome d'un chapitre.
@@ -27,6 +36,22 @@ La destination par défaut est :
 gdrive:MIDL
 ```
 
+## Bootstrap du workspace Drive
+
+L'arborescence déclarative se trouve dans :
+
+```text
+00_admin/drive-layout.txt
+```
+
+Pour créer les dossiers manquants sans supprimer ni déplacer les fichiers existants :
+
+```bash
+make drive-bootstrap
+```
+
+La commande utilise uniquement `rclone mkdir`. Elle est donc additive et idempotente.
+
 ## Utilisation normale
 
 Depuis la racine du dépôt :
@@ -37,64 +62,93 @@ make
 
 Cela :
 
-1. cherche tous les fichiers `cours.typ` et `chapitre.typ` du dépôt ;
+1. cherche tous les fichiers `cours.typ` et `chapitre.typ` ;
 2. compile chacun en PDF ;
 3. crée un snapshot local dans `dist/YYYY-MM-DD_HH-MM-SS/` ;
-4. ajoute un `manifest.txt` avec le timestamp et le commit Git ;
-5. crée le même dossier daté sous `gdrive:MIDL/` et y copie les PDF.
+4. vérifie/crée l'arborescence Drive déclarée ;
+5. met à jour les PDF stables utilisés au quotidien ;
+6. archive aussi le snapshot complet sous `99_ARCHIVE/generated/`.
 
-Exemple de résultat :
+## Chemins stables
+
+Un cours complet est publié sous :
 
 ```text
-2026-09-18_08-30-00/
-├── manifest.txt
-├── 01_methodes_discretes/
-│   └── CM/
-│       └── cours.pdf
-├── 02_algebre_lineaire/
-│   └── CM/
-│       └── cours.pdf
-└── 05_fonctions_variable_reelle/
-    └── CM/
-        ├── cours.pdf
-        └── chapitres/
-            └── 01_series-positives.pdf
+MIDL/<matiere>/<type>/notes/cours-complet.pdf
 ```
 
-Pour les chapitres, le nom du dossier contenant `chapitre.typ` devient le nom du PDF. Cela évite des fichiers génériques nommés simplement `chapitre.pdf`.
+Un chapitre est publié sous :
 
-Chaque exécution utilise un nouveau dossier timestampé. Les anciens snapshots ne sont donc pas modifiés par une publication suivante.
+```text
+MIDL/<matiere>/<type>/notes/chapitres/<nom-du-chapitre>.pdf
+```
+
+Exemples :
+
+```text
+MIDL/02_algebre_lineaire/CM/notes/cours-complet.pdf
+MIDL/02_algebre_lineaire/CM/notes/chapitres/01_espaces-vectoriels.pdf
+MIDL/05_fonctions_variable_reelle/CM/notes/chapitres/02_nombres-reels-et-suite-reelle.pdf
+```
+
+Ces chemins sont stables : une publication suivante remplace le PDF courant en place au lieu de créer un nouveau chemin de travail.
+
+Cela permet notamment d'utiliser les mêmes dossiers ou fichiers comme destinations depuis Todoist.
+
+## Archive
+
+Chaque publication conserve aussi :
+
+```text
+MIDL/99_ARCHIVE/generated/YYYY-MM-DD_HH-MM-SS/
+```
+
+Le snapshot contient le `manifest.txt`, les cours complets et les PDF de chapitre.
+
+Les anciens snapshots déjà publiés directement sous `MIDL/YYYY-MM-DD_HH-MM-SS/` ne sont pas déplacés automatiquement. Rien n'est détruit pendant la migration vers la nouvelle organisation.
 
 ## Commandes utiles
 
-Compiler sans envoyer sur Google Drive :
+Compiler sans toucher à Drive :
 
 ```bash
 make compile
 ```
 
-Voir ce que rclone enverrait sans réellement copier :
+Créer seulement l'arborescence Drive :
+
+```bash
+make drive-bootstrap
+```
+
+Compiler et mettre à jour seulement les PDF courants :
+
+```bash
+make publish-current
+```
+
+Publier PDF courants + archive :
+
+```bash
+make publish
+```
+
+Prévisualiser les copies sans modifier Drive :
 
 ```bash
 make publish-dry-run
 ```
 
-Lister les points d'entrée Typst compilés :
+Lister les points d'entrée :
 
 ```bash
 make list
 ```
 
-Supprimer tous les snapshots locaux générés :
+Supprimer les snapshots locaux :
 
 ```bash
 make clean
-```
-
-Afficher l'aide :
-
-```bash
-make help
 ```
 
 ## Changer la destination Drive
@@ -105,8 +159,26 @@ La destination peut être remplacée pour une exécution :
 make publish REMOTE=gdrive:documents/MIDL
 ```
 
-Attention à la syntaxe rclone : `gdrive:` désigne le remote Google Drive ; `gdrive` sans `:` désigne un chemin local.
+Attention : `gdrive:` désigne le remote rclone ; `gdrive` sans `:` désigne un chemin local.
+
+## Sécurité de la publication
+
+La publication utilise `rclone copy` et `rclone copyto`, pas `rclone sync`.
+
+Elle ne supprime donc pas les documents ajoutés manuellement dans les dossiers Drive tels que :
+
+- `cours_prof/` ;
+- `TD/sujets/` ;
+- `TP/sujets/` ;
+- `resources/` ;
+- `00_INBOX/`.
 
 ## CI
 
-GitHub Actions exécute uniquement `make compile`. La CI vérifie donc le même chemin de compilation utilisé localement, y compris les PDF de chapitre, mais ne possède aucun accès au Google Drive personnel et ne publie rien avec rclone.
+GitHub Actions exécute uniquement :
+
+```bash
+make compile
+```
+
+La CI vérifie le chemin de compilation local, y compris les PDF de chapitre, mais ne possède aucun accès au Google Drive personnel et n'exécute ni `drive-bootstrap` ni publication rclone.
