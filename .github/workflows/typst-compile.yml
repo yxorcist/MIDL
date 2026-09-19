@@ -2,6 +2,7 @@ name: Typst compile
 
 on:
   push:
+    branches: [main]
   pull_request:
 
 jobs:
@@ -10,5 +11,4 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: typst-community/setup-typst@v5
-      - name: Compile every course through Makefile
-        run: make compile DIST_ROOT=/tmp/midl-dist TIMESTAMP=ci
+      - run: make
