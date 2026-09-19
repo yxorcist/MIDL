@@ -12,9 +12,3 @@ jobs:
       - uses: typst-community/setup-typst@v5
       - name: Compile every course through Makefile
         run: make compile DIST_ROOT=/tmp/midl-dist TIMESTAMP=ci
-      - name: Upload PN TD01 PDF
-        uses: actions/upload-artifact@v4
-        with:
-          name: pn-td01-systemes-lineaires
-          path: .midl/build/06_prog_numerique/TD/sujets/TD01_systemes-lineaires.pdf
-          if-no-files-found: error
