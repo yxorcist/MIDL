@@ -20,3 +20,4 @@
 #include "sessions/2026-09-14.typ"
 #include "sessions/2026-09-16.typ"
 #include "sessions/2026-09-17.typ"
+#include "sessions/2026-09-21.typ"

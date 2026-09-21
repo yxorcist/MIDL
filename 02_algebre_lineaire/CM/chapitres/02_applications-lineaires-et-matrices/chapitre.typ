@@ -27,3 +27,9 @@
 #include "../../fragments/2026-09-16_02_structure-espace-applications-lineaires.typ"
 #include "../../fragments/2026-09-16_03_noyau-image.typ"
 #include "../../fragments/2026-09-16_04_determination-par-base.typ"
+
+#include "../../fragments/2026-09-21_01_complements-applications-lineaires.typ"
+#include "../../fragments/2026-09-21_02_rang-application-lineaire.typ"
+#include "../../fragments/2026-09-21_03_composition-applications-lineaires.typ"
+#include "../../fragments/2026-09-21_04_matrices-produit-blocs.typ"
+#include "../../fragments/2026-09-21_05_transposee.typ"
