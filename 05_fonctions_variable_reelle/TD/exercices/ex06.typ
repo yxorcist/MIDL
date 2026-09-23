@@ -155,7 +155,7 @@ $
 Par conséquent,
 
 $
-H_N limits(~)_(N -> infinity) ln(N).
+H_N / ln(N) -> 1.
 $
 
 == Question 3.b

@@ -86,7 +86,7 @@ $
 Ainsi,
 
 $
-u_n - u_(n+1) limits(~)_(n -> infinity) u_n^3/6.
+(u_n - u_(n+1)) / (u_n^3/6) -> 1.
 $
 
 Or la série télescopique
@@ -124,14 +124,14 @@ et $ln(1+x) = x + o(x)$ lorsque $x -> 0$. Donc
 
 $
 ln(u_(n+1)) - ln(u_n)
-sim -u_n^2/6.
+ -u_n^2/6.
 $
 
 Équivalemment,
 
 $
 ln(u_n) - ln(u_(n+1))
-sim u_n^2/6.
+ u_n^2/6.
 $
 
 Pour $N in NN$,
