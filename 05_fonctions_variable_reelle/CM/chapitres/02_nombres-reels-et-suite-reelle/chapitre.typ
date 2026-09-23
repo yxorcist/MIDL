@@ -25,3 +25,5 @@
 
 #include "../../fragments/2026-09-17_02_corps-nombres-reels.typ"
 #include "../../fragments/2026-09-17_03_bornes-superieure-inferieure.typ"
+#include "../../fragments/2026-09-23_01_extrema-supremum-infimum.typ"
+#include "../../fragments/2026-09-23_02_caracterisation-supremum.typ"
