@@ -59,7 +59,7 @@ Ainsi,
 $
 a^(n+1)-b^(n+1)
 = a K m+b^n m
-= m(aK+b^n).
+= m(a K+b^n).
 $
 
 Donc
