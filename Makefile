@@ -17,5 +17,5 @@ shell-install:
 	@echo 'MIDL ready. Run: source ~/.zshrc'
 
 clean:
-	@rm -rf dist
-	@echo 'removed dist/'
+	@rm -rf dist .midl/build-state.json
+	@echo 'removed dist/ and incremental build state'

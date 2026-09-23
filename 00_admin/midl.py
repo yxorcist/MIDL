@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import hashlib
+import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -10,6 +13,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BUILD_DIR = ROOT / "dist"
+BUILD_STATE = ROOT / ".midl" / "build-state.json"
+PATH_RE = re.compile(r'["\\\']([^"\\\']+\\.(?:typ|png|jpe?g|svg|csv|json|ya?ml|txt))["\\\']', re.I)
 
 SUBJECTS = {
     "md": ("01_methodes_discretes", "Méthodes discrètes", ("cm", "td")),
@@ -93,18 +98,116 @@ def output_rel(source: Path) -> str:
     return source_rel.with_suffix(".pdf").as_posix()
 
 
+def resolve_dependency(current: Path, token: str) -> Path | None:
+    if token.startswith("@"):
+        return None
+
+    candidate = ROOT / token.lstrip("/") if token.startswith("/") else current.parent / token
+
+    try:
+        candidate = candidate.resolve()
+        candidate.relative_to(ROOT.resolve())
+    except (OSError, ValueError):
+        return None
+
+    return candidate if candidate.is_file() else None
+
+
+def dependencies(source: Path) -> list[Path]:
+    seen: set[Path] = set()
+    stack = [source.resolve()]
+
+    while stack:
+        path = stack.pop()
+        if path in seen or not path.is_file():
+            continue
+
+        seen.add(path)
+
+        if path.suffix.lower() != ".typ":
+            continue
+
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+
+        for token in PATH_RE.findall(text):
+            dependency = resolve_dependency(path, token)
+            if dependency is not None and dependency not in seen:
+                stack.append(dependency)
+
+    return sorted(seen, key=rel)
+
+
+def fingerprint(source: Path) -> str:
+    digest = hashlib.sha256()
+
+    for path in dependencies(source):
+        name = rel(path).encode("utf-8")
+        data = path.read_bytes()
+
+        digest.update(len(name).to_bytes(4, "big"))
+        digest.update(name)
+        digest.update(len(data).to_bytes(8, "big"))
+        digest.update(data)
+
+    return digest.hexdigest()
+
+
+def load_build_state() -> dict[str, str]:
+    if not BUILD_STATE.is_file():
+        return {}
+
+    try:
+        data = json.loads(BUILD_STATE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+    entries = data.get("entries", {})
+    return entries if isinstance(entries, dict) else {}
+
+
+def save_build_state(entries: dict[str, str]) -> None:
+    BUILD_STATE.parent.mkdir(parents=True, exist_ok=True)
+    BUILD_STATE.write_text(
+        json.dumps({"version": 1, "entries": entries}, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+
 def cmd_compile() -> int:
     if not have("typst"):
         die("typst is not installed")
 
     entries = discover_entries()
-    for source in entries:
-        output = BUILD_DIR / output_rel(source)
-        output.parent.mkdir(parents=True, exist_ok=True)
-        print(f"[typst] {rel(source)}")
-        run(["typst", "compile", "--root", str(ROOT), str(source), str(output)])
+    previous = load_build_state()
+    current: dict[str, str] = {}
 
-    print(f"compiled {len(entries)} artifact(s) -> {rel(BUILD_DIR)}/")
+    compiled = 0
+    skipped = 0
+
+    for source in entries:
+        source_rel = rel(source)
+        output = BUILD_DIR / output_rel(source)
+        current_fingerprint = fingerprint(source)
+        current[source_rel] = current_fingerprint
+
+        if output.is_file() and previous.get(source_rel) == current_fingerprint:
+            skipped += 1
+            continue
+
+        output.parent.mkdir(parents=True, exist_ok=True)
+        print(f"[typst] {source_rel}")
+        run(["typst", "compile", "--root", str(ROOT), str(source), str(output)])
+        compiled += 1
+
+    save_build_state(current)
+
+    print(
+        f"compiled {compiled} artifact(s), skipped {skipped} unchanged "
+        f"-> {rel(BUILD_DIR)}/"
+    )
     return 0
 
 

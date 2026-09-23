@@ -12,21 +12,42 @@ jobs:
       - uses: actions/checkout@v6
       - uses: typst-community/setup-typst@v5
 
-      - name: Build PDFs
-        run: make
-
-      - name: Verify build output
+      - name: First build
         run: |
+          make | tee /tmp/midl-first-build.log
           test -d dist
           test "$(find dist -type f -name '*.pdf' | wc -l)" -gt 0
+
+      - name: Verify no-op incremental build
+        run: |
+          make | tee /tmp/midl-second-build.log
+          grep -q "compiled 0 artifact(s)" /tmp/midl-second-build.log
+          grep -q "skipped .* unchanged" /tmp/midl-second-build.log
+
+      - name: Verify single TD rebuild
+        run: |
+          printf '\n// incremental-ci-test\n' >> 01_methodes_discretes/TD/fiche01/exercices/ex01.typ
+          make | tee /tmp/midl-td-build.log
+          grep -q "\[typst\] 01_methodes_discretes/TD/fiche01/exercices/ex01.typ" /tmp/midl-td-build.log
+          grep -q "compiled 1 artifact(s)" /tmp/midl-td-build.log
+          git checkout -- 01_methodes_discretes/TD/fiche01/exercices/ex01.typ
+
+      - name: Verify dependency rebuild
+        run: |
+          printf '\n// dependency-ci-test\n' >> 05_fonctions_variable_reelle/CM/fragments/2026-09-16_03_exemples-intermediaires.typ
+          make | tee /tmp/midl-dependency-build.log
+          grep -q "\[typst\] 05_fonctions_variable_reelle/CM/chapitres/01_series-positives/chapitre.typ" /tmp/midl-dependency-build.log
+          grep -q "\[typst\] 05_fonctions_variable_reelle/CM/cours.typ" /tmp/midl-dependency-build.log
+          git checkout -- 05_fonctions_variable_reelle/CM/fragments/2026-09-16_03_exemples-intermediaires.typ
 
       - name: Verify clean
         run: |
           make clean
           test ! -e dist
+          test ! -e .midl/build-state.json
 
-      - name: Verify rebuild
+      - name: Verify full rebuild after clean
         run: |
-          make
+          make | tee /tmp/midl-rebuild.log
           test -d dist
-          test "$(find dist -type f -name '*.pdf' | wc -l)" -gt 0
+          grep -vq "compiled 0 artifact(s)" /tmp/midl-rebuild.log
