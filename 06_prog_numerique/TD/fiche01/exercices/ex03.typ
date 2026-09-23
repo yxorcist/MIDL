@@ -1,3 +1,6 @@
+// source-confidence: medium
+// source-uncertainty: only the beginning of question 2 was visible in the supplied source; the rest remains intentionally incomplete.
+
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 

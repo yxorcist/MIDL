@@ -1,3 +1,5 @@
+// source-confidence: high
+
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)

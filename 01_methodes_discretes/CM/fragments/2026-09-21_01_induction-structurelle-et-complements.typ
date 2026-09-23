@@ -1,3 +1,6 @@
+// source-confidence: medium
+// source-uncertainty: Sigma* / fixed-point portion was abbreviated in the handwriting; only clearly supported content was retained.
+
 #import "../style.typ": *
 
 = Induction sur les constructions inductives

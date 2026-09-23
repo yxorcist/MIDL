@@ -1,3 +1,6 @@
+// source-confidence: medium
+// source-uncertainty: dense basis/vector relations were reconstructed from surrounding calculations; main conclusions are clear.
+
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)

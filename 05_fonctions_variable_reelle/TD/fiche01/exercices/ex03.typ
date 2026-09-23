@@ -1,3 +1,6 @@
+// source-confidence: medium
+// source-uncertainty: questions 2 and 8 were not readable; question 4 exact term was unreadable; questions 5 and 7 were reconstructed from legible asymptotic steps.
+
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)

@@ -1,3 +1,6 @@
+// source-confidence: medium
+// source-uncertainty: question 5 was missing from the supplied source; questions 1-4 were clear.
+
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)

@@ -1,3 +1,6 @@
+// source-confidence: medium
+// source-uncertainty: questions 4 and 6-9 were not reliably readable in the supplied handwriting and were intentionally not reconstructed.
+
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
