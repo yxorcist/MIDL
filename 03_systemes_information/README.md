@@ -1,3 +1,12 @@
 # Systèmes d'information et bases de données
 
-Structure réservée au semestre. Ajouter les notes par type de séance (`CM`, `TD`, `TP`) dès que du contenu est disponible.
+Les CM restent chronologiques. Les TD suivent la convention MIDL commune :
+
+```text
+TD/
+└── ficheNN/
+    └── exercices/
+        └── exNN.typ
+```
+
+Les fichiers du dépôt sont les sources de travail canoniques, pas les documents d'entrée utilisés pour les reconstruire.

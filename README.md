@@ -2,72 +2,56 @@
 
 One boring study workflow for the whole year.
 
-## First setup
+## Model
 
-### 1. Install requirements
+```text
+GitHub = canonical editable source
+.midl/build = generated PDFs
+Drive/MIDL/00_INBOX = staging
+Drive subject folders = readable library
+```
+
+The repository keeps processed study material and the code/configuration needed to build it. Raw photographs, copied subjects, archival inputs and temporary reference documents do not belong in Git once conversion is complete.
+
+## Canonical structure
+
+```text
+SUBJECT/
+├── CM/
+│   ├── cours.typ
+│   ├── sessions/          # chronological capture: YYYY-MM-DD.typ
+│   ├── fragments/         # canonical course content
+│   ├── chapitres/         # thematic publication views, when useful
+│   └── figures/           # only figures actually used by Typst
+├── TD/
+│   ├── fiche01/
+│   │   └── exercices/
+│   │       ├── ex01.typ
+│   │       └── ex02.typ
+│   ├── fiche02/
+│   │   └── exercices/
+│   └── rappels/           # optional reusable reminders
+└── TP/
+    └── tp01/
+        └── exercices/
+            └── ex01.typ
+```
+
+**CM is date-oriented. TD and TP are exercise-oriented.**
+
+## First setup
 
 Arch Linux:
 
 ```bash
 sudo pacman -S git python typst rclone neovim make
-```
-
-### 2. Clone or update MIDL
-
-New machine:
-
-```bash
-cd ~
-git clone https://github.com/yxorcist/MIDL.git
-cd MIDL
-```
-
-Existing clone:
-
-```bash
+git clone https://github.com/yxorcist/MIDL.git ~/MIDL
 cd ~/MIDL
-git switch main
-git pull
-```
-
-### 3. Install the `midl` command
-
-From the repository root:
-
-```bash
 make shell-install
 source ~/.zshrc
 ```
 
-Test:
-
-```bash
-midl help
-```
-
-### 4. Configure Google Drive
-
 MIDL expects an rclone remote named `gdrive:`.
-
-Check:
-
-```bash
-rclone listremotes
-```
-
-If `gdrive:` does not exist:
-
-```bash
-rclone config
-```
-
-Create a Google Drive remote named `gdrive`, then verify:
-
-```bash
-rclone lsd gdrive:MIDL
-```
-
-Finally:
 
 ```bash
 midl doctor
@@ -75,16 +59,27 @@ midl doctor
 
 ## Daily use
 
-Start working:
+CM:
 
 ```bash
-midl al td
 midl fvr cm
-midl pn tp
-midl
 ```
 
-`midl <subject> <type>` creates or reopens today's correctly named file and opens it in Neovim.
+TD:
+
+```bash
+midl md td 2 6
+# -> 01_methodes_discretes/TD/fiche02/exercices/ex06.typ
+```
+
+TP:
+
+```bash
+midl pn tp 1 3
+# -> 06_prog_numerique/TP/tp01/exercices/ex03.typ
+```
+
+Without the fiche/TP and exercise numbers, `midl` asks for them interactively.
 
 End of session:
 
@@ -94,9 +89,9 @@ midl status
 midl push
 ```
 
-- `make` — compile every publishable Typst PDF.
-- `midl status` — show only NEW / MODIFIED / STAGED artifacts.
-- `midl push` — send NEW/MODIFIED PDFs to `Drive/MIDL/00_INBOX`.
+- `make` compiles every publishable Typst entry.
+- `midl status` shows NEW / MODIFIED / STAGED artifacts.
+- `midl push` stages NEW/MODIFIED PDFs in `Drive/MIDL/00_INBOX`.
 - Nothing is automatically deleted from Drive.
 
 ## Subjects
@@ -110,28 +105,3 @@ midl push
 | `fvr` | Fonctions d'une variable réelle | `cm td` |
 | `pn` | Programmation numérique | `cm td tp` |
 | `en` | Anglais | `work` |
-
-## Model
-
-```text
-GitHub = editable sources
-.midl/build = generated PDFs
-Drive/MIDL/00_INBOX = staging
-Drive subject folders = readable library
-```
-
-Normal workflow:
-
-```text
-midl al td
-    ↓
-study / write in Neovim
-    ↓
-make
-    ↓
-midl status
-    ↓
-midl push
-    ↓
-Drive/MIDL/00_INBOX
-```

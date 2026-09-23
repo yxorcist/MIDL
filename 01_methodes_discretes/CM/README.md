@@ -1,16 +1,14 @@
-# Méthodes discrètes logiques
+# Méthodes discrètes — CM
 
-Projet fragmenté à partir du fichier fourni.
+- `cours.typ` assemble le cours complet.
+- `sessions/` conserve l'ordre chronologique des séances.
+- `fragments/` contient le contenu canonique réutilisable.
+- `style.typ` contient les macros propres au cours.
 
-- `cours.typ` : assemble le cours.
-- `style.typ` : contient uniquement les deux macros du fichier original.
-- `fragments/` : contenu du cours découpé par date et sujet.
-- `source_originale.typ` : copie exacte du fichier fourni.
+Les fichiers d'entrée ayant servi à la conversion ne sont pas archivés dans le dépôt.
 
-Aucune table des matières, page de garde ou contenu supplémentaire n'a été ajouté.
-
-Compilation :
+Compilation depuis la racine :
 
 ```bash
-typst compile cours.typ
+make
 ```

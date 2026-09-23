@@ -128,12 +128,9 @@ def discover_entries() -> list[Path]:
     patterns = (
         "**/cours.typ",
         "**/chapitre.typ",
-        "[0-9][0-9]_*/TD/notes/*.typ",
-        "[0-9][0-9]_*/TD/sujets/*.typ",
-        "[0-9][0-9]_*/TD/exercices/*.typ",
-        "[0-9][0-9]_*/TP/notes/*.typ",
-        "[0-9][0-9]_*/TP/sujets/*.typ",
-        "[0-9][0-9]_*/TP/exercices/*.typ",
+        "[0-9][0-9]_*/TD/fiche[0-9][0-9]/exercices/*.typ",
+        "[0-9][0-9]_*/TD/rappels/*.typ",
+        "[0-9][0-9]_*/TP/tp[0-9][0-9]/exercices/*.typ",
         "07_anglais/travail/*.typ",
     )
     for pattern in patterns:
@@ -359,15 +356,6 @@ def choose(title: str, options: list[tuple[str, str]]) -> str:
         print("choose a listed option", file=sys.stderr)
 
 
-def next_number(notes_dir: Path, kind: str) -> int:
-    highest = 0
-    for path in notes_dir.glob(f"*_{kind}[0-9][0-9].typ"):
-        match = SESSION_RE.match(path.name)
-        if match and match.group(2) == kind:
-            highest = max(highest, int(match.group(3)))
-    return highest + 1
-
-
 def typst_escape(value: str) -> str:
     return value.replace("\\", "\\\\").replace('"', '\\"')
 
@@ -390,7 +378,29 @@ def ensure_course_include(course: Path, session: Path) -> None:
         course.write_text(text.rstrip() + "\n" + include + "\n", encoding="utf-8")
 
 
-def create_or_reopen(subject: str, area: str) -> Path:
+def ask_positive_int(label: str) -> int:
+    while True:
+        try:
+            raw = input(f"{label}: ").strip()
+        except EOFError:
+            die("selection cancelled")
+        if raw.isdigit() and int(raw) >= 1:
+            return int(raw)
+        print("enter a positive integer", file=sys.stderr)
+
+
+def parse_positive_int(raw: str, label: str) -> int:
+    if not raw.isdigit() or int(raw) < 1:
+        die(f"{label} must be a positive integer")
+    return int(raw)
+
+
+def create_or_reopen(
+    subject: str,
+    area: str,
+    sheet: int | None = None,
+    exercise: int | None = None,
+) -> Path:
     folder, display, allowed = SUBJECTS[subject]
     if area not in allowed:
         die(f"'{area}' is not used for {display}; choose: {', '.join(allowed)}")
@@ -407,25 +417,22 @@ def create_or_reopen(subject: str, area: str) -> Path:
         return path
 
     if area in {"td", "tp"}:
+        if sheet is None or exercise is None:
+            die(f"{area.upper()} requires a sheet and exercise number")
         kind = area.upper()
-        notes = base / kind / "notes"
-        notes.mkdir(parents=True, exist_ok=True)
-        existing = sorted(notes.glob(f"{today}_{kind}[0-9][0-9].typ"))
-        if existing:
-            return existing[-1]
-        number = next_number(notes, kind)
-        label = f"{kind}{number:02d}"
-        path = notes / f"{today}_{label}.typ"
-        path.write_text(
-            '#import "../../../00_admin/note-style.typ": session-note\n\n'
-            '#show: session-note.with(\n'
-            f'  subject: "{typst_escape(display)}",\n'
-            f'  label: "{label}",\n'
-            f'  date: "{today}",\n'
-            ')\n\n'
-            '= Notes\n\n',
-            encoding="utf-8",
-        )
+        group = f"fiche{sheet:02d}" if area == "td" else f"tp{sheet:02d}"
+        label = f"Fiche {sheet}" if area == "td" else f"TP {sheet}"
+        exercises = base / kind / group / "exercices"
+        exercises.mkdir(parents=True, exist_ok=True)
+        path = exercises / f"ex{exercise:02d}.typ"
+        if not path.exists():
+            path.write_text(
+                '#set page(paper: "a4", margin: 2cm)\n'
+                '#set text(lang: "fr", size: 11pt)\n'
+                '#set par(justify: true, leading: 0.65em)\n\n'
+                f'= {label} — Exercice {exercise}\n\n',
+                encoding="utf-8",
+            )
         return path
 
     work = base / "travail"
@@ -449,6 +456,7 @@ def cmd_open(args: list[str]) -> int:
         subject = subject_key(args[0])
     else:
         subject = choose("Subject", [(key, data[1]) for key, data in SUBJECTS.items()])
+
     allowed = SUBJECTS[subject][2]
     if len(args) >= 2:
         area = args[1].lower()
@@ -456,13 +464,23 @@ def cmd_open(args: list[str]) -> int:
         area = allowed[0]
     else:
         area = choose("Type", [(key, key.upper()) for key in allowed])
-    path = create_or_reopen(subject, area)
+
+    sheet = exercise = None
+    if area in {"td", "tp"}:
+        sheet_label = "Fiche" if area == "td" else "TP"
+        sheet = parse_positive_int(args[2], sheet_label) if len(args) >= 3 else ask_positive_int(sheet_label)
+        exercise = parse_positive_int(args[3], "exercise") if len(args) >= 4 else ask_positive_int("Exercise")
+        if len(args) > 4:
+            die("too many arguments")
+    elif len(args) > 2:
+        die("too many arguments")
+
+    path = create_or_reopen(subject, area, sheet, exercise)
     editor = os.environ.get("EDITOR") or os.environ.get("MIDL_EDITOR") or "nvim"
     if not have(editor.split()[0]):
         die(f"editor '{editor}' is not installed")
     print(rel(path))
     return subprocess.call(editor.split() + [path.name], cwd=path.parent)
-
 
 def cmd_doctor() -> int:
     checks = {name: have(name) for name in ("git", "python3", "typst", "rclone", "nvim")}
@@ -482,10 +500,14 @@ def print_help() -> None:
     print("""MIDL
 
 Study:
-  midl al td
   midl fvr cm
-  midl pn tp
+  midl md td 2 6
+  midl pn tp 1 3
   midl            interactive chooser
+
+TD / TP:
+  midl <subject> td <fiche> <exercise>
+  midl <subject> tp <tp> <exercise>
 
 End of session:
   make

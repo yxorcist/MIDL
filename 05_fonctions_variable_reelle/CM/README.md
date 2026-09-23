@@ -1,6 +1,4 @@
-# Fonctions d'une variable réelle et intégrale
-
-Projet Typst reconstruit à partir des notes manuscrites du CM.
+# Fonctions d'une variable réelle — CM
 
 ## Organisation
 
@@ -11,43 +9,19 @@ CM/
 ├── sessions/
 ├── fragments/
 ├── chapitres/
-├── figures/
-└── sources/
+└── figures/
 ```
 
-- `cours.typ` : cours complet dans l'ordre chronologique des séances.
-- `sessions/` : une agrégation par date.
-- `fragments/` : contenu mathématique source, découpé par thème.
-- `chapitres/` : vues de publication ; chaque chapitre réutilise les fragments existants et possède son propre `chapitre.typ`.
-- `style.typ` : macros réutilisables.
-- `sources/` : provenance des photographies originales.
-- `figures/` : figures utilisées par le cours lorsqu'il y en a.
+- `cours.typ` suit l'ordre chronologique des séances.
+- `sessions/` regroupe les séances par date.
+- `fragments/` contient le contenu mathématique canonique.
+- `chapitres/` fournit les vues de publication par chapitre.
+- `figures/` contient uniquement les figures réellement utilisées.
 
-## Chapitres
+Les fichiers d'entrée ayant servi à la conversion ne sont pas archivés dans le dépôt.
 
-```text
-chapitres/
-├── 01_series-positives/
-│   └── chapitre.typ
-└── 02_nombres-reels-et-suite-reelle/
-    └── chapitre.typ
-```
-
-- **Chapitre 1 — Séries positives** : clos le 17/09/2026.
-- **Chapitre 2 — Nombres réels et suite réelle** : commencé le 17/09/2026 et complété au fil des prochaines séances.
-
-Le `Makefile` racine compile chaque `chapitre.typ` en PDF séparé, en plus du cours complet.
-
-## Compilation
-
-Depuis la racine du dépôt :
+Compilation depuis la racine :
 
 ```bash
-make compile
-```
-
-Compilation manuelle d'un chapitre :
-
-```bash
-typst compile --root . 05_fonctions_variable_reelle/CM/chapitres/02_nombres-reels-et-suite-reelle/chapitre.typ
+make
 ```

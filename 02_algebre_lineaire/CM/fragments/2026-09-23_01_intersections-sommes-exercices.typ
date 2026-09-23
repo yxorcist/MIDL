@@ -244,7 +244,7 @@ $
 v=(u+v)-u in F,
 $
 
-contradiction avec $v notin F$.
+contradiction avec $v in.not F$.
 
 Si $u+v in G$, alors, comme $v in G$,
 
@@ -252,7 +252,7 @@ $
 u=(u+v)-v in G,
 $
 
-contradiction avec $u notin G$.
+contradiction avec $u in.not G$.
 
 Ainsi,
 
