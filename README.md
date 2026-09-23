@@ -99,3 +99,50 @@ Generated PDFs are written under `dist/`, mirroring the source tree as closely a
 | `fvr` | Fonctions d'une variable réelle | `cm td` |
 | `pn` | Programmation numérique | `cm td tp` |
 | `en` | Anglais | `work` |
+
+## Google Drive mirror
+
+Google Drive is intentionally separate from the build system.
+
+The Drive layout is:
+
+```text
+MIDL/
+├── INBOX/                  # unsorted incoming university documents
+├── 01_methodes_discretes/  # static/original material
+├── 02_algebre_lineaire/
+├── 03_systemes_information/
+├── 04_programmation_avancee/
+├── 05_fonctions_variable_reelle/
+├── 06_prog_numerique/
+├── 07_anglais/
+└── dist/                   # generated PDFs mirrored from local dist/
+```
+
+Build and safely upload generated PDFs:
+
+```bash
+make drive
+```
+
+This uses `rclone copy`: new and changed files are uploaded, but remote-only files are not deleted.
+
+Preview the upload without changing Drive:
+
+```bash
+make drive-dry-run
+```
+
+For an exact mirror, including remote deletions:
+
+```bash
+make drive-sync
+```
+
+The default destination is `gdrive:MIDL/dist`. Override it when needed:
+
+```bash
+make drive RCLONE_REMOTE='other-remote:MIDL/dist'
+```
+
+The normal `make` command never requires rclone or Google Drive.
