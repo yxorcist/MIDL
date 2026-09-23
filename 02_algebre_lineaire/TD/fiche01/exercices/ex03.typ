@@ -326,7 +326,7 @@ $
 B_I=((0,0,-1,1)).
 $
 
-== Question 3.c — Montrer que $H=F direct.sum I$
+== Question 3.c — Montrer que $H=F ⊕ I$
 
 L'équation de $H$ s'écrit
 
@@ -412,7 +412,7 @@ $
 Par conséquent,
 
 $
-H=F direct.sum I.
+H=F ⊕ I.
 $
 
 == Question 3.d — Décomposition d'un vecteur
@@ -450,5 +450,5 @@ Le premier terme appartient à $I$ et le second appartient à $F$.
 Ainsi $u$ est bien décomposé suivant
 
 $
-H=F direct.sum I.
+H=F ⊕ I.
 $
