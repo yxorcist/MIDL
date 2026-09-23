@@ -8,8 +8,8 @@ Le tableau introduit la suite $(u_n)_(n in NN)$ définie par
 
 $
 u_n = cases(
-  0 & "si " n " est impair", \
-  1 & "si " n " est pair".
+  0 & "si " n " est impair",
+  1 & "si " n " est pair",
 )
 $
 
