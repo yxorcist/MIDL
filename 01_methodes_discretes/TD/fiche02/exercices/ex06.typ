@@ -55,15 +55,15 @@ $
 
 $
 (3,5)
-arrow.r(R2)
+arrow.r
 (-3,5)
-arrow.r(R1^2)
+arrow.r
 (1,5)
-arrow.r(R3)
+arrow.r
 (5,1)
-arrow.r(R2)
+arrow.r
 (-5,1)
-arrow.r(R1^3)
+arrow.r
 (1,1).
 $
 
@@ -93,7 +93,7 @@ $
 
 $
 (1,1)
-arrow.r(R1^k_1)
+arrow.r
 (n,1).
 $
 
@@ -101,7 +101,7 @@ Puis R3 :
 
 $
 (n,1)
-arrow.r(R3)
+arrow.r
 (1,n).
 $
 
@@ -109,7 +109,7 @@ On applique alors R1 $k_2$ fois :
 
 $
 (1,n)
-arrow.r(R1^k_2)
+arrow.r
 (m,n),
 $
 
@@ -117,7 +117,7 @@ puis R3 :
 
 $
 (m,n)
-arrow.r(R3)
+arrow.r
 (n,m).
 $
 
