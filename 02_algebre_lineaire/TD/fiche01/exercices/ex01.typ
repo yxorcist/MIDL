@@ -52,6 +52,6 @@ $
 2 - 2^2 = -2 != 0.
 $
 
-Donc $(2,2,0) notin G$ : $G$ n'est pas stable par multiplication externe.
+Donc $(2,2,0) in.not G$ : $G$ n'est pas stable par multiplication externe.
 
 Ainsi $G$ n'est pas un sous-espace vectoriel de $E$.

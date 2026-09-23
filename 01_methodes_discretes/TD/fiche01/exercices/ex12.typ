@@ -50,5 +50,5 @@ Ainsi $a$ et $b$ sont tous deux pairs, ce qui contredit l'irréductibilité de $
 Donc
 
 $
-sqrt(6) notin QQ.
+sqrt(6) in.not QQ.
 $

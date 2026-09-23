@@ -34,7 +34,7 @@ $
 Posons
 
 $
-N=p_1 p_2 cdots p_m + 1.
+N=p_1 p_2 dots.c p_m + 1.
 $
 
 Alors $N>1$, donc $N$ admet un diviseur premier $p_i$ parmi la liste.
@@ -48,13 +48,13 @@ $
 et
 
 $
-p_i divides p_1 p_2 cdots p_m.
+p_i divides p_1 p_2 dots.c p_m.
 $
 
 Par conséquent,
 
 $
-p_i divides (N-p_1 p_2 cdots p_m)=1,
+p_i divides (N-p_1 p_2 dots.c p_m)=1,
 $
 
 ce qui est impossible puisque $p_i>1$.
