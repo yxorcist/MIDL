@@ -14,6 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 BUILD_DIR = ROOT / "dist"
 BUILD_STATE = ROOT / ".midl" / "build-state.json"
+INBOX_REMOTE = os.environ.get("MIDL_INBOX_REMOTE", "gdrive:MIDL/INBOX")
 PATH_RE = re.compile(r"""["']([^"']+\.(?:typ|png|jpe?g|svg|csv|json|ya?ml|txt))["']""", re.I)
 
 SUBJECTS = {
