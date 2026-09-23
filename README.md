@@ -7,8 +7,6 @@ One boring study workflow for the whole year.
 ```text
 GitHub = canonical editable source
 .midl/build = generated PDFs
-Drive/MIDL/00_INBOX = staging
-Drive subject folders = readable library
 ```
 
 The repository keeps processed study material and the code/configuration needed to build it. Raw photographs, copied subjects, archival inputs and temporary reference documents do not belong in Git once conversion is complete.
@@ -44,16 +42,11 @@ SUBJECT/
 Arch Linux:
 
 ```bash
-sudo pacman -S git python typst rclone neovim make
+sudo pacman -S git python typst neovim make
 git clone https://github.com/yxorcist/MIDL.git ~/MIDL
 cd ~/MIDL
 make shell-install
 source ~/.zshrc
-```
-
-MIDL expects an rclone remote named `gdrive:`.
-
-```bash
 midl doctor
 ```
 
@@ -81,18 +74,13 @@ midl pn tp 1 3
 
 Without the fiche/TP and exercise numbers, `midl` asks for them interactively.
 
-End of session:
+Build all publishable Typst sources:
 
 ```bash
 make
-midl status
-midl push
 ```
 
-- `make` compiles every publishable Typst entry.
-- `midl status` shows NEW / MODIFIED / STAGED artifacts.
-- `midl push` stages NEW/MODIFIED PDFs in `Drive/MIDL/00_INBOX`.
-- Nothing is automatically deleted from Drive.
+Generated PDFs are written under `.midl/build/`.
 
 ## Subjects
 

@@ -2,16 +2,10 @@ SHELL := /bin/bash
 .DEFAULT_GOAL := compile
 MIDL := python3 00_admin/midl.py
 
-.PHONY: compile status push doctor shell-install clean
+.PHONY: compile doctor shell-install clean
 
 compile:
 	@$(MIDL) compile
-
-status:
-	@$(MIDL) status
-
-push:
-	@$(MIDL) push
 
 doctor:
 	@$(MIDL) doctor
@@ -23,4 +17,4 @@ shell-install:
 	@echo 'MIDL ready. Run: source ~/.zshrc'
 
 clean:
-	@rm -rf .midl/build .midl/build-manifest.json
+	@rm -rf .midl/build

@@ -9,9 +9,10 @@ _midl() {
   if (( CURRENT == 2 )); then
     _values 'subject or command' \
       md al si pa fvr pn en \
-      status push compile doctor help
+      compile doctor help
     return
   fi
+
   if (( CURRENT == 3 )); then
     case "${words[2]}" in
       md|al|fvr) _values 'type' cm td ;;
