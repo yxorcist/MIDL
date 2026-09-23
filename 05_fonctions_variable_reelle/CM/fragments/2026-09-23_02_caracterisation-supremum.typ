@@ -2,13 +2,13 @@
 
 = Existence et caractérisation de la borne supérieure
 
-#theorem([
+#proposition(title: "Théorème.", [
   Toute partie non vide majorée de $RR$ admet une borne supérieure.
 
   Toute partie non vide minorée de $RR$ admet une borne inférieure.
 ])
 
-#theorem([
+#proposition(title: "Théorème.", [
   Soit $A$ une partie majorée non vide de $RR$ et soit $M in RR$.
 
   Les assertions suivantes sont équivalentes :
