@@ -20,19 +20,19 @@ x+y
 =
 a/b+c/d
 =
-(ad+bc)/(bd).
+(a d + b c)/(b d).
 $
 
 Comme
 
 $
-ad+bc in ZZ
+a d + b c in ZZ
 $
 
 et
 
 $
-bd in ZZ^*,
+b d in ZZ^*,
 $
 
 on obtient
