@@ -19,6 +19,11 @@
   framed-block(label, body)
 }
 
+#let theorem(title: none, body) = {
+  let label = if title == none { "Théorème." } else { title }
+  framed-block(label, body)
+}
+
 #let example(title: none, body) = {
   let label = if title == none { "Exemple." } else { title }
   framed-block(label, body)
