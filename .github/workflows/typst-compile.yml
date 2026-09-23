@@ -31,6 +31,7 @@ jobs:
           grep -q "\[typst\] 01_methodes_discretes/TD/fiche01/exercices/ex01.typ" /tmp/midl-td-build.log
           grep -q "compiled 1 artifact(s)" /tmp/midl-td-build.log
           git checkout -- 01_methodes_discretes/TD/fiche01/exercices/ex01.typ
+          make >/dev/null
 
       - name: Verify dependency rebuild
         run: |
