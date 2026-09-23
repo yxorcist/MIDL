@@ -258,7 +258,7 @@ Ainsi,
 
 $
 F union G " est un sous-espace"
-iff
+" si et seulement si "
 F subset.eq G " ou " G subset.eq F.
 $
 

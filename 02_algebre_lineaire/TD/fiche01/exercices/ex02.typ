@@ -52,7 +52,7 @@ Ainsi,
 
 $
 F " est un sous-espace vectoriel"
-iff
+" si et seulement si "
 a=0 " et " b=0.
 $
 
