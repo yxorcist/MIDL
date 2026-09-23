@@ -33,3 +33,4 @@
 #include "../../fragments/2026-09-21_03_composition-applications-lineaires.typ"
 #include "../../fragments/2026-09-21_04_matrices-produit-blocs.typ"
 #include "../../fragments/2026-09-21_05_transposee.typ"
+#include "../../fragments/2026-09-23_01_intersections-sommes-exercices.typ"
