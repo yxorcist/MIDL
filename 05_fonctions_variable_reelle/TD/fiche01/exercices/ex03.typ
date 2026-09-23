@@ -2,9 +2,273 @@
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
-= Exercice 3 — correction partielle
+= Exercice 3
 
-Les photographies fournies contiennent les corrections des questions 9 à 12.
+== Rappel : condition nécessaire de convergence
+
+Si la série
+
+$
+sum u_n
+$
+
+converge, alors nécessairement
+
+$
+u_n -> 0.
+$
+
+La réciproque est fausse.
+
+== 1.
+
+On considère
+
+$
+u_n=1/(n^2+1).
+$
+
+Pour $n>=1$,
+
+$
+0 < u_n <= 1/n^2.
+$
+
+Comme la série de Riemann
+
+$
+sum 1/n^2
+$
+
+converge, le théorème de comparaison des séries positives donne la convergence de
+
+$
+sum 1/(n^2+1).
+$
+
+== 2.
+
+#block(stroke: 0.6pt + gray, inset: 8pt)[
+  *À compléter.* La question 2 n'apparaît pas de manière suffisamment lisible
+  dans les photographies fournies.
+]
+
+== 3.
+
+On considère
+
+$
+u_n=(n-1)/(n^3+2).
+$
+
+On a
+
+$
+u_n ~ 1/n^2.
+$
+
+Comme
+
+$
+sum 1/n^2
+$
+
+converge, la série de terme général $u_n$ converge par comparaison des séries
+positives.
+
+== 4.
+
+Les notes utilisent le critère de comparaison avec une série de Riemann en
+montrant que
+
+$
+n^2 u_n -> 0.
+$
+
+Ainsi,
+
+$
+u_n=o(1/n^2).
+$
+
+Comme
+
+$
+sum 1/n^2
+$
+
+converge, la série de terme général $u_n$ converge.
+
+#block(stroke: 0.6pt + gray, inset: 8pt)[
+  L'expression exacte de $u_n$ pour cette question n'est pas suffisamment
+  lisible sur la photographie. Seule la méthode clairement écrite a été
+  conservée.
+]
+
+== 5.
+
+On considère
+
+$
+u_n
+=
+(
+sqrt(n+1) ln(n)
+-
+sqrt(n) ln(n+1)
+)
+/n^(3/4).
+$
+
+On utilise les développements
+
+$
+sqrt(n+1)
+=
+sqrt(n) sqrt(1+1/n)
+=
+sqrt(n)
+(
+1+1/(2n)+o(1/n)
+)
+$
+
+et
+
+$
+ln(n+1)
+=
+ln(n)+ln(1+1/n)
+=
+ln(n)+1/n+o(1/n).
+$
+
+Ainsi le numérateur vérifie
+
+$
+sqrt(n+1)ln(n)-sqrt(n)ln(n+1)
+=
+ln(n)/(2sqrt(n))
+-
+1/sqrt(n)
++
+o(ln(n)/sqrt(n)).
+$
+
+Après division par $n^(3/4)$,
+
+$
+u_n
+=
+ln(n)/(2n^(5/4))
++
+o(ln(n)/n^(5/4)).
+$
+
+En particulier, les notes concluent que $u_n$ est dominé par une série de
+Riemann convergente, donc
+
+$
+sum u_n
+$
+
+converge.
+
+== 6.
+
+On considère
+
+$
+u_n=n sin(pi/n).
+$
+
+Comme
+
+$
+sin(pi/n) ~ pi/n,
+$
+
+on a
+
+$
+u_n ~ pi.
+$
+
+Donc
+
+$
+u_n -> pi != 0.
+$
+
+La condition nécessaire de convergence n'est pas satisfaite. Par conséquent,
+
+$
+sum u_n
+$
+
+diverge grossièrement.
+
+== 7.
+
+Pour $n>=1$, on considère
+
+$
+u_n
+=
+n ln(1+1/n)
+-
+cos(1/sqrt(n)).
+$
+
+On utilise
+
+$
+ln(1+x)
+=
+x-x^2/2+x^3/3+o(x^3)
+$
+
+et
+
+$
+cos(x)
+=
+1-x^2/2+o(x^3).
+$
+
+Ainsi,
+
+$
+n ln(1+1/n)
+=
+1-1/(2n)+1/(3n^2)+o(1/n^2)
+$
+
+et
+
+$
+cos(1/sqrt(n))
+=
+1-1/(2n)+o(1/n^(3/2)).
+$
+
+Les termes principaux se compensent, et les notes obtiennent un terme général
+négligeable devant une série de Riemann convergente.
+
+On conclut donc que
+
+$
+sum u_n
+$
+
+converge.
+
+== 8.
+
+#block(stroke: 0.6pt + gray, inset: 8pt)[
+  *À compléter.* La correction de la question 8 n'est pas présente dans les
+  photographies fournies.
+]
 
 == 9.
 
@@ -268,3 +532,4 @@ sum u_n
 $
 
 diverge.
+
