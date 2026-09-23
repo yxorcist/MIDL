@@ -155,7 +155,7 @@ $
 Par conséquent,
 
 $
-H_N sim ln(N).
+H_N limits(~)_(N -> infinity) ln(N).
 $
 
 == Question 3.b

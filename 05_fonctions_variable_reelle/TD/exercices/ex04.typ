@@ -86,7 +86,7 @@ $
 Ainsi,
 
 $
-u_n - u_(n+1) sim u_n^3/6.
+u_n - u_(n+1) limits(~)_(n -> infinity) u_n^3/6.
 $
 
 Or la série télescopique
