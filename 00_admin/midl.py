@@ -431,12 +431,25 @@ def cmd_inbox(args: list[str]) -> int:
 
 
 def cmd_doctor() -> int:
-    checks = {name: have(name) for name in ("git", "python3", "typst", "nvim", "make")}
+    checks = {name: have(name) for name in ("git", "python3", "typst", "nvim", "make", "rclone")}
     ok = True
 
     for name, present in checks.items():
         print(f"{'OK' if present else 'MISSING':<8} {name}")
         ok &= present
+
+    if checks["rclone"]:
+        result = subprocess.run(
+            ["rclone", "listremotes"],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        remotes = {line.strip() for line in result.stdout.splitlines()}
+        remote_ok = "gdrive:" in remotes
+        print(f"{'OK' if remote_ok else 'MISSING':<8} rclone remote gdrive:")
+        ok &= remote_ok
 
     return 0 if ok else 1
 

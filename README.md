@@ -42,11 +42,12 @@ SUBJECT/
 Arch Linux:
 
 ```bash
-sudo pacman -S git python typst neovim make
+sudo pacman -S git python typst neovim make rclone
 git clone https://github.com/yxorcist/MIDL.git ~/MIDL
 cd ~/MIDL
 make shell-install
 source ~/.zshrc
+rclone config   # create a Google Drive remote named gdrive
 midl doctor
 ```
 
@@ -137,6 +138,14 @@ midl inbox ~/Downloads/photos_cours/
 - `make`: build changed PDFs into local `dist/`.
 - `make drive`: build changed PDFs, then make Google Drive `MIDL/dist/` exactly match local `dist/`.
 
-The default remote is `gdrive:MIDL/dist`.
+The default remote is `gdrive:MIDL/dist`, and `midl inbox` uses `gdrive:MIDL/INBOX`.
+
+`midl doctor` checks both that `rclone` is installed and that a remote named `gdrive:` exists.
+
+After pulling changes to the shell integration, reload completion with:
+
+```bash
+source ~/.zshrc
+```
 
 The normal `make` command never requires rclone or Google Drive.

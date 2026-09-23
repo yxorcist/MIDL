@@ -7,18 +7,30 @@ midl() {
 
 _midl() {
   if (( CURRENT == 2 )); then
-    _values 'subject or command' \
-      md al si pa fvr pn en \
-      compile doctor inbox help
+    local -a commands
+    commands=(
+      'md:Méthodes discrètes'
+      'al:Algèbre linéaire'
+      'si:Systèmes information'
+      'pa:Programmation avancée'
+      'fvr:Fonctions variable réelle'
+      'pn:Programmation numérique'
+      'en:Anglais'
+      'inbox:send file or folder to Google Drive INBOX'
+      'compile:compile publishable PDFs'
+      'doctor:check MIDL dependencies'
+      'help:show help'
+    )
+    _describe 'subject or command' commands
+    return
+  fi
+
+  if [[ "${words[2]}" == "inbox" ]] && (( CURRENT >= 3 )); then
+    _files
     return
   fi
 
   if (( CURRENT == 3 )); then
-    if [[ "${words[2]}" == "inbox" ]]; then
-      _files
-      return
-    fi
-
     case "${words[2]}" in
       md|al|fvr) _values 'type' cm td ;;
       si|pn)     _values 'type' cm td tp ;;
