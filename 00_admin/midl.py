@@ -130,8 +130,10 @@ def discover_entries() -> list[Path]:
         "**/chapitre.typ",
         "[0-9][0-9]_*/TD/notes/*.typ",
         "[0-9][0-9]_*/TD/sujets/*.typ",
+        "[0-9][0-9]_*/TD/exercices/*.typ",
         "[0-9][0-9]_*/TP/notes/*.typ",
         "[0-9][0-9]_*/TP/sujets/*.typ",
+        "[0-9][0-9]_*/TP/exercices/*.typ",
         "07_anglais/travail/*.typ",
     )
     for pattern in patterns:

@@ -1,0 +1,193 @@
+#set page(paper: "a4", margin: 2cm)
+#set text(lang: "fr", size: 11pt)
+#set par(justify: true, leading: 0.65em)
+#set heading(numbering: "1.")
+
+= Exercice 6
+
+== Question 1
+
+Soit $f$ une fonction décroissante.
+
+Pour $n >= 2$ et $t in [n-1, n]$, on a $t <= n$. Comme $f$ est décroissante,
+
+$
+f(n) <= f(t).
+$
+
+Par croissance de l'intégrale,
+
+$
+integral_(n-1)^n f(n) dif t <= integral_(n-1)^n f(t) dif t.
+$
+
+Comme l'intervalle est de longueur $1$,
+
+$
+f(n) <= integral_(n-1)^n f(t) dif t.
+$
+
+On note cette inégalité $(*)$.
+
+De même, pour $n >= 1$ et $t in [n, n+1]$, on a $n <= t$, donc
+
+$
+f(t) <= f(n).
+$
+
+Ainsi,
+
+$
+integral_n^(n+1) f(t) dif t <= f(n).
+$
+
+On note cette inégalité $(**)$.
+
+== Question 2
+
+On utilise la relation de Chasles.
+
+Pour $N >= 2$, en sommant $(*)$ pour $n = 2, dots, N$,
+
+$
+sum_(n=2)^N f(n)
+<=
+sum_(n=2)^N integral_(n-1)^n f(t) dif t
+=
+integral_1^N f(t) dif t.
+$
+
+Si
+
+$
+U_N = sum_(n=1)^N f(n),
+$
+
+alors
+
+$
+U_N - f(1) <= integral_1^N f(t) dif t,
+$
+
+donc
+
+$
+U_N <= f(1) + integral_1^N f(t) dif t.
+$
+
+En sommant $(**)$ pour $n = 1, dots, N$,
+
+$
+sum_(n=1)^N integral_n^(n+1) f(t) dif t
+<=
+sum_(n=1)^N f(n),
+$
+
+d'où
+
+$
+integral_1^(N+1) f(t) dif t <= U_N.
+$
+
+Finalement,
+
+$
+integral_1^(N+1) f(t) dif t
+<= U_N
+<= f(1) + integral_1^N f(t) dif t.
+$
+
+== Question 3.a
+
+On pose
+
+$
+H_N = sum_(n=1)^N 1/n.
+$
+
+Sur $x >= 1$, la fonction
+
+$
+f(x) = 1/x
+$
+
+est continue, positive et décroissante. On peut donc appliquer le résultat précédent :
+
+$
+integral_1^(N+1) 1/t dif t
+<= H_N
+<= 1 + integral_1^N 1/t dif t.
+$
+
+Ainsi,
+
+$
+ln(N+1) <= H_N <= 1 + ln(N).
+$
+
+Pour $N >= 1$,
+
+$
+ln(N+1) - ln(N)
+<= H_N - ln(N)
+<= 1.
+$
+
+Or
+
+$
+ln(N+1) - ln(N)
+= ln(1 + 1/N) >= 0.
+$
+
+Donc
+
+$
+0 <= H_N - ln(N) <= 1.
+$
+
+La suite $H_N - ln(N)$ est bornée, donc
+
+$
+(H_N - ln(N))/ln(N) -> 0.
+$
+
+Par conséquent,
+
+$
+H_N sim ln(N).
+$
+
+== Question 3.b
+
+Soit $x in [0,1[$. Pour tout $t in [0,x]$,
+
+$
+1 <= 1/(1-t).
+$
+
+Par croissance de l'intégrale,
+
+$
+integral_0^x 1 dif t
+<=
+integral_0^x 1/(1-t) dif t.
+$
+
+Donc
+
+$
+x <= [-ln(1-t)]_(t=0)^x,
+$
+
+c'est-à-dire
+
+$
+x <= -ln(1-x).
+$
+
+== Question 3.c
+
+#block(stroke: 0.6pt + gray, inset: 8pt)[
+  *À compléter.* Aucune résolution de la question 3.c n'apparaît dans les notes source.
+]
