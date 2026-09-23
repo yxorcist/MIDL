@@ -106,7 +106,7 @@ Soit $n$ un entier positif décomposable.
 Il existe alors des entiers $a,b>1$ tels que
 
 $
-n=ab.
+n=a b.
 $
 
 Supposons que
@@ -120,7 +120,7 @@ $
 Alors
 
 $
-n=ab>sqrt(n)sqrt(n)=n,
+n=a b>sqrt(n)sqrt(n)=n,
 $
 
 contradiction.

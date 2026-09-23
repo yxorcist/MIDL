@@ -16,13 +16,13 @@ abs(x+y)^2
 =
 (x+y)^2
 =
-x^2+y^2+2xy.
+x^2+y^2+2 x y.
 $
 
 Comme
 
 $
-2xy <= 2 abs(x) abs(y),
+2 x y <= 2 abs(x) abs(y),
 $
 
 on obtient
