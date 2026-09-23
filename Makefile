@@ -3,7 +3,7 @@ SHELL := /bin/bash
 MIDL := python3 00_admin/midl.py
 RCLONE_REMOTE ?= gdrive:MIDL/dist
 
-.PHONY: compile doctor shell-install clean drive drive-sync drive-dry-run
+.PHONY: compile doctor shell-install clean drive
 
 compile:
 	@$(MIDL) compile
@@ -23,13 +23,4 @@ clean:
 
 drive: compile
 	@command -v rclone >/dev/null || { echo 'rclone is not installed'; exit 1; }
-	@rclone copy dist/ "$(RCLONE_REMOTE)/" --create-empty-src-dirs --progress
-
-drive-dry-run: compile
-	@command -v rclone >/dev/null || { echo 'rclone is not installed'; exit 1; }
-	@rclone copy dist/ "$(RCLONE_REMOTE)/" --create-empty-src-dirs --dry-run
-
-drive-sync: compile
-	@command -v rclone >/dev/null || { echo 'rclone is not installed'; exit 1; }
-	@echo 'WARNING: drive-sync makes the remote dist/ an exact mirror, including deletions.'
 	@rclone sync dist/ "$(RCLONE_REMOTE)/" --create-empty-src-dirs --progress

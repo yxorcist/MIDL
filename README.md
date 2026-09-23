@@ -116,33 +116,19 @@ MIDL/
 ├── 05_fonctions_variable_reelle/
 ├── 06_prog_numerique/
 ├── 07_anglais/
-└── dist/                   # generated PDFs mirrored from local dist/
+└── dist/                   # generated PDFs
 ```
 
-Build and safely upload generated PDFs:
+Normal commands:
 
 ```bash
+make
 make drive
 ```
 
-This uses `rclone copy`: new and changed files are uploaded, but remote-only files are not deleted.
+- `make`: build changed PDFs into local `dist/`.
+- `make drive`: build changed PDFs, then make Google Drive `MIDL/dist/` exactly match local `dist/`.
 
-Preview the upload without changing Drive:
-
-```bash
-make drive-dry-run
-```
-
-For an exact mirror, including remote deletions:
-
-```bash
-make drive-sync
-```
-
-The default destination is `gdrive:MIDL/dist`. Override it when needed:
-
-```bash
-make drive RCLONE_REMOTE='other-remote:MIDL/dist'
-```
+The default remote is `gdrive:MIDL/dist`.
 
 The normal `make` command never requires rclone or Google Drive.
