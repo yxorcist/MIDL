@@ -11,4 +11,22 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: typst-community/setup-typst@v5
-      - run: make
+
+      - name: Build PDFs
+        run: make
+
+      - name: Verify build output
+        run: |
+          test -d dist
+          test "$(find dist -type f -name '*.pdf' | wc -l)" -gt 0
+
+      - name: Verify clean
+        run: |
+          make clean
+          test ! -e dist
+
+      - name: Verify rebuild
+        run: |
+          make
+          test -d dist
+          test "$(find dist -type f -name '*.pdf' | wc -l)" -gt 0

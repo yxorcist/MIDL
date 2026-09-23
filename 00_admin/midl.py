@@ -9,8 +9,7 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-MIDLDIR = ROOT / ".midl"
-BUILD_DIR = MIDLDIR / "build"
+BUILD_DIR = ROOT / "dist"
 
 SUBJECTS = {
     "md": ("01_methodes_discretes", "Méthodes discrètes", ("cm", "td")),
@@ -105,7 +104,7 @@ def cmd_compile() -> int:
         print(f"[typst] {rel(source)}")
         run(["typst", "compile", "--root", str(ROOT), str(source), str(output)])
 
-    print(f"compiled {len(entries)} artifact(s) -> {rel(BUILD_DIR)}")
+    print(f"compiled {len(entries)} artifact(s) -> {rel(BUILD_DIR)}/")
     return 0
 
 

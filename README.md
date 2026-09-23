@@ -6,7 +6,7 @@ One boring study workflow for the whole year.
 
 ```text
 GitHub = canonical editable source
-.midl/build = generated PDFs
+dist/ = generated portable PDF tree
 ```
 
 The repository keeps processed study material and the code/configuration needed to build it. Raw photographs, copied subjects, archival inputs and temporary reference documents do not belong in Git once conversion is complete.
@@ -80,7 +80,13 @@ Build all publishable Typst sources:
 make
 ```
 
-Generated PDFs are written under `.midl/build/`.
+Remove all generated PDFs:
+
+```bash
+make clean
+```
+
+Generated PDFs are written under `dist/`, mirroring the source tree as closely as possible.
 
 ## Subjects
 
