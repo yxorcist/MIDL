@@ -392,6 +392,43 @@ def cmd_open(args: list[str]) -> int:
     return subprocess.call(editor.split() + [path.name], cwd=path.parent)
 
 
+def cmd_inbox(args: list[str]) -> int:
+    if not args:
+        die("usage: midl inbox <file-or-folder> [...]")
+
+    if not have("rclone"):
+        die("rclone is not installed")
+
+    for raw in args:
+        source = Path(raw).expanduser().resolve()
+
+        if not source.exists():
+            die(f"not found: {raw}")
+
+        if source.is_file():
+            destination = f"{INBOX_REMOTE.rstrip('/')}/{source.name}"
+            print(f"[inbox] {source} -> {destination}")
+            run(["rclone", "copyto", str(source), destination, "--progress"])
+            continue
+
+        if source.is_dir():
+            destination = f"{INBOX_REMOTE.rstrip('/')}/{source.name}"
+            print(f"[inbox] {source}/ -> {destination}/")
+            run([
+                "rclone",
+                "copy",
+                str(source),
+                destination,
+                "--create-empty-src-dirs",
+                "--progress",
+            ])
+            continue
+
+        die(f"unsupported path type: {raw}")
+
+    return 0
+
+
 def cmd_doctor() -> int:
     checks = {name: have(name) for name in ("git", "python3", "typst", "nvim", "make")}
     ok = True
@@ -420,6 +457,9 @@ Build:
   make
   midl compile
 
+Inbox:
+  midl inbox <file-or-folder> [...]
+
 Other:
   midl doctor
   midl help
@@ -443,6 +483,9 @@ def main() -> int:
 
     if command == "doctor":
         return cmd_doctor()
+
+    if command == "inbox":
+        return cmd_inbox(args[1:])
 
     return cmd_open(args)
 

@@ -52,3 +52,31 @@ jobs:
           make | tee /tmp/midl-rebuild.log
           test -d dist
           grep -vq "compiled 0 artifact(s)" /tmp/midl-rebuild.log
+
+      - name: Verify inbox file and directory upload commands
+        run: |
+          mkdir -p /tmp/midl-bin /tmp/midl-inbox-test/photos
+          cat > /tmp/midl-bin/rclone <<'EOF'
+          #!/usr/bin/env bash
+          printf '%s\n' "$*" >> /tmp/midl-rclone.log
+          EOF
+          chmod +x /tmp/midl-bin/rclone
+          printf 'pdf' > "/tmp/midl-inbox-test/TD 1.pdf"
+          printf 'image' > /tmp/midl-inbox-test/photos/page1.jpg
+          PATH="/tmp/midl-bin:$PATH" python3 00_admin/midl.py inbox "/tmp/midl-inbox-test/TD 1.pdf"
+          PATH="/tmp/midl-bin:$PATH" python3 00_admin/midl.py inbox /tmp/midl-inbox-test/photos
+          grep -Fq "copyto /tmp/midl-inbox-test/TD 1.pdf gdrive:MIDL/INBOX/TD 1.pdf --progress" /tmp/midl-rclone.log
+          grep -Fq "copy /tmp/midl-inbox-test/photos gdrive:MIDL/INBOX/photos --create-empty-src-dirs --progress" /tmp/midl-rclone.log
+
+      - name: Verify inbox missing-path failure
+        run: |
+          mkdir -p /tmp/midl-bin
+          cat > /tmp/midl-bin/rclone <<'EOF'
+          #!/usr/bin/env bash
+          exit 0
+          EOF
+          chmod +x /tmp/midl-bin/rclone
+          if PATH="/tmp/midl-bin:$PATH" python3 00_admin/midl.py inbox /tmp/does-not-exist; then
+            echo "missing path unexpectedly succeeded"
+            exit 1
+          fi

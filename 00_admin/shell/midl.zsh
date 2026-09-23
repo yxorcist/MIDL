@@ -9,11 +9,16 @@ _midl() {
   if (( CURRENT == 2 )); then
     _values 'subject or command' \
       md al si pa fvr pn en \
-      compile doctor help
+      compile doctor inbox help
     return
   fi
 
   if (( CURRENT == 3 )); then
+    if [[ "${words[2]}" == "inbox" ]]; then
+      _files
+      return
+    fi
+
     case "${words[2]}" in
       md|al|fvr) _values 'type' cm td ;;
       si|pn)     _values 'type' cm td tp ;;

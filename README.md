@@ -124,6 +124,14 @@ Normal commands:
 ```bash
 make
 make drive
+midl inbox <file-or-folder>
+```
+
+Send any local file or directory straight to Google Drive `MIDL/INBOX/`:
+
+```bash
+midl inbox ~/Downloads/TD1.pdf
+midl inbox ~/Downloads/photos_cours/
 ```
 
 - `make`: build changed PDFs into local `dist/`.
