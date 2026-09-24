@@ -27,7 +27,7 @@ $
 Soit
 
 $
-P=a_0+a_1 X+cdots+a_p X^p in K[X].
+P=a_0+a_1 X+dots.h+a_p X^p in K[X].
 $
 
 On définit
@@ -35,7 +35,7 @@ On définit
 $
 P(A)
 =
-a_0 I_n+a_1 A+cdots+a_p A^p
+a_0 I_n+a_1 A+dots.h+a_p A^p
 in M_n(K).
 $
 
