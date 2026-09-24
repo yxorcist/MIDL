@@ -1,3 +1,13 @@
+#import "../../style.typ": *
+
+#align(center)[
+  #text(size: 18pt, weight: "bold")[CM — 23/09/2026]
+  #v(0.2em)
+  #text(size: 11pt)[Intersections et sommes]
+]
+#line(length: 100%)
+#v(0.7em)
+
 = Intersections et sommes de sous-espaces : exercices
 
 == Exercice 4 — bases, intersection et sommes
