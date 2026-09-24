@@ -140,7 +140,7 @@ midl inbox ~/Downloads/photos_cours/
 
 The default remote is `gdrive:MIDL/dist`, and `midl inbox` uses `gdrive:MIDL/INBOX`.
 
-`midl doctor` checks both that `rclone` is installed and that a remote named `gdrive:` exists.
+`midl doctor` is read-only. It checks the local toolchain, repository structure, TD/TP numbering gaps, broken Typst includes/imports, orphan CM files, source-confidence markers, PDF/build-state hygiene, and compiles every publishable Typst entry in a temporary directory. Missing `rclone`/`gdrive:` is reported as a warning because normal local study and builds do not depend on Drive.
 
 After pulling changes to the shell integration, reload completion with:
 

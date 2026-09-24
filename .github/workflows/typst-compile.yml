@@ -53,6 +53,13 @@ jobs:
           test -d dist
           grep -vq "compiled 0 artifact(s)" /tmp/midl-rebuild.log
 
+      - name: Verify doctor
+        env:
+          MIDL_EDITOR: "true"
+        run: |
+          python3 00_admin/midl.py doctor | tee /tmp/midl-doctor.log
+          grep -q "^Result: HEALTHY" /tmp/midl-doctor.log
+
       - name: Verify inbox file and directory upload commands
         run: |
           mkdir -p /tmp/midl-bin /tmp/midl-inbox-test/photos

@@ -431,14 +431,33 @@ def cmd_inbox(args: list[str]) -> int:
 
 
 def cmd_doctor() -> int:
-    checks = {name: have(name) for name in ("git", "python3", "typst", "nvim", "make", "rclone")}
-    ok = True
+    errors = 0
+    warnings = 0
 
-    for name, present in checks.items():
-        print(f"{'OK' if present else 'MISSING':<8} {name}")
-        ok &= present
+    def report(level: str, message: str) -> None:
+        nonlocal errors, warnings
+        print(f"{level:<5} {message}")
+        if level == "ERROR":
+            errors += 1
+        elif level == "WARN":
+            warnings += 1
 
-    if checks["rclone"]:
+    def detail(message: str) -> None:
+        print(f"      {message}")
+
+    print("Environment")
+
+    for name in ("git", "python3", "typst", "make"):
+        report("OK" if have(name) else "ERROR", name)
+
+    editor = os.environ.get("MIDL_EDITOR") or os.environ.get("EDITOR") or "nvim"
+    editor_cmd = editor.split()[0]
+    report(
+        "OK" if have(editor_cmd) else "ERROR",
+        f"editor ({editor_cmd})",
+    )
+
+    if have("rclone"):
         result = subprocess.run(
             ["rclone", "listremotes"],
             cwd=ROOT,
@@ -447,11 +466,309 @@ def cmd_doctor() -> int:
             check=False,
         )
         remotes = {line.strip() for line in result.stdout.splitlines()}
-        remote_ok = "gdrive:" in remotes
-        print(f"{'OK' if remote_ok else 'MISSING':<8} rclone remote gdrive:")
-        ok &= remote_ok
+        if result.returncode != 0:
+            report("WARN", "rclone installed but configuration could not be read")
+        elif "gdrive:" in remotes:
+            report("OK", "rclone remote gdrive:")
+        else:
+            report("WARN", "rclone remote gdrive: missing (Drive commands unavailable)")
+    else:
+        report("WARN", "rclone missing (Drive commands unavailable)")
 
-    return 0 if ok else 1
+    print("\nRepository")
+
+    for folder, display, _ in SUBJECTS.values():
+        report(
+            "OK" if (ROOT / folder).is_dir() else "ERROR",
+            f"{display}: {folder}/",
+        )
+
+    git_branch = subprocess.run(
+        ["git", "branch", "--show-current"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    ).stdout.strip()
+    git_status = subprocess.run(
+        ["git", "status", "--porcelain"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    changed = [line for line in git_status.stdout.splitlines() if line.strip()]
+    report("OK", f"git branch {git_branch or '(detached)'}")
+    if changed:
+        report("WARN", f"working tree has {len(changed)} uncommitted change(s)")
+    else:
+        report("OK", "working tree clean")
+
+    typ_files = sorted(
+        (
+            path.resolve()
+            for path in ROOT.glob("[0-9][0-9]_*/**/*.typ")
+            if not any(part in {".git", ".midl", "dist"} for part in path.parts)
+        ),
+        key=rel,
+    )
+
+    malformed: list[Path] = []
+    for path in typ_files:
+        path_rel = rel(path)
+        if (
+            ("/TD/" in path_rel or "/TP/" in path_rel)
+            and path.name.startswith("ex")
+            and path.suffix == ".typ"
+            and not EXERCISE_PATH_RE.fullmatch(path_rel)
+        ):
+            malformed.append(path)
+
+    if malformed:
+        report("ERROR", f"{len(malformed)} malformed TD/TP exercise path(s)")
+        for path in malformed:
+            detail(rel(path))
+    else:
+        report("OK", "TD/TP exercise paths")
+
+    broken_includes: list[tuple[Path, str]] = []
+    for path in typ_files:
+        try:
+            source_text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            report("ERROR", f"cannot read {rel(path)}")
+            continue
+
+        for token in INCLUDE_RE.findall(source_text):
+            if token.startswith("@"):
+                continue
+
+            candidate = (
+                ROOT / token.lstrip("/")
+                if token.startswith("/")
+                else path.parent / token
+            ).resolve()
+
+            try:
+                candidate.relative_to(ROOT.resolve())
+            except ValueError:
+                broken_includes.append((path, token))
+                continue
+
+            if not candidate.is_file():
+                broken_includes.append((path, token))
+
+    if broken_includes:
+        report("ERROR", f"{len(broken_includes)} broken Typst include/import path(s)")
+        for path, token in broken_includes:
+            detail(f"{rel(path)} -> {token}")
+    else:
+        report("OK", "Typst include/import paths")
+
+    numbering_gaps: list[tuple[Path, list[int]]] = []
+    exercise_dirs = list(
+        ROOT.glob("[0-9][0-9]_*/TD/fiche[0-9][0-9]/exercices")
+    ) + list(
+        ROOT.glob("[0-9][0-9]_*/TP/tp[0-9][0-9]/exercices")
+    )
+
+    for folder in sorted(exercise_dirs, key=rel):
+        numbers = sorted(
+            int(match.group(1))
+            for path in folder.glob("ex*.typ")
+            if (match := re.fullmatch(r"ex([0-9]+)\.typ", path.name))
+        )
+        if not numbers:
+            continue
+
+        missing = [number for number in range(1, max(numbers) + 1) if number not in numbers]
+        if missing:
+            numbering_gaps.append((folder, missing))
+
+    if numbering_gaps:
+        report("WARN", f"{len(numbering_gaps)} exercise numbering gap(s)")
+        for folder, missing in numbering_gaps:
+            detail(f"{rel(folder)}: missing " + ", ".join(f"ex{n:02d}" for n in missing))
+    else:
+        report("OK", "exercise numbering contiguous")
+
+    entries = discover_entries()
+    referenced: set[Path] = set()
+    for source in entries:
+        referenced.update(dependencies(source))
+
+    orphan_cm = [
+        path
+        for path in typ_files
+        if (
+            "/CM/sessions/" in rel(path)
+            or "/CM/fragments/" in rel(path)
+        )
+        and path not in referenced
+    ]
+
+    if orphan_cm:
+        report("WARN", f"{len(orphan_cm)} orphan CM file(s)")
+        for path in orphan_cm:
+            detail(rel(path))
+    else:
+        report("OK", "no orphan CM sessions/fragments")
+
+    confidence_counts: dict[str, int] = {}
+    uncertainty_files: list[Path] = []
+
+    for path in typ_files:
+        try:
+            source_text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+
+        match = CONFIDENCE_RE.search(source_text)
+        if match:
+            level = match.group(1).lower()
+            confidence_counts[level] = confidence_counts.get(level, 0) + 1
+
+        if UNCERTAINTY_RE.search(source_text):
+            uncertainty_files.append(path)
+
+    high = confidence_counts.get("high", 0)
+    medium = confidence_counts.get("medium", 0)
+    low = confidence_counts.get("low", 0)
+    report(
+        "WARN" if medium or low or uncertainty_files else "OK",
+        (
+            "source confidence: "
+            f"{high} high, {medium} medium, {low} low; "
+            f"{len(uncertainty_files)} uncertainty marker(s)"
+        ),
+    )
+    for path in uncertainty_files:
+        detail(rel(path))
+
+    outside_pdfs = sorted(
+        (
+            path
+            for path in ROOT.glob("[0-9][0-9]_*/**/*.pdf")
+            if "dist" not in path.parts
+        ),
+        key=rel,
+    )
+
+    if outside_pdfs:
+        report("WARN", f"{len(outside_pdfs)} PDF(s) outside dist/")
+        for path in outside_pdfs:
+            detail(rel(path))
+    else:
+        report("OK", "no generated PDFs outside dist/")
+
+    legacy_build = ROOT / ".midl" / "build"
+    if legacy_build.exists():
+        report("WARN", "legacy .midl/build/ directory still exists")
+    else:
+        report("OK", "no legacy build directory")
+
+    expected_outputs = {
+        (BUILD_DIR / output_rel(source)).resolve(): source
+        for source in entries
+    }
+
+    if not BUILD_DIR.exists():
+        report("WARN", f"dist/ missing ({len(entries)} artifact(s) need make)")
+    else:
+        state = load_build_state()
+        missing_outputs: list[Path] = []
+        stale_outputs: list[Path] = []
+
+        for output, source in expected_outputs.items():
+            if not output.is_file():
+                missing_outputs.append(output)
+                continue
+
+            if state.get(rel(source)) != fingerprint(source):
+                stale_outputs.append(output)
+
+        extra_outputs = sorted(
+            (
+                path.resolve()
+                for path in BUILD_DIR.rglob("*.pdf")
+                if path.resolve() not in expected_outputs
+            ),
+            key=rel,
+        )
+
+        if missing_outputs:
+            report("WARN", f"{len(missing_outputs)} expected PDF(s) missing from dist/")
+        else:
+            report("OK", f"{len(expected_outputs)} expected PDF(s) present")
+
+        if stale_outputs:
+            report("WARN", f"{len(stale_outputs)} stale PDF(s); run make")
+        else:
+            report("OK", "dist/ matches incremental build state")
+
+        if extra_outputs:
+            report("WARN", f"{len(extra_outputs)} extra PDF(s) in dist/")
+            for path in extra_outputs:
+                detail(rel(path))
+        else:
+            report("OK", "no extra PDFs in dist/")
+
+    print("\nTypst validation")
+
+    if have("typst"):
+        import tempfile
+
+        failures: list[tuple[Path, str]] = []
+        with tempfile.TemporaryDirectory(prefix="midl-doctor-") as tmp:
+            tmpdir = Path(tmp)
+
+            for index, source in enumerate(entries):
+                output = tmpdir / f"{index:04d}.pdf"
+                result = subprocess.run(
+                    [
+                        "typst",
+                        "compile",
+                        "--root",
+                        str(ROOT),
+                        str(source),
+                        str(output),
+                    ],
+                    cwd=ROOT,
+                    text=True,
+                    capture_output=True,
+                    check=False,
+                )
+
+                if result.returncode != 0:
+                    message = next(
+                        (
+                            line.strip()
+                            for line in result.stderr.splitlines()
+                            if line.strip().startswith("error:")
+                        ),
+                        f"typst exited with status {result.returncode}",
+                    )
+                    failures.append((source, message))
+
+        if failures:
+            report("ERROR", f"{len(failures)} publishable Typst source(s) fail to compile")
+            for source, message in failures:
+                detail(f"{rel(source)}: {message}")
+        else:
+            report("OK", f"{len(entries)} publishable Typst source(s) compile")
+    else:
+        report("ERROR", "Typst validation unavailable")
+
+    if errors:
+        print(f"\nResult: UNHEALTHY — {errors} error(s), {warnings} warning(s)")
+        return 1
+
+    if warnings:
+        print(f"\nResult: HEALTHY WITH WARNINGS — {warnings} warning(s)")
+        return 0
+
+    print("\nResult: HEALTHY")
+    return 0
 
 
 def print_help() -> None:
