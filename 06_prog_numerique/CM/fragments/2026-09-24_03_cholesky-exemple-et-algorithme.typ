@@ -1,5 +1,5 @@
-// source-confidence: medium
-// source-uncertainty: the worked Cholesky computation stops during step 2 in the raw note; the off-diagonal update formula is also ambiguous and is therefore not reconstructed.
+// source-confidence: high
+// source-confidence-note: worked Cholesky example verified against classroom board photo 2026-09-24.
 
 #import "../style.typ": *
 
@@ -98,9 +98,72 @@ $
 r_(1,3) = 1.
 $
 
-#remark[
-La source brute s'interrompt au début de l'étape 2. La suite du calcul n'est donc pas reconstruite ici.
-]
+== Suite du calcul de $R$
+
+La deuxième étape donne
+
+$
+r_(1,2)^2 + r_(2,2)^2 = 2,
+$
+
+donc
+
+$
+1 + r_(2,2)^2 = 2,
+$
+
+et, avec la diagonale positive choisie pour Cholesky,
+
+$
+r_(2,2)=1.
+$
+
+Ensuite,
+
+$
+r_(1,3) r_(1,2) + r_(2,2) r_(2,3)=2,
+$
+
+d'où
+
+$
+1 + r_(2,3)=2,
+$
+
+et donc
+
+$
+r_(2,3)=1.
+$
+
+Enfin,
+
+$
+r_(1,3)^2+r_(2,3)^2+r_(3,3)^2=3,
+$
+
+donc
+
+$
+1+1+r_(3,3)^2=3,
+$
+
+ce qui donne
+
+$
+r_(3,3)=1.
+$
+
+Ainsi,
+
+$
+R=
+mat(
+  1, 1, 1;
+  0, 1, 1;
+  0, 0, 1;
+).
+$
 
 == Schéma algorithmique relevé
 
