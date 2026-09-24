@@ -16,6 +16,12 @@ BUILD_DIR = ROOT / "dist"
 BUILD_STATE = ROOT / ".midl" / "build-state.json"
 INBOX_REMOTE = os.environ.get("MIDL_INBOX_REMOTE", "gdrive:MIDL/INBOX")
 PATH_RE = re.compile(r"""["']([^"']+\.(?:typ|png|jpe?g|svg|csv|json|ya?ml|txt))["']""", re.I)
+INCLUDE_RE = re.compile(r"""#(?:include|import)\s+["']([^"']+)["']""")
+EXERCISE_PATH_RE = re.compile(
+    r"^[0-9]{2}_[^/]+/(?:TD/fiche[0-9]{2}|TP/tp[0-9]{2})/exercices/ex[0-9]{2}\.typ$"
+)
+CONFIDENCE_RE = re.compile(r"^\s*//\s*source-confidence:\s*([A-Za-z_-]+)", re.M)
+UNCERTAINTY_RE = re.compile(r"^\s*//\s*source-uncertainty:", re.M)
 
 SUBJECTS = {
     "md": ("01_methodes_discretes", "Méthodes discrètes", ("cm", "td")),
