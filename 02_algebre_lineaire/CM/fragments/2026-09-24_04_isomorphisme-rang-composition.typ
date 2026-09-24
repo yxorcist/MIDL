@@ -47,7 +47,7 @@ Le rang d'une matrice $A in M_(p,n)(K)$ est la dimension du sous-espace vectorie
   $
   K^n -> K^p,
   quad
-  X -> AX.
+  X -> A X.
   $
 ])
 
