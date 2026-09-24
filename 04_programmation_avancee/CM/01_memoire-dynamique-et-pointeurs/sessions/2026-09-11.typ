@@ -8,9 +8,6 @@
 #line(length: 100%)
 #v(0.7em)
 
-#include "../fragments/2026-09-11_01_pile-tas-malloc.typ"
-#include "../fragments/2026-09-11_02_tableaux-dynamiques.typ"
-#include "../fragments/2026-09-11_03_alias-pointeurs.typ"
 
 == Allocation dynamique de mémoire
 

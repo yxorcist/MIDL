@@ -5,6 +5,10 @@ on:
     branches: [main]
   pull_request:
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   compile:
     runs-on: ubuntu-latest
@@ -14,12 +18,14 @@ jobs:
 
       - name: First build
         run: |
+          set -o pipefail
           make | tee /tmp/midl-first-build.log
           test -d dist
           test "$(find dist -type f -name '*.pdf' | wc -l)" -gt 0
 
       - name: Verify no-op incremental build
         run: |
+          set -o pipefail
           make | tee /tmp/midl-second-build.log
           grep -q "compiled 0 artifact(s)" /tmp/midl-second-build.log
           grep -q "skipped .* unchanged" /tmp/midl-second-build.log
@@ -27,6 +33,7 @@ jobs:
       - name: Verify single TD rebuild
         run: |
           printf '\n// incremental-ci-test\n' >> 01_methodes_discretes/TD/fiche01/exercices/ex01.typ
+          set -o pipefail
           make | tee /tmp/midl-td-build.log
           grep -q "\[typst\] 01_methodes_discretes/TD/fiche01/exercices/ex01.typ" /tmp/midl-td-build.log
           grep -q "compiled 1 artifact(s)" /tmp/midl-td-build.log
@@ -36,6 +43,7 @@ jobs:
       - name: Verify dependency rebuild
         run: |
           printf '\n// dependency-ci-test\n' >> 05_fonctions_variable_reelle/CM/fragments/2026-09-16_03_exemples-intermediaires.typ
+          set -o pipefail
           make | tee /tmp/midl-dependency-build.log
           grep -q "\[typst\] 05_fonctions_variable_reelle/CM/chapitres/01_series-positives/chapitre.typ" /tmp/midl-dependency-build.log
           grep -q "\[typst\] 05_fonctions_variable_reelle/CM/cours.typ" /tmp/midl-dependency-build.log
@@ -49,6 +57,7 @@ jobs:
 
       - name: Verify full rebuild after clean
         run: |
+          set -o pipefail
           make | tee /tmp/midl-rebuild.log
           test -d dist
           grep -vq "compiled 0 artifact(s)" /tmp/midl-rebuild.log
