@@ -16,11 +16,15 @@ The repository keeps processed study material and the code/configuration needed 
 ```text
 SUBJECT/
 ├── CM/
-│   ├── cours.typ
-│   ├── sessions/          # chronological capture: YYYY-MM-DD.typ
-│   ├── fragments/         # canonical course content
-│   ├── chapitres/         # thematic publication views, when useful
-│   └── figures/           # only figures actually used by Typst
+│   ├── style.typ
+│   ├── 01_chapter-name/
+│   │   ├── chapitre.typ
+│   │   └── sessions/
+│   │       ├── YYYY-MM-DD.typ
+│   │       └── ...
+│   └── 02_next-chapter/
+│       ├── chapitre.typ
+│       └── sessions/
 ├── TD/
 │   ├── fiche01/
 │   │   └── exercices/
@@ -35,7 +39,7 @@ SUBJECT/
             └── ex01.typ
 ```
 
-**CM is date-oriented. TD and TP are exercise-oriented.**
+**CM is chapter-oriented, with dated sessions as the canonical content. TD and TP are exercise-oriented.**
 
 ## First setup
 
@@ -56,8 +60,11 @@ midl doctor
 CM:
 
 ```bash
-midl fvr cm
+midl fvr cm      # open today's session in the latest chapter
+midl fvr cm 1    # target chapter 1 explicitly
 ```
+
+CM has no global `cours.typ`, `fragments/`, or global `sessions/`. Each chapter is a self-contained publication unit: `chapitre.typ` only aggregates the dated files in its own `sessions/`.
 
 TD:
 
@@ -73,7 +80,7 @@ midl pn tp 1 3
 # -> 06_prog_numerique/TP/tp01/exercices/ex03.typ
 ```
 
-Without the fiche/TP and exercise numbers, `midl` asks for them interactively.
+Without the fiche/TP and exercise numbers, `midl` asks for them interactively. For CM, omitting the chapter selects the highest-numbered existing chapter.
 
 Build all publishable Typst sources:
 
@@ -87,7 +94,7 @@ Remove all generated PDFs:
 make clean
 ```
 
-Generated PDFs are written under `dist/`, mirroring the source tree as closely as possible.
+Generated PDFs are written under `dist/`, mirroring the source tree. CM builds produce chapter PDFs only; there is no giant full-course PDF.
 
 ## Subjects
 

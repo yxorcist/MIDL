@@ -63,8 +63,7 @@ def die(message: str, code: int = 1) -> None:
 def discover_entries() -> list[Path]:
     entries: set[Path] = set()
     patterns = (
-        "**/cours.typ",
-        "**/chapitre.typ",
+        "[0-9][0-9]_*/CM/[0-9][0-9]_*/chapitre.typ",
         "[0-9][0-9]_*/TD/fiche[0-9][0-9]/exercices/*.typ",
         "[0-9][0-9]_*/TD/rappels/*.typ",
         "[0-9][0-9]_*/TP/tp[0-9][0-9]/exercices/*.typ",
@@ -93,15 +92,7 @@ def discover_entries() -> list[Path]:
 
 
 def output_rel(source: Path) -> str:
-    parts = source.resolve().relative_to(ROOT.resolve()).parts
-    source_rel = Path(*parts)
-
-    if source.name == "cours.typ" and len(parts) >= 2 and parts[1] == "CM":
-        return f"{parts[0]}/CM/notes/cours-complet.pdf"
-
-    if source.name == "chapitre.typ" and "chapitres" in parts:
-        return f"{parts[0]}/CM/notes/chapitres/{source.parent.name}.pdf"
-
+    source_rel = source.resolve().relative_to(ROOT.resolve())
     return source_rel.with_suffix(".pdf").as_posix()
 
 
@@ -250,25 +241,58 @@ def typst_escape(value: str) -> str:
     return value.replace("\\", "\\\\").replace('"', '\\"')
 
 
-def ensure_course_include(course: Path, session: Path) -> None:
-    include = f'#include "sessions/{session.name}"'
+def cm_chapters(base: Path) -> list[Path]:
+    cm = base / "CM"
+    if not cm.is_dir():
+        return []
 
-    if not course.exists():
-        course.parent.mkdir(parents=True, exist_ok=True)
-        course.write_text(
-            '#set page(paper: "a4", margin: 2cm)\n'
-            '#set text(lang: "fr", size: 11pt)\n'
-            '#set par(justify: true, leading: 0.65em)\n'
-            '#set heading(numbering: "1.1")\n\n'
-            + include
-            + "\n",
-            encoding="utf-8",
+    return sorted(
+        (
+            path
+            for path in cm.iterdir()
+            if path.is_dir()
+            and re.fullmatch(r"[0-9]{2}_.+", path.name)
+            and (path / "chapitre.typ").is_file()
+        ),
+        key=lambda path: path.name,
+    )
+
+
+def select_cm_chapter(base: Path, token: str | None = None) -> Path:
+    chapters = cm_chapters(base)
+    if not chapters:
+        die(
+            f"no CM chapter exists for {base.name}; "
+            "create CM/01_<chapter>/chapitre.typ first"
         )
-        return
 
-    text = course.read_text(encoding="utf-8")
+    if token is None:
+        return chapters[-1]
+
+    raw = token.strip()
+    if raw.isdigit():
+        prefix = f"{int(raw):02d}_"
+        matches = [path for path in chapters if path.name.startswith(prefix)]
+    else:
+        matches = [
+            path
+            for path in chapters
+            if path.name == raw or path.name.startswith(raw)
+        ]
+
+    if len(matches) == 1:
+        return matches[0]
+
+    available = ", ".join(path.name for path in chapters)
+    die(f"unknown or ambiguous CM chapter '{token}'; available: {available}")
+
+
+def ensure_chapter_include(chapter: Path, session: Path) -> None:
+    include = f'#include "sessions/{session.name}"'
+    text = chapter.read_text(encoding="utf-8")
+
     if include not in text:
-        course.write_text(text.rstrip() + "\n" + include + "\n", encoding="utf-8")
+        chapter.write_text(text.rstrip() + "\n" + include + "\n", encoding="utf-8")
 
 
 def ask_positive_int(label: str) -> int:
@@ -295,6 +319,7 @@ def create_or_reopen(
     area: str,
     sheet: int | None = None,
     exercise: int | None = None,
+    chapter_token: str | None = None,
 ) -> Path:
     folder, display, allowed = SUBJECTS[subject]
     if area not in allowed:
@@ -304,14 +329,19 @@ def create_or_reopen(
     base = ROOT / folder
 
     if area == "cm":
-        sessions = base / "CM" / "sessions"
+        chapter_dir = select_cm_chapter(base, chapter_token)
+        sessions = chapter_dir / "sessions"
         sessions.mkdir(parents=True, exist_ok=True)
         path = sessions / f"{today}.typ"
 
         if not path.exists():
-            path.write_text(f"= {today}\n\n", encoding="utf-8")
+            path.write_text(
+                '#import "../../style.typ": *\n\n'
+                f'= CM — {today}\n\n',
+                encoding="utf-8",
+            )
 
-        ensure_course_include(base / "CM" / "cours.typ", path)
+        ensure_chapter_include(chapter_dir / "chapitre.typ", path)
         return path
 
     if area in {"td", "tp"}:
@@ -371,8 +401,13 @@ def cmd_open(args: list[str]) -> int:
         area = choose("Type", [(key, key.upper()) for key in allowed])
 
     sheet = exercise = None
+    chapter_token = None
 
-    if area in {"td", "tp"}:
+    if area == "cm":
+        chapter_token = args[2] if len(args) >= 3 else None
+        if len(args) > 3:
+            die("too many arguments")
+    elif area in {"td", "tp"}:
         sheet_label = "Fiche" if area == "td" else "TP"
         sheet = (
             parse_positive_int(args[2], sheet_label)
@@ -389,7 +424,7 @@ def cmd_open(args: list[str]) -> int:
     elif len(args) > 2:
         die("too many arguments")
 
-    path = create_or_reopen(subject, area, sheet, exercise)
+    path = create_or_reopen(subject, area, sheet, exercise, chapter_token)
     editor = os.environ.get("EDITOR") or os.environ.get("MIDL_EDITOR") or "nvim"
 
     if not have(editor.split()[0]):
@@ -519,6 +554,47 @@ def cmd_doctor() -> int:
         key=rel,
     )
 
+    legacy_cm = [
+        path
+        for path in typ_files
+        if re.search(
+            r"/CM/(?:cours\.typ$|fragments/|sessions/|chapitres/)",
+            rel(path),
+        )
+    ]
+    if legacy_cm:
+        report("ERROR", f"{len(legacy_cm)} legacy CM file(s) remain")
+        for path in legacy_cm:
+            detail(rel(path))
+    else:
+        report("OK", "CM contains no legacy cours/fragments/global-sessions/chapitres")
+
+    chapter_files = sorted(
+        ROOT.glob("[0-9][0-9]_*/CM/[0-9][0-9]_*/chapitre.typ"),
+        key=rel,
+    )
+    if chapter_files:
+        report("OK", f"{len(chapter_files)} CM chapter(s) use chapter/session layout")
+    else:
+        report("WARN", "no CM chapters found")
+
+    malformed_chapters = [
+        path
+        for path in typ_files
+        if path.name == "chapitre.typ"
+        and "/CM/" in rel(path)
+        and not re.fullmatch(
+            r"[0-9]{2}_[^/]+/CM/[0-9]{2}_[^/]+/chapitre\.typ",
+            rel(path),
+        )
+    ]
+    if malformed_chapters:
+        report("ERROR", f"{len(malformed_chapters)} malformed CM chapter path(s)")
+        for path in malformed_chapters:
+            detail(rel(path))
+    else:
+        report("OK", "CM chapter paths")
+
     malformed: list[Path] = []
     for path in typ_files:
         path_rel = rel(path)
@@ -603,25 +679,26 @@ def cmd_doctor() -> int:
     for source in entries:
         referenced.update(dependencies(source))
 
-    orphan_cm = [
+    cm_sessions = [
         path
         for path in typ_files
-        if (
-            "/CM/sessions/" in rel(path)
-            or "/CM/fragments/" in rel(path)
+        if re.fullmatch(
+            r"[0-9]{2}_[^/]+/CM/[0-9]{2}_[^/]+/sessions/[^/]+\.typ",
+            rel(path),
         )
-        and path not in referenced
     ]
+    orphan_cm = [path for path in cm_sessions if path not in referenced]
 
     if orphan_cm:
-        report("WARN", f"{len(orphan_cm)} orphan CM file(s)")
+        report("WARN", f"{len(orphan_cm)} orphan CM session(s)")
         for path in orphan_cm:
             detail(rel(path))
     else:
-        report("OK", "no orphan CM sessions/fragments")
+        report("OK", "no orphan CM sessions")
 
     confidence_counts: dict[str, int] = {}
     uncertainty_files: list[Path] = []
+    uncertainty_markers = 0
 
     for path in typ_files:
         try:
@@ -629,23 +706,24 @@ def cmd_doctor() -> int:
         except (OSError, UnicodeDecodeError):
             continue
 
-        match = CONFIDENCE_RE.search(source_text)
-        if match:
+        for match in CONFIDENCE_RE.finditer(source_text):
             level = match.group(1).lower()
             confidence_counts[level] = confidence_counts.get(level, 0) + 1
 
-        if UNCERTAINTY_RE.search(source_text):
+        marker_count = len(UNCERTAINTY_RE.findall(source_text))
+        uncertainty_markers += marker_count
+        if marker_count:
             uncertainty_files.append(path)
 
     high = confidence_counts.get("high", 0)
     medium = confidence_counts.get("medium", 0)
     low = confidence_counts.get("low", 0)
     report(
-        "WARN" if medium or low or uncertainty_files else "OK",
+        "WARN" if medium or low or uncertainty_markers else "OK",
         (
             "source confidence: "
             f"{high} high, {medium} medium, {low} low; "
-            f"{len(uncertainty_files)} uncertainty marker(s)"
+            f"{uncertainty_markers} uncertainty marker(s)"
         ),
     )
     for path in uncertainty_files:
@@ -781,10 +859,14 @@ def print_help() -> None:
     print("""MIDL
 
 Study:
-  midl fvr cm
+  midl fvr cm          # latest CM chapter
+  midl fvr cm 1        # specific CM chapter
   midl md td 2 6
   midl pn tp 1 3
   midl            interactive chooser
+
+CM:
+  midl <subject> cm [chapter]
 
 TD / TP:
   midl <subject> td <fiche> <exercise>

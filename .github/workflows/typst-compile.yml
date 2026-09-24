@@ -42,12 +42,18 @@ jobs:
 
       - name: Verify dependency rebuild
         run: |
-          printf '\n// dependency-ci-test\n' >> 05_fonctions_variable_reelle/CM/fragments/2026-09-16_03_exemples-intermediaires.typ
+          printf '\n// dependency-ci-test\n' >> 05_fonctions_variable_reelle/CM/01_series-positives/sessions/2026-09-16.typ
           set -o pipefail
           make | tee /tmp/midl-dependency-build.log
-          grep -q "\[typst\] 05_fonctions_variable_reelle/CM/chapitres/01_series-positives/chapitre.typ" /tmp/midl-dependency-build.log
-          grep -q "\[typst\] 05_fonctions_variable_reelle/CM/cours.typ" /tmp/midl-dependency-build.log
-          git checkout -- 05_fonctions_variable_reelle/CM/fragments/2026-09-16_03_exemples-intermediaires.typ
+          grep -q "\[typst\] 05_fonctions_variable_reelle/CM/01_series-positives/chapitre.typ" /tmp/midl-dependency-build.log
+          grep -q "compiled 1 artifact(s)" /tmp/midl-dependency-build.log
+          git checkout -- 05_fonctions_variable_reelle/CM/01_series-positives/sessions/2026-09-16.typ
+          make >/dev/null
+
+      - name: Verify CM architecture
+        run: |
+          test "$(find . -path '*/CM/cours.typ' -o -path '*/CM/fragments/*' -o -path '*/CM/sessions/*' -o -path '*/CM/chapitres/*' | wc -l)" -eq 0
+          test "$(find . -path '*/CM/[0-9][0-9]_*/chapitre.typ' | wc -l)" -gt 0
 
       - name: Verify clean
         run: |
@@ -66,6 +72,7 @@ jobs:
         env:
           MIDL_EDITOR: "true"
         run: |
+          set -o pipefail
           python3 00_admin/midl.py doctor | tee /tmp/midl-doctor.log
           grep -q "^Result: HEALTHY" /tmp/midl-doctor.log
 
