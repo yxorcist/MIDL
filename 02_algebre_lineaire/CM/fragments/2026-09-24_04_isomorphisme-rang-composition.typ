@@ -60,14 +60,14 @@ $
 alors
 
 $
-rg(A)=rg(phi).
+"rg"(A)="rg"(phi).
 $
 
 #remark([
   On a toujours
 
   $
-  rg(A) <= min(p,n).
+  "rg"(A) <= min(p,n).
   $
 ])
 
