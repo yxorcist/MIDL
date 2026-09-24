@@ -1,7 +1,15 @@
+#import "../../style.typ": *
+
+#align(center)[
+  #text(size: 18pt, weight: "bold")[CM — 21/09/2026]
+  #v(0.2em)
+  #text(size: 11pt)[Induction structurelle et constructions inductives]
+]
+#line(length: 100%)
+#v(0.7em)
+
 // source-confidence: medium
 // source-uncertainty: Sigma* / fixed-point portion was abbreviated in the handwriting; only clearly supported content was retained.
-
-#import "../style.typ": *
 
 = Induction sur les constructions inductives
 
