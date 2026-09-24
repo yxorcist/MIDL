@@ -13,11 +13,18 @@
   leading: 0.65em,
 )
 
-#set heading(numbering: "1.1")
+#set heading(numbering: none)
+
+#align(center)[
+  #text(size: 22pt, weight: "bold")[Chapitre 1 — Séries positives]
+  #v(0.3em)
+  #text(size: 11pt)[Fonctions d'une variable réelle et intégrale]
+]
+#line(length: 100%)
+#v(1em)
 
 #include "sessions/2026-09-09.typ"
 #include "sessions/2026-09-10.typ"
 #include "sessions/2026-09-11.typ"
 #include "sessions/2026-09-16.typ"
 #include "sessions/2026-09-17.typ"
-#include "sessions/2026-09-23.typ"

@@ -1,4 +1,14 @@
-#import "../style.typ": *
+#import "../../style.typ": *
+
+#pagebreak()
+
+#align(center)[
+  #text(size: 18pt, weight: "bold")[CM — 17/09/2026]
+  #v(0.2em)
+  #text(size: 11pt)[Fin du chapitre 1 — série logarithmique]
+]
+#line(length: 100%)
+#v(0.7em)
 
 = Exemple — série logarithmique
 

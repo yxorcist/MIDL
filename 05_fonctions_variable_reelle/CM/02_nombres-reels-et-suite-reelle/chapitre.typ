@@ -23,7 +23,5 @@
 #line(length: 100%)
 #v(1em)
 
-#include "../../fragments/2026-09-17_02_corps-nombres-reels.typ"
-#include "../../fragments/2026-09-17_03_bornes-superieure-inferieure.typ"
-#include "../../fragments/2026-09-23_01_extrema-supremum-infimum.typ"
-#include "../../fragments/2026-09-23_02_caracterisation-supremum.typ"
+#include "sessions/2026-09-17.typ"
+#include "sessions/2026-09-23.typ"
