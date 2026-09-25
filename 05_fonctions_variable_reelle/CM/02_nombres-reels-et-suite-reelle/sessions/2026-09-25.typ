@@ -1,238 +1,544 @@
 #import "../../style.typ": *
 
-= CM — 2026-09-25
+// source-confidence: medium
+// source-uncertainty: the raw note omits the explicit inequality in the definition of an increasing sequence; it is reconstructed symmetrically from the stated decreasing-sequence definition.
+// source-uncertainty: several malformed symbols in the density proof are normalized only where the surrounding derivation determines the intended expression.
 
-Proposition (propriete de'archimede)
+#align(center)[
+  #text(size: 18pt, weight: "bold")[CM — 25/09/2026]
+  #v(0.2em)
+  #text(size: 11pt)[Propriété d'Archimède, densité et suites réelles]
+]
+#line(length: 100%)
+#v(0.7em)
 
-$RR$ verifie la propriete suivante
+= Compléments sur les nombres réels
 
-$forall espilon > 0, forall A > 0, exists n in NN^*, n epsilon > A$
+== Propriété d'Archimède
 
-Demo: Raisonnement par l'absurde
+#proposition(title: "Propriété d'Archimède.", [
+  L'ensemble $RR$ vérifie
 
-Soit $espilon > 0$ et $A > 0$. On suppose que pour tout $n in NN^*, n epsilon <= A$
+  $
+  forall epsilon > 0,
+  quad forall A > 0,
+  quad exists n in NN^*,
+  quad n epsilon > A.
+  $
+])
 
-On considere $B = { n epsilon, n in NN^*}$
-L'ensemble $B$ est une partie non-vide, majoree de $RR$ donc il admet borne superieure. Notons $M = sup(B)$
+#proof([
+  Soient $epsilon > 0$ et $A > 0$.
 
-D'apres la caractereisation de la borne superieure.
+  Raisonnons par l'absurde et supposons que
 
-il existe $n <= NN^*$ tel que $M - epsilon < n epsilon$
+  $
+  forall n in NN^*,
+  quad n epsilon <= A.
+  $
 
-D'ou $M < (n + 1) epsilon$
+  Considérons
 
-$M$ etant le majorant de $B$ et $(n + 1) epsilon$ etant un element de $B$
+  $
+  B = {n epsilon : n in NN^*}.
+  $
 
-on obtient une contradiction.
+  L'ensemble $B$ est une partie non vide et majorée de $RR$. Il admet donc une borne supérieure. Posons
 
+  $
+  M = sup(B).
+  $
 
-Proposition
-Tout intervalle de $RR$ continent un rationel
+  D'après la caractérisation de la borne supérieure, il existe $n in NN^*$ tel que
 
-$
-  forall a,b in RR, a < b, exists q in QQ, a < q < b.
-$
+  $
+  M - epsilon < n epsilon.
+  $
 
-(densite de $QQ$ dans $RR$)
+  Ainsi,
 
-Tout intervalle de $RR$ contient un irrationel. (densite de $RR without QQ$ dans $RR$)
+  $
+  M < (n+1) epsilon.
+  $
 
-Demo:
+  Or $M$ est un majorant de $B$ et $(n+1)epsilon in B$, ce qui est contradictoire.
 
-Soit $a,b in RR$ tels que $a < b$.
-On pose $epsilon = b - a > 0$
+  La propriété est donc démontrée.
+])
 
-On utilise la propriete d'Archimede avec $A = 1$ et le $epsilon$ defini ci-dessous. Il existe $n in NN^*$ tel que
+== Densité de $QQ$ et de $RR without QQ$ dans $RR$
 
-$
-  n epsilon > 1
-$
+#proposition([
+  Tout intervalle ouvert non vide de $RR$ contient un rationnel :
 
-On pose $p = floor(n a) + 1$
+  $
+  forall a,b in RR,
+  quad a < b
+  => exists q in QQ,
+  quad a < q < b.
+  $
 
-Small in-topic Exemple
+  On dit que $QQ$ est dense dans $RR$.
 
-$
-  a < frac(P,n) < b = a + epsilon \
-  a < frac(P,n) <= a + frac(1,n)  < a + epsilon \
-  n a < p <= n a + 1
+  Tout intervalle ouvert non vide de $RR$ contient également un irrationnel.
 
-$
+  On dit que $RR without QQ$ est dense dans $RR$.
+])
 
-Rappel: Pour tout $x in RR$, $floor(x)$ est l'unique entier relatif verifiant
+#proof([
+  Soient $a,b in RR$ tels que $a<b$ et posons
 
-$
-  floor(x) <= x < floor(x) + 1
-$
+  $
+  epsilon = b-a > 0.
+  $
 
-On a donc $p - 1 <= n a < p$ c'est a dire $frac(P,n) - frac(iiP,n) <= a < frac(P,n)$
+  Par la propriété d'Archimède appliquée avec $A=1$, il existe $n in NN^*$ tel que
 
-D'ou,
+  $
+  n epsilon > 1.
+  $
 
-$
-  a < frac(P,n) <= a + frac(1,n)
-$
+  Donc
 
-Or, $frac(1,n) < epsilon$
+  $
+  1/n < epsilon.
+  $
 
-Ainsi, $a < frac(P,n) a + epsilon = b$
+  Posons
 
-D'ou le premier point de la proposition
-On applique le premier point a l'intervalle
-$] a - sqrt(2); b = sqrt(2) [$ 
-il existe $q in QQ$
+  $
+  p = floor(n a)+1.
+  $
 
-$a - sqrt(2) < q < b - sqrt(2)$
+  Par définition de la partie entière,
 
-D'ou $a < q + sqrt(2) < b$
+  $
+  floor(n a) <= n a < floor(n a)+1.
+  $
 
-Or, $q + sqrt(2) in RR without QQ$ car $sqrt(2) in RR without QQ$ et $q in QQ$
+  Comme $p=floor(n a)+1$, on obtient
 
-Si on avait $q + sqrt(2) = r in QQ$ alors on aurait $sqrt(2) = r - q in QQ$
+  $
+  p-1 <= n a < p.
+  $
 
-Corollaire
+  Ainsi,
 
-Soit $x in RR$ Il existe une suite $(q_n)_n$ de $QQ$ qiu converge vers $x$
+  $
+  a < p/n <= a+1/n < a+epsilon=b.
+  $
 
-Demo:
-Pour tout $n in NN^*$, il existe $q n in QQ$ tel que
+  Comme $p in ZZ$ et $n in NN^*$,
 
-$
-  x - frac(1,n) < q n < x
-$
+  $
+  p/n in QQ.
+  $
 
-La suite $(q_n)_n$ est une suite de $QQ$ convergeant vers $x$ "CQFT" (ce qu'on voulait demontrer)
+  Il existe donc un rationnel strictement compris entre $a$ et $b$.
+
+  Pour obtenir un irrationnel, on applique ce premier résultat à l'intervalle
+
+  $
+  ]a-sqrt(2), b-sqrt(2)[.
+  $
+
+  Il existe alors $q in QQ$ tel que
+
+  $
+  a-sqrt(2) < q < b-sqrt(2).
+  $
+
+  Donc
+
+  $
+  a < q+sqrt(2) < b.
+  $
+
+  Or
+
+  $
+  q+sqrt(2) in RR without QQ.
+  $
+
+  En effet, si $q+sqrt(2)=r$ avec $r in QQ$, alors
+
+  $
+  sqrt(2)=r-q in QQ,
+  $
+
+  ce qui est impossible.
+])
+
+#remark([
+  Pour tout $x in RR$, $floor(x)$ est l'unique entier relatif vérifiant
+
+  $
+  floor(x) <= x < floor(x)+1.
+  $
+])
+
+#proposition(title: "Corollaire.", [
+  Soit $x in RR$.
+
+  Il existe une suite $(q_n)_n$ de nombres rationnels qui converge vers $x$.
+])
+
+#proof([
+  Pour tout $n in NN^*$, la densité de $QQ$ dans $RR$ donne un rationnel $q_n$ tel que
+
+  $
+  x-1/n < q_n < x.
+  $
+
+  Comme
+
+  $
+  x-1/n -> x,
+  $
+
+  on obtient par encadrement
+
+  $
+  q_n -> x.
+  $
+])
 
 = III. Intervalles de $RR$
 
-= IV Suites Reelles
+= IV. Suites réelles
 
-Definition
-Une suite de nombres reels est une application $NN -> RR$ On la note $(u_n)_(n in NN)$, $(u_n)_(n >= 0)$ ou $(u_n)_n$
+== Définitions de convergence et divergence
 
-On dit que la suite $(u_n)_n$a converge vers $ll in RR$ si $forall espilon > 0$, $exists N in NN$, $(n >= N) implies |u_n - l| < epsilon$
+#definition([
+  Une suite de nombres réels est une application
 
-On dit que la siute $(u_n)_n$ converge s'il existe $ll in RR$ tel que la siute $(u_n)_n$ converge vers $ll$.
+  $
+  NN -> RR.
+  $
 
-On dit que la usuite $(u_n)$ diverge si elle ne converge pas
+  On la note notamment
 
-On dit que la suite $(u_n)_n$ tends vers $+inf$ si $forall A in RR, exists N in NN, forall n in NN (n >= N, u_n > A)$
+  $
+  (u_n)_(n in NN),
+  quad
+  (u_n)_(n>=0)
+  quad "ou" quad
+  (u_n)_n.
+  $
+])
 
-On dit que la suite $(u_n)_n$ tends vers $-inf$ si $forall B in RR, exists N in NN, forall n in NN (n >= NN implies u_n < B)$
+#definition([
+  On dit que la suite $(u_n)_n$ converge vers $ell in RR$ si
 
-Propriete
+  $
+  forall epsilon > 0,
+  quad exists N in NN,
+  quad forall n in NN,
+  quad
+  n >= N => abs(u_n-ell) < epsilon.
+  $
 
-Si une suite converge, si la limite est unique
-L'ensemble des suiets convergentes, est un espace vectoriel.
-Si la suite $(u_n)_n$ tends vers $ll in RR$, la suite $(v_n)_n$ tends vers $ll^' in RR$ et si $u_n < v_n$ pour tout $n in NN$ alors $ll <= ll^'$ (inegalite large)
+  On dit que $(u_n)_n$ converge s'il existe $ell in RR$ vers lequel elle converge.
 
-Si $(u_n)_n$, $(v_n)_n$ et $(w_n)_n$ sont trois suites telles que \
-$u_n <= v_n <= w_n$ pour tout $n in NN$
+  Elle diverge si elle ne converge pas.
+])
 
-les suites $(u_n)_n$ et $(w_n)_n$ convergent vers la meme limite $ll in RR$ alors , la auite $(v_n)_n$ converge vers $ll$
+#definition([
+  On dit que $(u_n)_n$ tend vers $+oo$ si
 
-(Theoreme des gendrames, d'encadrement)
+  $
+  forall A in RR,
+  quad exists N in NN,
+  quad forall n in NN,
+  quad
+  n >= N => u_n > A.
+  $
 
-Definition: Une suite $(u_n)_n$ est dite 
+  On dit que $(u_n)_n$ tend vers $-oo$ si
 
-- majoree s'il existe $M in RR$ tel que, pour tout $n in NN$
-$ u_n <= M $
-- minoree s'il existe $m in RR$ tel que, pour tout $n in NN$
-$ m <= u_n $
+  $
+  forall B in RR,
+  quad exists N in NN,
+  quad forall n in NN,
+  quad
+  n >= N => u_n < B.
+  $
+])
 
-Propriete
+== Propriétés de base
 
-- Toute suite convergente est bornee 
-- Toute suite tendant vers $+inf$ est minoree
-- Toute suite tendant vers $-inf$ est majoree 
+#proposition([
+  Si une suite converge, sa limite est unique.
+])
 
-Definition
-- On dit que la suite $(u_n)_n$ est croissante si pour tout $n in N$
-- On dit que la suite $(u_n)_n$ est decroissatnte si pour tout $n in NN$, $u_(n+1) <= u_n$
-- On dit que la siute est monotone si elle est soit croissante, soit decroissante.
+#proposition([
+  L'ensemble des suites réelles convergentes est un espace vectoriel.
+])
 
-== Theoreme
-- Toute suite reelle, croissante, majoree converge 
-- Toute suite reelle decroissatne minoree converge
+#proposition([
+  Soient $(u_n)_n$ et $(v_n)_n$ deux suites telles que
 
-Demo:
-Soit $(u_n)$ une suite relle croissante majoree.
+  $
+  u_n -> ell
+  quad "et" quad
+  v_n -> ell'.
+  $
 
-Considerons $A = {u_n, n in NN}$
-L'ensemble $A$ est une partie de $RR$ non vide $u_0 in A$ 
-et majoree. L'ensemble A admet uen borne superieure
+  Si
 
-On pose $ll = sup(A)$ 
+  $
+  u_n <= v_n
+  $
 
-Montrons que la suite $(u_n)_n$ converge vers $ll$
+  pour tout $n in NN$, alors
 
-Soit $epsilon > 0$
+  $
+  ell <= ell'.
+  $
+])
 
-$(forall epsilon > 0, exists N in NN, forall n in NN, (n > N implies | u_n - l| < epsilon)$
+#theorem(title: "Théorème d'encadrement.", [
+  Soient $(u_n)_n$, $(v_n)_n$ et $(w_n)_n$ trois suites telles que
 
-D'apres la caracterisation de la borne superieure
+  $
+  u_n <= v_n <= w_n
+  $
 
-il existe $N in NN$ tel que $l - epsilon < u_N$
+  pour tout $n in NN$.
 
-Comme la suite $(u_n)_n$ est croissatne, pour tout $n >= NN$
+  Si $(u_n)_n$ et $(w_n)_n$ convergent vers la même limite $ell in RR$, alors $(v_n)_n$ converge également vers $ell$.
+])
 
-$
-  u_n >= u_N > l - epsilon
-$
+== Suites bornées
 
-Comme $ll$ est un majorant de $A$, $u_n <= ll$ pour tout $n >= N$
+#definition([
+  Une suite $(u_n)_n$ est dite :
 
-Ainsi, pour tout $n >= N$, $ll - epsilon < u_n <= ll$
+  - *majorée* s'il existe $M in RR$ tel que, pour tout $n in NN$,
 
-Donc, pour tout $n >= N$, $|u_n - ll| < epsilon$
+    $
+    u_n <= M;
+    $
 
-En conclusion, la suite $(u_n)_n$ converge vers $ll$.
+  - *minorée* s'il existe $m in RR$ tel que, pour tout $n in NN$,
 
-Pour montrer le second point, il suffit d'applicquer le premier point a la suite $( - u_n)_n$ qui est croissante et majoree. 
-La suite $( - u_n)_n$ converge et donc, la suite $(u_n)_n$ converge
+    $
+    m <= u_n.
+    $
+])
 
-Propriete: 
-- toute suite croissante non majoree tends vers $+inf$
-- toute suite decroissante non minoree tends vers $-inf$
+#proposition([
+  - Toute suite convergente est bornée.
+  - Toute suite tendant vers $+oo$ est minorée.
+  - Toute suite tendant vers $-oo$ est majorée.
+])
 
-Definition: 
-Deux suites $(u_n)_n$ et $(v_n)_n$ sont dites adjacentes si
-- l'une des deux suites est croissante
-- l'autre est decoirssante
-- la siute $(u_n - v_n)_n$ tends vers 0
+== Suites monotones
 
-Theoreme: si 2 suites sont adjacentes, elles sont convergentes et ont la meme limite
+#definition([
+  On dit que la suite $(u_n)_n$ est :
 
-Definition
-Soit $(u_n)_n$ une suite reelle et $phi: NN -> NN$
-Strictement croissante (c'est a dire $phi(n + 1) > phi(n)$
-pour tout $n in NN$) on dit que la suite $(x_n)_(n in NN)$
+  - *croissante* si, pour tout $n in NN$,
 
-Definie par $x_n = u_(phi(n))$ pour tout $n in NN$, est une suite extraite (ou sous-suite) de la suite $(u_n)_(n in NN)$. On la note $(u_(phi(n)))_(n in NN)$
+    $
+    u_(n+1) >= u_n;
+    $
 
-Idee:
-On ne prend pas tous les termes, mais on en garde une infinite.
+  - *décroissante* si, pour tout $n in NN$,
 
-Exemple:
-- $phi : NN -> NN$
-// first NN being n and second NN being n+1
+    $
+    u_(n+1) <= u_n;
+    $
 
-la suite $(u_(n+1))_(n in NN)$ est une suite extraite de $(u_n)_(n in NN)$
+  - *monotone* si elle est croissante ou décroissante.
+])
 
-- $phi_1 : NN -> NN$ et  $phi_2: NN -> NN$
-// n -> 2n et n -> en + 1
+#theorem(title: "Théorème de convergence des suites monotones.", [
+  - Toute suite réelle croissante et majorée converge.
+  - Toute suite réelle décroissante et minorée converge.
+])
 
-les suites $(u_(2n))_(n in NN)$ et  $(u_(2n + 1))_(n in NN)$ sont deux sous-suites de la suite $(u_(n))_(n in NN)$
+#proof([
+  Soit $(u_n)_n$ une suite réelle croissante et majorée.
 
-- $phi: NN -> NN$
-// n -> n^2
+  Considérons
 
-la suite $(u_(n^2))_(n in NN)$ est une suite extraite de la siute $(u_n)_n$
+  $
+  A = {u_n : n in NN}.
+  $
 
-- la fonction $phi: NN -> NN$ n'est pas strictement croissante. 
-la suite $u_(n^2 - n)_(n in NN)$ n'est pas une suite extrate de la siute $(u_n)_(n in NN)$
+  L'ensemble $A$ est non vide puisque $u_0 in A$, et il est majoré. Il admet donc une borne supérieure.
 
+  Posons
 
+  $
+  ell = sup(A).
+  $
 
+  Montrons que
 
+  $
+  u_n -> ell.
+  $
 
+  Soit $epsilon>0$.
+
+  D'après la caractérisation de la borne supérieure, il existe $N in NN$ tel que
+
+  $
+  ell-epsilon < u_N.
+  $
+
+  Comme $(u_n)_n$ est croissante, pour tout $n>=N$,
+
+  $
+  u_n >= u_N > ell-epsilon.
+  $
+
+  Comme $ell$ est un majorant de $A$,
+
+  $
+  u_n <= ell.
+  $
+
+  Ainsi, pour tout $n>=N$,
+
+  $
+  ell-epsilon < u_n <= ell,
+  $
+
+  donc
+
+  $
+  abs(u_n-ell) < epsilon.
+  $
+
+  La suite $(u_n)_n$ converge donc vers $ell$.
+
+  Pour le second point, il suffit d'appliquer le premier à la suite $(-u_n)_n$, qui est croissante et majorée.
+])
+
+#proposition([
+  - Toute suite croissante non majorée tend vers $+oo$.
+  - Toute suite décroissante non minorée tend vers $-oo$.
+])
+
+== Suites adjacentes
+
+#definition([
+  Deux suites $(u_n)_n$ et $(v_n)_n$ sont dites *adjacentes* si :
+
+  - l'une des deux suites est croissante ;
+  - l'autre est décroissante ;
+  - la suite $(u_n-v_n)_n$ tend vers $0$.
+])
+
+#theorem([
+  Si deux suites sont adjacentes, elles sont convergentes et ont la même limite.
+])
+
+== Suites extraites
+
+#definition([
+  Soit $(u_n)_n$ une suite réelle et soit
+
+  $
+  phi : NN -> NN
+  $
+
+  une application strictement croissante, c'est-à-dire telle que
+
+  $
+  phi(n+1) > phi(n)
+  $
+
+  pour tout $n in NN$.
+
+  La suite $(x_n)_(n in NN)$ définie par
+
+  $
+  x_n = u_(phi(n))
+  $
+
+  est appelée *suite extraite* ou *sous-suite* de $(u_n)_n$.
+
+  On la note
+
+  $
+  (u_(phi(n)))_(n in NN).
+  $
+])
+
+#remark([
+  L'idée est de ne pas prendre tous les termes de la suite initiale, mais d'en conserver une infinité.
+])
+
+#example([
+  Pour
+
+  $
+  phi(n)=n+1,
+  $
+
+  la suite
+
+  $
+  (u_(n+1))_(n in NN)
+  $
+
+  est une suite extraite de $(u_n)_n$.
+])
+
+#example([
+  Pour
+
+  $
+  phi_1(n)=2n
+  quad "et" quad
+  phi_2(n)=2n+1,
+  $
+
+  les suites
+
+  $
+  (u_(2n))_(n in NN)
+  quad "et" quad
+  (u_(2n+1))_(n in NN)
+  $
+
+  sont deux sous-suites de $(u_n)_n$.
+])
+
+#example([
+  Pour
+
+  $
+  phi(n)=n^2,
+  $
+
+  la suite
+
+  $
+  (u_(n^2))_(n in NN)
+  $
+
+  est une suite extraite de $(u_n)_n$.
+])
+
+#example([
+  L'application
+
+  $
+  phi(n)=n^2-n
+  $
+
+  n'est pas strictement croissante sur $NN$.
+
+  La suite
+
+  $
+  (u_(n^2-n))_(n in NN)
+  $
+
+  n'est donc pas une suite extraite de $(u_n)_n$ au sens de la définition précédente.
+])
