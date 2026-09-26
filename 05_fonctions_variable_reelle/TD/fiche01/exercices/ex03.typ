@@ -1,5 +1,5 @@
 // source-confidence: medium
-// source-uncertainty: questions 2 and 8 were not readable; question 4 exact term was unreadable; questions 5 and 7 were reconstructed from legible asymptotic steps.
+// source-uncertainty: the handwritten correction of question 8 stops before the final comparison; the completion is explicitly marked as supplemental.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -7,54 +7,109 @@
 
 = Exercice 3
 
-== Rappel : condition nécessaire de convergence
+== Rappel — comparaison des séries positives
 
-Si la série
-
-$
-sum u_n
-$
-
-converge, alors nécessairement
+Pour deux suites positives $(u_n)$ et $(v_n)$, si à partir d'un certain rang
 
 $
-u_n -> 0.
+0 <= u_n <= v_n,
 $
 
-La réciproque est fausse.
+alors la convergence de
+
+$
+sum v_n
+$
+
+entraîne celle de
+
+$
+sum u_n.
+$
+
+En particulier, si
+
+$
+u_n=o(v_n)
+$
+
+et si $sum v_n$ converge, alors $sum u_n$ converge.
 
 == 1.
 
 On considère
 
 $
-u_n=1/(n^2+1).
+u_n=n^4 exp(-n).
 $
 
-Pour $n>=1$,
+On compare avec
 
 $
-0 < u_n <= 1/n^2.
+v_n=exp(-n/2).
 $
 
-Comme la série de Riemann
+On a
 
 $
-sum 1/n^2
+u_n/v_n
+=
+n^4 exp(-n/2)
+->0
 $
 
-converge, le théorème de comparaison des séries positives donne la convergence de
+par croissance comparée. Ainsi,
 
 $
-sum 1/(n^2+1).
+u_n=o(exp(-n/2)).
 $
+
+La série de terme général $exp(-n/2)$ est géométrique de raison
+
+$
+exp(-1/2)<1,
+$
+
+donc elle converge. Par comparaison des séries positives,
+
+$
+sum n^4 exp(-n)
+$
+
+converge.
 
 == 2.
 
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *À compléter.* La question 2 n'apparaît pas de manière suffisamment lisible
-  dans les photographies fournies.
-]
+On considère
+
+$
+u_n=n/(n^2+1).
+$
+
+On a
+
+$
+u_n
+=
+1/n dot 1/(1+1/n^2)
+~
+
+1/n.
+$
+
+La série harmonique
+
+$
+sum 1/n
+$
+
+diverge. Comme les termes sont positifs et équivalents,
+
+$
+sum n/(n^2+1)
+$
+
+diverge.
 
 == 3.
 
@@ -81,32 +136,45 @@ positives.
 
 == 4.
 
-Les notes utilisent le critère de comparaison avec une série de Riemann en
-montrant que
+On considère
 
 $
-n^2 u_n -> 0.
+u_n=n^819 exp(-n/2).
 $
 
-Ainsi,
+Pour $n>=1$,
+
+$
+n^2 u_n
+=
+n^821 exp(-n/2).
+$
+
+Par croissance comparée,
+
+$
+n^821 exp(-n/2)->0.
+$
+
+Donc
 
 $
 u_n=o(1/n^2).
 $
 
-Comme
+Comme $u_n>=0$ et que
 
 $
 sum 1/n^2
 $
 
-converge, la série de terme général $u_n$ converge.
+converge, le théorème de comparaison des séries positives donne
 
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  L'expression exacte de $u_n$ pour cette question n'est pas suffisamment
-  lisible sur la photographie. Seule la méthode clairement écrite a été
-  conservée.
-]
+$
+sum u_n
+$
+
+convergente.
 
 == 5.
 
@@ -123,7 +191,17 @@ sqrt(n) ln(n+1)
 /n^(3/4).
 $
 
-On utilise les développements
+Les notes étudient d'abord le numérateur
+
+$
+N_n
+=
+sqrt(n+1) ln(n)
+-
+sqrt(n) ln(n+1).
+$
+
+On utilise
 
 $
 sqrt(n+1)
@@ -146,10 +224,10 @@ ln(n)+ln(1+1/n)
 ln(n)+1/n+o(1/n).
 $
 
-Ainsi le numérateur vérifie
+Ainsi,
 
 $
-sqrt(n+1)ln(n)-sqrt(n)ln(n+1)
+N_n
 =
 ln(n)/(2sqrt(n))
 -
@@ -168,8 +246,8 @@ ln(n)/(2n^(5/4))
 o(ln(n)/n^(5/4)).
 $
 
-En particulier, les notes concluent que $u_n$ est dominé par une série de
-Riemann convergente, donc
+Le terme général est donc dominé, à partir d'un certain rang, par une série de
+Riemann convergente. On conclut que
 
 $
 sum u_n
@@ -255,10 +333,8 @@ cos(1/sqrt(n))
 1-1/(2n)+o(1/n^(3/2)).
 $
 
-Les termes principaux se compensent, et les notes obtiennent un terme général
-négligeable devant une série de Riemann convergente.
-
-On conclut donc que
+Les termes principaux se compensent. Les notes concluent que le terme général
+est négligeable devant une série de Riemann convergente, donc
 
 $
 sum u_n
@@ -268,9 +344,59 @@ converge.
 
 == 8.
 
+Les notes considèrent
+
+$
+u_n
+=
+(n^3+2n+1)^(1/5)
+-
+(n+2)^(3/5).
+$
+
+On factorise $n^(3/5)$ :
+
+$
+u_n
+=
+n^(3/5)
+[
+(1+2/n^2+1/n^3)^(1/5)
+-
+(1+2/n)^(3/5)
+].
+$
+
+Pour le premier facteur, le développement limité écrit dans les notes donne
+
+$
+(1+2/n^2+1/n^3)^(1/5)
+=
+1
++
+1/5(2/n^2+1/n^3)
++
+o(1/n^3).
+$
+
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *À compléter.* La correction de la question 8 n'est pas présente dans les
-  photographies fournies.
+  *Complément pour conclure.* La photographie s'arrête ici pour cette
+  question. En poursuivant exactement le même développement limité,
+
+  $
+  (1+2/n)^(3/5)
+  =
+  1+6/(5n)-12/(25n^2)+o(1/n^2).
+  $
+
+  Ainsi,
+
+  $
+  u_n ~ -6/(5 n^(2/5)).
+  $
+
+  La série a donc le même comportement qu'une série de Riemann d'exposant
+  $2/5<1$ et diverge.
 ]
 
 == 9.
@@ -293,7 +419,8 @@ $
 n cos^2(n) <= n.
 $
 
-Les deux membres étant strictement positifs, le passage à l'inverse renverse l'inégalité :
+Les deux membres étant strictement positifs, le passage à l'inverse renverse
+l'inégalité :
 
 $
 u_n = 1/(n cos^2(n)) >= 1/n.
@@ -305,7 +432,7 @@ $
 sum_(n>=1) 1/n
 $
 
-diverge. Par comparaison de séries positives,
+diverge. Par comparaison des séries positives,
 
 $
 sum_(n>=1) u_n
@@ -318,40 +445,34 @@ diverge.
 On considère
 
 $
-u_n = (sin(1/n))^n.
+u_n=(sin(1/n))^n.
 $
 
-Au voisinage de $0$,
+Pour $n>=1$,
 
 $
-sin(x) = x + o(x).
+0<sin(1/n)<1/n.
 $
 
-Ainsi,
+Donc, pour $n>=2$,
 
 $
-sin(1/n) = 1/n + o(1/n),
-$
-
-donc
-
-$
-u_n ~ (1/n)^n = 1/n^n.
-$
-
-Pour $n >= 2$,
-
-$
-0 <= 1/n^n <= 1/n^2.
+0<u_n<(1/n)^n<=1/n^2.
 $
 
 Comme
 
 $
-sum_(n>=1) 1/n^2
+sum 1/n^2
 $
 
-converge, la série de terme général $u_n$ converge par comparaison.
+converge, le théorème de comparaison des séries positives donne
+
+$
+sum u_n
+$
+
+convergente.
 
 == 11.
 
@@ -535,4 +656,3 @@ sum u_n
 $
 
 diverge.
-
