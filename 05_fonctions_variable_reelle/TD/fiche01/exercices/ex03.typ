@@ -1,5 +1,5 @@
 // source-confidence: medium
-// source-uncertainty: the handwritten correction of question 8 stops before the final comparison; the completion is explicitly marked as supplemental.
+// source-uncertainty: the handwritten correction of question 8 stops before the final comparison; the completion is explicitly marked as supplemental. The official sheet contains a question 13, but no handwritten correction for it was supplied.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -656,3 +656,24 @@ sum u_n
 $
 
 diverge.
+
+
+== 13.
+
+Le sujet officiel donne, pour $alpha in RR$,
+
+$
+u_n
+=
+sqrt(n^4+2n+1)
+-
+sqrt(n^4+alpha n).
+$
+
+Il faut déterminer la nature de la série de terme général $u_n$ selon les
+valeurs de $alpha$.
+
+#block(stroke: 0.6pt + gray, inset: 8pt)[
+  *Correction manquante.* La question 13 figure sur la fiche TD officielle,
+  mais aucune correction manuscrite correspondante n'a été fournie.
+]
