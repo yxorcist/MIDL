@@ -6,67 +6,125 @@
 
 = Exercice 2
 
-On considère, pour $n >= 2$,
+== Question 1
+
+On considère
 
 $
-u_n
+A=0,4141414141 dots
+$
+
+c'est-à-dire le développement décimal périodique formé par la répétition du
+bloc $41$.
+
+Les notes écrivent
+
+$
+A
 =
-1/sqrt(n-1)
--
-2/sqrt(n)
-+
-1/sqrt(n+1).
+lim_(N->infinity)
+sum_(k=1)^N 41/10^(2k).
 $
 
-Posons
+Comme
 
 $
-v_n
+10^(2k)=100^k,
+$
+
+on obtient
+
+$
+A
 =
-1/sqrt(n-1)-1/sqrt(n).
+41
+sum_(k=1)^infinity
+(1/100)^k.
 $
 
-Alors
+Il s'agit d'une série géométrique de raison
 
 $
-u_n
+1/100<1.
+$
+
+Ainsi,
+
+$
+sum_(k=1)^infinity
+(1/100)^k
 =
-v_n-v_(n+1).
-$
-
-Pour $N >= 2$,
-
-$
-sum_(k=2)^N u_k
+(1/100)/(1-1/100)
 =
-sum_(k=2)^N (v_k-v_(k+1))
-=
-v_2-v_(N+1).
-$
-
-Or
-
-$
-v_(N+1)
-=
-1/sqrt(N)-1/sqrt(N+1)
--> 0.
+1/99.
 $
 
 Donc
 
 $
-sum_(k=2)^N u_k
-->
-v_2
-=
-1-1/sqrt(2).
+A=41/99.
 $
 
-Ainsi la série converge et
+En particulier,
 
 $
-sum_(k=2)^infinity u_k
+A in QQ.
+$
+
+== Question 2
+
+On considère
+
+$
+B=0,99999 dots
+$
+
+Les notes écrivent
+
+$
+B
 =
-1-1/sqrt(2).
+lim_(N->infinity)
+sum_(k=1)^N 9/10^k.
+$
+
+La série
+
+$
+sum_(k=1)^infinity 9/10^k
+$
+
+est géométrique de raison
+
+$
+1/10<1.
+$
+
+Donc
+
+$
+B
+=
+9
+sum_(k=1)^infinity
+(1/10)^k
+=
+9 dot
+(1/10)/(1-1/10).
+$
+
+Ainsi,
+
+$
+B
+=
+9/10 dot 10/9
+=
+1.
+$
+
+Par conséquent,
+
+$
+0,99999 dots=1.
 $
