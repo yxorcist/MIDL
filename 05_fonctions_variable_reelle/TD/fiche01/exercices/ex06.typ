@@ -7,6 +7,21 @@
 
 = Exercice 6
 
+Soit
+
+$
+f:[1,+oo[ -> [0,+oo[
+$
+
+une fonction continue et décroissante. Pour $n$ et $N$ entiers naturels non
+nuls, on pose
+
+$
+u_n=f(n)
+quad "et" quad
+U_N=sum_(n=1)^N u_n.
+$
+
 == Question 1
 
 Soit $f$ une fonction décroissante.
