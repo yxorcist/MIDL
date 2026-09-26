@@ -14,6 +14,16 @@ $
 u_n ~ v_n.
 $
 
+On suppose que les deux séries
+
+$
+sum_(n>=0) u_n
+quad "et" quad
+sum_(n>=0) v_n
+$
+
+convergent.
+
 Les notes montrent que les restes correspondants sont équivalents :
 
 $
