@@ -116,7 +116,7 @@
   1 < 1+2/n.
   $
 
-  Donc $1 notin A$ et $A$ ne possède pas de plus petit élément.
+  Donc $1 in.not A$ et $A$ ne possède pas de plus petit élément.
 ])
 
 #example([
@@ -171,7 +171,7 @@
   -1 < 1/n - 1/p,
   $
 
-  on a $-1 notin B$. L'ensemble $B$ ne possède donc pas de plus petit élément.
+  on a $-1 in.not B$. L'ensemble $B$ ne possède donc pas de plus petit élément.
 
   De même, $1$ est un majorant de $B$. La suite
 
@@ -192,7 +192,7 @@
   1/n - 1/p < 1,
   $
 
-  on a $1 notin B$. L'ensemble $B$ ne possède donc pas de plus grand élément.
+  on a $1 in.not B$. L'ensemble $B$ ne possède donc pas de plus grand élément.
 ])
 
 = III. Intervalles de $RR$
