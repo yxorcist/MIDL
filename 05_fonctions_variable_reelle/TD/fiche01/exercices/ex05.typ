@@ -1,130 +1,66 @@
 // source-confidence: high
+// source-uncertainty: the official TD statement is available, but no correction for this exercise appears in the supplied handwritten notes.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
-= Exercice 5
+= Exercice 5 — Examen Terminal Janvier 2026
 
-== 1. Développement décimal périodique
+On considère des suites $(u_n)_(n>=1)$ et $(v_n)_(n>=1)$ de nombres réels positifs.
 
-On considère
+== Question 1
 
-$
-A=0,4141414141 dots
-$
-
-c'est-à-dire le développement décimal périodique formé par la répétition du
-bloc $41$.
-
-Les notes écrivent
+Montrer que, pour tous réels $x$ et $y$ positifs,
 
 $
-A
-=
-lim_(N->infinity)
-sum_(k=1)^N 41/10^(2k).
+sqrt(x y) <= 1/2 (x+y).
 $
 
-Comme
+== Question 2
+
+En déduire que si les séries
 
 $
-10^(2k)=100^k,
+sum_(n>=1) u_n
+quad "et" quad
+sum_(n>=1) v_n
 $
 
-on obtient
+sont convergentes, alors la série
 
 $
-A
-=
-41
-sum_(k=1)^infinity
-(1/100)^k.
+sum_(n>=1) sqrt(u_n v_n)
 $
 
-Il s'agit d'une série géométrique de raison
+est convergente.
+
+== Question 3
+
+On suppose que la série
 
 $
-1/100<1.
+sum_(n>=1) u_n
 $
 
-Ainsi,
+est convergente.
+
+Montrer que pour tout
 
 $
-sum_(k=1)^infinity
-(1/100)^k
-=
-(1/100)/(1-1/100)
-=
-1/99.
+beta>1/2,
 $
 
-Donc
+la série
 
 $
-A=41/99.
+sum_(n>=1) sqrt(u_n)/n^beta
 $
 
-En particulier,
+est convergente.
 
-$
-A in QQ.
-$
-
-== 2. Le développement $0,999 dots$
-
-On considère
-
-$
-B=0,99999 dots
-$
-
-Les notes écrivent
-
-$
-B
-=
-lim_(N->infinity)
-sum_(k=1)^N 9/10^k.
-$
-
-La série
-
-$
-sum_(k=1)^infinity 9/10^k
-$
-
-est géométrique de raison
-
-$
-1/10<1.
-$
-
-Donc
-
-$
-B
-=
-9
-sum_(k=1)^infinity
-(1/10)^k
-=
-9 dot
-(1/10)/(1-1/10).
-$
-
-Ainsi,
-
-$
-B
-=
-9/10 dot 10/9
-=
-1.
-$
-
-Par conséquent,
-
-$
-0,99999 dots = 1.
-$
+#block(stroke: 0.6pt + gray, inset: 8pt)[
+  *Correction manquante.* Le sujet officiel est présent dans la fiche TD, mais
+  aucune correction de cet exercice n'apparaît dans les notes manuscrites
+  fournies.
+]
