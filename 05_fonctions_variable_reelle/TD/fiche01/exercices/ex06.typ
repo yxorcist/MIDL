@@ -1,5 +1,4 @@
-// source-confidence: medium
-// source-uncertainty: question 3.c was absent from the supplied source; preceding questions were clear.
+// source-confidence: high
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -163,34 +162,256 @@ $
 
 == Question 3.b
 
-Soit $x in [0,1[$. Pour tout $t in [0,x]$,
+Soit $x in [0,1[$.
+
+Pour tout $t in [0,x]$,
 
 $
-1 <= 1/(1-t).
+1 >= 1/(1+t).
 $
 
 Par croissance de l'intégrale,
 
 $
 integral_0^x 1 dif t
-<=
-integral_0^x 1/(1-t) dif t.
+>=
+integral_0^x 1/(1+t) dif t.
 $
 
 Donc
 
 $
-x <= [-ln(1-t)]_(t=0)^x,
+x >= ln(1+x).
 $
 
-c'est-à-dire
+De même, pour tout $t in [0,x]$,
+
+$
+1 <= 1/(1-t).
+$
+
+Ainsi,
+
+$
+integral_0^x 1 dif t
+<=
+integral_0^x 1/(1-t) dif t,
+$
+
+d'où
 
 $
 x <= -ln(1-x).
 $
 
+On dispose donc des deux inégalités
+
+$
+ln(1+x) <= x <= -ln(1-x),
+quad
+x in [0,1[.
+$
+
+== Rappel — suites adjacentes
+
+Deux suites $(a_n)_(n in NN)$ et $(b_n)_(n in NN)$ sont adjacentes si :
+
+- $(a_n)$ est croissante ;
+- $(b_n)$ est décroissante ;
+- $a_n-b_n -> 0$.
+
+Si deux suites sont adjacentes, elles convergent et ont la même limite.
+
 == Question 3.c
 
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *À compléter.* Aucune résolution de la question 3.c n'apparaît dans les notes source.
-]
+Pour $N>=1$, posons
+
+$
+v_N=H_N-ln(N).
+$
+
+On calcule
+
+$
+v_(N+1)-v_N
+=
+H_(N+1)-ln(N+1)-H_N+ln(N).
+$
+
+Comme
+
+$
+H_(N+1)-H_N=1/(N+1),
+$
+
+on obtient
+
+$
+v_(N+1)-v_N
+=
+1/(N+1)+ln(N/(N+1)).
+$
+
+Or
+
+$
+N/(N+1)=1-1/(N+1),
+$
+
+donc
+
+$
+v_(N+1)-v_N
+=
+1/(N+1)
++
+ln(1-1/(N+1)).
+$
+
+D'après la question 3.b, avec
+
+$
+x=1/(N+1) in [0,1[,
+$
+
+on a
+
+$
+x+ln(1-x) <= 0.
+$
+
+Ainsi,
+
+$
+v_(N+1)-v_N <= 0.
+$
+
+La suite $(v_N)$ est donc décroissante.
+
+Posons maintenant
+
+$
+w_N=v_N-1/N
+=
+H_N-ln(N)-1/N.
+$
+
+Alors
+
+$
+w_(N+1)-w_N
+=
+v_(N+1)-v_N
+-1/(N+1)
++1/N.
+$
+
+En utilisant l'expression précédente de $v_(N+1)-v_N$,
+
+$
+w_(N+1)-w_N
+=
+1/N
++
+ln(1-1/(N+1)).
+$
+
+Comme
+
+$
+1-1/(N+1)=N/(N+1)=1/(1+1/N),
+$
+
+on obtient
+
+$
+w_(N+1)-w_N
+=
+1/N-ln(1+1/N).
+$
+
+D'après la question 3.b, avec
+
+$
+x=1/N,
+$
+
+on a
+
+$
+ln(1+x) <= x.
+$
+
+Donc
+
+$
+w_(N+1)-w_N >= 0.
+$
+
+La suite $(w_N)$ est donc croissante.
+
+Enfin,
+
+$
+v_N-w_N=1/N -> 0.
+$
+
+Les suites $(w_N)$ et $(v_N)$ sont donc adjacentes.
+
+== Question 3.d — Constante d'Euler
+
+Les suites $(w_N)$ et $(v_N)$ étant adjacentes, elles convergent vers une même limite, notée $gamma$.
+
+Ainsi,
+
+$
+v_N=gamma+o(1).
+$
+
+Comme
+
+$
+v_N=H_N-ln(N),
+$
+
+on obtient
+
+$
+H_N-ln(N)=gamma+o(1),
+$
+
+puis
+
+$
+H_N=ln(N)+gamma+o(1).
+$
+
+Les notes vérifient également que $gamma>0$.
+
+En effet,
+
+$
+w_2
+=
+H_2-ln(2)-1/2
+=
+1-ln(2).
+$
+
+Comme $2<e$,
+
+$
+ln(2)<1,
+$
+
+donc
+
+$
+w_2>0.
+$
+
+La suite $(w_N)$ étant croissante et convergeant vers $gamma$,
+
+$
+gamma>0.
+$
