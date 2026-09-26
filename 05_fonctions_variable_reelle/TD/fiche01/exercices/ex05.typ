@@ -17,28 +17,28 @@ $
 
 n'implique pas nécessairement que la suite $(u_n)_n$ converge.
 
-#example([
-  Considérons la suite harmonique
+=== Exemple
 
-  $
-  H_n = sum_(k=1)^n 1/k.
-  $
+Considérons la suite harmonique
 
-  On a
+$
+H_n = sum_(k=1)^n 1/k.
+$
 
-  $
-  H_(n+1)-H_n = 1/(n+1) -> 0,
-  $
+On a
 
-  tandis que
+$
+H_(n+1)-H_n = 1/(n+1) -> 0,
+$
 
-  $
-  H_n -> +oo.
-  $
+tandis que
 
-  Ainsi, le fait que deux termes consécutifs deviennent arbitrairement proches
-  ne suffit pas pour assurer la convergence de la suite.
-])
+$
+H_n -> +oo.
+$
+
+Ainsi, le fait que deux termes consécutifs deviennent arbitrairement proches
+ne suffit pas pour assurer la convergence de la suite.
 
 == Conséquences lorsque $sum ln(u_n)$ converge
 
