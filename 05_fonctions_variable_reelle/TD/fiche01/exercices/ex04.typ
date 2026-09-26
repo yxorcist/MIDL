@@ -1,5 +1,5 @@
 // source-confidence: medium
-// source-uncertainty: question 5 was missing from the supplied source; questions 1-4 were clear.
+// source-uncertainty: the official statement of question 5 is available, but its handwritten correction is missing; questions 1-4 were clear.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -160,6 +160,17 @@ diverge.
 
 == Question 5
 
+On admet qu'il existe $A>0$ et $alpha in RR$ tels que
+
+$
+u_n ~ A/n^alpha.
+$
+
+En utilisant les questions précédentes, il faut déterminer l'intervalle le plus
+petit possible auquel appartient $alpha$.
+
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *À compléter.* Les notes source contiennent uniquement la mention $u_n^2$ pour cette question.
+  *Correction manquante.* L'énoncé est présent sur la fiche TD officielle,
+  mais la correction de cette question n'apparaît pas dans les notes
+  manuscrites fournies.
 ]
