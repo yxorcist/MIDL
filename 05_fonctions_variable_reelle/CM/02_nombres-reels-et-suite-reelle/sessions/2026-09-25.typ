@@ -203,8 +203,6 @@
   $
 ])
 
-= III. Intervalles de $RR$
-
 = IV. Suites réelles
 
 == Définitions de convergence et divergence
