@@ -171,13 +171,7 @@ Ainsi $B$ est une base de $CC^2$ considéré comme espace vectoriel sur $RR$.
 
 === b. Dimension
 
-Comme
-
-$
-card(B)=4,
-$
-
-on a
+La base $B$ contient quatre vecteurs. On a donc
 
 $
 dim_RR(CC^2)=4.
