@@ -1,5 +1,4 @@
-// source-confidence: medium
-// source-uncertainty: dense basis/vector relations were reconstructed from surrounding calculations; main conclusions are clear.
+// source-confidence: high
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -113,12 +112,32 @@ $
 F'="Vect"(w_1,w_2).
 $
 
-Les notes vérifient d'abord que
+Montrons d'abord que
+
+$
+F' subset.eq F.
+$
+
+À partir des équations cartésiennes de $F$,
+
+$
+y+z=0
+quad "et" quad
+x-y-t=0,
+$
+
+on vérifie que
 
 $
 w_1 in F
 quad "et" quad
-w_2 in F,
+w_2 in F.
+$
+
+Ainsi,
+
+$
+"Vect"(w_1,w_2) subset.eq F,
 $
 
 donc
@@ -127,64 +146,90 @@ $
 F' subset.eq F.
 $
 
-Pour montrer l'inclusion réciproque, on cherche $alpha,beta in RR$ tels que
+Montrons maintenant l'inclusion réciproque. Les notes utilisent la base
 
 $
-v_1=alpha w_1+beta w_2.
+(v_1,v_3)
 $
 
-Cela donne notamment
+de $F$.
+
+Pour $v_1$, cherchons $a,b in RR$ tels que
+
+$
+v_1=a w_1+b w_2.
+$
+
+Avec
+
+$
+v_1=(0,-1,1,1),
+$
+
+on obtient
 
 $
 cases(
-alpha+2 beta=0,
--beta=-1,
-beta=1,
-alpha+3 beta=1.
+a+2b=0,
+-b=-1,
+b=1,
+a+3b=1.
 )
 $
 
-On obtient
+D'où
 
 $
-beta=1,
-quad
-alpha=-2.
+b=1
+quad "et" quad
+a=-2,
+$
+
+donc
+
+$
+v_1=-2w_1+w_2.
+$
+
+De même, pour
+
+$
+v_3=(1,1,-1,0),
+$
+
+on cherche $alpha,beta in RR$ tels que
+
+$
+v_3=alpha w_1+beta w_2.
+$
+
+Le système donne
+
+$
+beta=-1
+quad "et" quad
+alpha=3.
+$
+
+Ainsi,
+
+$
+v_3=3w_1-w_2.
 $
 
 Donc
 
 $
-v_1 in F'.
+v_1,v_3 in F',
 $
 
-Les notes utilisent aussi les relations
+et comme $(v_1,v_3)$ est une base de $F$,
 
 $
-w_2=v_2+2v_1
+F subset.eq F'.
 $
 
-et
-
-$
-w_1=v_1+v_3
-=
-1/2 v_1+1/2 v_2.
-$
-
-Ainsi les deux sous-espaces ont les mêmes générateurs, et donc
-
-$
-F=F'.
-$
-
-Une autre conclusion indiquée dans les notes est :
-
-$
-dim(F)=dim(F')=2
-$
-
-avec $F' subset.eq F$, donc nécessairement
+Finalement,
 
 $
 F=F'.
@@ -280,27 +325,47 @@ $
 
 == Question 3.b — Détermination de $I$
 
-Les notes considèrent
+Les notes introduisent
 
 $
-I
+C
 =
 {(x,y,z,t) in RR^4 |
-x=0 " et " z+t=0}.
+x=0 " et " z+t=0}
 $
 
-On résout le système :
+et déterminent
 
 $
+I=H inter C.
+$
+
+Un vecteur $(x,y,z,t)$ appartient à $I$ si et seulement si
+
+$
+cases(
 x=0,
-quad
+z+t=0,
+x-2y-z-t=0.
+)
+$
+
+De $z+t=0$, on obtient
+
+$
 z=-t.
 $
 
-La condition définissant $H$ donne alors
+En utilisant $x=0$ dans l'équation de $H$,
 
 $
--2y-t+t=0,
+-2y-z-t=0.
+$
+
+Comme $z=-t$,
+
+$
+-2y=0,
 $
 
 donc
@@ -309,12 +374,12 @@ $
 y=0.
 $
 
-Ainsi tout vecteur de $I$ s'écrit
+Ainsi,
 
 $
-(0,0,-t,t)
+I
 =
-t(0,0,-1,1).
+{(0,0,-t,t) : t in RR}.
 $
 
 Donc
@@ -323,7 +388,7 @@ $
 I="Vect"((0,0,-1,1)).
 $
 
-Une base de $I$ est donc
+Une base de $I$ est
 
 $
 B_I=((0,0,-1,1)).
