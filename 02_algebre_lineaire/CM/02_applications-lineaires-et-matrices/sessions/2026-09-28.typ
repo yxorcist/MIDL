@@ -3,77 +3,19 @@
 #align(center)[
   #text(size: 18pt, weight: "bold")[CM — 28/09/2026]
   #v(0.2em)
-  #text(size: 11pt)[Endomorphismes, homothéties et projections]
+  #text(size: 11pt)[Composition d'endomorphismes, homothéties et projections]
 ]
 #line(length: 100%)
 #v(0.7em)
 
-// source-confidence: medium
-// source-uncertainty: several proposition numbers and a few intermediate proof lines are difficult to read in the photographs; only clearly supported statements are retained.
-// source-uncertainty: one geometric diagram for projections is simplified textually rather than reconstructed exactly.
-
-= Matrices et compositions — compléments
-
-On reprend la formule de composition :
-
-$
-"Mat"_(cal(E),cal(G))(psi compose phi)
-=
-"Mat"_(cal(F),cal(G))(psi)
-"Mat"_(cal(E),cal(F))(phi).
-$
-
-Les notes poursuivent également le lien entre rang d'une application linéaire et rang de sa matrice :
-
-$
-"rg"(phi)
-=
-"rg"("Mat"_(cal(E),cal(F))(phi)).
-$
-
-== Corollaire — isomorphismes et matrices inversibles
-
-Soient $E$ et $F$ deux $K$-espaces vectoriels de même dimension finie, munis de bases
-$cal(E)$ et $cal(F)$.
-
-Pour une application linéaire
-
-$
-phi:E->F,
-$
-
-on a :
-
-$
-phi " est un isomorphisme"
-quad <=> quad
-"Mat"_(cal(E),cal(F))(phi) " est inversible".
-$
-
-Dans ce cas,
-
-$
-"Mat"_(cal(F),cal(E))(phi^(-1))
-=
-"Mat"_(cal(E),cal(F))(phi)^(-1).
-$
-
-En effet,
-
-$
-phi^(-1) compose phi = "id"_E
-quad "et" quad
-phi compose phi^(-1) = "id"_F,
-$
-
-et la formule de composition transforme ces identités en produits matriciels égaux aux matrices identité.
+// source-confidence: high
 
 = Composition d'endomorphismes
 
-Soit $E$ un $K$-espace vectoriel. Si
+Si
 
 $
-phi,psi in L_K(E),
+phi, psi in L_K(E),
 $
 
 alors
@@ -82,9 +24,15 @@ $
 phi compose psi in L_K(E).
 $
 
-On obtient ainsi une loi de composition interne sur $L_K(E)$.
+On obtient donc une loi de composition interne sur $L_K(E)$ :
 
-== Propriétés
+$
+compose : L_K(E) times L_K(E) -> L_K(E),
+quad
+(phi,psi) -> phi compose psi.
+$
+
+== Proposition 2.5.11
 
 Pour $phi,psi,theta in L_K(E)$ :
 
@@ -96,25 +44,23 @@ Pour $phi,psi,theta in L_K(E)$ :
    phi compose (psi compose theta);
    $
 
-2. $"id"_E$ est élément neutre :
+2. $id_E$ est élément neutre :
 
    $
-   phi compose "id"_E
+   phi compose id_E
    =
-   "id"_E compose phi
+   phi
    =
-   phi;
+   id_E compose phi;
    $
 
-3. la composition est distributive par rapport à l'addition :
+3. la composition est distributive par rapport à l'addition, à droite et à gauche :
 
    $
    phi compose (psi_1+psi_2)
    =
    phi compose psi_1 + phi compose psi_2,
    $
-
-   et
 
    $
    (phi_1+phi_2) compose psi
@@ -133,29 +79,38 @@ Pour $phi,psi,theta in L_K(E)$ :
    $
 
 #remark([
-  La composition des endomorphismes n'est pas commutative en général.
+  La loi $compose$ n'est pas commutative en général.
 ])
 
-== Puissances d'un endomorphisme
+= Puissances d'un endomorphisme
 
-Pour $phi in L_K(E)$ et $n in NN$, on pose
+Soit
 
 $
-phi^n =
+phi in L_K(E).
+$
+
+Pour $k in NN$, on pose
+
+$
+phi^k
+=
 cases(
-"id"_E & "si " n=0,
-underbrace(phi compose dots compose phi, n " fois") & "si " n>=1.
+  id_E & "si " k=0,
+  underbrace(phi compose phi compose dots compose phi, k " fois") & "si " k>=1.
 )
 $
 
-Si $phi$ est bijective, alors $phi^(-1)$ est encore un endomorphisme.
+== Remarque 2.5.13
 
-Pour $n>=1$,
+Si $phi$ est bijective, on note $phi^(-1)$ sa bijection réciproque.
+
+Pour $k in ZZ$ avec $k<0$, on pose
 
 $
-(phi^n)^(-1)
+phi^k
 =
-(phi^(-1))^n.
+(phi^(-1))^(-k).
 $
 
 = Polynômes d'endomorphismes
@@ -165,34 +120,58 @@ Soit
 $
 P
 =
-a_0+a_1 X+dots.h+a_p X^p
+a_0+a_1 X+a_2 X^2+dots.h+a_d X^d
 in K[X].
 $
 
-Pour $phi in L_K(E)$, on définit
+Pour
+
+$
+phi in L_K(E),
+$
+
+on définit
 
 $
 P(phi)
 =
-a_0 "id"_E
+a_0 id_E
 +
 a_1 phi
 +
+a_2 phi^2
++
 dots.h
 +
-a_p phi^p
+a_d phi^d
 in L_K(E).
 $
 
-En particulier,
+Par convention,
 
 $
-0(phi)=0_(L_K(E))
-quad "et" quad
-1(phi)="id"_E.
+0_(K[X])(phi)=0_E,
 $
 
-Si $cal(E)$ est une base de $E$, alors les notes donnent :
+où $0_E$ désigne l'endomorphisme nul.
+
+== Corollaire 2.5.14
+
+On choisit une base
+
+$
+cal(E)=(e_1,dots,e_p)
+$
+
+de $E$.
+
+Pour tout endomorphisme
+
+$
+phi in L_K(E),
+$
+
+on a
 
 $
 "Mat"_(cal(E))(P(phi))
@@ -200,11 +179,9 @@ $
 P("Mat"_(cal(E))(phi)).
 $
 
-Autrement dit, évaluer un polynôme en un endomorphisme puis prendre sa matrice revient à évaluer le même polynôme dans la matrice de l'endomorphisme.
-
 = Endomorphismes particuliers
 
-On suppose désormais que $E$ est un $K$-espace vectoriel de dimension finie.
+On suppose désormais que $E$ est un $K$-espace vectoriel de dimension finie $p$.
 
 == Homothéties
 
@@ -216,130 +193,263 @@ quad
 v->alpha v.
 $
 
-#definition([
-  L'application $h_alpha$ est appelée *homothétie de rapport* $alpha$.
-])
+C'est une application $K$-linéaire appelée *homothétie de rapport* $alpha$.
 
-On a immédiatement
+Un endomorphisme
 
 $
-h_alpha
-=
-alpha "id"_E.
+phi in L_K(E)
 $
 
-Pour $alpha,beta in K$,
+est appelé une homothétie de $E$ s'il existe $alpha in K$ tel que
 
 $
-h_alpha compose h_beta
-=
-h_(alpha beta).
+phi=h_alpha.
 $
 
-Si $alpha!=0$, alors $h_alpha$ est bijective et
+=== Remarques
+
+On a
 
 $
-h_alpha^(-1)
-=
-h_(alpha^(-1)).
+h_alpha=alpha id_E.
 $
 
-Dans toute base $cal(E)$ de $E$,
+Pour tous $alpha,beta in K$,
 
 $
-"Mat"_(cal(E))(h_alpha)
-=
-alpha I_n.
+h_alpha+h_beta=h_(alpha+beta),
 $
 
-Ainsi, pour tout $P in K[X]$,
-
 $
-P(h_alpha)
-=
-h_(P(alpha)).
+h_alpha compose h_beta=h_(alpha beta),
 $
 
-== Caractérisation par un polynôme de degré 1
-
-Les notes montrent que $phi in L_K(E)$ est une homothétie si et seulement s'il existe un polynôme non nul
-
 $
-P in K[X]
+alpha h_beta=h_(alpha beta).
 $
 
-de degré $1$ tel que
+Ainsi, si
 
 $
-P(phi)=0.
-$
-
-En effet, si
-
-$
-P(X)=a_0+a_1 X,
-quad
-a_1!=0,
-$
-
-et
-
-$
-P(phi)=0,
+P in K[X],
 $
 
 alors
 
 $
-a_0 "id"_E+a_1 phi=0,
+P(h_alpha)=h_(P(alpha)).
 $
 
-donc
+De plus,
+
+$
+id_E=h_1
+quad "et" quad
+0_E=h_0.
+$
+
+L'ensemble des homothéties de $E$ est
+
+$
+cal(H)(E)
+=
+{h_alpha | alpha in K}
+=
+{alpha id_E | alpha in K}
+=
+"Vect"(id_E).
+$
+
+C'est un sous-espace vectoriel de $L_K(E)$ de dimension $1$.
+
+Si
+
+$
+cal(E)=(e_1,dots,e_p)
+$
+
+est une base de $E$, alors
+
+$
+"Mat"_(cal(E))(h_alpha)
+=
+alpha I_p.
+$
+
+== Proposition 2.6.4
+
+Soit
+
+$
+phi in L_K(E).
+$
+
+1. $phi$ est une homothétie si et seulement s'il existe
+
+   $
+   P in K[X]
+   $
+
+   de degré $1$ tel que
+
+   $
+   P(phi)=0_E.
+   $
+
+2. $phi$ est une homothétie si et seulement s'il existe $alpha in K$ et une base
+   $cal(E)$ de $E$ telles que
+
+   $
+   "Mat"_(cal(E))(phi)=alpha I_p.
+   $
+
+=== Preuve du premier point
+
+Si
+
+$
+phi=h_alpha,
+$
+
+on prend
+
+$
+P=X-alpha.
+$
+
+Alors
+
+$
+P(phi)
+=
+phi-alpha id_E
+=
+0_E,
+$
+
+et
+
+$
+deg(P)=1.
+$
+
+Réciproquement, supposons qu'il existe
+
+$
+P=a_0+a_1 X
+$
+
+avec
+
+$
+a_1 != 0
+$
+
+et
+
+$
+P(phi)=0_E.
+$
+
+Alors
+
+$
+a_0 id_E+a_1 phi=0_E.
+$
+
+Donc
 
 $
 phi
 =
--(a_0/a_1)"id"_E.
+-(a_0/a_1) id_E,
 $
 
-Réciproquement, pour $phi=h_alpha$, le polynôme
+et $phi$ est une homothétie.
+
+== Proposition 2.6.5
+
+Si
 
 $
-P(X)=X-alpha
+dim_K(E)=1,
 $
 
-vérifie
+alors tout endomorphisme de $E$ est une homothétie :
 
 $
-P(phi)=0.
+L_K(E)=cal(H)(E).
 $
 
-== Dépendance au corps de base
+=== Preuve
 
-Les notes donnent l'exemple de l'application
+On a déjà vu que
+
+$
+cal(H)(E)
+=
+"Vect"(id_E)
+$
+
+est un sous-espace vectoriel de $L_K(E)$ de dimension $1$.
+
+Or
+
+$
+dim_K(L_K(E))
+=
+(dim_K(E))^2
+=
+1.
+$
+
+Donc
+
+$
+L_K(E)=cal(H)(E).
+$
+
+== Exemple
+
+Dans le $CC$-espace vectoriel $CC$,
 
 $
 h_i:CC->CC,
 quad
-z->i z.
+z->i z
 $
 
-Vue comme application $CC$-linéaire, c'est l'homothétie de rapport $i$.
+est l'homothétie de rapport $i$.
 
-En revanche, si $CC$ est considéré comme espace vectoriel réel, cette même application représente géométriquement une rotation d'angle $pi/2$ et n'est pas une homothétie réelle.
+Géométriquement, elle correspond à une rotation de centre $O$ et d'angle
+
+$
+pi/2.
+$
 
 = Projections
 
-Soient $F$ et $G$ deux sous-espaces supplémentaires de $E$ :
+== Définition 2.6.6
+
+Soient $F$ et $G$ deux sous-espaces supplémentaires dans $E$ :
 
 $
-E=F "⊕" G.
+E=F direct.sum G.
 $
 
 Pour tout $u in E$, il existe un unique couple
 
 $
-(u_F,u_G) in F times G
+(u_F,u_G)
+$
+
+avec
+
+$
+u_F in F,
+quad
+u_G in G,
 $
 
 tel que
@@ -348,134 +458,139 @@ $
 u=u_F+u_G.
 $
 
-#definition([
-  La projection sur $F$ parallèlement à $G$ est l'application
-
-  $
-  p_(F,G):E->E,
-  quad
-  u->u_F.
-  $
-])
-
-Ainsi,
+La projection sur $F$ parallèlement à $G$ est l'application
 
 $
-"Im"(p_(F,G))=F
+pi_(F,G):E->E,
+quad
+u=u_F+u_G -> u_F.
 $
 
-et
+C'est un endomorphisme de $E$.
+
+Un endomorphisme $phi in L_K(E)$ est appelé une *projection* ou un *projecteur*
+s'il existe deux sous-espaces supplémentaires $F$ et $G$ tels que
 
 $
-"Ker"(p_(F,G))=G.
+phi=pi_(F,G).
 $
 
-Les notes illustrent cette définition géométriquement dans $RR^2$ : un vecteur est décomposé suivant deux directions supplémentaires, et sa projection conserve uniquement sa composante suivant $F$.
+== Exemples
 
-== Caractérisation des projections
+Dans $RR^2$,
+
+$
+p:RR^2->RR^2,
+quad
+(x,y)->(x,0)
+$
+
+est la projection sur
+
+$
+F="Vect"((1,0))
+$
+
+parallèlement à
+
+$
+G="Vect"((0,1)).
+$
+
+Plus généralement, soit
+
+$
+(e_1,dots,e_n)
+$
+
+la base canonique de $K^n$ et soit $k in NN^*$ avec $1<=k<=n$.
+
+L'application
+
+$
+phi:K^n->K^n,
+$
+
+$
+(x_1,dots,x_n)
+->
+(x_1,dots,x_k,0,dots,0)
+$
+
+est la projection sur
+
+$
+"Vect"(e_1,dots,e_k)
+$
+
+parallèlement à
+
+$
+"Vect"(e_(k+1),dots,e_n).
+$
+
+== Remarque 2.6.8
+
+Si
+
+$
+E=F direct.sum G,
+$
+
+alors
+
+$
+pi_(F,G)+pi_(G,F)=id_E.
+$
+
+== Proposition 2.6.9
 
 Soit
 
 $
-p in L_K(E).
+phi in L_K(E).
 $
 
-Les notes donnent la caractérisation :
+Alors $phi$ est une projection si et seulement si
 
 $
-p " est une projection"
-quad <=> quad
-p compose p=p.
+phi compose phi=phi.
 $
 
-Autrement dit,
+Dans ce cas,
 
 $
-p^2=p.
+"Ker"(phi)
+quad "et" quad
+"Im"(phi)
 $
 
-Si cette relation est vérifiée, alors
+sont supplémentaires dans $E$, et $phi$ est la projection sur
 
 $
-E
-=
-"Im"(p)
-"⊕"
-"Ker"(p),
+"Im"(phi)
 $
 
-et $p$ est précisément la projection sur $"Im"(p)$ parallèlement à $"Ker"(p)$.
-
-En effet, pour tout $u in E$,
+parallèlement à
 
 $
-u
-=
-p(u)+(u-p(u)).
+"Ker"(phi).
 $
 
-On a
+== Exemple 2.6.10
+
+On considère $CC$ comme un $RR$-espace vectoriel et
 
 $
-p(u) in "Im"(p)
-$
-
-et, puisque $p^2=p$,
-
-$
-p(u-p(u))
-=
-p(u)-p^2(u)
-=
-0,
-$
-
-donc
-
-$
-u-p(u) in "Ker"(p).
-$
-
-De plus, si
-
-$
-v in "Im"(p) inter "Ker"(p),
-$
-
-alors $v=p(w)$ pour un certain $w$, mais aussi $p(v)=0$. Or
-
-$
-p(v)=p^2(w)=p(w)=v,
-$
-
-donc
-
-$
-v=0.
-$
-
-== Exemple dans $CC$ vu comme espace vectoriel réel
-
-On considère
-
-$
-p:CC->CC,
+phi:CC->CC,
 quad
 z->"Re"(z).
 $
 
-Comme espace vectoriel réel,
+L'application $phi$ est $RR$-linéaire et vérifie
 
 $
-CC
-=
-RR "⊕" i RR.
+phi compose phi=phi.
 $
 
-L'application $p$ est la projection sur l'axe réel parallèlement à l'axe imaginaire.
-
-Elle vérifie
-
-$
-p compose p=p.
-$
+Donc $phi$ est la projection sur l'axe réel parallèlement à l'axe imaginaire.
