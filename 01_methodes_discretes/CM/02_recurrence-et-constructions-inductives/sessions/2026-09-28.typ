@@ -399,7 +399,7 @@ Définissons l'ensemble diagonal
 $
 D
 =
-{n in NN | n notin f(n)}.
+{n in NN | n in.not f(n)}.
 $
 
 Comme
@@ -425,7 +425,7 @@ Par définition de $D$,
 $
 k in D
 iff
-k notin f(k).
+k in.not f(k).
 $
 
 Or
@@ -439,7 +439,7 @@ Donc
 $
 k in D
 iff
-k notin D,
+k in.not D,
 $
 
 ce qui est impossible.
