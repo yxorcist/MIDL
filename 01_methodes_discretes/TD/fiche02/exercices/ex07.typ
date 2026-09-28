@@ -32,11 +32,11 @@ où $epsilon$ désigne le mot vide.
 
 Pour tout $m in E_C$ :
 
-- *R1.* $m0 in E_C$ ;
-- *R2.* $0m in E_C$ ;
-- *R3.* $11m in E_C$ ;
-- *R4.* $m11 in E_C$ ;
-- *R5.* $1m1 in E_C$.
+- *R1.* $m 0 in E_C$ ;
+- *R2.* $0 m in E_C$ ;
+- *R3.* $1 1 m in E_C$ ;
+- *R4.* $m 1 1 in E_C$ ;
+- *R5.* $1 m 1 in E_C$.
 
 Montrons que cette construction est valide et complète, c'est-à-dire
 
