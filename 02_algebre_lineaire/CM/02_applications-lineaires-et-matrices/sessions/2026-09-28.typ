@@ -333,7 +333,7 @@ En revanche, si $CC$ est considéré comme espace vectoriel réel, cette même a
 Soient $F$ et $G$ deux sous-espaces supplémentaires de $E$ :
 
 $
-E=F direct.sum G.
+E=F plus.circle G.
 $
 
 Pour tout $u in E$, il existe un unique couple
@@ -400,7 +400,7 @@ $
 E
 =
 "Im"(p)
-direct.sum
+plus.circle
 "Ker"(p),
 $
 
@@ -469,7 +469,7 @@ Comme espace vectoriel réel,
 $
 CC
 =
-RR direct.sum i RR.
+RR plus.circle i RR.
 $
 
 L'application $p$ est la projection sur l'axe réel parallèlement à l'axe imaginaire.
