@@ -435,7 +435,7 @@ $
 Soient $F$ et $G$ deux sous-espaces supplémentaires dans $E$ :
 
 $
-E=F direct.sum G.
+E=F "⊕" G.
 $
 
 Pour tout $u in E$, il existe un unique couple
@@ -534,7 +534,7 @@ $
 Si
 
 $
-E=F direct.sum G,
+E=F "⊕" G,
 $
 
 alors
