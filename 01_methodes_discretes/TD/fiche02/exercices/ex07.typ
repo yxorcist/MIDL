@@ -108,7 +108,7 @@ On distingue les cas suivants.
 On peut écrire
 
 $
-m=w0.
+m=w 0.
 $
 
 Le mot $w$ contient exactement le même nombre de $1$ que $m$, donc
@@ -132,7 +132,7 @@ $
 Puis, par R1,
 
 $
-m=w0 in E_C.
+m=w 0 in E_C.
 $
 
 === Cas 2 — Le mot commence par $0$
@@ -140,7 +140,7 @@ $
 On peut écrire
 
 $
-m=0w.
+m=0 w.
 $
 
 Comme précédemment,
@@ -160,7 +160,7 @@ $
 Puis, par R2,
 
 $
-m=0w in E_C.
+m=0 w in E_C.
 $
 
 === Cas 3 — Le mot commence et se termine par $1$
@@ -168,7 +168,7 @@ $
 On peut écrire
 
 $
-m=1w1.
+m=1 w 1.
 $
 
 Comme $m$ contient un nombre pair de $1$, retirer les deux $1$ extrêmes laisse
@@ -193,7 +193,7 @@ $
 Puis, par R5,
 
 $
-m=1w1 in E_C.
+m=1 w 1 in E_C.
 $
 
 Ces cas couvrent tous les mots non vides : si le mot ne commence ni ne se
