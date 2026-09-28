@@ -84,9 +84,7 @@ $
 *Hypothèse d'induction.* Supposons que, pour un entier $n>=1$,
 
 $
-forall k in {1,dots,n},
-quad
-G(k)=k(k-1)/2.
+forall k, quad 1<=k<=n => G(k)=k(k-1)/2.
 $
 
 *Hérédité.* Considérons une pile de $n+1$ boîtes.
@@ -180,5 +178,5 @@ $
 Ainsi, toute manière de dépiler $n$ boîtes conduit au même score :
 
 $
-boxed(n(n-1)/2).
+n(n-1)/2.
 $
