@@ -481,9 +481,9 @@ $
 Alors
 
 $
-AB=I_n
+A B=I_n
 quad "et" quad
-BA=I_n.
+B A=I_n.
 $
 
 Le théorème sur la composée donne
