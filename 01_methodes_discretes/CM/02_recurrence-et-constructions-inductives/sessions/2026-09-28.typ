@@ -422,11 +422,10 @@ $
 
 Par définition de $D$,
 
-$
-k in D
-iff
-k in.not f(k).
-$
+Par définition de $D$, on a :
+
+- si $k in D$, alors $k in.not f(k)$ ;
+- si $k in.not D$, alors $k in f(k)$.
 
 Or
 
@@ -434,15 +433,8 @@ $
 f(k)=D.
 $
 
-Donc
-
-$
-k in D
-iff
-k in.not D,
-$
-
-ce qui est impossible.
+On obtient donc dans les deux cas une contradiction : $k$ devrait appartenir à
+$D$ exactement lorsque $k$ n'appartient pas à $D$.
 
 Ainsi, aucune fonction
 
