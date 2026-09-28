@@ -1,93 +1,218 @@
+// source-confidence: high
+
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
-= Fiche 2 — Exercice 7
+= Exercice 7
 
-$E = { m in M : m text("contient un nombre pair de 1")}$
-construction de E:
+Soit $M$ l'ensemble des mots écrits sur l'alphabet $\{0,1\}$, et
 
-- Base: $epsilon$ (le mot est vide) $in E$
+$
+E
+=
+{m in M | m " contient un nombre pair de 1"}.
+$
 
-Soit $E_C$ l'ensemble des mots $m in M$ construit inductivement comme suivi
+On propose une définition inductive de $E$.
 
-$R_1$: si $m in E_C$ alors $m 0 in   E_C$
-$R_2$: si $m in E_C$ alors $0 m in   E_C$
-$R_3$: si $m in E_C$ alors $1 1 m in E_C$
-$R_4$: si $m in E_C$ alors $m 1 1 in E_C$
-$R_5$: si $m in E_C$ alors $1 m 1 in E_C$
+== Construction inductive
 
-Montrons que $E_C in E$:
+On note $E_C$ l'ensemble construit par les règles suivantes.
 
-Montrons d'abord $E <= E_C$
+*Base.*
 
-soit $m in E$, notrons que $m in E_C$
+$
+epsilon in E_C,
+$
 
-Nous allons montrer que $m in E_c$ par induction sur la taille de $m$
+où $epsilon$ désigne le mot vide.
 
-$|m| = $ (la taille de m) : nombre de $0$ et de $1$ dans $m$
+*Règles de construction.*
 
-Base: $|m| = 0$. $m in epsilon$ et par onstruction $m in E_C$
-H.I. $P(n)$ $P$ Pour tout $m in E$ et $ =0 <= |m| <= n$ alors $m in E_C$
+Pour tout $m in E_C$ :
 
-$P (n + 1)$: soit $m' in E$ tq $|m'| = n + 1|$ alors $m' in E_C$
+- *R1.* $m0 in E_C$ ;
+- *R2.* $0m in E_C$ ;
+- *R3.* $11m in E_C$ ;
+- *R4.* $m11 in E_C$ ;
+- *R5.* $1m1 in E_C$.
 
-Soit $m' in E$ et $|m'| = n + 1$ Nous avons 4 cas.
+Montrons que cette construction est valide et complète, c'est-à-dire
 
-1. $m' = 1$ - . - $1$ 
+$
+E_C=E.
+$
 
-$m'' = $ - . -
+== Validité : $E_C subset.eq E$
 
-$0 <= |m''| <= n + 1$ et $m'' in E$, donc par H.I. $m'' in E_C$
+Chaque règle conserve la parité du nombre de symboles $1$.
 
-$m'' in E_C$ et par $R_5$ $m' in E_C$
+La base $epsilon$ contient zéro symbole $1$, donc un nombre pair de $1$.
 
-2. $m'$ = 1 - 0
-m' = "1 -"
+Supposons qu'un mot $m in E_C$ contienne un nombre pair de $1$.
 
-$00 <= |m''| <= n, m'' in E$, H.I. s'applique et implique $m'' in E_C$. Par $R_1$ nous avons $m' = m'' a in E_C$
+- R1 et R2 ajoutent seulement un symbole $0$ : le nombre de $1$ ne change pas.
+- R3, R4 et R5 ajoutent exactement deux symboles $1$ : la parité du nombre de $1$ ne change pas.
 
-3. $m' = 0 --- 1$
-c'est la meme chose que le cas 2, mais on utilise la regle $R_2$
+Ainsi, tout mot construit dans $E_C$ contient un nombre pair de $1$.
 
-4. $m' = 0 --- 0$ (same que les cas 2 et 3)
+Donc
 
-Base $eps in E_C$ (Completude)
+$
+E_C subset.eq E.
+$
 
-$R_1$ : $m 0 in E_C$
-$R_2$ : $0 m in E_C$
-$R_3$ : $1 m 1 in E_C$
+== Complétude : $E subset.eq E_C$
 
-$E_C subset E$ (validite)
+Montrons par induction forte sur la longueur $abs(m)$ que tout mot $m in E$
+appartient à $E_C$.
 
-Montrons que $E_C subset E$ par induction sur la taille des mots:
+*Base.* Si
 
-Nous voulons montrer que $forall m in E_C, m in E$
+$
+abs(m)=0,
+$
 
-Soit $m in E_C$
+alors
 
-Base: $|m| = 0$, alors $m in epsilon$ et donc $m in E_C$:
+$
+m=epsilon.
+$
 
-H.I. $forall m in E_C$ et $0 <= |m| <= n$, alors $m in E$
+Par la règle de base,
 
-$P(n + 1)$: $forall m' in E_C$ et $|m'''| = n + 1$ alors $m' in E$
+$
+m in E_C.
+$
 
-Soit $m' in E_C$ et $|m'| = n + 1$ alors $m' in E$
-Soit $m' in E_2$, nous avons 3 possibilites
+*Hypothèse d'induction.* Supposons que, pour un entier $n>=0$, tout mot
+$w in E$ tel que
 
-1. m' a ete contruit par $R_1$ donc $m' = m 0$
-$|m| = n$ et $m in E_C$ par H.I $m in E$
+$
+abs(w)<=n
+$
 
+appartienne à $E_C$.
 
-Puisque $m in E$ (il anombre pair de 1) alors $m' = m 0 in E$
+*Hérédité.* Soit $m in E$ tel que
 
-2. m' a ete construit par $R_2$ (m'' cas que $R_1$)
+$
+abs(m)=n+1.
+$
 
-3. ma a ete construit par $R_3$
-$m' = 1 m 1$
+On distingue les cas suivants.
 
-$0 <= |m| = n - 1$, et $m in E_C$. Donc H.I. s'applique et immplique $m' in E$
+=== Cas 1 — Le mot se termine par $0$
 
-Puisque $m in E$, alors par definition $m' = 1 m 1 in E$
+On peut écrire
 
+$
+m=w0.
+$
 
+Le mot $w$ contient exactement le même nombre de $1$ que $m$, donc
+
+$
+w in E.
+$
+
+De plus,
+
+$
+abs(w)=n.
+$
+
+Par hypothèse d'induction,
+
+$
+w in E_C.
+$
+
+Puis, par R1,
+
+$
+m=w0 in E_C.
+$
+
+=== Cas 2 — Le mot commence par $0$
+
+On peut écrire
+
+$
+m=0w.
+$
+
+Comme précédemment,
+
+$
+w in E
+quad "et" quad
+abs(w)=n.
+$
+
+Par hypothèse d'induction,
+
+$
+w in E_C.
+$
+
+Puis, par R2,
+
+$
+m=0w in E_C.
+$
+
+=== Cas 3 — Le mot commence et se termine par $1$
+
+On peut écrire
+
+$
+m=1w1.
+$
+
+Comme $m$ contient un nombre pair de $1$, retirer les deux $1$ extrêmes laisse
+encore un nombre pair de $1$. Ainsi,
+
+$
+w in E.
+$
+
+De plus,
+
+$
+abs(w)=n-1<=n.
+$
+
+Par hypothèse d'induction,
+
+$
+w in E_C.
+$
+
+Puis, par R5,
+
+$
+m=1w1 in E_C.
+$
+
+Ces cas couvrent tous les mots non vides : si le mot ne commence ni ne se
+termine par $0$, alors il commence et se termine nécessairement par $1$.
+
+Donc
+
+$
+E subset.eq E_C.
+$
+
+Avec la validité,
+
+$
+E_C=E.
+$
+
+#block(stroke: 0.6pt + gray, inset: 8pt)[
+  *Remarque.* Les règles R3 et R4 sont valides mais redondantes : les règles
+  R1, R2 et R5, avec la base $epsilon$, suffisent déjà pour construire tout
+  mot contenant un nombre pair de $1$.
+]
