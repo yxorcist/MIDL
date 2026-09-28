@@ -191,7 +191,50 @@ $
 
 == Exemple
 
-Dans l'exemple du tableau, une matrice de taille $2 times 3$ est utilisée avec un vecteur de coordonnées dans $K^3$ pour calculer directement les coordonnées de son image dans $K^2$.
+Dans les bases canoniques de $K^3$ et $K^2$, on considère
+
+$
+"Mat"(phi)
+=
+mat(
+  2, 1, 0;
+  3, 5, -1;
+)
+$
+
+et
+
+$
+v=(1,0,7).
+$
+
+Alors
+
+$
+[v]
+=
+mat(1;0;7)
+$
+
+et
+
+$
+[phi(v)]
+=
+mat(
+  2, 1, 0;
+  3, 5, -1;
+)
+mat(1;0;7)
+=
+mat(2;-4).
+$
+
+Donc
+
+$
+phi(v)=(2,-4).
+$
 
 = Matrices, applications linéaires, rang et composition
 
@@ -260,9 +303,75 @@ $
   On a toujours
 
   $
+  "rg"(A) <= p.
+  $
+
+  Si
+
+  $
+  A="Mat"_(cal(E),cal(F))(phi),
+  $
+
+  alors
+
+  $
+  "rg"(A)="rg"(phi) <= n=dim(E).
+  $
+
+  Ainsi,
+
+  $
   "rg"(A) <= min(p,n).
   $
 ])
+
+== Preuve du lien entre rang d'une matrice et rang d'une application
+
+On considère l'isomorphisme de coordonnées
+
+$
+Theta:F -> M_(p,1)(K),
+quad
+v -> [v]_(cal(F)).
+$
+
+Comme $Theta$ est bijective, elle conserve la dimension des sous-espaces.
+
+Or
+
+$
+"Im"(phi)
+=
+"Vect"(phi(e_1),dots,phi(e_n)).
+$
+
+Donc
+
+$
+"rg"(phi)
+=
+dim("Vect"(phi(e_1),dots,phi(e_n)))
+$
+
+et, en appliquant $Theta$,
+
+$
+"rg"(phi)
+=
+dim("Vect"([phi(e_1)]_(cal(F)),dots,[phi(e_n)]_(cal(F)))).
+$
+
+Mais ces vecteurs de coordonnées sont précisément les colonnes de
+
+$
+A="Mat"_(cal(E),cal(F))(phi).
+$
+
+Ainsi,
+
+$
+"rg"(phi)="rg"(A).
+$
 
 == Matrice d'une composée
 
@@ -285,4 +394,114 @@ $
   "Mat"_(cal(F),cal(G))(psi)
   "Mat"_(cal(E),cal(F))(phi).
   $
+])
+
+== Corollaire — isomorphismes et matrices inversibles
+
+Supposons maintenant
+
+$
+dim(E)=dim(F)=n.
+$
+
+Soit
+
+$
+phi:E->F
+$
+
+linéaire. Alors
+
+$
+phi " est un isomorphisme"
+$
+
+si et seulement si
+
+$
+"Mat"_(cal(E),cal(F))(phi)
+$
+
+est inversible.
+
+Dans ce cas,
+
+$
+"Mat"_(cal(F),cal(E))(phi^(-1))
+=
+("Mat"_(cal(E),cal(F))(phi))^(-1).
+$
+
+=== Preuve
+
+Si $phi$ est un isomorphisme, sa bijection réciproque $phi^(-1)$ vérifie
+
+$
+phi compose phi^(-1)=id_F
+quad "et" quad
+phi^(-1) compose phi=id_E.
+$
+
+En passant aux matrices et en utilisant le théorème sur la composée,
+
+$
+"Mat"_(cal(E),cal(F))(phi)
+"Mat"_(cal(F),cal(E))(phi^(-1))
+=
+I_n.
+$
+
+La matrice de $phi$ est donc inversible, d'inverse
+
+$
+"Mat"_(cal(F),cal(E))(phi^(-1)).
+$
+
+Réciproquement, supposons
+
+$
+A="Mat"_(cal(E),cal(F))(phi)
+$
+
+inversible, d'inverse $B$.
+
+Par l'isomorphisme entre applications linéaires et matrices, il existe une unique
+application linéaire
+
+$
+psi:F->E
+$
+
+telle que
+
+$
+"Mat"_(cal(F),cal(E))(psi)=B.
+$
+
+Alors
+
+$
+AB=I_n
+quad "et" quad
+BA=I_n.
+$
+
+Le théorème sur la composée donne
+
+$
+phi compose psi=id_F
+quad "et" quad
+psi compose phi=id_E.
+$
+
+Ainsi $phi$ est un isomorphisme et
+
+$
+psi=phi^(-1).
+$
+
+#block(stroke: 0.6pt + gray, inset: 8pt)[
+  *Source du 28/09.* Les photographies plus nettes du cours ont permis de compléter
+  l'exemple de la proposition 2.5.4, la preuve du lien entre rangs et le corollaire
+  sur l'inversibilité.
 ])
