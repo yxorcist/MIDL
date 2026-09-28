@@ -140,13 +140,13 @@ On met au même dénominateur :
 $
 G(n+1)
 =
-(2ab+a^2-a+b^2-b)/2.
+(2 a b+a^2-a+b^2-b)/2.
 $
 
 Or
 
 $
-2ab+a^2+b^2=(a+b)^2
+2 a b+a^2+b^2=(a+b)^2
 $
 
 et
