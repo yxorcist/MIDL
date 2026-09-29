@@ -1,6 +1,6 @@
 // source-confidence: medium
-// source-uncertainty: the full printed statement is not visible in the supplied photographs; the correction is transcribed from the handwritten notes.
-// source-uncertainty: question 2 stops mid-calculation in the supplied source, so no missing conclusion is reconstructed.
+// source-uncertainty: the handwritten photographs are faint; numbering and statements are cross-checked against the official TD01 sheet.
+// source-uncertainty: only correction steps supported by the supplied handwritten pages are retained.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -272,13 +272,129 @@ $
 dim(E)=2.
 $
 
-La dernière ligne visible de la correction est
+Comme la somme $E+F$ est directe,
 
 $
-dim(E+F+G_1) >= dim(E).
+dim(E+F)
+=
+dim(E)+dim(F)
+=
+3.
 $
 
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  La photographie s'arrête à ce stade de la question 2. La suite de la
-  correction n'est pas reconstruite.
-]
+On a donc
+
+$
+dim(E+F+G_1) >= 3.
+$
+
+D'autre part, la somme $E+F+G_1$ n'est pas directe. Les quatre vecteurs obtenus
+en réunissant une base de $E$, une base de $F$ et une base de $G_1$ sont donc
+liés. Par conséquent,
+
+$
+dim(E+F+G_1) < 4.
+$
+
+Ainsi,
+
+$
+dim(E+F+G_1)=3.
+$
+
+== Question 3 — Somme $E+F+G_2$
+
+On pose
+
+$
+G_2="Vect"(w_2),
+quad
+w_2=e_1+e_2+e_3=(1,1,1,0).
+$
+
+On conserve la base de $E$
+
+$
+u_1=(1,-1,0,1),
+quad
+u_2=(0,-1,1,0),
+$
+
+et le générateur de $F$
+
+$
+v=(1,0,1,0).
+$
+
+La correction vérifie que la famille
+
+$
+(u_1,u_2,v,w_2)
+$
+
+est libre.
+
+Supposons en effet que
+
+$
+alpha u_1
++
+beta u_2
++
+gamma v
++
+delta w_2
+=
+0_(K^4).
+$
+
+L'égalité coordonnée par coordonnée donne
+
+$
+cases(
+alpha+gamma+delta=0,
+-alpha-beta+delta=0,
+beta+gamma+delta=0,
+alpha=0.
+)
+$
+
+De la dernière équation,
+
+$
+alpha=0.
+$
+
+Les autres relations donnent alors successivement
+
+$
+delta=beta,
+quad
+gamma=-delta,
+quad
+beta=0.
+$
+
+Donc
+
+$
+alpha=beta=gamma=delta=0.
+$
+
+La famille est donc libre. Par conséquent, la somme
+
+$
+E+F+G_2
+$
+
+est directe.
+
+Équivalemment, les notes concluent que
+
+$
+G_2 inter (E+F)
+=
+{0_(K^4)},
+$
+
+tandis que $E+F$ est déjà une somme directe.
