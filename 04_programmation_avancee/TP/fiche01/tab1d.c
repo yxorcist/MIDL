@@ -50,6 +50,28 @@ void tailles() {
   printf("long int *: %zu\n", sizeof(long int *));
 }
 
+int est_permutation(int *t, int n) {
+
+  if (!t || n <= 0)
+    return 0;
+
+  int *seen = calloc(n, sizeof(int));
+
+  if (!seen)
+    return 0;
+
+  for (int i = 0; i < n; i++) {
+    if (t[i] < 0 || t[i] >= n || seen[t[i]]) {
+      free(seen);
+      return 0;
+    }
+    seen[t[i]] = 1;
+  }
+
+  free(seen);
+  return 1;
+}
+
 int main() {
   void *Z = malloc(10 * 4); // allocation of 40 raw bytes
   int *X = Z;               // conversion happens implicitly
