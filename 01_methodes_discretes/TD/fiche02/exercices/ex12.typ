@@ -17,7 +17,7 @@ $
 *Base.*
 
 $
-emptyset in AB.
+emptyset in "AB".
 $
 
 *Règle d'induction.*
@@ -25,7 +25,7 @@ $
 Si
 
 $
-T_1,T_2 in AB
+T_1,T_2 in "AB"
 $
 
 et
@@ -37,7 +37,7 @@ $
 alors
 
 $
-(T_1,x,T_2) in AB.
+(T_1,x,T_2) in "AB".
 $
 
 Ainsi,
