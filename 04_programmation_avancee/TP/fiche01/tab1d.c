@@ -111,6 +111,7 @@ int *tab(int n) {
   return t;
 }
 
+// Exercice 7
 char *permuter(char *t, int *perm, int n) {
   if (!t || !perm || n <= 0)
     return NULL;
