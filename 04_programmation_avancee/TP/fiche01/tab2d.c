@@ -89,10 +89,60 @@ int **pascal(int n) {
   if (n <= 0)
     return NULL;
 
-  float **mat = matrice(n, n);
+  int **t = malloc(n * sizeof(int *));
 
-  if (!mat)
+  if (!t)
     return NULL;
+
+  for (int i = 0; i < n; i++) {
+    t[i] = malloc((i + 1) * sizeof(int));
+
+    if (!t[i]) {
+      for (int j = 0; j < i; j++)
+        free(t[j]);
+
+      free(t);
+      return NULL;
+    }
+
+    t[i][0] = 1;
+    t[i][i] = 1;
+
+    for (int j = 1; j < i; j++)
+      t[i][j] = t[i - 1][j - 1] + t[i - 1][j];
+  }
+
+  return t;
 }
 
-int main() {}
+void afficher_pascal(int **p, int n) {
+  if (!p || n <= 0)
+    return;
+
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j <= i; j++)
+      printf("%d ", p[i][j]);
+    printf("\n");
+  }
+}
+
+void liberer_pascal(int **p, int n) {
+  if (!p || n <= 0)
+    return;
+
+  for (int i = 0; i < n; i++)
+    free(p[i]);
+
+  free(p);
+}
+
+int main() {
+  int n = 5;
+  int **p = pascal(n);
+
+  if (!p)
+    return 1;
+
+  afficher_pascal(p, n);
+  liberer_pascal(p, n);
+}
