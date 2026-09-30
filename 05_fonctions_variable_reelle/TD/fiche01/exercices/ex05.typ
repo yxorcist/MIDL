@@ -1,5 +1,5 @@
 // source-confidence: high
-// source-uncertainty: the official TD statement is available, but no correction for this exercise appears in the supplied handwritten notes.
+// source-note: statement cross-checked against the official TD01 sheet; handwritten correction supplied for questions 1 to 3.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -17,9 +17,33 @@ $
 sqrt(x y) <= 1/2 (x+y).
 $
 
+Comme
+
+$
+(sqrt(x)-sqrt(y))^2 >= 0,
+$
+
+on a
+
+$
+x+y-2sqrt(x y) >= 0.
+$
+
+Donc
+
+$
+2sqrt(x y) <= x+y,
+$
+
+d'où
+
+$
+sqrt(x y) <= 1/2 (x+y).
+$
+
 == Question 2
 
-En déduire que si les séries
+Supposons que les séries
 
 $
 sum_(n>=1) u_n
@@ -27,7 +51,23 @@ quad "et" quad
 sum_(n>=1) v_n
 $
 
-sont convergentes, alors la série
+soient convergentes.
+
+Par opérations arithmétiques sur les séries convergentes,
+
+$
+sum_(n>=1) 1/2 (u_n+v_n)
+$
+
+est convergente.
+
+D'après la question 1, pour tout $n>=1$,
+
+$
+0 <= sqrt(u_n v_n) <= 1/2 (u_n+v_n).
+$
+
+Par comparaison de séries à termes positifs,
 
 $
 sum_(n>=1) sqrt(u_n v_n)
@@ -37,30 +77,62 @@ est convergente.
 
 == Question 3
 
-On suppose que la série
+On suppose que
 
 $
 sum_(n>=1) u_n
 $
 
+est convergente et que $u_n>=0$.
+
+Soit
+
+$
+beta>1/2.
+$
+
+Alors
+
+$
+2beta>1.
+$
+
+D'après le critère de Riemann,
+
+$
+sum_(n>=1) 1/n^(2beta)
+$
+
 est convergente.
 
-Montrer que pour tout
+On applique la question 2 aux suites
 
 $
-beta>1/2,
+u_n
+quad "et" quad
+v_n=1/n^(2beta).
 $
 
-la série
+On obtient la convergence de
+
+$
+sum_(n>=1) sqrt(u_n v_n).
+$
+
+Or
+
+$
+sqrt(u_n v_n)
+=
+sqrt(u_n/n^(2beta))
+=
+sqrt(u_n)/n^beta.
+$
+
+Ainsi,
 
 $
 sum_(n>=1) sqrt(u_n)/n^beta
 $
 
 est convergente.
-
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Correction manquante.* Le sujet officiel est présent dans la fiche TD, mais
-  aucune correction de cet exercice n'apparaît dans les notes manuscrites
-  fournies.
-]
