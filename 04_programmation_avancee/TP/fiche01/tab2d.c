@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 // Exercice 8
-float **mat(int n, int m) {
+float **matrice(int n, int m) {
 
   if (n <= 0 || m <= 0)
     return NULL;
@@ -40,6 +40,7 @@ void remplir_mat(float **mat, int n, int m) {
   }
 }
 
+// Exercice 9
 void afficher_mat(float **mat, int n, int m) {
   if (!mat || n <= 0 || m <= 0)
     return;
@@ -52,4 +53,46 @@ void afficher_mat(float **mat, int n, int m) {
   }
 }
 
-int main() { return 0; }
+// Exercice 10
+float **rotate(int **mat, int n, int m) {
+  if (!mat || n <= 0 || m <= 0)
+    return NULL;
+
+  float **res = matrice(m, n);
+
+  if (!res)
+    return NULL;
+
+  // do the rotating
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+      res[j][n - i - 1] = mat[i][j]; // this is the important line
+      // gotta learn the variations, all the directions of retations
+    }
+  }
+
+  return res;
+}
+
+// Exercice 11
+void liberer_matrice(float **mat, int n) {
+  if (!mat || n <= 0)
+    return;
+
+  for (int i = 0; i < n; i++)
+    free(mat[i]); // free does not dereference the pointer, no error if ptr =
+
+  free(mat);
+}
+
+int **pascal(int n) {
+  if (n <= 0)
+    return NULL;
+
+  float **mat = matrice(n, n);
+
+  if (!mat)
+    return NULL;
+}
+
+int main() {}
