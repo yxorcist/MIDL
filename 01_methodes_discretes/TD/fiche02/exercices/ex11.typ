@@ -8,12 +8,12 @@
 
 = Exercice 11 — Définitions inductives de fonctions
 
-== Question 1 — $somme_m$
+== Question 1 — $"somme"_m$
 
 Pour un entier fixé $m$, on considère la fonction
 
 $
-somme_m: NN -> NN,
+"somme"_m: NN -> NN,
 quad
 i -> i+m.
 $
@@ -23,7 +23,7 @@ Une définition inductive est :
 *Base.*
 
 $
-somme_m(0)=m.
+"somme"_m(0)=m.
 $
 
 *Règle d'induction.*
@@ -31,9 +31,9 @@ $
 Pour tout $n>=1$,
 
 $
-somme_m(n)
+"somme"_m(n)
 =
-somme_m(n-1)+1.
+"somme"_m(n-1)+1.
 $
 
 Ainsi, la fonction construit successivement
