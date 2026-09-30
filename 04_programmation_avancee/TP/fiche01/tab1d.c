@@ -1,5 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
+void swap(int *a, int *b) {
+  int t = *a;
+  *a = *b;
+  *b = t;
+}
 
 // tab[i] == *(tab + i) depends on the type of tab
 
@@ -44,12 +51,13 @@ int *fibo(int size) {
 void tailles() {
   printf("int *     : %zu\n", sizeof(int *));
   printf("int*      : %zu\n", sizeof(int *));
-  printf("void      : %zu\n", sizeof(void));
+  //  printf("void      : %zu\n", sizeof(void)); this shit returns an error
   printf("void *    : %zu\n", sizeof(void *));
   printf("long int  : %zu\n", sizeof(long int));
   printf("long int *: %zu\n", sizeof(long int *));
 }
 
+// Exercice 5
 int est_permutation(int *t, int n) {
 
   if (!t || n <= 0)
@@ -72,9 +80,60 @@ int est_permutation(int *t, int n) {
   return 1;
 }
 
-int main() {
-  void *Z = malloc(10 * 4); // allocation of 40 raw bytes
-  int *X = Z;               // conversion happens implicitly
+// Exercice 6
+int *tab(int n) {
+  if (n <= 0)
+    return NULL;
 
-  AfficheTab((int *)((char *)X + 8), 8); // jumps first 2 ints
+  int *t = malloc(sizeof(int) * n);
+
+  if (!t)
+    return NULL;
+
+  // identity permutation
+  for (int i = 0; i < n; i++)
+    t[i] = i;
+
+  // the regular method
+  /*
+  for (int i = 0; i < n; i++) {
+    int j = rand() % n;
+    swap(&t[i], &t[j]);
+  }
+  */
+
+  // Fischer-Yates
+  for (int i = n - 1; i > 0; i--) {
+    int j = rand() % (i + 1);
+    swap(&t[i], &t[j]);
+  }
+
+  return t;
+}
+
+char *permuter(char *t, int *perm, int n) {
+  if (!t || !perm || n <= 0)
+    return NULL;
+
+  char *res = malloc((n + 1) * sizeof(char));
+
+  if (!res)
+    return NULL;
+
+  for (int i = 0; i < n; i++)
+    res[perm[i]] = t[i];
+
+  res[n] = '\0';
+
+  return res;
+}
+
+int main() {
+  // srand(time(NULL)); // necessary for exo 6
+
+  char *a = "hello";
+  int perm[] = {4, 3, 2, 1, 0};
+
+  char *b = permuter(a, perm, 5);
+  printf("%s\n", b);
 }
