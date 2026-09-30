@@ -148,6 +148,32 @@ $
 
 Ainsi, la suite $(S_N)_(N in NN)$ converge si et seulement si la suite $(a_(N+1))_(N in NN)$ converge.
 
+#remark(title: "Complément — télescopique ne signifie pas convergente")[
+  La structure télescopique décrit uniquement les annulations dans les sommes
+  partielles. Elle ne garantit pas la convergence.
+
+  Puisque
+  $
+    S_N = a_0-a_(N+1),
+  $
+  la série $sum u_n$ converge exactement lorsque $(a_n)$ admet une limite finie.
+
+  Par exemple, si
+  $
+    a_n=n,
+  $
+  alors
+  $
+    u_n=a_n-a_(n+1)=-1
+  $
+  et
+  $
+    S_N=-(N+1)->-infinity.
+  $
+
+  La série est donc télescopique mais divergente.
+]
+
 #example(title: "Exemple — Série télescopique")[
   Prenons, pour $n in NN^*$,
   $
