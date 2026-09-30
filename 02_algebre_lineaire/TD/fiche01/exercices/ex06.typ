@@ -1,6 +1,5 @@
-// source-confidence: medium
-// source-uncertainty: the handwritten photographs are faint; numbering and statements are cross-checked against the official TD01 sheet.
-// source-uncertainty: only correction steps supported by the supplied handwritten pages are retained.
+// source-confidence: high
+// source-note: numbering and statements are cross-checked against the official TD01 sheet; the clearer handwritten correction supplied later confirms questions 1 to 3.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -312,7 +311,23 @@ quad
 w_2=e_1+e_2+e_3=(1,1,1,0).
 $
 
-On conserve la base de $E$
+On sait déjà que
+
+$
+E inter F={0_(K^4)},
+$
+
+donc la somme $E+F$ est directe.
+
+On utilise
+
+$
+E
+=
+"Vect"(u_1,u_2)
+$
+
+avec
 
 $
 u_1=(1,-1,0,1),
@@ -320,21 +335,47 @@ quad
 u_2=(0,-1,1,0),
 $
 
-et le générateur de $F$
+et
 
 $
+F="Vect"(v),
+quad
 v=(1,0,1,0).
 $
 
-La correction vérifie que la famille
+Il suffit alors de vérifier que
 
 $
-(u_1,u_2,v,w_2)
+G_2 inter (E+F)
+=
+{0_(K^4)}.
 $
 
-est libre.
+Soit
 
-Supposons en effet que
+$
+u in G_2 inter (E+F).
+$
+
+Comme $u in G_2$, il existe $delta in K$ tel que
+
+$
+u=delta w_2.
+$
+
+Comme $u in E+F$, il existe $alpha,beta,gamma in K$ tels que
+
+$
+u
+=
+alpha u_1
++
+beta u_2
++
+gamma v.
+$
+
+Ainsi,
 
 $
 alpha u_1
@@ -342,59 +383,73 @@ alpha u_1
 beta u_2
 +
 gamma v
-+
-delta w_2
 =
-0_(K^4).
+delta w_2.
 $
 
-L'égalité coordonnée par coordonnée donne
+En identifiant les coordonnées, on obtient
 
 $
 cases(
-alpha+gamma+delta=0,
--alpha-beta+delta=0,
-beta+gamma+delta=0,
+delta=alpha+gamma,
+delta=-alpha-beta,
+delta=beta+gamma,
 alpha=0.
 )
-$
-
-De la dernière équation,
-
-$
-alpha=0.
-$
-
-Les autres relations donnent alors successivement
-
-$
-delta=beta,
-quad
-gamma=-delta,
-quad
-beta=0.
 $
 
 Donc
 
 $
-alpha=beta=gamma=delta=0.
+alpha=0,
+quad
+delta=gamma,
+quad
+delta=-beta.
 $
 
-La famille est donc libre. Par conséquent, la somme
+La troisième équation donne alors
+
+$
+delta
+=
+beta+gamma
+=
+-delta+delta
+=
+0.
+$
+
+Ainsi,
+
+$
+delta=0,
+quad
+beta=0,
+quad
+gamma=0,
+quad
+alpha=0.
+$
+
+Donc
+
+$
+u=0_(K^4).
+$
+
+Par conséquent,
+
+$
+G_2 inter (E+F)
+=
+{0_(K^4)}.
+$
+
+Comme $E+F$ est déjà une somme directe, on conclut que
 
 $
 E+F+G_2
 $
 
-est directe.
-
-Équivalemment, les notes concluent que
-
-$
-G_2 inter (E+F)
-=
-{0_(K^4)},
-$
-
-tandis que $E+F$ est déjà une somme directe.
+est une somme directe.
