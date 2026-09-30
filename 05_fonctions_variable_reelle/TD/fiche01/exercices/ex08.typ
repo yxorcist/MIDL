@@ -1,5 +1,5 @@
 // source-confidence: high
-// source-uncertainty: the official TD statement is available, but no handwritten correction for this exercise was supplied.
+// source-note: statement cross-checked against the official TD01 sheet; handwritten correction supplied through question 3.d.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -20,16 +20,40 @@ u_(n+1)/u_n
 v_(n+1)/v_n.
 $
 
-Vérifier que la suite
+Comme tous les termes sont strictement positifs,
+
+$
+u_(n+1)/v_(n+1)
+<=
+u_n/v_n.
+$
+
+Donc la suite
 
 $
 (u_n/v_n)_(n>=n_0)
 $
 
-est décroissante et que, pour tout $n>=n_0$,
+est décroissante.
+
+Ainsi, pour tout $n>=n_0$,
 
 $
-0 <= u_n <= (u_(n_0)/v_(n_0)) v_n.
+0
+<
+u_n/v_n
+<=
+u_(n_0)/v_(n_0).
+$
+
+En multipliant par $v_n>0$,
+
+$
+0
+<=
+u_n
+<=
+(u_(n_0)/v_(n_0)) v_n.
 $
 
 On suppose dorénavant que
@@ -42,7 +66,27 @@ $
 
 == Question 2
 
-Montrer que, lorsque $n->+oo$,
+On a
+
+$
+u_(n+1)/u_n
+=
+(1/(n+1)^alpha)/(1/n^alpha)
+=
+(n/(n+1))^alpha
+=
+(1+1/n)^(-alpha).
+$
+
+Comme $1/n -> 0$, le développement limité de $(1+x)^(-alpha)$ en $0$ donne
+
+$
+(1+1/n)^(-alpha)
+=
+1-alpha/n+o(1/n).
+$
+
+Donc
 
 $
 u_(n+1)/u_n
@@ -64,60 +108,180 @@ $
 
 === 3.a
 
-Calculer
-
-$
-v_(n+1)/v_n
-$
-
-puis déterminer $beta in RR$ tel que
+On calcule
 
 $
 v_(n+1)/v_n
 =
-1-beta/n+o(1/n)
+(2n+1)/(2n+2).
 $
 
-quand $n->+oo$.
+Puis
+
+$
+(2n+1)/(2n+2)
+=
+1-1/(2n+2).
+$
+
+Or
+
+$
+1/(2n+2)
+=
+1/(2n) 1/(1+1/n)
+=
+1/(2n)+o(1/n).
+$
+
+Ainsi,
+
+$
+v_(n+1)/v_n
+=
+1-1/(2n)+o(1/n).
+$
+
+On obtient donc
+
+$
+beta=1/2.
+$
 
 === 3.b
 
-En déduire un équivalent de
-
-$
-v_(n+1)/v_n-u_(n+1)/u_n
-$
-
-lorsque
+Supposons
 
 $
 alpha != beta.
 $
 
-=== 3.c
-
-Montrer que, pour tout
-
-$
-alpha>1/2,
-$
-
-il existe un entier $N in NN$ tel que, pour tout $n>=N$,
+D'après les développements précédents,
 
 $
 v_(n+1)/v_n-u_(n+1)/u_n
->=0.
+=
+(1-beta/n+o(1/n))
+-
+(1-alpha/n+o(1/n)).
 $
+
+Donc
+
+$
+v_(n+1)/v_n-u_(n+1)/u_n
+=
+(alpha-beta)/n+o(1/n).
+$
+
+Comme $alpha-beta != 0$,
+
+$
+v_(n+1)/v_n-u_(n+1)/u_n
+~
+(alpha-beta)/n.
+$
+
+=== 3.c
+
+Supposons
+
+$
+alpha>1/2.
+$
+
+Comme
+
+$
+beta=1/2,
+$
+
+on a
+
+$
+alpha-beta>0.
+$
+
+D'après l'équivalent précédent,
+
+$
+(v_(n+1)/v_n-u_(n+1)/u_n)
+/((alpha-beta)/n)
+->
+1.
+$
+
+En prenant par exemple $epsilon=1/2$, il existe $N in NN$ tel que, pour tout
+$n>=N$,
+
+$
+1/2
+<
+(v_(n+1)/v_n-u_(n+1)/u_n)
+/((alpha-beta)/n)
+<
+3/2.
+$
+
+Comme
+
+$
+(alpha-beta)/n>0,
+$
+
+on obtient, pour tout $n>=N$,
+
+$
+v_(n+1)/v_n-u_(n+1)/u_n
+>
+0.
+$
+
+Ainsi,
+
+$
+u_(n+1)/u_n
+<=
+v_(n+1)/v_n
+$
+
+à partir d'un certain rang.
 
 === 3.d
 
-En utilisant la question 1, donner la nature de la série
+Prenons
 
 $
-sum v_n.
+alpha=3/4.
 $
 
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Correction manquante.* L'exercice figure sur la fiche TD officielle, mais
-  aucune correction manuscrite correspondante n'a été fournie.
-]
+On est alors dans la situation de la question 1 à partir d'un certain rang.
+Il existe donc une constante $C>0$ telle que
+
+$
+0<=u_n<=C v_n
+$
+
+pour tout $n$ assez grand.
+
+Or
+
+$
+u_n=1/n^(3/4).
+$
+
+D'après le critère de Riemann,
+
+$
+sum_(n>=1) u_n
+$
+
+diverge.
+
+Par comparaison de séries à termes positifs, la série
+
+$
+sum_(n>=1) v_n
+$
+
+diverge également.
