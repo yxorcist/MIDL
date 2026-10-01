@@ -145,7 +145,7 @@
   (u_(psi(n)))_n
   $
 
-  est encore une suite extraite de $(u_n)_n.
+  est encore une suite extraite de $(u_n)_n$.
 
   En effet, une nouvelle extraction par une application strictement croissante $phi$ donne
 
