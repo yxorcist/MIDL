@@ -1,7 +1,7 @@
 #import "../../style.typ": *
 
 // source-confidence: high
-// source-note: handwritten CM pages dated 30/09/2026 continue directly after the "suites extraites" section of the FVR chapter on real sequences.
+// source-note: handwritten CM pages supplied for 30/09/2026 cover the definition of extracted sequences, adherence values and Bolzano-Weierstrass.
 // source-note: subject classification cross-checked against the existing FVR chapter structure; the material is FVR, not linear algebra.
 
 #align(center)[
@@ -12,7 +12,157 @@
 #line(length: 100%)
 #v(0.7em)
 
-= Suites extraites — propriétés
+= Suites extraites
+
+#definition([
+  Soit $(u_n)_n$ une suite réelle et soit
+
+  $
+  phi:NN->NN
+  $
+
+  une application strictement croissante, c'est-à-dire
+
+  $
+  phi(n+1)>phi(n)
+  $
+
+  pour tout $n in NN$.
+
+  La suite $(x_n)_(n in NN)$ définie par
+
+  $
+  x_n=u_(phi(n))
+  $
+
+  est appelée *suite extraite* ou *sous-suite* de $(u_n)_n$.
+
+  On la note
+
+  $
+  (u_(phi(n)))_(n in NN).
+  $
+])
+
+#remark([
+  On ne prend pas tous les termes de la suite initiale, mais on en conserve une infinité.
+])
+
+#example([
+  Les applications
+
+  $
+  phi(n)=n+1,
+  quad
+  phi_1(n)=2n,
+  quad
+  phi_2(n)=2n+1
+  $
+
+  sont strictement croissantes. Ainsi,
+
+  $
+  (u_(n+1))_n,
+  quad
+  (u_(2n))_n,
+  quad
+  (u_(2n+1))_n
+  $
+
+  sont des suites extraites de $(u_n)_n$.
+
+  De même,
+
+  $
+  phi(n)=n^2
+  $
+
+  définit la suite extraite
+
+  $
+  (u_(n^2))_n.
+  $
+
+  En revanche,
+
+  $
+  phi(n)=n^2-n
+  $
+
+  n'est pas strictement croissante sur $NN$ puisque
+
+  $
+  phi(0)=phi(1)=0.
+  $
+
+  La suite
+
+  $
+  (u_(n^2-n))_n
+  $
+
+  n'est donc pas une suite extraite au sens de la définition précédente.
+])
+
+#remark([
+  Si
+
+  $
+  phi:NN->NN
+  $
+
+  est strictement croissante, alors
+
+  $
+  phi(n)>=n
+  $
+
+  pour tout $n in NN$.
+
+  En effet, $phi(0)>=0$. Si $phi(n)>=n$, alors, comme $phi$ est strictement croissante et à valeurs entières,
+
+  $
+  phi(n+1)>phi(n)>=n,
+  $
+
+  donc
+
+  $
+  phi(n+1)>=n+1.
+  $
+])
+
+#remark([
+  Si
+
+  $
+  psi:NN->NN
+  $
+
+  est strictement croissante, toute suite extraite d'une suite extraite
+
+  $
+  (u_(psi(n)))_n
+  $
+
+  est encore une suite extraite de $(u_n)_n.
+
+  En effet, une nouvelle extraction par une application strictement croissante $phi$ donne
+
+  $
+  u_(psi(phi(n))),
+  $
+
+  et l'application
+
+  $
+  psi compose phi
+  $
+
+  est strictement croissante.
+])
+
+== Propriétés
 
 #proposition([
   Soit $(u_n)_n$ une suite réelle convergeant vers $ell in RR$.
