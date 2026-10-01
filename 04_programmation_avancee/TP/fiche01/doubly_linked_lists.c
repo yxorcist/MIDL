@@ -83,3 +83,51 @@ int back(List *list, int *value) {
   *value = list->tail->value;
   return 1;
 }
+
+int front(List *list, int *value) {
+  if (!list)
+    return 0;
+
+  *value = list->head->value;
+  return 1;
+}
+
+// goal if iterator
+// ABSTRACTION
+
+typedef struct {
+  Node *current;
+} Iterator;
+
+Iterator iterator_begin(List *list) {
+  Iterator it;
+  it.current = NULL;
+
+  if (!list)
+    return it;
+
+  it.current = list->head;
+  return it;
+}
+
+int iterator_valid(Iterator *it) {
+  if (!it)
+    return 0;
+
+  return it->current != NULL;
+}
+
+int iterator_value(Iterator *it, int *value) {
+  if (!it || !it->current || !value)
+    return 0;
+
+  *value = it->current->value;
+  return 1;
+}
+
+void iterator_next(Iterator *it) {
+  if (!it || !it->current)
+    return;
+
+  it->current = it->current->next;
+}
