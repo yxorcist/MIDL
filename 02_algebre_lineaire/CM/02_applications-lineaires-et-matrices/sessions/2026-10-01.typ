@@ -99,7 +99,7 @@ Il faut montrer :
 
 2. que $phi$ est la projection sur $"Im"(phi)$ parallèlement à $"Ker"(phi)$.
 
-#### Intersection
+==== Intersection
 
 Soit
 
@@ -147,7 +147,7 @@ $
 {0_E}.
 $
 
-#### Somme
+==== Somme
 
 Les notes donnent deux méthodes.
 
@@ -219,7 +219,7 @@ $
 E="Im"(phi) "⊕" "Ker"(phi).
 $
 
-#### Identification de la projection
+==== Identification de la projection
 
 Soit
 
