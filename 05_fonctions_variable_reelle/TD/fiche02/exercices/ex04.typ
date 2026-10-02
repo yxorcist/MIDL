@@ -151,13 +151,13 @@ $
 Donc
 
 $
-boxed("sup"(A)=max(A)=4)
+"sup"(A)=max(A)=4
 $
 
 et
 
 $
-boxed("inf"(A)=0)
+"inf"(A)=0
 $
 
 avec aucun minimum.
