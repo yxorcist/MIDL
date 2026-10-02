@@ -93,7 +93,7 @@ $
 Comme aucun élément de $B$ n'est égal à $1$,
 
 $
-1 notin B.
+1 in.not B.
 $
 
 Ainsi, $B$ n'admet pas de maximum.
@@ -139,7 +139,7 @@ $
 Comme tous les éléments de $C$ sont strictement positifs,
 
 $
-0 notin C.
+0 in.not C.
 $
 
 Ainsi, $C$ n'admet pas de minimum.
