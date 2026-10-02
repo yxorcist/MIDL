@@ -113,7 +113,7 @@ $
 Or
 
 $
-0 notin A.
+0 in.not A.
 $
 
 Donc $A$ n'admet pas de minimum.
