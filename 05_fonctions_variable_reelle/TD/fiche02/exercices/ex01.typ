@@ -126,7 +126,7 @@ $
 On en déduit
 
 $
-boxed(inf(E)=-1).
+(inf(E)=-1).
 $
 
 D'après la question 1,
@@ -213,5 +213,5 @@ $
 Par conséquent,
 
 $
-boxed(max(E)=sup(E)=2).
+(max(E)=sup(E)=2).
 $
