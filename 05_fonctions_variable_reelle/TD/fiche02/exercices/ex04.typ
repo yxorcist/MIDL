@@ -30,7 +30,7 @@ frac(x_(n+1),x_n)
 =
 frac((n+1)^3 2^(-(n+1)),n^3 2^(-n))
 =
-frac12 (1+frac1n)^3.
+frac(1,2) (1+frac(1,n))^3.
 $
 
 On compare ce quotient à $1$ :
@@ -42,19 +42,19 @@ $
 si et seulement si
 
 $
-(1+frac1n)^3 <= 2.
+(1+frac(1,n))^3 <= 2.
 $
 
 Comme tous les termes sont positifs,
 
 $
-1+frac1n <= 2^(1/3).
+1+frac(1,n) <= 2^(1/3).
 $
 
 Donc
 
 $
-frac1n <= 2^(1/3)-1,
+frac(1,n) <= 2^(1/3)-1,
 $
 
 soit
@@ -151,13 +151,13 @@ $
 Donc
 
 $
-"sup"(A)=max(A)=4
+sup(A)=max(A)=4
 $
 
 et
 
 $
-"inf"(A)=0
+inf(A)=0
 $
 
 avec aucun minimum.
