@@ -140,7 +140,7 @@ pour tout $n in NN^*$.
 Ainsi,
 
 $
--1 notin E.
+-1 in.not E.
 $
 
 Donc $E$ n'admet pas de minimum.
