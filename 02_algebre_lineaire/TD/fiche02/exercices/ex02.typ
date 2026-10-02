@@ -61,5 +61,5 @@ Le couple $(a,b)$ est donc déterminé de manière unique.
 Ainsi, il existe une unique application linéaire vérifiant les conditions de l'énoncé, et elle est donnée par
 
 $
-boxed(phi(x,y)=x+3y).
+(phi(x,y)=x+3y).
 $
