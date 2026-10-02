@@ -23,6 +23,44 @@ u_n
 (-1)^n + 2/n.
 $
 
+== Rappel utilisé — recherche d'une borne supérieure
+
+Soit $X subset.eq RR$ un ensemble non vide et majoré, et soit
+
+$
+(x_n)_(n in NN) in X^NN.
+$
+
+Si
+
+$
+x_n -> ell,
+$
+
+alors
+
+$
+sup(X)>=ell.
+$
+
+En particulier, si $M$ est un majorant de $X$ et s'il existe une suite
+
+$
+(x_n)_(n in NN) in X^NN
+$
+
+telle que
+
+$
+x_n -> M,
+$
+
+alors
+
+$
+sup(X)=M.
+$
+
 == Question 1
 
 Pour tout
