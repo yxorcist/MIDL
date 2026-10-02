@@ -354,7 +354,7 @@ $
 Par conséquent,
 
 $
-boxed(phi compose psi = 0_(RR^2)).
+(phi compose psi = 0_(RR^2)).
 $
 
 == Question 4
@@ -417,7 +417,7 @@ $
 Par unicité de l'application linéaire associée à une matrice,
 
 $
-boxed(phi compose f=id_(RR^2)).
+(phi compose f=id_(RR^2)).
 $
 
 === b) Deux inclusions générales
@@ -467,7 +467,7 @@ $
 Par conséquent,
 
 $
-boxed("Ker"(h) subset.eq "Ker"(k compose h)).
+("Ker"(h) subset.eq "Ker"(k compose h)).
 $
 
 ==== ii) $"Im"(k compose h) subset.eq "Im"(k)$
@@ -505,7 +505,7 @@ $
 Ainsi,
 
 $
-boxed("Im"(k compose h) subset.eq "Im"(k)).
+("Im"(k compose h) subset.eq "Im"(k)).
 $
 
 === c) Montrer que $g compose phi != id_(RR^3)$
@@ -579,7 +579,7 @@ ce qui est impossible.
 Donc
 
 $
-boxed(g compose phi != id_(RR^3)).
+(g compose phi != id_(RR^3)).
 $
 
 ==== Deuxième méthode — par les noyaux
@@ -627,5 +627,5 @@ $
 Donc, là encore,
 
 $
-boxed(g compose phi != id_(RR^3)).
+(g compose phi != id_(RR^3)).
 $
