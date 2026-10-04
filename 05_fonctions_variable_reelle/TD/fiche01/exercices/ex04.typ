@@ -1,5 +1,5 @@
-// source-confidence: medium
-// source-uncertainty: the official statement of question 5 is available, but its handwritten correction is missing; questions 1-4 were clear.
+// source-confidence: high
+// source-note: questions 1 to 5 were cross-checked against the official TD01 statement and the supplied handwritten correction.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -162,17 +162,84 @@ diverge.
 
 == Question 5
 
-On admet qu'il existe $A>0$ et $alpha in RR$ tels que
+On admet qu'il existe
+
+$
+A>0
+$
+
+et
+
+$
+alpha in RR
+$
+
+tels que
 
 $
 u_n ~ A/n^alpha.
 $
 
-En utilisant les questions précédentes, il faut déterminer l'intervalle le plus
-petit possible auquel appartient $alpha$.
+Alors
 
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Correction manquante.* L'énoncé est présent sur la fiche TD officielle,
-  mais la correction de cette question n'apparaît pas dans les notes
-  manuscrites fournies.
-]
+$
+u_n^2 ~ A^2/n^(2alpha)
+$
+
+et
+
+$
+u_n^3 ~ A^3/n^(3alpha).
+$
+
+D'après la question 3,
+
+$
+sum u_n^3
+$
+
+converge.
+
+Par comparaison avec une série de Riemann, on doit donc avoir
+
+$
+3alpha>1.
+$
+
+Ainsi,
+
+$
+alpha>1/3.
+$
+
+D'après la question 4,
+
+$
+sum u_n^2
+$
+
+diverge.
+
+Par comparaison avec une série de Riemann, cela impose
+
+$
+2alpha<=1.
+$
+
+Donc
+
+$
+alpha<=1/2.
+$
+
+Finalement,
+
+$
+1/3<alpha<=1/2.
+$
+
+L'intervalle le plus petit possible est donc
+
+$
+]1/3,1/2].
+$
