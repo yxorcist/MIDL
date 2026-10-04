@@ -1,5 +1,6 @@
-// source-confidence: medium
-// source-uncertainty: the handwritten correction of question 8 stops before the final comparison; the completion is explicitly marked as supplemental. The official sheet contains a question 13, but no handwritten correction for it was supplied.
+// source-confidence: high
+// source-note: questions 8 to 12 were rechecked against the newly supplied handwritten correction and the official TD01 statement.
+// source-uncertainty: the official sheet contains a question 13, but no handwritten correction for it was supplied.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -344,7 +345,7 @@ converge.
 
 == 8.
 
-Les notes considèrent
+On considère
 
 $
 u_n
@@ -367,7 +368,19 @@ n^(3/5)
 ].
 $
 
-Pour le premier facteur, le développement limité écrit dans les notes donne
+On utilise le développement limité
+
+$
+(1+x)^alpha
+=
+1+alpha x
++
+(alpha(alpha-1))/2 x^2
++
+o(x^2).
+$
+
+Pour le premier terme,
 
 $
 (1+2/n^2+1/n^3)^(1/5)
@@ -376,28 +389,73 @@ $
 +
 1/5(2/n^2+1/n^3)
 +
-o(1/n^3).
+o(1/n^2).
 $
 
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Complément pour conclure.* La photographie s'arrête ici pour cette
-  question. En poursuivant exactement le même développement limité,
+Donc
 
-  $
-  (1+2/n)^(3/5)
-  =
-  1+6/(5n)-12/(25n^2)+o(1/n^2).
-  $
+$
+(1+2/n^2+1/n^3)^(1/5)
+=
+1+2/(5n^2)+o(1/n^2).
+$
 
-  Ainsi,
+Pour le second terme,
 
-  $
-  u_n ~ -6/(5 n^(2/5)).
-  $
+$
+(1+2/n)^(3/5)
+=
+1
++
+6/(5n)
+-
+12/(25n^2)
++
+o(1/n^2).
+$
 
-  La série a donc le même comportement qu'une série de Riemann d'exposant
-  $2/5<1$ et diverge.
-]
+Ainsi,
+
+$
+u_n
+=
+n^(3/5)
+[
+-6/(5n)
++
+o(1/n)
+].
+$
+
+Par conséquent,
+
+$
+u_n
+~
+-6/(5n^(2/5)).
+$
+
+La série de terme général
+
+$
+6/(5n^(2/5))
+$
+
+diverge par le critère de Riemann.
+
+Comme $u_n$ est de signe constant à partir d'un certain rang et équivalent à
+
+$
+-6/(5n^(2/5)),
+$
+
+la série
+
+$
+sum u_n
+$
+
+diverge.
 
 == 9.
 
