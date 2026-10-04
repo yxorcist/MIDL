@@ -1,6 +1,6 @@
 // source-confidence: high
 // source-note: questions 8 to 12 were rechecked against the newly supplied handwritten correction and the official TD01 statement.
-// source-uncertainty: the official sheet contains a question 13, but no handwritten correction for it was supplied.
+// source-note: question 13 appears on the official TD sheet but was not treated in class, so no correction is expected in these notes.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -732,6 +732,6 @@ Il faut déterminer la nature de la série de terme général $u_n$ selon les
 valeurs de $alpha$.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Correction manquante.* La question 13 figure sur la fiche TD officielle,
-  mais aucune correction manuscrite correspondante n'a été fournie.
+  *Non traité en classe.* La question 13 figure sur la fiche TD officielle,
+  mais elle n'a pas été faite en séance.
 ]
