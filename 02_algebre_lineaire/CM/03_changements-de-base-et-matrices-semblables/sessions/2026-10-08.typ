@@ -188,7 +188,7 @@ $
 On dit que $A'$ est *semblable* à $A$ s'il existe
 
 $
-P in GL_p(K)
+P in "GL"_p(K)
 $
 
 tel que
