@@ -23,7 +23,7 @@ alors toute suite extraite de $(u_n)_n$ converge également vers $ell$.
 Ainsi, l'unique valeur d'adhérence est $ell$ :
 
 $
-VDA((u_n)_n)={ell}.
+"VDA"((u_n)_n)={ell}.
 $
 
 == Question 2
@@ -52,7 +52,7 @@ Chacune de ces valeurs apparaît une infinité de fois. On peut donc, pour chacu
 Ainsi,
 
 $
-VDA((u_n)_n)
+"VDA"((u_n)_n)
 =
 {
 -1,
@@ -154,7 +154,7 @@ Donc aucune valeur $a!=0$ n'est valeur d'adhérence.
 Par conséquent,
 
 $
-VDA((u_n)_n)={0}.
+"VDA"((u_n)_n)={0}.
 $
 
 Enfin, la sous-suite $(u_(2n))_n=(4n)_n$ diverge vers $+infinity$.
