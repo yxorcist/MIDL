@@ -206,7 +206,7 @@ La relation « être semblable à » est une relation d'équivalence.
 Elle est :
 
 - réflexive, en prenant $P=I_p$ ;
-- symétrique : si $A'=P^(-1)AP$, alors $A=P A' P^(-1)$ ;
+- symétrique : si $A'=P^(-1) A P$, alors $A=P A' P^(-1)$ ;
 - transitive, par composition des matrices de changement de base.
 
 Deux matrices semblables sont rang-équivalentes.
@@ -262,7 +262,7 @@ $
 =
 (A')^k A'
 =
-(P^(-1)A^kP)(P^(-1)AP)
+(P^(-1) A^k P)(P^(-1) A P)
 =
 P^(-1)A^(k+1)P.
 $
@@ -331,7 +331,7 @@ Les deux premiers points découlent du lemme précédent.
 Pour l'inversibilité,
 
 $
-A'=P^(-1)AP
+A'=P^(-1) A P
 $
 
 est inversible exactement lorsque $A$ l'est, et
@@ -347,15 +347,15 @@ L'égalité des rangs vient du fait que deux matrices semblables sont rang-équi
 Pour la trace, on utilise
 
 $
-"tr"(BC)="tr"(CB).
+"tr"(B C)="tr"(C B).
 $
 
 Ainsi,
 
 $
-"tr"(P^(-1)AP)
+"tr"(P^(-1) A P)
 =
-"tr"(APP^(-1))
+"tr"(A P P^(-1))
 =
 "tr"(A).
 $
@@ -363,7 +363,7 @@ $
 Enfin,
 
 $
-det(P^(-1)AP)
+det(P^(-1) A P)
 =
 det(P^(-1)) det(A) det(P)
 =
