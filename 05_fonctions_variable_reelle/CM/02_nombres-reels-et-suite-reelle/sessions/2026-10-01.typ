@@ -365,3 +365,22 @@
 
   converge.
 ])
+
+
+== Formulation équivalente des valeurs d'adhérence
+
+La fin des notes reformule la caractérisation précédente sous la forme suivante.
+
+Un réel $ell$ est une valeur d'adhérence de la suite $(u_n)_n$ si et seulement si
+
+$
+forall epsilon>0,
+quad
+forall N in NN,
+quad
+exists K>N,
+quad
+abs(u_K-ell)<epsilon.
+$
+
+Autrement dit, quel que soit le voisinage de $ell$ et quel que soit le rang $N$, on trouve un terme d'indice strictement supérieur à $N$ dans ce voisinage.
