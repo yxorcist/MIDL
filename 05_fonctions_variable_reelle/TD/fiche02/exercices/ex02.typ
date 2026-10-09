@@ -1,7 +1,6 @@
 // source-confidence: high
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet.
-// source-note: the pushed handwritten transcription clearly contains corrections for B and C only.
-// source-uncertainty: no correction of A was present in the pushed material.
+// source-note: statement and numbering cross-checked against the official FVR TD02 sheet; the supplied handwritten pages now contain corrections for A, B and C.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -31,9 +30,65 @@ $
 
 == Ensemble $A$
 
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Correction non fournie.* Aucun développement concernant $A$ n'apparaît dans le contenu poussé.
-]
+Pour tout $(m,n) in (NN^*)^2$,
+
+$
+frac(n m,n+1)
+>=
+frac(n,n+1)
+=
+1-frac(1,n+1).
+$
+
+Comme $n>=1$,
+
+$
+frac(n,n+1)>=frac(1,2).
+$
+
+Ainsi,
+
+$
+frac(1,2)
+$
+
+est un minorant de $A$.
+
+De plus,
+
+$
+frac(1 times 1,1+1)
+=
+frac(1,2)
+in A.
+$
+
+Donc
+
+$
+min(A)=inf(A)=frac(1,2).
+$
+
+Pour montrer que $A$ n'est pas majoré, on fixe $n=1$.
+
+Pour tout $m in NN^*$,
+
+$
+frac(m times 1,1+1)
+=
+frac(m,2)
+in A.
+$
+
+Or
+
+$
+frac(m,2)->+infinity.
+$
+
+Ainsi, $A$ n'est pas majoré.
+
+Par conséquent, $A$ n'admet ni borne supérieure réelle ni maximum.
 
 == Ensemble $B$
 
