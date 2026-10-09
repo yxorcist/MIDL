@@ -356,9 +356,9 @@ $
 et soient
 
 $
-P in GL_n(K),
+P in "GL"_n(K),
 quad
-Q in GL_p(K).
+Q in "GL"_p(K).
 $
 
 Alors
@@ -402,9 +402,9 @@ $
 On dit que $A$ et $B$ sont *rang-équivalentes* s'il existe
 
 $
-P in GL_n(K)
+P in "GL"_n(K)
 quad "et" quad
-Q in GL_p(K)
+Q in "GL"_p(K)
 $
 
 telles que
