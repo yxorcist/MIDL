@@ -55,6 +55,47 @@ rclone config   # create a Google Drive remote named gdrive
 midl doctor
 ```
 
+## Install the `midl` shell command
+
+The `midl` command is provided by `00_admin/shell/midl.zsh`. From the repository root, install it into Zsh with:
+
+```bash
+cd ~/MIDL
+make shell-install
+source ~/.zshrc
+```
+
+`make shell-install` adds this line to `~/.zshrc` if it is not already present:
+
+```zsh
+source '/absolute/path/to/MIDL/00_admin/shell/midl.zsh'
+```
+
+The shell file defines `midl` as a wrapper around:
+
+```bash
+python3 "$MIDL_ROOT/00_admin/midl.py"
+```
+
+and sets `MIDL_ROOT` automatically from the location of the shell file.
+
+To install it manually instead of using `make shell-install`:
+
+```bash
+echo "source '$HOME/MIDL/00_admin/shell/midl.zsh'" >> ~/.zshrc
+source ~/.zshrc
+```
+
+Verify the command is available:
+
+```bash
+type midl
+midl help
+midl doctor
+```
+
+If the repository is not located at `~/MIDL`, use its real path in the `source` line.
+
 ## Daily use
 
 CM:
