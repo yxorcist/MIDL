@@ -39,3 +39,11 @@ det(A)=-2.
 $
 
 La matrice $A$ est donc inversible.
+
+Son inverse est
+$
+mat(
+  0, 1;
+  1/2, 1/2;
+).
+$
