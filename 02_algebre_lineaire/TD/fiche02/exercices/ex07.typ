@@ -7,7 +7,17 @@
 
 = Exercice 7
 
-On considère l'endomorphisme $phi$ de $RR^4$ dont la matrice dans la base canonique est la matrice $M$ de l'énoncé.
+On considère l'endomorphisme $phi$ de $RR^4$ dont la matrice dans la base canonique est
+
+$
+M=
+mat(
+  0, 1, 1, 0;
+  -1, -1, 0, 1;
+  1, 1, 0, -1;
+  -1, 0, 1, 1;
+).
+$
 
 == Question 1
 
