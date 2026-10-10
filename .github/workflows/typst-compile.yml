@@ -93,7 +93,7 @@ jobs:
           PATH="/tmp/midl-bin:$PATH" python3 00_admin/midl.py inbox             "/tmp/midl-inbox-test/TD 1.pdf"             /tmp/midl-inbox-test/photos             "/tmp/midl-inbox-test/lecture[1].jpg"
 
           test "$(wc -l < /tmp/midl-rclone.log)" -eq 1
-          grep -Fq "copy /tmp/midl-inbox-test gdrive:MIDL/INBOX --include /TD 1.pdf --include /photos/** --include /lecture\[1].jpg --create-empty-src-dirs --progress" /tmp/midl-rclone.log
+          grep -Fq "move /tmp/midl-inbox-test gdrive:MIDL/INBOX --include /TD 1.pdf --include /photos/** --include /lecture\[1].jpg --create-empty-src-dirs --progress" /tmp/midl-rclone.log
 
           printf 'other' > /tmp/midl-inbox-other/other.jpg
           PATH="/tmp/midl-bin:$PATH" python3 00_admin/midl.py inbox             "/tmp/midl-inbox-test/TD 1.pdf"             /tmp/midl-inbox-other/other.jpg
