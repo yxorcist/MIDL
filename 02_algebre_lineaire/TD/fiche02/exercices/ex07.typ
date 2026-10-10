@@ -26,3 +26,11 @@ $
 == Question 2
 
 La matrice au carré est nulle. On en déduit que l'image est incluse dans le noyau.
+
+== Question 3
+
+Le rang vaut 2, donc l'image est de dimension 2.
+
+Par le théorème du rang, le noyau est également de dimension 2.
+
+Comme l'image est incluse dans le noyau et que ces deux sous-espaces ont la même dimension, ils sont égaux.
