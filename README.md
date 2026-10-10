@@ -181,7 +181,10 @@ Send any local file or directory straight to Google Drive `MIDL/INBOX/`:
 ```bash
 midl inbox ~/Downloads/TD1.pdf
 midl inbox ~/Downloads/photos_cours/
+midl inbox *                    # batch all selected entries from the current directory
 ```
+
+When several arguments come from the same local directory, `midl inbox` sends them with one batched `rclone` process instead of reconnecting once per item. Arguments from different parent directories are grouped into the minimum number of transfers while preserving the same INBOX destination layout.
 
 - `make`: build changed PDFs into local `dist/`.
 - `make drive`: build changed PDFs, then make Google Drive `MIDL/dist/` exactly match local `dist/`.
