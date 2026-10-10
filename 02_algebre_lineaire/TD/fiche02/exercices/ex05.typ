@@ -47,3 +47,16 @@ mat(
   1/2, 1/2;
 ).
 $
+
+On note $psi$ l'application obtenue par multiplication à gauche par cette matrice inverse.
+
+Pour toute matrice $M$,
+$
+(phi compose psi)(M)=M
+$
+et
+$
+(psi compose phi)(M)=M.
+$
+
+Ainsi, $phi$ est bijective et $psi$ est sa réciproque.
