@@ -76,3 +76,48 @@ lambda phi_4(P)+mu phi_4(Q).
 $
 
 Donc $phi_4$ est $RR$-linéaire.
+
+== Question 2 — Isomorphisme $phi_1$
+
+La matrice de $phi_1$ dans les bases canoniques est
+
+$
+A=
+mat(
+  1, 2;
+  -2, -3;
+).
+$
+
+Son déterminant vaut $1$, donc $A$ est inversible et $phi_1$ est un isomorphisme.
+
+Pour déterminer la réciproque, on pose
+
+$
+(X,Y)=phi_1(x,y).
+$
+
+On résout
+
+$
+cases(
+X=x+2y,
+Y=-2x-3y.
+)
+$
+
+et on obtient
+
+$
+x=-3X-2Y,
+quad
+y=2X+Y.
+$
+
+Ainsi,
+
+$
+phi_1^(-1)(X,Y)
+=
+(-3X-2Y,2X+Y).
+$
