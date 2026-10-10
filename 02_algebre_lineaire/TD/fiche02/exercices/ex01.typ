@@ -121,3 +121,57 @@ phi_1^(-1)(X,Y)
 =
 (-3X-2Y,2X+Y).
 $
+
+== Question 3 — Linéarité sur $CC$ et sur $RR$
+
+### $psi_1$
+
+La première application est la conjugaison complexe.
+
+Elle n'est pas $CC$-linéaire : la correction utilise le scalaire $i$ pour montrer que la compatibilité avec la multiplication scalaire complexe échoue.
+
+En revanche, la conjugaison respecte l'addition et la multiplication par un scalaire réel.
+
+Donc $psi_1$ est $RR$-linéaire mais pas $CC$-linéaire.
+
+### $psi_2$
+
+On a
+$
+psi_2(z)="Re"(z).
+$
+
+Elle n'est pas $CC$-linéaire. Par exemple,
+
+$
+psi_2(3i)=0
+$
+
+alors que
+
+$
+i psi_2(3)=3i.
+$
+
+Pour un scalaire réel $lambda$,
+
+$
+"Re"(lambda z+z')
+=
+lambda "Re"(z)+"Re"(z').
+$
+
+Donc $psi_2$ est $RR$-linéaire.
+
+### $psi_3$
+
+On considère
+$
+psi_3(z_1,z_2)
+=
+i z_1-(3+2i)z_2.
+$
+
+Cette expression est une combinaison linéaire complexe des coordonnées.
+
+Ainsi $psi_3$ est $CC$-linéaire, donc aussi $RR$-linéaire.
