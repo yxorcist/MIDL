@@ -8,7 +8,7 @@
 
 == Question 1 — Linéarité
 
-### $phi_1$
+=== $phi_1$
 
 Pour
 $
@@ -22,7 +22,7 @@ $
 
 Donc $phi_1$ est $RR$-linéaire.
 
-### $phi_2$
+=== $phi_2$
 
 Pour
 $
@@ -38,7 +38,7 @@ $
 
 Donc $phi_2$ est $RR$-linéaire.
 
-### $phi_3$
+=== $phi_3$
 
 On considère
 $
@@ -61,7 +61,7 @@ $
 
 Donc $phi_3$ n'est pas linéaire.
 
-### $phi_4$
+=== $phi_4$
 
 Pour
 $
@@ -124,7 +124,7 @@ $
 
 == Question 3 — Linéarité sur $CC$ et sur $RR$
 
-### $psi_1$
+=== $psi_1$
 
 La première application est la conjugaison complexe.
 
@@ -134,7 +134,7 @@ En revanche, la conjugaison respecte l'addition et la multiplication par un scal
 
 Donc $psi_1$ est $RR$-linéaire mais pas $CC$-linéaire.
 
-### $psi_2$
+=== $psi_2$
 
 On a
 $
@@ -163,7 +163,7 @@ $
 
 Donc $psi_2$ est $RR$-linéaire.
 
-### $psi_3$
+=== $psi_3$
 
 On considère
 $
