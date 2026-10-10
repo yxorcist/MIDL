@@ -434,6 +434,11 @@ def cmd_open(args: list[str]) -> int:
     return subprocess.call(editor.split() + [path.name], cwd=path.parent)
 
 
+def rclone_filter_literal(name: str) -> str:
+    """Escape one path component for use in an rclone glob filter."""
+    return re.sub(r"([*?\\\\[{}])", r"\\\\\\1", name)
+
+
 def cmd_inbox(args: list[str]) -> int:
     if not args:
         die("usage: midl inbox <file-or-folder> [...]")
@@ -441,32 +446,47 @@ def cmd_inbox(args: list[str]) -> int:
     if not have("rclone"):
         die("rclone is not installed")
 
+    sources: list[Path] = []
+    seen: set[Path] = set()
+
     for raw in args:
         source = Path(raw).expanduser().resolve()
 
         if not source.exists():
             die(f"not found: {raw}")
 
-        if source.is_file():
-            destination = f"{INBOX_REMOTE.rstrip('/')}/{source.name}"
-            print(f"[inbox] {source} -> {destination}")
-            run(["rclone", "copyto", str(source), destination, "--progress"])
-            continue
+        if not source.is_file() and not source.is_dir():
+            die(f"unsupported path type: {raw}")
 
-        if source.is_dir():
-            destination = f"{INBOX_REMOTE.rstrip('/')}/{source.name}"
-            print(f"[inbox] {source}/ -> {destination}/")
-            run([
-                "rclone",
-                "copy",
-                str(source),
-                destination,
-                "--create-empty-src-dirs",
-                "--progress",
-            ])
-            continue
+        if source not in seen:
+            sources.append(source)
+            seen.add(source)
 
-        die(f"unsupported path type: {raw}")
+    # rclone can transfer multiple selected children of one local directory in
+    # a single process. Grouping by parent preserves the old destination
+    # semantics (each argument lands directly under INBOX by basename) while
+    # making the common `midl inbox *` case one batched rclone invocation.
+    groups: dict[Path, list[Path]] = {}
+    for source in sources:
+        groups.setdefault(source.parent, []).append(source)
+
+    destination = INBOX_REMOTE.rstrip("/")
+
+    for parent, batch in groups.items():
+        print(
+            f"[inbox] batch {len(batch)} item(s): "
+            f"{parent}/ -> {destination}/"
+        )
+
+        cmd = ["rclone", "copy", str(parent), destination]
+
+        for source in batch:
+            name = rclone_filter_literal(source.name)
+            pattern = f"/{name}/**" if source.is_dir() else f"/{name}"
+            cmd.extend(["--include", pattern])
+
+        cmd.extend(["--create-empty-src-dirs", "--progress"])
+        run(cmd)
 
     return 0
 
