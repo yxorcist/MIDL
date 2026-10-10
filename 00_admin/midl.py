@@ -437,7 +437,7 @@ def cmd_open(args: list[str]) -> int:
 def rclone_filter_literal(name: str) -> str:
     """Escape one path component for use in an rclone glob filter."""
     reserved = {"*", "?", "\\", "[", "{", "}"}
-    return "".join(f"\\\\{char}" if char in reserved else char for char in name)
+    return "".join(f"\\{char}" if char in reserved else char for char in name)
 
 
 def cmd_inbox(args: list[str]) -> int:
