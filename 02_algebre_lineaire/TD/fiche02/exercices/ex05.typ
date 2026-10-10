@@ -16,3 +16,17 @@ phi(lambda M+N)=lambda phi(M)+phi(N).
 $
 
 Donc $phi$ est linéaire.
+
+== Question 2
+
+Dans la base canonique $(E_11,E_12,E_21,E_22)$, on lit les images des quatre vecteurs de base et on obtient
+$
+"Mat"(phi)
+=
+mat(
+  -1, 0, 2, 0;
+  0, -1, 0, 2;
+  1, 0, 0, 0;
+  0, 1, 0, 0;
+).
+$
