@@ -464,9 +464,12 @@ def cmd_inbox(args: list[str]) -> int:
             seen.add(source)
 
     # rclone can transfer multiple selected children of one local directory in
-    # a single process. Grouping by parent preserves the old destination
-    # semantics (each argument lands directly under INBOX by basename) while
-    # making the common `midl inbox *` case one batched rclone invocation.
+    # a single process. Grouping by parent preserves the INBOX layout while
+    # making the common `midl inbox *` case one batched invocation.
+    #
+    # Inbox is an ingest command: after rclone confirms a successful move,
+    # local files are gone. Selected directories may retain empty directory
+    # shells, so prune only empty directories afterwards.
     groups: dict[Path, list[Path]] = {}
     for source in sources:
         groups.setdefault(source.parent, []).append(source)
@@ -475,11 +478,11 @@ def cmd_inbox(args: list[str]) -> int:
 
     for parent, batch in groups.items():
         print(
-            f"[inbox] batch {len(batch)} item(s): "
+            f"[inbox] move {len(batch)} item(s): "
             f"{parent}/ -> {destination}/"
         )
 
-        cmd = ["rclone", "copy", str(parent), destination]
+        cmd = ["rclone", "move", str(parent), destination]
 
         for source in batch:
             name = rclone_filter_literal(source.name)
@@ -488,6 +491,26 @@ def cmd_inbox(args: list[str]) -> int:
 
         cmd.extend(["--create-empty-src-dirs", "--progress"])
         run(cmd)
+
+        for source in batch:
+            if not source.is_dir():
+                continue
+
+            directories = sorted(
+                (path for path in source.rglob("*") if path.is_dir()),
+                key=lambda path: len(path.parts),
+                reverse=True,
+            )
+            for directory in directories:
+                try:
+                    directory.rmdir()
+                except OSError:
+                    pass
+
+            try:
+                source.rmdir()
+            except OSError:
+                pass
 
     return 0
 
