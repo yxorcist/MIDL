@@ -31,7 +31,7 @@ Donc $phi$ est linéaire.
 On a
 $
 phi(P)=0
-iff
+<=>
 P(X+1)=P(X).
 $
 
