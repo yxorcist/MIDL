@@ -186,6 +186,8 @@ midl inbox *                    # batch all selected entries from the current di
 
 When several arguments come from the same local directory, `midl inbox` sends them with one batched `rclone` process instead of reconnecting once per item. Arguments from different parent directories are grouped into the minimum number of transfers while preserving the same INBOX destination layout.
 
+`midl inbox` is destructive by design: after an item is successfully transferred to Google Drive, the local source is removed. If a selected directory becomes empty after upload, its empty directory tree is cleaned up as well.
+
 - `make`: build changed PDFs into local `dist/`.
 - `make drive`: build changed PDFs, then make Google Drive `MIDL/dist/` exactly match local `dist/`.
 
