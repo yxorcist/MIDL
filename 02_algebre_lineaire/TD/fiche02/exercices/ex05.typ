@@ -30,3 +30,12 @@ mat(
   0, 1, 0, 0;
 ).
 $
+
+== Question 3
+
+On a
+$
+det(A)=-2.
+$
+
+La matrice $A$ est donc inversible.
