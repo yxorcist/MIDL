@@ -6,7 +6,21 @@
 
 = Exercice 5
 
-On considère une application définie par multiplication à gauche par la matrice de l'énoncé.
+On considère
+
+$
+A=
+mat(
+  -1, 2;
+  1, 0;
+)
+$
+
+et l'application $phi$ définie par
+
+$
+phi(M)=A M.
+$
 
 == Question 1
 
