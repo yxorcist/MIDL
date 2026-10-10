@@ -22,3 +22,7 @@ Ainsi
 $
 "rg"(phi)=2.
 $
+
+== Question 2
+
+La matrice au carré est nulle. On en déduit que l'image est incluse dans le noyau.
