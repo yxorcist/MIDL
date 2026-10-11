@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="690" viewBox="0 0 1000 690">
+  <style>.ent{fill:#fff;stroke:#7b3140;stroke-width:2}.assoc{fill:#f7f7f7;stroke:#2d4d83;stroke-width:2}.assoc2{fill:#eff8ef;stroke:#4b7d4b;stroke-width:2}.link{stroke:#333;stroke-width:2;fill:none}.uncertain{stroke:#999;stroke-width:1.6;stroke-dasharray:6 5;fill:none}.title{font-family:sans-serif;font-size:18px;font-weight:bold}.txt{font-family:sans-serif;font-size:15px}.id{font-family:sans-serif;font-size:16px;font-weight:bold}.small{font-family:sans-serif;font-size:13px;fill:#555}</style>
+  <text x="500" y="28" text-anchor="middle" class="title">MCD issu des DF réduites</text>
+
+  <g><rect x="70" y="120" width="130" height="110" class="ent"/><text x="135" y="145" text-anchor="middle" class="title">Entité A</text><line x1="70" y1="155" x2="200" y2="155" stroke="#7b3140"/><text x="135" y="180" text-anchor="middle" class="id">A</text><text x="135" y="205" text-anchor="middle" class="txt">C, D</text></g>
+  <g><rect x="300" y="390" width="130" height="110" class="ent"/><text x="365" y="415" text-anchor="middle" class="title">Entité B</text><line x1="300" y1="425" x2="430" y2="425" stroke="#7b3140"/><text x="365" y="450" text-anchor="middle" class="id">B</text><text x="365" y="475" text-anchor="middle" class="txt">G, H</text></g>
+  <g><rect x="400" y="70" width="130" height="110" class="ent"/><text x="465" y="95" text-anchor="middle" class="title">Entité E</text><line x1="400" y1="105" x2="530" y2="105" stroke="#7b3140"/><text x="465" y="130" text-anchor="middle" class="id">E</text><text x="465" y="155" text-anchor="middle" class="txt">O, P</text></g>
+  <g><rect x="790" y="70" width="130" height="95" class="ent"/><text x="855" y="95" text-anchor="middle" class="title">Entité N</text><line x1="790" y1="105" x2="920" y2="105" stroke="#7b3140"/><text x="855" y="135" text-anchor="middle" class="id">N</text></g>
+  <g><rect x="550" y="360" width="120" height="95" class="ent"/><text x="610" y="385" text-anchor="middle" class="title">Entité I</text><line x1="550" y1="395" x2="670" y2="395" stroke="#7b3140"/><text x="610" y="425" text-anchor="middle" class="id">I</text></g>
+  <g><rect x="815" y="360" width="120" height="95" class="ent"/><text x="875" y="385" text-anchor="middle" class="title">Entité J</text><line x1="815" y1="395" x2="935" y2="395" stroke="#7b3140"/><text x="875" y="425" text-anchor="middle" class="id">J</text></g>
+  <g><rect x="70" y="490" width="120" height="95" class="ent"/><text x="130" y="515" text-anchor="middle" class="title">Entité F</text><line x1="70" y1="525" x2="190" y2="525" stroke="#7b3140"/><text x="130" y="555" text-anchor="middle" class="id">F</text></g>
+
+  <g><rect x="210" y="290" width="120" height="58" rx="28" class="assoc"/><text x="270" y="325" text-anchor="middle" class="txt">asso 1.1</text></g><path d="M150 230 Q185 270 220 298" class="link"/><path d="M300 345 Q330 370 350 390" class="link"/>
+  <g><rect x="255" y="125" width="120" height="58" rx="28" class="assoc"/><text x="315" y="160" text-anchor="middle" class="txt">asso 1.4</text></g><path d="M200 165 L255 154" class="link"/><path d="M375 154 L400 135" class="link"/>
+  <g><rect x="470" y="300" width="120" height="58" rx="28" class="assoc"/><text x="530" y="335" text-anchor="middle" class="txt">asso 3.3</text></g><path d="M430 420 Q465 370 490 345" class="link"/><path d="M575 350 Q590 360 600 360" class="link"/>
+  <g><rect x="615" y="90" width="125" height="58" rx="28" class="assoc"/><text x="678" y="125" text-anchor="middle" class="txt">asso 5.1</text></g><path d="M530 120 L615 120" class="link"/><path d="M740 120 L790 120" class="link"/><text x="565" y="105" class="small">0,1</text><text x="752" y="105" class="small">0,n</text>
+
+  <g><rect x="680" y="230" width="125" height="58" rx="28" class="assoc"/><text x="742" y="265" text-anchor="middle" class="txt">asso 4.2</text></g><path d="M620 360 Q650 310 690 280" class="link"/><path d="M860 360 Q830 315 795 280" class="link"/><path d="M760 230 Q800 185 835 165" class="link"/>
+
+  <g><rect x="650" y="525" width="185" height="85" rx="32" class="assoc2"/><text x="742" y="553" text-anchor="middle" class="txt">asso 4.1</text><text x="742" y="585" text-anchor="middle" class="id">M</text></g><path d="M610 455 Q630 500 675 530" class="link"/><path d="M875 455 Q850 500 810 530" class="link"/><text x="620" y="500" class="small">0,n</text><text x="850" y="500" class="small">0,n</text>
+
+  <text x="70" y="635" class="small">F est conservée comme entité isolée : aucune liaison finale n'est justifiée par les DF réduites fournies.</text>
+</svg>
