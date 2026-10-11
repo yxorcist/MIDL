@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#222"/></marker>
+    <style>.actor{fill:#f7f7f7;stroke:#222;stroke-width:2}.internal{fill:#fff7c7;stroke:#222;stroke-width:2}.flow{fill:none;stroke:#222;stroke-width:2;marker-end:url(#arrow)}.label{font-family:sans-serif;font-size:15px;fill:#111}.title{font-family:sans-serif;font-size:18px;font-weight:bold}.num{font-family:sans-serif;font-size:14px;font-weight:bold;fill:#555}</style>
+  </defs>
+  <text x="450" y="28" text-anchor="middle" class="title">DCC — processus d'admission</text>
+  <rect x="35" y="170" width="150" height="62" rx="6" class="actor"/><text x="110" y="206" text-anchor="middle" class="title">Candidat</text>
+  <rect x="355" y="150" width="175" height="102" rx="6" class="internal"/><text x="442" y="188" text-anchor="middle" class="title">Scolarité</text><text x="442" y="216" text-anchor="middle" class="label">acteur interne</text>
+  <rect x="695" y="150" width="170" height="102" rx="6" class="internal"/><text x="780" y="184" text-anchor="middle" class="title">UFR</text><text x="780" y="210" text-anchor="middle" class="label">responsable</text><text x="780" y="232" text-anchor="middle" class="label">de mention</text>
+  <path d="M185 184 C245 140,300 140,355 176" class="flow"/><text x="270" y="128" text-anchor="middle" class="label">dossier de candidature</text><text x="208" y="163" class="num">1</text>
+  <path d="M530 174 C585 132,645 132,695 174" class="flow"/><text x="612" y="118" text-anchor="middle" class="label">dossier à examiner</text><text x="550" y="153" class="num">2</text>
+  <path d="M695 202 C640 224,590 224,530 202" class="flow"/><text x="612" y="246" text-anchor="middle" class="label">dossier complété</text><text x="668" y="215" class="num">3</text>
+  <path d="M695 232 C630 300,585 300,530 232" class="flow"/><text x="612" y="322" text-anchor="middle" class="label">résultat d'admission</text><text x="665" y="265" class="num">4</text>
+  <path d="M355 226 C300 310,240 310,185 226" class="flow"/><text x="270" y="340" text-anchor="middle" class="label">lettre de confirmation</text><text x="330" y="268" class="num">5</text>
+</svg>
