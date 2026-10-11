@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="540" viewBox="0 0 980 540">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#222"/></marker>
+    <style>.actor{fill:#f7f7f7;stroke:#222;stroke-width:2}.system{fill:#fff3a8;stroke:#222;stroke-width:2}.proc{fill:#fff;stroke:#555;stroke-width:1.6}.flow{fill:none;stroke:#222;stroke-width:2;marker-end:url(#arrow)}.renew{fill:none;stroke:#555;stroke-width:1.8;stroke-dasharray:7 5;marker-end:url(#arrow)}.title{font-family:sans-serif;font-size:18px;font-weight:bold}.txt{font-family:sans-serif;font-size:14px}.num{font-family:sans-serif;font-size:13px;font-weight:bold;fill:#555}</style>
+  </defs>
+  <text x="490" y="28" text-anchor="middle" class="title">DCC — Société ADHER</text>
+  <rect x="30" y="210" width="145" height="64" rx="6" class="actor"/><text x="102" y="249" text-anchor="middle" class="title">Client</text>
+  <rect x="805" y="200" width="150" height="82" rx="6" class="actor"/><text x="880" y="235" text-anchor="middle" class="title">Adhérent</text><text x="880" y="258" text-anchor="middle" class="txt">fournisseur</text>
+  <rect x="360" y="120" width="260" height="300" rx="10" class="system"/><text x="490" y="150" text-anchor="middle" class="title">ADHER</text>
+  <rect x="410" y="180" width="160" height="70" rx="6" class="proc"/><text x="490" y="210" text-anchor="middle" class="txt">gestion</text><text x="490" y="232" text-anchor="middle" class="txt">adhésions / contrats</text>
+  <rect x="410" y="300" width="160" height="70" rx="6" class="proc"/><text x="490" y="330" text-anchor="middle" class="txt">gestion</text><text x="490" y="352" text-anchor="middle" class="txt">des appels</text>
+  <path d="M175 228 C250 190,315 190,410 320" class="flow"/><text x="270" y="180" text-anchor="middle" class="txt">demande de prestation</text><text x="205" y="214" class="num">1</text>
+  <path d="M410 352 C300 430,225 420,175 260" class="flow"/><text x="275" y="446" text-anchor="middle" class="txt">notification au client</text><text x="380" y="398" class="num">5</text>
+  <path d="M570 315 C660 280,730 268,805 242" class="flow"/><text x="690" y="275" text-anchor="middle" class="txt">demande de disponibilité</text><text x="590" y="303" class="num">2</text>
+  <path d="M805 262 C720 330,655 345,570 340" class="flow"/><text x="690" y="365" text-anchor="middle" class="txt">réponse disponibilité</text><text x="770" y="294" class="num">3</text>
+  <path d="M570 365 C665 420,740 390,805 278" class="flow"/><text x="690" y="430" text-anchor="middle" class="txt">transmission de l'affaire</text><text x="592" y="382" class="num">4</text>
+  <path d="M570 190 C670 112,750 112,805 208" class="renew"/><text x="690" y="95" text-anchor="middle" class="txt">proposition / renouvellement</text>
+  <path d="M805 220 C725 160,655 165,570 220" class="renew"/><text x="690" y="180" text-anchor="middle" class="txt">adhésion / contrat</text>
+</svg>
