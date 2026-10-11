@@ -40,19 +40,19 @@ La correction relève :
 
 Pour l'entité *Produit*, l'identifiant relevé est :
 
-$ refPdt $
+$ "refPdt" $
 
 == 6. Identifiant d'une association
 
 Pour l'association *visite*, la correction donne comme identifiant l'ensemble formé de :
 
-$ (numCli, refRepr) $
+$ ("numCli", "refRepr") $
 
 == 7. Identifiant de l'association approvisionne
 
 La correction donne :
 
-$ (numUsine_1, numUsine_2, refPdt) $
+$ ("numUsine"_1, "numUsine"_2, "refPdt") $
 
 Les deux occurrences de *numUsine* correspondent aux deux rôles joués par l'entité *Usine* dans l'association réflexive.
 
