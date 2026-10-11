@@ -93,9 +93,9 @@ qui est un sous-espace vectoriel.
 Réciproquement, supposons que $F union G$ soit un sous-espace vectoriel et que
 
 $
-F in.not subset.eq G
+F subset.eq.not G
 quad "et" quad
-G in.not subset.eq F.
+G subset.eq.not F.
 $
 
 Il existe alors
