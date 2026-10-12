@@ -14,7 +14,7 @@ $
 R=mat(8,5,3;0,2,1;0,0,3).
 $
 
-On résout le système $Ax=b$ à partir de la factorisation $A=R^T R$, avec
+On résout le système $A x=b$ à partir de la factorisation $A=R^T R$, avec
 
 $
 b=mat(1;1;1).
@@ -65,7 +65,7 @@ $
 y=mat(1/8;3/16;7/48).
 $
 
-== Remontée : $Rx=y$
+== Remontée : $R x=y$
 
 $
 mat(8,5,3;0,2,1;0,0,3)
@@ -101,4 +101,4 @@ $
 
 La photographie écrit $y_3=11/48$ et en déduit $x_3=11/144$, $x_2=1/18$, $x_1=-55/1152$. L'erreur survient au calcul de $y_3$ ; les valeurs ci-dessus sont les valeurs corrigées pour le système effectivement écrit.
 
-La mention manuscrite $RR^T=A$ semble également inverser les facteurs : le schéma de résolution $R^T y=b$, puis $Rx=y$, correspond à $A=R^T R$.
+La mention manuscrite $R R^T=A$ semble également inverser les facteurs : le schéma de résolution $R^T y=b$, puis $R x=y$, correspond à $A=R^T R$.
