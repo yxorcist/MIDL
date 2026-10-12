@@ -115,7 +115,7 @@ La méthode de Jacobi appliquée au *système transformé* converge donc.
 
 == 3. Jacobi sur le système transformé
 
-On note $D=diag(4,3,8)$.
+On note $D="diag"(4,3,8)$.
 
 $
 D u^(k+1) = b-(A'-D)u^k.
