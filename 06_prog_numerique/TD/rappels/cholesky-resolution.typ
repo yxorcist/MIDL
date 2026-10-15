@@ -1,24 +1,88 @@
-// source-confidence: medium
-// source-note: fin d'une correction de Cholesky, sur la page qui précède le TD2 ; l'énoncé complet n'est pas visible.
+// source-confidence: high
+// source-note: factorisation complète visible sur les photos 10823–10824 ; résolution poursuivie dans la série antérieure.
 // source-uncertainty: les valeurs manuscrites y_3=11/48, x_3=11/144, x_2=1/18 et x_1=-55/1152 comportent une erreur initiale de calcul ; résultats vérifiés ci-dessous.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
-= Cholesky — Fin d'un exemple de résolution
+= Cholesky — Factorisation et résolution complète
 
-La photographie commence à la fin du calcul de la factorisation. La matrice triangulaire supérieure obtenue est
+== Données
+
+Les photos donnent la matrice
+
+$
+A=mat(
+  64,40,24;
+  40,29,17;
+  24,17,19
+)
+$
+
+et le second membre
+
+$
+b=mat(1;1;1).
+$
+
+La matrice $A$ est symétrique. On cherche une matrice triangulaire supérieure $R$ à diagonale positive telle que
+
+$
+A=R^T R.
+$
+
+== Construction de la factorisation
+
+Posons
+
+$
+R=mat(
+  r_(1,1),r_(1,2),r_(1,3);
+  0,r_(2,2),r_(2,3);
+  0,0,r_(3,3)
+).
+$
+
+L'identification des coefficients dans $R^T R=A$ donne :
+
+$
+r_(1,1)=sqrt(64)=8,
+$
+
+$
+r_(1,2)=40/8=5,
+quad r_(1,3)=24/8=3,
+$
+
+$
+r_(2,2)=sqrt(29-5^2)=2,
+$
+
+$
+r_(2,3)=(17-5 dot 3)/2=1,
+$
+
+$
+r_(3,3)=sqrt(19-3^2-1^2)=3.
+$
+
+Ainsi,
 
 $
 R=mat(8,5,3;0,2,1;0,0,3).
 $
 
-On résout le système $A x=b$ à partir de la factorisation $A=R^T R$, avec
+On vérifie directement que
 
 $
-b=mat(1;1;1).
+R^T R=
+mat(64,40,24;40,29,17;24,17,19)=A.
 $
+
+L'existence de cette factorisation avec une diagonale strictement positive fournit aussi une vérification que $A$ est définie positive.
+
+On résout maintenant $A x=b$ en deux systèmes triangulaires : d'abord $R^T y=b$, puis $R x=y$.
 
 == Descente : $R^T y=b$
 
