@@ -339,10 +339,16 @@ $
 r_(i,i) = sqrt(s).
 $
 
-Pour $j = i+1, dots, n$, les notes donnent ensuite une formule de mise à jour des coefficients $r_(i,j)$.
+Pour $j=i+1, dots, n$, les photos complémentaires de TD permettent de confirmer la formule de mise à jour :
+
+$
+r_(i,j)
+=
+(a_(i,j)-sum_(k=1)^(i-1) r_(k,i) r_(k,j))/r_(i,i).
+$
 
 #remark[
-Le placement de $r_(i,i)$ dans cette dernière formule est ambigu dans la source brute. La formule complète n'est pas réécrite afin de ne pas introduire une correction non vérifiée.
+Cette expression, dont le dénominateur était ambigu dans les notes initiales, est confirmée par les nouvelles pages manuscrites (exemple de la factorisation de la matrice à coefficients $64$, $40$, $24$, etc.).
 ]
 
 // source-confidence: medium
