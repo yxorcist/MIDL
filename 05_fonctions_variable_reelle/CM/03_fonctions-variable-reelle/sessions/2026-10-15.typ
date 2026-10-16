@@ -2,14 +2,14 @@
 
 // source-confidence: high
 // source-note: photographies 10916–10921 : suite du CM, chapitre 3, fonctions continues.
-// source-note: aucune date de séance n'est visible ; la session est classée après 2026-10-07 sans date inventée.
+// source-note: datation conventionnelle au 15/10/2026, milieu de la semaine du 12 au 16 octobre, sur confirmation utilisateur que les notes de FVR de la semaine sont récupérées ; elles peuvent couvrir plusieurs séances et les photographies ne prouvent pas le jour exact.
 // source-note: l'ordre des définitions, preuves, exemples, remarques et théorèmes suit celui des pages.
 // source-note: la première définition de limite infinie figure déjà dans 2026-10-07.typ et n'est pas dupliquée.
 // source-uncertainty: quelques notations de domaine et quelques symboles sont peu lisibles, mais les raisonnements principaux sont lisibles.
 // source-verification: précisions signalées lorsque les hypothèses du théorème de composition doivent être explicitées.
 
 #align(center)[
-  #text(size: 18pt, weight: "bold")[CM — suite non datée]
+  #text(size: 18pt, weight: "bold")[CM — semaine du 12 au 16/10/2026 (date de classement : 15/10)]
   #v(0.2em)
   #text(size: 11pt)[Caractérisations séquentielles, continuité et théorèmes fondamentaux]
 ]

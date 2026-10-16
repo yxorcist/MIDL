@@ -24,4 +24,4 @@
 #v(1em)
 
 #include "sessions/2026-10-07.typ"
-#include "sessions/sans-date-suite.typ"
+#include "sessions/2026-10-15.typ"

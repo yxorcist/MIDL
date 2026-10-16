@@ -2,14 +2,14 @@
 
 // source-confidence: high
 // source-note: photographies manuscrites 10911, 10912 et 10913 fournies le 16/10/2026.
-// source-note: aucun jour de séance n'est visible ; fichier nommé « sans-date » pour ne pas inventer de date.
+// source-note: datation conventionnelle au 15/10/2026, milieu de la semaine du 12 au 16 octobre, sur confirmation utilisateur que les notes d'AL de la semaine sont récupérées ; la date exacte des photographies n'est pas prouvée.
 // source-note: le haut de la photo 10911 reprend la fin du chapitre 3 (matrices semblables, rang, trace, déterminant, projections/symétries), déjà présent dans 2026-10-08.typ ; il n'est pas dupliqué.
 // source-note: définitions, exemples et démonstration de l'indépendance des vecteurs propres reproduits dans l'ordre des feuilles.
 // source-uncertainty: certains numéros de sous-sections sont peu lisibles ; le découpage 4.1/4.2 est confirmé, la succession mathématique est conservée.
 // source-uncertainty: l'exemple de rotation est transcrit sur le corps réel, conformément à la conclusion manuscrite « pas diagonalisable ».
 
 #align(center)[
-  #text(size: 18pt, weight: "bold")[CM — séance non datée]
+  #text(size: 18pt, weight: "bold")[CM — semaine du 12 au 16/10/2026 (date de classement : 15/10)]
   #v(0.2em)
   #text(size: 11pt)[Chapitre 4 — Éléments propres d'un endomorphisme, diagonalisabilité]
 ]
