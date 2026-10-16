@@ -139,7 +139,7 @@ $
 = Prolongement par continuité
 
 #definition(title: "Prolongement par continuité")[
-  Soit $f:D_f->RR$ et soit $a$ un point adhérent à $D_f$ tel que $a notin D_f$.
+  Soit $f:D_f->RR$ et soit $a$ un point adhérent à $D_f$ tel que $a in.not D_f$.
 
   Si
 
