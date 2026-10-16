@@ -1,6 +1,6 @@
-// source-confidence: medium
+// source-confidence: high for determinant results, medium for source-matrix transcription
 // source-note: numbering and matrices cross-checked against official TD02.
-// source-note: handwritten correction supplied only for M1, M2 and M3; M4 to M6 are left explicitly uncorrected.
+// source-note: M1–M3 from the earlier batch; M4–M6 determinant results from handwritten photograph 10901. Original coefficients of M4–M6 are not reproduced here.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -43,8 +43,56 @@ $
 
 Ainsi, $M_3$ n'est pas inversible.
 
-== Matrices M4, M5 et M6
+== Matrice M4
+
+Le calcul manuscrit donne
+
+$
+det(M_4)=0.
+$
+
+Donc $M_4$ *n'est pas inversible*.
+
+== Matrice M5
+
+Le déterminant obtenu dans la correction est
+
+$
+det(M_5)=(a+3)^2(a+1).
+$
+
+Ainsi,
+
+$
+det(M_5) != 0
+quad <=> quad
+a != -3 " et " a != -1.
+$
+
+Par conséquent, $M_5$ est inversible exactement si $a$ n'appartient pas à l'ensemble $ {-3,-1} $.
+
+== Matrice M6
+
+Le développement du déterminant est noté dans la correction sous la forme
+
+$
+det(M_6)=-x^3+7x^2-4x-12.
+$
+
+On factorise :
+
+$
+det(M_6)=-(x+1)(x-2)(x-6).
+$
+
+Par conséquent, pour $x in RR$,
+
+$
+M_6 " est inversible "
+quad <=> quad
+x in.not {-1,2,6}.
+$
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Correction non fournie dans ce lot.* Les matrices $M_4$, $M_5$ et $M_6$ figurent sur la fiche officielle, mais aucune correction manuscrite correspondante n'apparaît dans les images transmises.
+  *Source et vérification.* Ces trois résultats proviennent de la photographie 10901 (suite de l'exercice 8). Les factorisations ont été vérifiées algébriquement. Les matrices originales ne sont pas entièrement retranscrites, faute de source nette ; conserver la fiche officielle pour les coefficients.
 ]
