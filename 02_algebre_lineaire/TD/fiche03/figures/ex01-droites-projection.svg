@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="465" viewBox="0 0 680 465">
+<title>TD03 exercice 1 : D1, D2, projection et symétrie</title>
+<rect x="0" y="0" width="680" height="465" fill="white"/>
+<g stroke="#e5e7eb" stroke-width="1"><path d="M55 45 V420 M130 45 V420 M205 45 V420 M280 45 V420 M355 45 V420 M430 45 V420 M505 45 V420 M580 45 V420"/><path d="M35 45 H610 M35 120 H610 M35 195 H610 M35 270 H610 M35 345 H610 M35 420 H610"/></g>
+<g stroke="#303946" stroke-width="2"><path d="M30 270 H620 M205 430 V26"/></g>
+<g fill="#303946" font-family="sans-serif" font-size="17"><text x="620" y="264">x</text><text x="216" y="27">y</text><text x="192" y="291">0</text><text x="278" y="294">1</text><text x="351" y="294">2</text><text x="185" y="200">1</text></g>
+<path d="M55 420 L560 -85" stroke="#277da1" stroke-width="3" fill="none"/>
+<path d="M30 270 H620" stroke="#b56576" stroke-width="3" fill="none" opacity=".65"/>
+<path d="M355 195 H280" stroke="#6b7280" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M280 195 H205" stroke="#6b7280" stroke-width="2" stroke-dasharray="5 5"/>
+<circle cx="355" cy="195" r="5.5" fill="#343a40"/>
+<circle cx="280" cy="195" r="5.5" fill="#277da1"/>
+<circle cx="205" cy="195" r="5.5" fill="#b56576"/>
+<g font-family="sans-serif" font-size="17">
+<text x="366" y="188" fill="#343a40">u = (2,1)</text>
+<text x="285" y="175" fill="#277da1">p(u) = (1,1)</text>
+<text x="77" y="172" fill="#b56576">s(u) = (0,1)</text>
+<text x="404" y="78" fill="#277da1">D₁ : y = x</text>
+<text x="465" y="247" fill="#b56576">D₂ : y = 0</text>
+</g>
+</svg>
