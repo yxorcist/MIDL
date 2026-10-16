@@ -11,4 +11,4 @@
 #line(length: 100%)
 #v(1em)
 
-#include "sessions/sans-date.typ"
+#include "sessions/2026-10-15.typ"
