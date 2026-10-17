@@ -48,9 +48,9 @@ On peut donc appliquer aux couples $(X_i,Y_i)$ la méthode de *régression liné
 Après avoir estimé les coefficients $A$ et $B$, on retrouve les paramètres de la loi puissance :
 
 $
-box(a=e^B),
+a=e^B,
 quad
-box(b=A).
+b=A.
 $
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
