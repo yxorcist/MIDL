@@ -152,7 +152,7 @@ $
 Donc la droite d'ajustement correspondante est
 
 $
-box(y approx 0.41x+1.01).
+y approx 0.41x+1.01.
 $
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
