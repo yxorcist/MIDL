@@ -36,7 +36,7 @@ S(a,b)
 =sum_(i=1)^n y_i^2
 +a^2 sum_(i=1)^n x_i^2
 +n b^2
-+2ab sum_(i=1)^n x_i
++2a b sum_(i=1)^n x_i
 -2a sum_(i=1)^n x_i y_i
 -2b sum_(i=1)^n y_i.
 $
