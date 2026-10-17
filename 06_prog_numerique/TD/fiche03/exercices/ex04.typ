@@ -87,7 +87,7 @@ $
 $
 bar(x^2)=1/n sum_(i=1)^n x_i^2,
 quad
-bar(xy)=1/n sum_(i=1)^n x_i y_i.
+bar(x y)=1/n sum_(i=1)^n x_i y_i.
 $
 
 En supposant que toutes les abscisses ne sont pas égales, de sorte que
@@ -99,7 +99,7 @@ $
 on obtient
 
 $
-a=(bar(xy)-bar(x)bar(y))/(bar(x^2)-bar(x)^2),
+a=(bar(x y)-bar(x)bar(y))/(bar(x^2)-bar(x)^2),
 $
 
 et
@@ -111,7 +111,7 @@ $
 La seconde formule est aussi égale à
 
 $
-b=(bar(y)bar(x^2)-bar(x)bar(xy))/(bar(x^2)-bar(x)^2).
+b=(bar(y)bar(x^2)-bar(x)bar(x y))/(bar(x^2)-bar(x)^2).
 $
 
 == Application numérique visible dans la copie
@@ -125,7 +125,7 @@ bar(y)=2.72,
 quad
 bar(x^2)=22.2,
 quad
-bar(xy)=13.28.
+bar(x y)=13.28.
 $
 
 D'où
