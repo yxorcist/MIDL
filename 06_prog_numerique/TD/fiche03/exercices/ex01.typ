@@ -101,7 +101,7 @@ $
 Ainsi
 
 $
-box(P(z)=(z-1)(z^2-1/4)).
+P(z)=(z-1)(z^2-1/4).
 $
 
 Ce polynôme est de degré $3$, donc de degré inférieur à $4$ comme requis pour cinq points.
@@ -176,7 +176,7 @@ $
 Finalement,
 
 $
-box(P(z)=(z^2-a^2)^2).
+P(z)=(z^2-a^2)^2.
 $
 
 == Contrôle des points
