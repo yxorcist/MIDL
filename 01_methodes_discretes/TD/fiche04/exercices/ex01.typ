@@ -179,7 +179,7 @@ union
 \}.
 $
 
-*Contrôle.* $(2,3)$ appartient à la composée parce que $2R2$ et $3R2$. En revanche, $(2,4)$ n'en fait pas partie : aucun $y$ n'est successeur commun de $2$ et de $4$.
+*Contrôle.* $(2,3)$ appartient à la composée parce que $2 R 2$ et $3 R 2$. En revanche, $(2,4)$ n'en fait pas partie : aucun $y$ n'est successeur commun de $2$ et de $4$.
 
 *Graphe.* Toutes les boucles et, entre chaque couple de sommets consécutifs parmi $2,3,4,5,6$, une flèche dans les *deux sens*. Le sommet $8$ reste uniquement relié à lui-même.
 
