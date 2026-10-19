@@ -324,3 +324,136 @@ Par conséquent :
 - son coefficient dominant est $(-1)^n$ ;
 - le coefficient de $X^(n-1)$ est $(-1)^(n-1)"tr"(A)$ ;
 - son terme constant est $det(A)$.
+
+
+= 4.3.2 — Multiplicités et dimension des sous-espaces propres
+
+== Définition 4.3.12 — Multiplicité algébrique
+
+Soit $lambda$ une valeur propre de $phi$.
+
+La *multiplicité algébrique* $m_a(lambda)$ est la multiplicité de $lambda$ comme racine du polynôme caractéristique $C_phi$.
+
+C'est le plus grand entier $m>=1$ tel que $(X-lambda)^m$ divise $C_phi(X)$.
+
+Autrement dit,
+
+$
+C_phi(X)=(X-lambda)^m Q(X),
+quad Q(lambda)!=0.
+$
+
+== Définition 4.3.13 — Multiplicité géométrique
+
+La *multiplicité géométrique* d'une valeur propre $lambda$ est la dimension de son sous-espace propre :
+
+$
+m_g(lambda)=dim(E_lambda(phi))
+$
+
+$
+=dim("Ker"(phi-lambda "Id"_E)).
+$
+
+Par le théorème du rang, si $n=dim(E)$,
+
+$
+m_g(lambda)=n-"rg"(phi-lambda "Id"_E).
+$
+
+En particulier, si $0$ est valeur propre de $phi$,
+
+$
+m_g(0)=dim("Ker"(phi))=n-"rg"(phi).
+$
+
+== Théorème 4.3.14 — Inégalité entre multiplicités
+
+Pour toute valeur propre $lambda$ de $phi$,
+
+$
+1<=m_g(lambda)<=m_a(lambda).
+$
+
+=== Démonstration
+
+Le sous-espace propre contient par définition un vecteur propre non nul, donc $m_g(lambda)>=1$.
+
+Posons $d=dim(E_lambda(phi))$ et prenons une base $(e_1,dots,e_d)$ de $E_lambda(phi)$. Complétons-la en une base $(e_1,dots,e_n)$ de $E$.
+
+Pour les $d$ premiers vecteurs,
+
+$
+phi(e_i)=lambda e_i.
+$
+
+Ainsi, dans cette base, la matrice de $phi$ s'écrit par blocs
+
+$
+M=mat(lambda I_d, U;0,N),
+$
+
+où $N$ est une matrice carrée de taille $n-d$.
+
+Alors
+
+$
+M-X I_n=mat((lambda-X)I_d,U;0,N-X I_(n-d)).
+$
+
+Cette matrice est triangulaire par blocs, donc
+
+$
+C_phi(X)=det(M-X I_n)
+$
+
+$
+=(lambda-X)^d det(N-X I_(n-d)).
+$
+
+Ainsi $(X-lambda)^d$ divise $C_phi(X)$, ce qui donne
+
+$
+m_a(lambda)>=d=m_g(lambda).
+$
+
+== Corollaire 4.3.15 — Valeur propre simple
+
+Si $m_a(lambda)=1$, alors le théorème précédent implique
+
+$
+1<=m_g(lambda)<=1,
+$
+
+d'où
+
+$
+m_g(lambda)=1.
+$
+
+Le sous-espace propre $E_lambda(phi)$ est donc une droite vectorielle.
+
+== Critère pratique déduit des théorèmes
+
+Supposons que $C_phi$ soit *scindé sur $K$*, c'est-à-dire produit de facteurs linéaires. Soient $lambda_1,dots,lambda_r$ ses valeurs propres distinctes.
+
+Alors
+
+$
+phi " diagonalisable"
+quad <=> quad
+m_g(lambda_i)=m_a(lambda_i)
+quad " pour tout " i.
+$
+
+En effet, lorsque le polynôme est scindé, la somme des multiplicités algébriques vaut $n$. Le théorème 4.2.17 exige que la somme des dimensions des sous-espaces propres soit également $n$.
+
+Cette formulation est une conséquence des résultats manuscrits 4.2.17 et 4.3.14.
+
+== Procédure d'examen
+
+1. Calculer $C_A(X)=det(A-X I_n)$.
+2. Le factoriser sur le corps de base pour obtenir les valeurs propres et leurs multiplicités algébriques.
+3. Pour chaque valeur propre $lambda$, résoudre $(A-lambda I_n)v=0$.
+4. Trouver une base de $E_lambda$ et sa dimension, qui vaut $m_g(lambda)$.
+5. Vérifier si la somme de ces dimensions vaut $n$ ; si oui, l'endomorphisme est diagonalisable.
