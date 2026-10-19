@@ -88,7 +88,7 @@ $
 4 -> 2, quad 5 -> 3, quad 6 -> 4.
 $
 
-Par exemple, $6R5$ et $5R4$ entraînent $(6,4) in R^2$.
+Par exemple, $6 R 5$ et $5 R 4$ entraînent $(6,4) in R^2$.
 
 == 3. Fermeture transitive
 
