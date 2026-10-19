@@ -299,11 +299,11 @@ Ses valeurs propres sont donc ses coefficients diagonaux, avec répétition éve
 Pour $A=mat(a,b;c,d)$,
 
 $
-C_A(X)=(a-X)(d-X)-bc
+C_A(X)=(a-X)(d-X)-b c
 $
 
 $
-=X^2-(a+d)X+(ad-bc)
+=X^2-(a+d)X+(a d-b c)
 $
 
 $
