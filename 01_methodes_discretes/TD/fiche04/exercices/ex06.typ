@@ -11,10 +11,10 @@
 
 == Rappels
 
-Dans un ensemble ordonné $(E,preceq)$, pour une partie $S subset.eq E$ :
+Dans un ensemble ordonné $(E,prec.eq)$, pour une partie $S subset.eq E$ :
 
-- $m$ est un *minorant* si $m preceq s$ pour tout $s in S$ ;
-- $M$ est un *majorant* si $s preceq M$ pour tout $s in S$ ;
+- $m$ est un *minorant* si $m prec.eq s$ pour tout $s in S$ ;
+- $M$ est un *majorant* si $s prec.eq M$ pour tout $s in S$ ;
 - $inf S$ est le plus grand des minorants lorsqu'il existe ;
 - $sup S$ est le plus petit des majorants lorsqu'il existe.
 
@@ -59,12 +59,12 @@ Soit $S$ une famille de sous-ensembles de $E$.
 - On a
 
   $
-  inf S=bigcap_(X in S) X,
+  inf S=inter.big_(X in S) X,
   quad
-  sup S=bigcup_(X in S) X.
+  sup S=union.big_(X in S) X.
   $
 
-Pour la famille vide, on adopte les conventions usuelles $bigcap emptyset=E$ et $bigcup emptyset=emptyset$.
+Pour la famille vide, on adopte les conventions usuelles $inter.big emptyset=E$ et $union.big emptyset=emptyset$.
 
 === Extrémités de tout $cal(P)(E)$
 
