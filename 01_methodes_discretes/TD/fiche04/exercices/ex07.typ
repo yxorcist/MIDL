@@ -71,16 +71,16 @@ Supposons que $prec$ ne soit pas bien fondé. Il existe alors une partie non vid
 Définissons la propriété
 
 $
-P(x) quad <=> quad x notin C.
+P(x) quad <=> quad x in.not C.
 $
 
 Vérifions la condition inductive. Fixons $x in E$ et supposons que $P(y)$ soit vraie pour tout $y prec x$.
 
 Si $x$ appartenait à $C$, le fait que $C$ n'ait pas d'élément minimal fournirait un $y in C$ tel que $y prec x$.
 
-Mais $P(y)$ affirme $y notin C$ : contradiction.
+Mais $P(y)$ affirme $y in.not C$ : contradiction.
 
-Donc $x notin C$, c'est-à-dire $P(x)$.
+Donc $x in.not C$, c'est-à-dire $P(x)$.
 
 Nous avons montré que la condition inductive est satisfaite pour tout $x in E$.
 
