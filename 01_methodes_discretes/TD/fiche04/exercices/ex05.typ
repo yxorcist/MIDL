@@ -12,17 +12,17 @@ Soient $R$ et $S$ deux relations d'équivalence sur le même ensemble $E$.
 
 == 1. $R inter S$ est une relation d'équivalence
 
-*Réflexivité.* Pour tout $x in E$, $xRx$ et $xSx$. Donc $(x,x) in R inter S$.
+*Réflexivité.* Pour tout $x in E$, $x R x$ et $x S x$. Donc $(x,x) in R inter S$.
 
-*Symétrie.* Si $(x,y) in R inter S$, alors $xRy$ et $xSy$. Comme $R$ et $S$ sont symétriques, $yRx$ et $ySx$. Donc $(y,x) in R inter S$.
+*Symétrie.* Si $(x,y) in R inter S$, alors $x R y$ et $x S y$. Comme $R$ et $S$ sont symétriques, $y R x$ et $y S x$. Donc $(y,x) in R inter S$.
 
 *Transitivité.* Si $(x,y)$ et $(y,z)$ appartiennent à $R inter S$, alors
 
 $
-xRy, quad yRz, quad xSy, quad ySz.
+x R y, quad y R z, quad x S y, quad y S z.
 $
 
-La transitivité de $R$ donne $xRz$, celle de $S$ donne $xSz$. Ainsi $(x,z) in R inter S$.
+La transitivité de $R$ donne $x R z$, celle de $S$ donne $x S z$. Ainsi $(x,z) in R inter S$.
 
 Les trois propriétés sont vraies. *L'intersection de deux relations d'équivalence est donc encore une relation d'équivalence.*
 
