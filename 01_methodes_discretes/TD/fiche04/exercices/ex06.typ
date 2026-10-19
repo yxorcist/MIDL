@@ -33,7 +33,7 @@ Pour une partie non vide $S subset.eq NN$ :
 
 L'*infimum* au sens de l'ordre de divisibilité est le *PGCD* de $S$ (convention $gcd(0,0)=0$).
 
-Pour une partie finie non vide, le *supremum* est le *PPCM* (avec $ppcm(a,0)=0$).
+Pour une partie finie non vide, le *supremum* est le *PPCM* (avec $"ppcm"(a,0)=0$).
 
 Pour une partie infinie, il peut ne pas exister de multiple commun strictement positif ; dans $NN$ contenant $0$, l'entier $0$ reste un majorant universel, et joue alors le rôle de supremum.
 
