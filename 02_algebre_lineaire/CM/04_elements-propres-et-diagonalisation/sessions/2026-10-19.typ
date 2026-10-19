@@ -142,3 +142,185 @@ dim(E)=sum_(i=1)^r dim(E_(lambda_i)(phi)).
 $
 
 *Preuve.* Si $phi$ est diagonalisable, une base de vecteurs propres engendre $E$, donc la somme des sous-espaces propres est $E$. Réciproquement, on prend une base de chacun des sous-espaces propres : leur réunion est une base de $E$ composée de vecteurs propres, dans laquelle la matrice de $phi$ est diagonale.
+
+
+= 4.3 — Comment trouver les valeurs propres ? Polynôme caractéristique
+
+== 4.3.1 — Définition et méthode
+
+Une valeur $lambda in K$ est valeur propre de $phi$ si et seulement si l'endomorphisme $phi-lambda "Id"_E$ n'est pas injectif.
+
+En dimension finie, cette condition revient à
+
+$
+det(A-lambda I_n)=0,
+$
+
+où $A$ est la matrice de $phi$ dans une base.
+
+=== Définition 4.3.1 — Polynôme caractéristique
+
+Pour $A in M_n(K)$, son *polynôme caractéristique* est
+
+$
+C_A(X)=det(A-X I_n) in K[X].
+$
+
+*Convention de ce cours :* l'expression est $A-X I_n$. Le terme de plus haut degré est donc $(-1)^n X^n$.
+
+=== Exemple 4.3.3 — Matrice de taille 2
+
+Soit
+
+$
+A=mat(1,2;3,4).
+$
+
+On calcule
+
+$
+C_A(X)=det(mat(1-X,2;3,4-X))
+$
+
+$
+=(1-X)(4-X)-6=X^2-5X-2.
+$
+
+=== Exemple — Matrice de taille 3
+
+La seconde matrice manuscrite est lue comme suit :
+
+$
+B=mat(1,2,-1;0,3,1;-1,1,0).
+$
+
+On a
+
+$
+C_B(X)=det(mat(1-X,2,-1;0,3-X,1;-1,1,-X)).
+$
+
+En développant par la deuxième ligne,
+
+$
+C_B(X)=(3-X) (X^2-X-1)-(3-X).
+$
+
+Donc
+
+$
+C_B(X)=-X^3+4X^2-X-6
+$
+
+$
+=-(X-3)(X-2)(X+1).
+$
+
+Les valeurs propres de $B$ sont $3$, $2$ et $-1$.
+
+#block(stroke: 0.6pt + gray, inset: 8pt)[
+  *Transcription partiellement incertaine.* Les coefficients de $B$ au bas de la photo 11058 sont peu lisibles. Le calcul du polynôme et sa factorisation ont été vérifiés pour la matrice transcrite ci-dessus.
+]
+
+== Proposition 4.3.4 — Polynôme caractéristique et similitude
+
+Si $B=P^(-1) A P$ avec $P$ inversible, alors
+
+$
+C_B(X)=det(P^(-1)(A-X I_n)P)
+$
+
+$
+=det(P^(-1)) det(A-X I_n) det(P)=C_A(X).
+$
+
+Les matrices semblables ont donc le même polynôme caractéristique.
+
+== Définition 4.3.5 — Polynôme caractéristique d'un endomorphisme
+
+Le polynôme caractéristique $C_phi$ de $phi in cal(L)(E)$ est celui d'une matrice de $phi$ dans *n'importe quelle base*. Il ne dépend pas de la base grâce à la similitude des matrices de représentation.
+
+== Proposition 4.3.6 — Racines et valeurs propres
+
+Pour tout $lambda in K$,
+
+$
+lambda " est valeur propre de " phi
+quad <=> quad C_phi(lambda)=0.
+$
+
+Les valeurs propres sont donc exactement les racines du polynôme caractéristique dans le corps $K$.
+
+== Exemples 4.3.7 — Homothétie, projection, symétrie
+
+Si $dim(E)=n$ et $phi=alpha "Id"_E$,
+
+$
+C_phi(X)=(alpha-X)^n.
+$
+
+Si $E=F "⊕" G$, avec $dim(F)=d$ et $dim(G)=n-d$, et si $p$ est la projection sur $F$ parallèlement à $G$, alors
+
+$
+C_p(X)=(1-X)^d (-X)^(n-d).
+$
+
+Pour la symétrie $s$ qui fixe $F$ et change le signe de $G$,
+
+$
+C_s(X)=(1-X)^d (-1-X)^(n-d).
+$
+
+== Remarque 4.3.8 — Corps de base
+
+Considérer une matrice réelle comme une matrice complexe ne change pas le polynôme caractéristique ; toutefois, il peut se factoriser différemment.
+
+Par exemple, pour
+
+$
+A=mat(0,1;-1,0),
+quad C_A(X)=X^2+1,
+$
+
+il n'existe aucune racine réelle, mais les racines complexes sont $i$ et $-i$.
+
+== Proposition 4.3.9 — Matrice triangulaire
+
+Pour toute matrice triangulaire supérieure ou inférieure $A$,
+
+$
+C_A(X)=product_(i=1)^n (a_(i i)-X).
+$
+
+Ses valeurs propres sont donc ses coefficients diagonaux, avec répétition éventuelle.
+
+== Exemple 4.3.10 — Formule en dimension 2
+
+Pour $A=mat(a,b;c,d)$,
+
+$
+C_A(X)=(a-X)(d-X)-bc
+$
+
+$
+=X^2-(a+d)X+(ad-bc)
+$
+
+$
+=X^2-"tr"(A)X+det(A).
+$
+
+== Proposition 4.3.11 — Coefficients extrêmes
+
+Pour $A in M_n(K)$,
+
+$
+C_A(X)=(-1)^n X^n+(-1)^(n-1) "tr"(A) X^(n-1)+dots+det(A).
+$
+
+Par conséquent :
+
+- $deg(C_A)=n$ ;
+- son coefficient dominant est $(-1)^n$ ;
+- le coefficient de $X^(n-1)$ est $(-1)^(n-1)"tr"(A)$ ;
+- son terme constant est $det(A)$.
