@@ -12,3 +12,4 @@
 #v(1em)
 
 #include "sessions/2026-10-15.typ"
+#include "sessions/2026-10-19.typ"
