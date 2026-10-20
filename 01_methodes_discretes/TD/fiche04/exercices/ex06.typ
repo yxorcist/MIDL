@@ -21,7 +21,7 @@ Dans un ensemble ordonné $(E,prec.eq)$, pour une partie $S subset.eq E$ :
 
 Un *élément minimal de tout $E$* n'a aucun autre élément strictement plus petit que lui. Un *minimum* est plus fort : il est inférieur ou égal à *tous* les éléments. Même distinction pour maximal et maximum.
 
-Un ordre strict est *bien fondé* si toute partie non vide possède un élément minimal.
+Un ordre strict est *bien fondé* si *toute partie non vide* possède un élément minimal. L'existence d'un élément minimal pour l'ensemble entier ne suffit pas en général : elle doit valoir aussi pour chaque partie non vide.
 
 == 1. $(NN, divides)$ — Divisibilité
 
@@ -55,6 +55,15 @@ $
 *Attention à la distinction entre les notions :* dans la partie $S$ elle-même, $2$ et $3$ sont deux éléments *minimaux* incomparables ; elle n'a pas de minimum. L'élément $6$ est à la fois maximal et maximum de $S$.
 
 La photographie représente aussi une portion finie du graphe de la divisibilité. Un diagramme de Hasse construit sur $\{0,1,2,dots,8\}$ ne doit pas être confondu avec le diagramme de Hasse de *tout* $NN$, qui est infini.
+
+#align(center)[
+  #image("../figures/ex06-divisibilite-hasse.svg", width: 90%)
+]
+
+Dans cet exemple fini, $1$ est le minimum et $0$ le maximum. Le diagramme omet les boucles et les relations déductibles par transitivité : par exemple $2 divides 8$, mais on ne trace pas directement de liaison entre $2$ et $8$, car $2 divides 4$ et $4 divides 8$.
+
+La feuille manuscrite juxtapose un ensemble fini de $1$ à $8$ et un dessin contenant $0$ au sommet. Le dessin reproduit ici est donc explicitement celui de $S=\{0,1,2,dots,8\}$ ; sans $0$, il n'y aurait pas de maximum et les éléments $5,6,7,8$ seraient maximaux.
+
 
 === Extrémités de l'ensemble
 
