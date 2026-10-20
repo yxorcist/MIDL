@@ -98,7 +98,7 @@ On en déduit
 
 $
 0 <= y_(phi(n))
-= x_(phi(n))/(phi(n)!)
+= x_(phi(n))/(phi(n)+1)
 <= M/(phi(n)+1).
 $
 
@@ -123,5 +123,5 @@ $
 Donc *$0$ est une valeur d'adhérence de $(y_n)_n$*.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Source partielle.* L'énoncé imprimé n'est pas présent. Le raisonnement ci-dessus suit la démonstration manuscrite, en explicitant la construction d'une extraction et les hypothèses qu'elle utilise. La définition de $y_n$ est vérifiée sur l'énoncé imprimé, ce qui corrige la lecture erronée du dénominateur dans une version précédente.
+  *Correction vérifiée.* L'énoncé imprimé a été consulté. Le raisonnement ci-dessus suit la démonstration manuscrite, en explicitant la construction d'une extraction et les hypothèses qu'elle utilise. La définition de $y_n$ est vérifiée sur l'énoncé imprimé, ce qui corrige la lecture erronée du dénominateur dans une version précédente.
 ]
