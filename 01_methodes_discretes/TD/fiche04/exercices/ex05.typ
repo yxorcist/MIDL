@@ -1,6 +1,6 @@
 // source-confidence: high
-// source-note: exercice 5 du sujet TD04_relations-ordres.pdf ; photo manuscrite 11081 contient la preuve que R inter S est réflexive et symétrique.
-// source-reconstruction: transitivité de l'intersection et contre-exemple pour l'union sont des compléments déduits de l'énoncé.
+// source-note: exercice 5 du sujet TD04_relations-ordres.pdf ; photographies 11081, 11284, 11286 et 11288 complètent les preuves de réflexivité, symétrie, transitivité de l'intersection et le contre-exemple pour l'union.
+// source-reconstruction: la rédaction est harmonisée avec les photos récentes ; le contre-exemple était déjà présent en MIDL et ses couples sont désormais explicités.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -53,6 +53,12 @@ Alors
 - $(1,2) in R$, donc $(1,2) in R union S$ ;
 - $(2,3) in S$, donc $(2,3) in R union S$ ;
 - mais $(1,3)$ n'appartient ni à $R$ ni à $S$.
+
+La liste exacte des couples de la réunion est
+
+$
+R union S=\{(1,1),(2,2),(3,3),(1,2),(2,1),(2,3),(3,2)\}.
+$
 
 La transitivité échoue : $(1,3) in.not R union S$.
 
