@@ -1,5 +1,5 @@
 // source-confidence: high
-// source-note: photographie 10902, exercice 2 de TD03.
+// source-note: photographies 10902 et 11280, exercice 2 de TD03, et énoncé officiel TD03_endomorphismes-changements-bases.pdf.
 // source-note: le calcul de A²=A et le rang 2 sont confirmés symboliquement ; noyau et image explicités comme compléments dérivés des données de la photo.
 
 #set page(paper: "a4", margin: 2cm)
@@ -136,6 +136,49 @@ $
 
 Ces deux descriptions sont cohérentes avec les dimensions obtenues ci-dessus.
 
+== 4. Équation du plan et direction de projection (question 2)
+
+Le sujet demande une *équation cartésienne* du plan $P="Im"(phi)$ et un *vecteur directeur* de la droite $D="Ker"(phi)$.
+
+Les deux premières colonnes de $A$ forment une base de $P$ :
+
+$
+u=(-3,2,4), quad v=(2,0,-2).
+$
+
+On cherche une équation $a X+b Y+c Z=0$ vérifiée par ces deux vecteurs :
+
+$
+cases(
+  -3a+2b+4c=0,
+  2a-2c=0.
+)
+$
+
+La seconde équation donne $a=c$, puis la première donne $b=-a$. On peut choisir $(a,b,c)=(2,-1,2)$, qui est proportionnel à $(1,-1,1)$ seulement si les équations concordent ; ici le premier système impose en fait $b=-a/2$. En prenant $a=2$, on obtient $b=-1$ et $c=2$.
+
+Par conséquent,
+
+$
+P=\{(X,Y,Z) in RR^3 | 2X-Y+2Z=0\}.
+$
+
+En effet, $P$ est de dimension 2 et les deux colonnes indépendantes satisfont cette équation.
+
+La résolution de $A w=0$ donne
+
+$
+D="Ker"(phi)="Vect"((-2,1,2)).
+$
+
+Un vecteur directeur de $D$ est donc
+
+$
+d=(-2,1,2).
+$
+
+*Conclusion :* $phi$ est la projection sur le plan $2X-Y+2Z=0$ parallèlement à la droite de direction $(-2,1,2)$.
+
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* La source manuscrite calcule $A^2=A$, indique $"rg"(A)=2$ et interprète image et noyau comme plan et droite. Les bases explicites de la dernière partie sont une vérification supplémentaire, non une transcription du tableau.
+  *Provenance.* La première copie calcule $A^2=A$, indique $"rg"(A)=2$ et interprète image et noyau comme plan et droite. La photographie 11280 donne l'équation cartésienne $2X-Y+2Z=0$ et la direction $(-2,1,2)$, toutes deux vérifiées à partir de $A$. Les bases explicites constituent une vérification complémentaire.
 ]
