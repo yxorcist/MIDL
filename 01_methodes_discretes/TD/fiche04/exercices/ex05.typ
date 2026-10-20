@@ -1,6 +1,6 @@
 // source-confidence: high
-// source-note: exercice 5 du sujet TD04_relations-ordres.pdf ; photo manuscrite 11081 contient la preuve que R inter S est réflexive et symétrique.
-// source-reconstruction: transitivité de l'intersection et contre-exemple pour l'union sont des compléments déduits de l'énoncé.
+// source-note: exercice 5 du sujet TD04_relations-ordres.pdf ; photos 11081, 11284, 11286 et 11288 : preuve des trois propriétés de l'intersection et contre-exemple graphique à l'union.
+// source-reconstruction: les partitions et le contre-exemple sont explicites dans la dernière série de photos ; la remarque sur le cas où R est inclus dans S est un complément pédagogique.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -47,6 +47,18 @@ et soit $S$ l'équivalence associée à la partition
 $
 \{\{1\},\{2,3\}\}.
 $
+
+Les deux relations correspondent précisément aux graphes de la correction manuscrite :
+
+$
+R=\{(1,1),(2,2),(3,3),(1,2),(2,1)\},
+$
+
+$
+S=\{(1,1),(2,2),(3,3),(2,3),(3,2)\}.
+$
+
+L'union contient les sept couples de ces deux listes, sans les couples $(1,3)$ et $(3,1)$.
 
 Alors
 

@@ -1,6 +1,7 @@
 // source-confidence: high
 // source-note: sujet TD04_relations-ordres.pdf, exercice 6 (trois ensembles ordonnés).
-// source-reconstruction: aucune correction manuscrite de l'exercice 6 n'est visible dans les cinq photographies ; résolution rédigée indépendamment à partir de l'énoncé.
+// source-note: photos 11290 et 11296 : définitions des majorants/minorants/minimaux/maximaux, divisibilité, diagramme de Hasse de P({1,2,3}), bornes par union/intersection et non-bon-fondement de (R,<=).
+// source-reconstruction: les exemples détaillés ci-dessous et les distinctions logiques sont explicités à partir du sujet ; ils ne sont pas tous recopiés des photographies.
 // source-note: on explicite la convention NN={0,1,2,...} car la présence de 0 change les éléments maximaux de (NN, divisibilité).
 
 #set page(paper: "a4", margin: 2cm)
@@ -37,6 +38,24 @@ Pour une partie finie non vide, le *supremum* est le *PPCM* (avec $"ppcm"(a,0)=0
 
 Pour une partie infinie, il peut ne pas exister de multiple commun strictement positif ; dans $NN$ contenant $0$, l'entier $0$ reste un majorant universel, et joue alors le rôle de supremum.
 
+=== Exemple de calcul : diviseurs et multiples communs
+
+Pour $S=\{2,3,6\}$, les diviseurs communs sont $\{1\}$, donc
+
+$
+inf S="pgcd"(2,3,6)=1.
+$
+
+Les multiples communs incluent $6,12,18,dots$ et $0$, et
+
+$
+sup S="ppcm"(2,3,6)=6.
+$
+
+*Attention à la distinction entre les notions :* dans la partie $S$ elle-même, $2$ et $3$ sont deux éléments *minimaux* incomparables ; elle n'a pas de minimum. L'élément $6$ est à la fois maximal et maximum de $S$.
+
+La photographie représente aussi une portion finie du graphe de la divisibilité. Un diagramme de Hasse construit sur $\{0,1,2,dots,8\}$ ne doit pas être confondu avec le diagramme de Hasse de *tout* $NN$, qui est infini.
+
 === Extrémités de l'ensemble
 
 - $1$ divise tout élément de $NN$ : *$1$ est le minimum* et le seul élément minimal.
@@ -65,6 +84,45 @@ Soit $S$ une famille de sous-ensembles de $E$.
   $
 
 Pour la famille vide, on adopte les conventions usuelles $inter.big emptyset=E$ et $union.big emptyset=emptyset$.
+
+=== Exemple : diagramme de Hasse de $cal(P)(\{1,2,3\})$
+
+Soit $E=\{1,2,3\}$. Son ensemble des parties contient exactement huit éléments :
+
+$
+cal(P)(E)=\{
+emptyset,\{1\},\{2\},\{3\},
+\{1,2\},\{1,3\},\{2,3\},\{1,2,3\}
+\}.
+$
+
+Dans le diagramme de Hasse, un trait relie deux ensembles lorsque l'un s'obtient en ajoutant *un seul élément* à l'autre. On ne trace pas les liens déjà déduits par transitivité.
+
+#align(center)[
+  #image("../figures/ex06-hasse-powerset.svg", width: 87%)
+]
+
+Par exemple, considérons la famille
+
+$
+S=\{\{1,2\},\{2,3\}\} subset.eq cal(P)(E).
+$
+
+On calcule
+
+$
+inf S=\{1,2\} inter \{2,3\}=\{2\}
+$
+
+et
+
+$
+sup S=\{1,2\} union \{2,3\}=\{1,2,3\}.
+$
+
+Les éléments $\{1,2\}$ et $\{2,3\}$ sont *incomparables* par inclusion. Chacun est minimal et maximal *dans $S$*, mais $S$ n'a ni minimum ni maximum.
+
+En revanche, l'infimum et le supremum existent dans l'ensemble ordonné ambiant $cal(P)(E)$, même s'ils n'appartiennent pas à $S$.
 
 === Extrémités de tout $cal(P)(E)$
 
@@ -120,4 +178,4 @@ Non : la partie $]0,1[$ est non vide mais ne possède pas de plus petit élémen
   [$(RR,<=)$], [Aucun], [Aucun], [Non],
 )
 
-*Statut.* Cette correction est reconstruite à partir de l'énoncé, et non transcrite d'une photo manuscrite.
+*Statut.* L'énoncé et les nouvelles photos confirment les notions de minorant, majorant, bornes, bien-fondement et le diagramme de Hasse sur trois éléments. Les exemples numériques détaillés et les précisions de méthode sont reconstruits et clairement distingués des notes photographiées.
