@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 493" width="660" height="493">
+  <rect x="0" y="0" width="660" height="493" fill="#ffffff"/>
+  <style>line { stroke: #334155; stroke-width: 2.2; } circle { fill: #fff; stroke: #334155; stroke-width: 2.2; } text { fill: #0f172a; font-family: sans-serif; font-size: 19px; text-anchor: middle; } .small {font-size: 15px;} .ttl{font-size:19px; font-weight:700;} </style>
+  <text class="ttl" x="330" y="26">Divisibilité sur {0,1,…,8}</text>
+  <g><line x1="315" y1="440" x2="155" y2="341" />
+<line x1="315" y1="440" x2="345" y2="341" />
+<line x1="315" y1="440" x2="480" y2="341" />
+<line x1="315" y1="440" x2="580" y2="341" />
+<line x1="155" y1="341" x2="125" y2="250" />
+<line x1="155" y1="341" x2="288" y2="250" />
+<line x1="345" y1="341" x2="288" y2="250" />
+<line x1="125" y1="250" x2="120" y2="158" />
+<line x1="480" y1="341" x2="315" y2="73" />
+<line x1="288" y1="250" x2="315" y2="73" />
+<line x1="580" y1="341" x2="315" y2="73" />
+<line x1="120" y1="158" x2="315" y2="73" /></g>
+  <g><circle cx="315" cy="73" r="27" /><text x="315" y="79">0</text>
+<circle cx="120" cy="158" r="27" /><text x="120" y="164">8</text>
+<circle cx="125" cy="250" r="27" /><text x="125" y="256">4</text>
+<circle cx="288" cy="250" r="27" /><text x="288" y="256">6</text>
+<circle cx="155" cy="341" r="27" /><text x="155" y="347">2</text>
+<circle cx="345" cy="341" r="27" /><text x="345" y="347">3</text>
+<circle cx="480" cy="341" r="27" /><text x="480" y="347">5</text>
+<circle cx="580" cy="341" r="27" /><text x="580" y="347">7</text>
+<circle cx="315" cy="440" r="27" /><text x="315" y="446">1</text></g>
+  <text class="small" x="330" y="481">Les arêtes montantes relient les diviseurs aux multiples.</text>
+</svg>
