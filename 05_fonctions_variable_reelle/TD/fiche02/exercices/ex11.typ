@@ -1,7 +1,7 @@
-// source-confidence: medium
-// source-note: correction de TD 2, exercice 11, photographies 10892 (deux pages).
-// source-uncertainty: énoncé officiel absent ; les propriétés demandées sont reconstruites seulement à partir des trois réponses manuscrites. Le dernier facteur au dénominateur est lu comme une factorielle.
-// source-note: aucune information mathématique relative à l'exercice 12 n'est visible, seul son titre apparaît.
+// source-confidence: high
+// source-note: correction manuscrite de TD 2, exercice 11, photographies 10892 (deux pages), recoupée avec l'énoncé officiel TD02_nombres-reels-suites-reelles.pdf.
+// source-correction: l'énoncé officiel précise y_n=x_n/(n+1), et non x_n/n! ; la lecture précédente du dénominateur était erronée.
+// source-note: l'exercice 12 est traité séparément dans ex12.typ à partir des photos 11269 et 11271.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -85,7 +85,7 @@ La dernière correction considère une suite $(x_n)_n$ de termes positifs ou nul
 Les notes utilisent la suite
 
 $
-y_n=x_n/n!.
+y_n=x_n/(n+1).
 $
 
 D'après la contraposée de la question 1, il existe une sous-suite $(x_(phi(n)))_n$ majorée : pour un réel $M>0$,
@@ -98,8 +98,8 @@ On en déduit
 
 $
 0 <= y_(phi(n))
-= x_(phi(n))/(phi(n)!)
-<= M/(phi(n)!).
+= x_(phi(n))/(phi(n)+1)
+<= M/(phi(n)+1).
 $
 
 Comme $phi:NN->NN$ est strictement croissante,
@@ -111,7 +111,7 @@ $
 Par conséquent,
 
 $
-0<=y_(phi(n))<=M/(n!)->0.
+0<=y_(phi(n))<=M/(n+1)->0.
 $
 
 Par le théorème des gendarmes,
@@ -123,5 +123,5 @@ $
 Donc *$0$ est une valeur d'adhérence de $(y_n)_n$*.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Source partielle.* L'énoncé imprimé n'est pas présent. Le raisonnement ci-dessus suit la démonstration manuscrite, en explicitant la construction d'une extraction et les hypothèses qu'elle utilise. La définition de $y_n$ est reconstituée à partir de la formule sur la sous-suite $y_(phi(n))$.
+  *Correction vérifiée.* L'énoncé imprimé a été consulté. Le raisonnement ci-dessus suit la démonstration manuscrite, en explicitant la construction d'une extraction et les hypothèses qu'elle utilise. La définition de $y_n$ est vérifiée sur l'énoncé imprimé, ce qui corrige la lecture erronée du dénominateur dans une version précédente.
 ]
