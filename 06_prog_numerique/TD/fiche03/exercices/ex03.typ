@@ -1,6 +1,6 @@
 // source-confidence: high
 // source-note: sujet imprimé TD03_interpolation-approximation.pdf, exercice 3, et photos 11009, 11007.
-// source-correction: le sujet exige explicitement la méthode de Neville en x=3 ; le brouillon photographié applique plutôt les bases de Lagrange.
+// source-correction: le sujet exige Neville en x=3 ; les photos antérieures emploient Lagrange, tandis que les nouvelles photos du tableau (11458, 11456, 11468, 11463) développent bien Neville.
 // source-reconstruction: la table de Neville complète ci-dessous est calculée indépendamment des photos, puis contrôlée par le polynôme interpolateur.
 
 #set page(paper: "a4", margin: 2cm)
@@ -23,7 +23,7 @@ Le sujet fournit quatre points :
 
 On demande de calculer la valeur du polynôme interpolateur *en x = 3* par la méthode de Neville.
 
-Les photographies utilisent le polynôme de Lagrange. Cette méthode est mathématiquement équivalente pour déterminer le polynôme, mais *la consigne d'exercice demande Neville*. La correction qui suit applique donc Neville.
+Les premières photographies appliquaient plutôt le polynôme de Lagrange. Les nouvelles photos du tableau déroulent bien *Neville*, conformément au sujet imprimé. La correction ci-dessous suit cette méthode.
 
 == 1. Construire la table d'interpolation
 
@@ -147,5 +147,26 @@ Ainsi P(3) = 9 + 6 − 3 = 12, ce qui confirme le tableau de Neville.
 5. Le dernier nombre du triangle est directement la valeur du polynôme au point demandé.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Source / ajout.* Le sujet donne les quatre couples et exige Neville ; le manuscrit propose une démarche par Lagrange. La table de Neville, la valeur numérique 12 et le contrôle du polynôme sont des calculs indépendants ajoutés pour fournir une correction conforme à l'énoncé.
+  *Source / ajout.* Le sujet donne les quatre couples et exige Neville ; les nouvelles photos du tableau montrent directement les trois valeurs d'ordre 1 et les deux valeurs d'ordre 2 de Neville. La dernière valeur et le contrôle par le polynôme sont vérifiés indépendamment.
 ]
+
+
+== Contrôle du degré par différences divisées
+
+Le tableau du cours signale que les derniers coefficients de Newton s'annulent. On peut le vérifier avec les mêmes points, dans l'ordre $(0,-5,-1,2)$ :
+
+- différences d'ordre $1$ : $-3, -4, 3$ ;
+- différences d'ordre $2$ : $1, 1$ ;
+- différence d'ordre $3$ : $0$.
+
+Le coefficient d'ordre $2$ étant non nul et celui d'ordre $3$ étant nul, le polynôme interpolateur est de degré *exactement 2*.
+
+La forme de Newton est alors :
+
+$
+P(x)=-3-3x+x(x+5)=x^2+2x-3.
+$
+
+On retrouve directement $P(3)=12$.
+
+*Remarque.* Les deux méthodes sont cohérentes mais ne répondent pas à la même question : Neville calcule directement $P(3)$, tandis que la table des différences divisées permet de déterminer le degré et les coefficients du polynôme.
