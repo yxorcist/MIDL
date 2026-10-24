@@ -21,28 +21,6 @@ existe (en tenant compte des côtés par lesquels on peut approcher $a$ dans le 
 
 On définit alors la nouvelle fonction en posant $f(a)=ell$.
 
-== 1(b). $f_2(x)=e^(-1/x)$ au voisinage de $0$
-
-On considère $f_2$ sur l’ensemble des réels $x$ tels que $x !=0$.
-
-Quand $x->0^+$, on a $-1/x->-infinity$, donc
-
-$
-lim_(x->0^+) e^(-1/x)=0.
-$
-
-Quand $x->0^-$, on a $-1/x->+infinity$, donc
-
-$
-lim_(x->0^-) e^(-1/x)=+infinity.
-$
-
-Les deux limites unilatérales ne coïncident pas ; l'une est infinie.
-
-*Conclusion :* $f_2$ n'admet *pas* de prolongement continu en $0$ sur un voisinage bilatéral de $0$.
-
-*Attention :* si le domaine initial était seulement $(0,+infinity)$, le prolongement unilatéral à $[0,+infinity)$ par la valeur $0$ serait possible. C'est pourquoi le domaine doit être précisé.
-
 == 1(a). $f_1(x)=e^(-1/x^2)$ au voisinage de $0$
 
 On considère $f_1$ définie pour $x !=0$.
@@ -64,6 +42,28 @@ $
 $
 f_1(0)=0.
 $
+
+== 1(b). $f_2(x)=e^(-1/x)$ au voisinage de $0$
+
+On considère $f_2$ sur l’ensemble des réels $x$ tels que $x !=0$.
+
+Quand $x->0^+$, on a $-1/x->-infinity$, donc
+
+$
+lim_(x->0^+) e^(-1/x)=0.
+$
+
+Quand $x->0^-$, on a $-1/x->+infinity$, donc
+
+$
+lim_(x->0^-) e^(-1/x)=+infinity.
+$
+
+Les deux limites unilatérales ne coïncident pas ; l'une est infinie.
+
+*Conclusion :* $f_2$ n'admet *pas* de prolongement continu en $0$ sur un voisinage bilatéral de $0$.
+
+*Attention :* si le domaine initial était seulement $(0,+infinity)$, le prolongement unilatéral à $[0,+infinity)$ par la valeur $0$ serait possible. C'est pourquoi le domaine doit être précisé.
 
 == 1(c). $f_3(x)=ln(abs(x)) sin(x)$ au voisinage de $0$
 
