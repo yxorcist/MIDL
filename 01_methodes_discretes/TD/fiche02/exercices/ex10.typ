@@ -1,6 +1,7 @@
 // source-confidence: medium
 // source-note: statement and numbering cross-checked against the official TD02 sheet.
-// source-uncertainty: the handwritten page clearly contains a full induction for question a. The diagrammatic argument later on the page is too ambiguous to attach safely to question b or c, so it is not reconstructed.
+// source-note: photo 11491 et énoncé imprimé TD02 : construction par doublement et schémas de pavage.
+// source-reconstruction: les preuves b et c sont des compléments à partir du sujet ; leur décomposition en rectangles 2×3 est vérifiable indépendamment.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -90,9 +91,28 @@ $
 
 est vraie.
 
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Source incomplète pour b et c.* La photographie contient ensuite plusieurs
-  schémas de pavage et une conclusion manuscrite, mais leur rattachement exact à
-  b ou c n'est pas suffisamment lisible. Aucun résultat n'est attribué sans
-  certitude.
-]
+== Question b — $6 times 2^n$
+
+Tout échiquier $6 times 2^n$ se découpe horizontalement en *deux* échiquiers $3 times 2^n$.
+
+La question a prouve que chacun peut être recouvert, pour $n>=1$, par des trominos en L.
+
+En réunissant les deux pavages, on obtient un pavage du grand échiquier. La réponse est donc *oui*.
+
+== Question c — $6^n times 6^n$
+
+Pour tout $n>=1$, le nombre $6^n$ est divisible par $2$ et par $3$.
+
+On peut donc partager l'échiquier en rectangles *$2 times 3$*, sans qu'il reste de case.
+
+Chaque rectangle $2 times 3$ est recouvrable par *deux* trominos en L (l'un occupant deux cases de la première rangée et une de la deuxième, l'autre complétant les trois cases restantes).
+
+En pavant chaque rectangle indépendamment, on recouvre tout l'échiquier.
+
+La réponse est donc *oui*.
+
+== Bilan
+
+Pour les trois familles a, b et c, il existe un pavage par des trominos en L pour tout $n>=1$.
+
+*Provenance.* La preuve par induction pour a figure sur la photo. Les réponses b et c sont rédigées à partir du sujet officiel et de la possibilité de juxtaposer des pavages $3 times 2^n$ ou $2 times 3$ ; les schémas manuscrits ne permettent pas d'attribuer un argument plus précis.
