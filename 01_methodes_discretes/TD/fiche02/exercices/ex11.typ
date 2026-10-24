@@ -1,6 +1,6 @@
 // source-confidence: high
-// source-note: statement and numbering cross-checked against the official TD02 sheet; handwritten correction supplied for questions 1 and 2.
-// source-reconstruction: question 3 completed from the official TD02 statement; no handwritten proof of this question is visible.
+// source-note: TD02 Construction inductive, exercice 11 ; photographies des définitions de somme_m et de la factorielle.
+ // source-reconstruction: la question 3, laissée vide dans la copie, est complétée directement à partir de l'énoncé.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -8,103 +8,46 @@
 
 = Exercice 11 — Définitions inductives de fonctions
 
-== Question 1 — $"somme"_m$
+== Question 1 — Addition d'un entier fixé
 
-Pour un entier fixé $m$, on considère la fonction
+Pour $m in NN$ fixé, définissons $"somme"_m:NN -> NN$ par $"somme"_m(n)=n+m$.
 
-$
-"somme"_m: NN -> NN,
-quad
-i -> i+m.
-$
+*Base :* $"somme"_m(0)=m$.
 
-Une définition inductive est :
+*Induction :* pour tout $n>=0$,
 
-*Base.*
-
-$
-"somme"_m(0)=m.
-$
-
-*Règle d'induction.*
-
-Pour tout $n>=1$,
-
-$
-"somme"_m(n)
-=
-"somme"_m(n-1)+1.
-$
-
-Ainsi, la fonction construit successivement
-
-$
-m,
-m+1,
-m+2,
-dots
-$
-
-à partir de la valeur de base.
+$ "somme"_m(n+1)="somme"_m(n)+1. $
 
 == Question 2 — Factorielle
 
-On considère
+On définit $"Fact":NN -> NN$ par :
 
-$
-"Fact":NN->NN.
-$
+*Base :* $"Fact"(0)=1$.
 
-La définition inductive est :
+*Induction :* pour tout $n>=0$,
 
-*Base.*
+$ "Fact"(n+1)=(n+1) "Fact"(n). $
 
-$
-"Fact"(0)=1.
-$
+Ceci redonne $"Fact"(n)=1 times 2 times dots times n$ pour $n>=1$.
 
-*Règle d'induction.*
+== Question 3 — Somme des entiers naturels
 
-Pour tout $n>=1$,
+Le sujet demande la définition inductive de
 
-$
-"Fact"(n)
-=
-n "Fact"(n-1).
-$
+$ sigma(n)=sum_(k=0)^n k. $
 
-== Question 3 — Somme des entiers
+*Base :* $sigma(0)=0$.
 
-On considère
+*Induction :* pour tout $n>=0$,
 
-$
-sigma(i)
-=
-sum_(k=0)^i k.
-$
+$ sigma(n+1)=sigma(n)+(n+1). $
 
-*Base.* La somme de zéro à zéro vaut zéro :
+En effet, séparer le dernier terme d'une somme conduit à
 
-$
-sigma(0)=0.
-$
+$ sum_(k=0)^(n+1) k = (sum_(k=0)^n k)+(n+1). $
 
-*Règle d'induction.* Pour tout $n>=0$,
+En complément, cette récurrence conduit à la formule fermée
 
-$
-sigma(n+1)=sigma(n)+(n+1).
-$
+$ sigma(n)= (n(n+1))/2. $
 
-Cette relation découle directement de
-
-$
-sum_(k=0)^(n+1) k = (sum_(k=0)^n k)+(n+1).
-$
-
-En complément, on en déduit par induction la forme fermée
-
-$
-sigma(n)=(n(n+1))/2.
-$
-
-*Provenance.* Cette question a été complétée à partir de la fiche imprimée TD02 ; les photos fournies traitent surtout les questions 1 et 2.
+*Note :* la question 3 ne figurait pas avec une solution complète sur les photographies ; elle a été résolue à partir de l'énoncé officiel.
