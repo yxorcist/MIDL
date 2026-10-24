@@ -20,7 +20,7 @@ Pour $x=0$, les choix $z=0$ et $y$ arbitraire vérifient $0=2^y z$ : l'entrée $
 
 *Ce n'est pas une fonction* (correspondance multivaluée).
 
-== 2. $NN -> NN$, $x=2 y z$, avec $z$ impair
+== 2. $NN -> NN$, $x=2^y z$, avec $z$ impair
 
 Pour tout $x>0$, la décomposition $x=2^y z$ avec $z$ impair positif existe et impose un unique exposant $y>=0$.
 
