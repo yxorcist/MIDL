@@ -125,7 +125,7 @@ On peut aussi poser $x=1+t$, $t->0$ :
 
 $
 ((1+t)^n-1)/ln(1+t)
-sim
+->
 n t/t
 =n.
 $
