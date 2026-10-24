@@ -14,17 +14,17 @@ On prend $NN=\{0,1,2,dots\}$ et $NN^*=\{1,2,3,dots\}$. Un entier *impair* est de
 
 Une correspondance est une *fonction* si chaque entrée possède au plus une image ; elle est une *application* si chacune possède exactement une image.
 
-== 1. $NN -> NN$, $x=2 y z$, avec $z in NN$
+== 1. $NN -> NN$, $x=2^y z$, avec $z in NN$
 
-Pour $x=0$, les choix $z=0$ et $y$ arbitraire vérifient $0=2 y z$ : l'entrée $0$ admet plusieurs images distinctes $y$.
+Pour $x=0$, les choix $z=0$ et $y$ arbitraire vérifient $0=2^y z$ : l'entrée $0$ admet plusieurs images distinctes $y$.
 
 *Ce n'est pas une fonction* (correspondance multivaluée).
 
 == 2. $NN -> NN$, $x=2 y z$, avec $z$ impair
 
-Si $x>0$ est pair, la décomposition $x=2^y z$ avec $z$ impair impose un unique $y>=1$ (exposant de $2$). Si $x=0$, seul $y=0$ est compatible avec un $z$ impair.
+Pour tout $x>0$, la décomposition $x=2^y z$ avec $z$ impair positif existe et impose un unique exposant $y>=0$.
 
-Mais pour $x$ impair, aucune décomposition avec $y>=1$ n'existe : par exemple $x=1$ n'a pas d'image.
+En revanche $x=0$ n'a *aucune* décomposition de cette forme : une puissance de $2$ multipliée par un entier impair ne peut être nulle.
 
 *C'est une fonction partielle, mais pas une application.*
 
