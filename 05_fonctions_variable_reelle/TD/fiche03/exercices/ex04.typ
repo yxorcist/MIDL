@@ -21,9 +21,9 @@ existe (en tenant compte des côtés par lesquels on peut approcher $a$ dans le 
 
 On définit alors la nouvelle fonction en posant $f(a)=ell$.
 
-== 1. $f_2(x)=e^(-1/x)$ au voisinage de $0$
+== 1(b). $f_2(x)=e^(-1/x)$ au voisinage de $0$
 
-On considère $f_1$ sur l’ensemble des réels $x$ tels que $x !=0$.
+On considère $f_2$ sur l’ensemble des réels $x$ tels que $x !=0$.
 
 Quand $x->0^+$, on a $-1/x->-infinity$, donc
 
@@ -39,13 +39,13 @@ $
 
 Les deux limites unilatérales ne coïncident pas ; l'une est infinie.
 
-*Conclusion :* $f_1$ n'admet *pas* de prolongement continu en $0$ sur un voisinage bilatéral de $0$.
+*Conclusion :* $f_2$ n'admet *pas* de prolongement continu en $0$ sur un voisinage bilatéral de $0$.
 
 *Attention :* si le domaine initial était seulement $(0,+infinity)$, le prolongement unilatéral à $[0,+infinity)$ par la valeur $0$ serait possible. C'est pourquoi le domaine doit être précisé.
 
-== 2. $f_1(x)=e^(-1/x^2)$ au voisinage de $0$
+== 1(a). $f_1(x)=e^(-1/x^2)$ au voisinage de $0$
 
-On considère $f_2$ définie pour $x !=0$.
+On considère $f_1$ définie pour $x !=0$.
 
 Comme $x^2->0^+$ lorsque $x->0$,
 
@@ -59,13 +59,13 @@ $
 lim_(x->0) e^(-1/x^2)=0.
 $
 
-*Conclusion :* $f_2$ se prolonge continûment en $0$ en posant
+*Conclusion :* $f_1$ se prolonge continûment en $0$ en posant
 
 $
-f_2(0)=0.
+f_1(0)=0.
 $
 
-== 3. $f_3(x)=ln(abs(x)) sin(x)$ au voisinage de $0$
+== 1(c). $f_3(x)=ln(abs(x)) sin(x)$ au voisinage de $0$
 
 Pour $x !=0$, on écrit
 
@@ -99,7 +99,7 @@ $
 f_3(0)=0.
 $
 
-== 4. $f_4(x)=(x^n-1)/ln(x)$ au voisinage de $1$
+== 2. Prolongement de $(x^n-1)/ln(x)$ en $0$ et en $1$
 
 L'énoncé considère la fonction pour $x>0$ et $x !=1$, où $n>=1$ est un entier fixé, et demande un prolongement à tout $[0,+infinity[$.
 
