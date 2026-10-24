@@ -20,7 +20,7 @@ forall epsilon>0,
 exists eta>0,
 forall x in RR,
 abs(x-x_0)<eta
-implies
+quad "implique" quad
 abs(f(x)-f(x_0))<epsilon.
 $
 
