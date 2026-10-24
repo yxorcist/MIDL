@@ -17,8 +17,8 @@ Pour chaque langage, on donne une *base* et des *règles de construction*, puis 
 On définit $E_1$ par :
 
 - *Base.* Le mot $0$ appartient à $E_1$.
-- *Règle R1.* Si $w in E_1$, alors $1w in E_1$.
-- *Règle R2.* Si $w in E_1$, alors $w1 in E_1$.
+- *Règle R1.* Si $w in E_1$, alors le mot `1w` appartient à $E_1$.
+- *Règle R2.* Si $w in E_1$, alors le mot `w1` appartient à $E_1$.
 - *Aucun autre mot* n'appartient à $E_1$.
 
 *Validité.* La base contient un unique $0$. Ajouter un $1$ à gauche ou à droite n'en ajoute aucun.
@@ -34,13 +34,13 @@ Un entier binaire est pair si et seulement si son dernier symbole est $0$.
 On construit $E_2$ par :
 
 - *Bases.* Les mots $0$ et $10$ appartiennent à $E_2$.
-- *Règle R1.* Si $u0 in E_2$ avec $u$ commençant par $1$, alors $u00 in E_2$.
-- *Règle R2.* Si $u0 in E_2$ avec $u$ commençant par $1$, alors $u10 in E_2$.
+- *Règle R1.* Si le mot `u0` appartient à $E_2$ avec $u$ commençant par $1$, alors le mot `u00` appartient à $E_2$.
+- *Règle R2.* Si le mot `u0` appartient à $E_2$ avec $u$ commençant par $1$, alors le mot `u10` appartient à $E_2$.
 - *Aucun autre mot* n'appartient à $E_2$.
 
 *Validité.* Les bases sont des écritures sans zéro initial inutile de $0$ et de $2$. Pour les autres mots, les règles conservent le premier symbole $1$ et le dernier symbole $0$.
 
-*Complétude.* Toute écriture binaire canonique d'un entier pair strictement positif est $1b_2 dots b_k 0$ avec des chiffres intermédiaires dans $\{0,1\}$. On peut construire de gauche à droite cette suite en insérant successivement chaque chiffre juste avant le dernier $0$ de la base $10$.
+*Complétude.* Toute écriture binaire canonique d'un entier pair strictement positif est une suite de chiffres commençant par `1` et finissant par `0` avec des chiffres intermédiaires dans $\{0,1\}$. On peut construire de gauche à droite cette suite en insérant successivement chaque chiffre juste avant le dernier $0$ de la base $10$.
 
 Le mot $0$ reste une base isolée : la règle ne permet pas de créer des écritures interdites $00$, $000$, etc.
 
@@ -49,8 +49,8 @@ Le mot $0$ reste une base isolée : la règle ne permet pas de créer des écrit
 On définit $E_3$ par :
 
 - *Bases.* $epsilon in E_3$ et $0 in E_3$.
-- *Règle R1.* Si $w in E_3$, alors $w1 in E_3$.
-- *Règle R2.* Si $w in E_3$ se termine par $1$, alors $w0 in E_3$.
+- *Règle R1.* Si $w in E_3$, alors le mot `w1` appartient à $E_3$.
+- *Règle R2.* Si $w in E_3$ se termine par $1$, alors le mot `w0` appartient à $E_3$.
 - *Aucun autre mot* n'appartient à $E_3$.
 
 *Validité.* Les bases ne contiennent pas $00$ ; ajouter un $1$ ne crée aucun $00$, et ajouter un $0$ après un $1$ non plus.
