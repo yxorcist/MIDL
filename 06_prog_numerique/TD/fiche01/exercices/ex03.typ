@@ -1,155 +1,111 @@
-// source-confidence: medium
-// source-note: la nouvelle série de photos (10811 et 10813) complète la question 2 pour deux matrices lisibles.
-// source-note: photo 10905 : matrice 3×3 et calcul du déterminant, valeur manuscrite 36 contredite par le calcul exact (15).
-// source-uncertainty: les autres exemples de trace mentionnent -2 et 5, sans matrices associées suffisamment lisibles pour les vérifier.
+// source-confidence: high
+// source-note: TD01_systemes-lineaires.pdf (2026–2027), exercice 3. Les quatre matrices de la question 2 sont reprises sans substitution depuis l'énoncé officiel.
+// source-correction: l'ancienne correction attribuait à la question 2 une matrice Q étrangère au sujet, puis corrigeait à tort 36 en 15. Le sujet donne bien det(M2)=36 ; les quatre traces et déterminants ont été recalculés.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
+#set par(justify: true, leading: 0.65em)
 
-= TD 1 — Exercice 3 — Puissances, inverse, trace et déterminant
+= TD 1 — Exercice 3 — Puissances, inverse, traces et déterminants
 
-== 1.
+== 1. Calculer $A^2$ et $A^(-1)$
 
-On considère
-
+La matrice du sujet est
 $
 A=mat(1,-1,-1;-1,1,-1;-1,-1,1).
 $
 
-=== (a)
+=== (a) Calcul direct
 
 $
-A^2
-=
-mat(3,-1,-1;-1,3,-1;-1,-1,3).
+A^2=mat(3,-1,-1;-1,3,-1;-1,-1,3).
 $
 
-=== (b)
+=== (b) Identité remarquable
 
-On constate que
-
+En comparant les coefficients, on constate que
 $
-A^2=A+2I.
-$
-
-=== (c)
-
-À partir de
-
-$
-A^2=A+2I,
+A^2=A+2I_3.
 $
 
-on obtient
+=== (c) Inverse
 
+En réarrangeant l'égalité précédente,
 $
-A^2-A=2I,
+A(A-I_3)=2I_3.
 $
-
-donc
-
+On en déduit
 $
-A(A-I)=2I.
-$
-
-Ainsi,
-
-$
-A (1/2)(A-I)=I,
+A^(-1)=1/2(A-I_3)=mat(0,-1/2,-1/2;-1/2,0,-1/2;-1/2,-1/2,0).
 $
 
-et donc
+== 2. Trace et déterminant des quatre matrices du sujet
+
+=== Matrice 1 — Triangulaire supérieure
 
 $
-A^(-1)=1/2(A-I).
+M_1=mat(-3,1,1;0,2,0;0,0,1).
+$
+Elle est triangulaire, donc
+$
+"tr"(M_1)=-3+2+1=0,
+quad det(M_1)=(-3) dot 2 dot 1=-6.
 $
 
-== 2. Trace et déterminant
-
-=== Première matrice : triangulaire
-
-Les notes présentent
+=== Matrice 2
 
 $
-M=mat(-3,1,1;0,2,0;0,0,1).
+M_2=mat(-2,2,-3;-1,1,3;4,0,-1).
+$
+La trace est
+$
+"tr"(M_2)=-2+1-1=-2.
+$
+En développant son déterminant selon la première ligne,
+$
+det(M_2)=(-2)(-1)-2(-11)+(-3)(-4)
+=2+22+12=36.
 $
 
-Pour toute matrice carrée, la trace est la somme des éléments diagonaux. Ici,
+*Attention :* $36$ est bien la valeur correcte *pour la matrice donnée par le sujet*. L'ancienne transcription utilisait une matrice différente, ce qui produisait un résultat sans rapport avec la question.
+
+=== Matrice 3
 
 $
-"tr"(M)=-3+2+1=0.
+M_3=mat(0,3,1,-2;4,1,-1,2;3,1,2,-1;-4,2,1,2).
+$
+On a
+$
+"tr"(M_3)=0+1+2+2=5.
+$
+Un calcul de déterminant (par élimination de Gauss ou développement par cofacteurs) donne
+$
+det(M_3)=-164.
 $
 
-La matrice étant triangulaire supérieure, son déterminant est le produit des éléments diagonaux :
+=== Matrice 4 — Avec un paramètre
 
 $
-det(M)=(-3) dot 2 dot 1=-6.
+M_4(x)=mat(1,x,x^2,x^3;1,1,1,1;1,2,3,4;1,4,9,16).
 $
-
-=== Autre exemple : déterminant d'une matrice $3 times 3$
-
-La copie présente la matrice
-
+Sa trace vaut
 $
-Q=mat(2,7,-3;-1,1,3;1,0,-1).
+"tr"(M_4(x))=1+1+3+16=21.
 $
-
-En développant selon la première ligne,
-
+Le déterminant se factorise en
 $
-det(Q)
-=
-2 det(mat(1,3;0,-1))
--7 det(mat(-1,3;1,-1))
--3 det(mat(-1,1;1,0)).
+det(M_4(x))=-2(x-1)^3.
 $
+Ainsi $M_4(x)$ est inversible si et seulement si $x!=1$.
 
-On obtient
+== Bilan vérifié avec les matrices officielles
 
-$
-det(Q)
-=
-2(-1)-7(1-3)-3(-1)
-=
--2+14+3
-=
-15.
-$
+#table(columns: (1fr,1fr,1.6fr), inset: 6pt,
+  [*Matrice*],[*Trace*],[*Déterminant*],
+  [$M_1$],[$0$],[$-6$],
+  [$M_2$],[$-2$],[$36$],
+  [$M_3$],[$5$],[$-164$],
+  [$M_4(x)$],[$21$],[$-2(x-1)^3$],
+)
 
-Par conséquent, $Q$ est inversible.
-
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Erreur dans la correction manuscrite (photo 10905).* Le résultat indiqué est $36$, mais le calcul direct donne $15$. Les coefficients ci-dessus sont ceux qui apparaissent sur la photographie. L'erreur provient de la réduction manuscrite ; le résultat original est conservé ici pour signaler l'écart.
-]
-
-=== Matrice à paramètre
-
-La photographie suivante donne
-
-$
-N(x)=mat(
-  1,x,x^2,x^3;
-  1,1,1,1;
-  1,2,3,4;
-  1,4,9,16
-).
-$
-
-Sa trace vaut, indépendamment de $x$,
-
-$
-"tr"(N(x))=1+1+3+16=21.
-$
-
-Le calcul du déterminant indiqué dans les notes peut être mis sous la forme
-
-$
-det(N(x))=-2 x^3+6 x^2-6x+2
-=-2(x-1)^3.
-$
-
-Ainsi, cette matrice est singulière si et seulement si $x=1$.
-
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Source partielle.* Les traces -2 et 5 sont mentionnées dans la copie sans que les matrices correspondantes soient visibles avec certitude. Elles ne sont pas attribuées à des matrices inventées.
-]
+*Provenance.* Les matrices sont celles de l'énoncé officiel, pas celles d'un calcul manuscrit ambigu. Les déterminants sont des calculs vérifiés à partir de ces coefficients.
