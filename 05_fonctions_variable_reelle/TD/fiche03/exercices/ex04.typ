@@ -108,11 +108,11 @@ La limite en $1$ est de la forme $0/0$.
 On peut utiliser les équivalents usuels, lorsque $x->1$ :
 
 $
-x^n-1 sim n(x-1),
+(x^n-1)/(x-1) -> n,
 $
 
 $
-ln(x) sim x-1.
+ln(x)/(x-1) -> 1.
 $
 
 Ainsi,
@@ -126,7 +126,7 @@ On peut aussi poser $x=1+t$, $t->0$ :
 $
 ((1+t)^n-1)/ln(1+t)
 sim
-(n t)/t
+n t/t
 =n.
 $
 
