@@ -76,29 +76,9 @@ jobs:
           python3 00_admin/midl.py doctor | tee /tmp/midl-doctor.log
           grep -q "^Result: HEALTHY" /tmp/midl-doctor.log
 
-      - name: Verify inbox batching and directory upload commands
+      - name: Verify inbox literal filenames, batching and failure safety
         run: |
-          rm -f /tmp/midl-rclone.log
-          mkdir -p /tmp/midl-bin /tmp/midl-inbox-test/photos /tmp/midl-inbox-other
-          cat > /tmp/midl-bin/rclone <<'EOF'
-          #!/usr/bin/env bash
-          printf '%s\n' "$*" >> /tmp/midl-rclone.log
-          EOF
-          chmod +x /tmp/midl-bin/rclone
-
-          printf 'pdf' > "/tmp/midl-inbox-test/TD 1.pdf"
-          printf 'image' > /tmp/midl-inbox-test/photos/page1.jpg
-          printf 'special' > "/tmp/midl-inbox-test/lecture[1].jpg"
-
-          PATH="/tmp/midl-bin:$PATH" python3 00_admin/midl.py inbox             "/tmp/midl-inbox-test/TD 1.pdf"             /tmp/midl-inbox-test/photos             "/tmp/midl-inbox-test/lecture[1].jpg"
-
-          test "$(wc -l < /tmp/midl-rclone.log)" -eq 1
-          grep -Fq "move /tmp/midl-inbox-test gdrive:MIDL/INBOX --include /TD 1.pdf --include /photos/** --include /lecture\[1\].jpg --create-empty-src-dirs --progress" /tmp/midl-rclone.log
-
-          printf 'other' > /tmp/midl-inbox-other/other.jpg
-          PATH="/tmp/midl-bin:$PATH" python3 00_admin/midl.py inbox             "/tmp/midl-inbox-test/TD 1.pdf"             /tmp/midl-inbox-other/other.jpg
-
-          test "$(wc -l < /tmp/midl-rclone.log)" -eq 3
+          python3 -m unittest discover -s tests -p 'test_inbox_filters.py' -v
 
       - name: Verify inbox missing-path failure
         run: |
