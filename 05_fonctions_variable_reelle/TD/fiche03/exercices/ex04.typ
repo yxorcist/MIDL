@@ -23,7 +23,7 @@ On définit alors la nouvelle fonction en posant $f(a)=ell$.
 
 == 1. $f_1(x)=e^(-1/x)$ au voisinage de $0$
 
-On considère $f_1$ sur $RR \\ \{0\}$.
+On considère $f_1$ sur l’ensemble des réels $x$ tels que $x !=0$.
 
 Quand $x->0^+$, on a $-1/x->-infinity$, donc
 
