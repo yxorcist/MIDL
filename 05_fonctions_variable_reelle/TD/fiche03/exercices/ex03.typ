@@ -1,6 +1,6 @@
-// source-confidence: medium
-// source-note: photo 11486, page gauche, « Exercice 3 », et « Bonus ».
-// source-uncertainty: énoncé imprimé FVR TD03 non disponible ; les deux résultats sont inférés du début des corrections manuscrites.
+// source-confidence: high
+// source-note: énoncé officiel TD03_continuite.pdf exercice 3 ; photo 11486 et bonus manuscrit.
+// source-verification: la question principale figure dans le PDF officiel ; le bonus sur les fonctions additives provient uniquement des notes manuscrites.
 // source-reconstruction: justification des arguments de densité, de continuité et d'additivité.
 
 #set page(paper: "a4", margin: 2cm)
