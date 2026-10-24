@@ -1,6 +1,5 @@
 // source-confidence: high
-// source-note: photo manuscrite 11270, intitulée « TD3 — Exercice 1 », trois questions.
-// source-uncertainty: l'énoncé imprimé de FVR TD03 n'a pas été retrouvé ; les hypothèses sont inférées des trois réponses manuscrites : g:R->R positive et décroissante.
+// source-note: énoncé officiel TD03_continuite.pdf exercice 1, confirmé par notes manuscrites 11485.
 // source-reconstruction: preuve complète avec epsilon ; les trois questions sont formulées d'après leur solution photographiée.
 // source-verification: g(R) est non vide et minoré, et la décroissance permet de contrôler uniformément les valeurs pour x>=A.
 
@@ -10,7 +9,7 @@
 
 = TD 3 — Exercice 1 — Limite d'une fonction décroissante
 
-== Hypothèses reconstituées
+== Hypothèses de l'énoncé officiel
 
 Les notes étudient une fonction
 
