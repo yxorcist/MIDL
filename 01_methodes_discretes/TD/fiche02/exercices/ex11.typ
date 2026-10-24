@@ -1,6 +1,6 @@
 // source-confidence: high
 // source-note: statement and numbering cross-checked against the official TD02 sheet; handwritten correction supplied for questions 1 and 2.
-// source-uncertainty: no handwritten correction for question 3 is visible in the supplied pages.
+// source-reconstruction: question 3 completed from the official TD02 statement; no handwritten proof of this question is visible.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -83,7 +83,28 @@ sigma(i)
 sum_(k=0)^i k.
 $
 
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Correction non fournie.* La question 3 figure sur la fiche TD02 officielle,
-  mais sa définition inductive n'apparaît pas dans les photographies fournies.
-]
+*Base.* La somme de zéro à zéro vaut zéro :
+
+$
+sigma(0)=0.
+$
+
+*Règle d'induction.* Pour tout $n>=0$,
+
+$
+sigma(n+1)=sigma(n)+(n+1).
+$
+
+Cette relation découle directement de
+
+$
+sum_(k=0)^(n+1) k = (sum_(k=0)^n k)+(n+1).
+$
+
+En complément, on en déduit par induction la forme fermée
+
+$
+sigma(n)=(n(n+1))/2.
+$
+
+*Provenance.* Cette question a été complétée à partir de la fiche imprimée TD02 ; les photos fournies traitent surtout les questions 1 et 2.
