@@ -1,7 +1,7 @@
 // source-confidence: high
 // source-note: énoncé officiel TD03_continuite.pdf, exercice 2 ; photos 11485 et 11486.
 // source-verification: l'énoncé officiel suppose uniquement f:[0,1]->[0,1] croissante, sans continuité ; la preuve ci-dessous utilise seulement la monotonie et la propriété de borne supérieure.
-// source-verification: l'argument au moyen de l'ensemble E et de son supremum est vérifié ; on explicite le rôle de la continuité au passage à la limite.
+// source-verification: l'argument utilise la caractérisation séquentielle de la borne supérieure et la monotonie ; aucune continuité n'est nécessaire.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
