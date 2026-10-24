@@ -1,6 +1,6 @@
-// source-confidence: medium
-// source-note: photos 11485 (bas de la page droite) et 11486 (début de la page gauche).
-// source-uncertainty: énoncé imprimé de FVR TD03 non disponible ; les hypothèses f:[0,1]->[0,1] continue et croissante sont reconstruites à partir de la correction.
+// source-confidence: high
+// source-note: énoncé officiel TD03_continuite.pdf, exercice 2 ; photos 11485 et 11486.
+// source-verification: l'énoncé officiel suppose uniquement f:[0,1]->[0,1] croissante, sans continuité ; la preuve ci-dessous utilise seulement la monotonie et la propriété de borne supérieure.
 // source-verification: l'argument au moyen de l'ensemble E et de son supremum est vérifié ; on explicite le rôle de la continuité au passage à la limite.
 
 #set page(paper: "a4", margin: 2cm)
@@ -9,7 +9,7 @@
 
 = TD 3 — Exercice 2 — Point fixe d'une application croissante
 
-== Hypothèses reconstituées
+== Énoncé officiel
 
 Les notes considèrent une fonction
 
@@ -17,7 +17,7 @@ $
 f:[0,1] -> [0,1]
 $
 
-*continue* et *croissante*. On souhaite démontrer qu'il existe $b in [0,1]$ tel que $f(b)=b$.
+*croissante* (la continuité n'est pas supposée). On souhaite démontrer qu'il existe $b in [0,1]$ tel que $f(b)=b$.
 
 La correction utilise l'ensemble
 
@@ -53,13 +53,13 @@ $
 
 Chaque $x_n$ vérifie $x_n<=f(x_n)$.
 
-Puisque $f$ est continue en $b$, on a
+Puisque $x_n<=b$ et que $f$ est croissante, on a $f(x_n)<=f(b)$. Comme $x_n in E$, on a donc
 
 $
-f(x_n)->f(b).
+x_n<=f(x_n)<=f(b).
 $
 
-En passant à la limite dans l'inégalité précédente, on obtient
+En passant à la limite dans l'inégalité $x_n<=f(b)$, on obtient
 
 $
 b<=f(b).
@@ -99,10 +99,10 @@ On a donc montré que $f$ possède *au moins un point fixe* dans $[0,1]$.
 
 1. Construire l'ensemble des points où $x<=f(x)$.
 2. Montrer qu'il est non vide et majoré, puis considérer son supremum $b$.
-3. Utiliser une suite de points de cet ensemble et la continuité pour montrer $b<=f(b)$.
+3. Utiliser une suite de points de cet ensemble et la monotonie pour montrer $b<=f(b)$.
 4. Exploiter la croissance : $b<=f(b)$ entraîne $f(b)<=f(f(b))$, donc $f(b)$ appartient lui-même à l'ensemble.
 5. Comme $b$ est son supremum, conclure $f(b)<=b$, puis $f(b)=b$.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* Les étapes avec l'ensemble $E$, la borne supérieure $b$ et la monotonie sont visibles sur les photos. Les hypothèses sont reconstituées à partir du raisonnement ; l'énoncé exact n'a pas été retrouvé.
+  *Provenance.* Les étapes avec l'ensemble $E$, la borne supérieure $b$ et la monotonie sont visibles sur les photos. Les hypothèses ont été vérifiées dans l'énoncé officiel. Celui-ci ne suppose pas la continuité ; l'argument a été corrigé en conséquence.
 ]
