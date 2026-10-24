@@ -1,6 +1,6 @@
-// source-confidence: medium
-// source-note: photos 11486 (page droite, bas) et 11487 (page gauche, haut) : exercice 4, prolongement par continuité.
-// source-uncertainty: énoncé imprimé FVR TD03 non disponible ; fonctions et points étudiés sont identifiés d'après les expressions manuscrites. Les domaines sont explicités pour lever les ambiguïtés.
+// source-confidence: high
+// source-note: énoncé officiel TD03_continuite.pdf, exercice 4 ; photos 11486 et 11487.
+// source-verification: l'énoncé définit les trois premières fonctions sur R privé de 0, et la quatrième sur ]0,1[ union ]1,+infinity[ avec extension demandée à [0,+infinity[.
 // source-verification: les limites unilatérales sont distinguées et le signe dans l'exponentielle est vérifié ; la fonction (x^n-1)/ln(x) admet une limite n au voisinage de 1 pour n>0 entier.
 
 #set page(paper: "a4", margin: 2cm)
@@ -21,7 +21,7 @@ existe (en tenant compte des côtés par lesquels on peut approcher $a$ dans le 
 
 On définit alors la nouvelle fonction en posant $f(a)=ell$.
 
-== 1. $f_1(x)=e^(-1/x)$ au voisinage de $0$
+== 1. $f_2(x)=e^(-1/x)$ au voisinage de $0$
 
 On considère $f_1$ sur l’ensemble des réels $x$ tels que $x !=0$.
 
@@ -43,7 +43,7 @@ Les deux limites unilatérales ne coïncident pas ; l'une est infinie.
 
 *Attention :* si le domaine initial était seulement $(0,+infinity)$, le prolongement unilatéral à $[0,+infinity)$ par la valeur $0$ serait possible. C'est pourquoi le domaine doit être précisé.
 
-== 2. $f_2(x)=e^(-1/x^2)$ au voisinage de $0$
+== 2. $f_1(x)=e^(-1/x^2)$ au voisinage de $0$
 
 On considère $f_2$ définie pour $x !=0$.
 
@@ -101,7 +101,7 @@ $
 
 == 4. $f_4(x)=(x^n-1)/ln(x)$ au voisinage de $1$
 
-La copie considère la fonction pour $x>0$ et $x !=1$, où $n>=1$ est un entier fixé.
+L'énoncé considère la fonction pour $x>0$ et $x !=1$, où $n>=1$ est un entier fixé, et demande un prolongement à tout $[0,+infinity[$.
 
 La limite en $1$ est de la forme $0/0$.
 
@@ -130,11 +130,15 @@ n t/t
 =n.
 $
 
-*Conclusion :* la fonction est prolongeable par continuité en $1$ en posant
+*Conclusion en $1$ :* on pose $f_4(1)=n$.
+
+*Il faut également traiter $0$*, car l'énoncé demande une extension à $[0,+infinity[$. Lorsque $x->0^+$, on a $x^n-1->-1$ et $ln(x)->-infinity$. Par conséquent,
 
 $
-f_4(1)=n.
+lim_(x->0^+) (x^n-1)/ln(x)=0.
 $
+
+On pose donc $f_4(0)=0$. Le prolongement continu sur $[0,+infinity[$ est défini par les valeurs $0$ en $0$, $n$ en $1$ et par la formule initiale ailleurs.
 
 == À retenir
 
@@ -144,5 +148,5 @@ $
 4. Si la limite n'existe pas ou est infinie, un prolongement continu à valeurs réelles est impossible.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* Les quatre fonctions et les conclusions de prolongement sont issues des notes photographiées. Pour la première fonction, la différence entre un domaine bilatéral et un domaine à droite est explicitée ; les domaines exacts de l'énoncé imprimé restent à confirmer.
+  *Provenance.* Les quatre fonctions et les conclusions de prolongement sont issues des notes photographiées. Pour la première fonction, la différence entre un domaine bilatéral et un domaine à droite est explicitée ; les domaines et les deux points de prolongement ont été vérifiés dans l'énoncé officiel.
 ]
