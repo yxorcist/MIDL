@@ -1,6 +1,6 @@
 // source-confidence: high
-// source-note: photo 11486, page droite, exercice 5 ; démonstration par le théorème des valeurs intermédiaires.
-// source-uncertainty: la feuille FVR TD03 n'a pas été retrouvée ; la propriété est formulée d'après les hypothèses visibles sur la copie.
+// source-note: énoncé officiel TD03_continuite.pdf, exercice 5 ; photo 11486, démonstration par le théorème des valeurs intermédiaires.
+// source-verification: l'énoncé officiel confirme l'intervalle I, la continuité et la condition f(x)^2=1.
 // source-verification: la démonstration par contradiction utilise seulement la connexité de l'intervalle I et la continuité de f.
 
 #set page(paper: "a4", margin: 2cm)
