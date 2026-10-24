@@ -1,40 +1,66 @@
-// source-confidence: medium
-// source-note: transcription des notes manuscrites du TD2 ; les matrices A et B de la question 1 ne sont pas visibles sur les photographies.
-// source-uncertainty: les affirmations reliant dominance diagonale et positivité sont erronées sans hypothèses supplémentaires.
+// source-confidence: high
+// source-note: énoncé officiel TD02_systemes-lineaires-2.pdf (N2 Informatique 2026-2027), exercice 1 ; matrices vérifiées sur la page imprimée.
+// source-verification: la dominance diagonale est vérifiée ligne par ligne et la positivité est démontrée séparément.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
-= TD 2 — Exercice 1 — Dominance diagonale
+= TD 2 — Exercice 1 — Dominance diagonale et définition positive
 
-== Définition
-
-Une matrice carrée $A=(a_(i,j))$ est *à diagonale dominante (par lignes)* si, pour tout $i$,
+== Données du sujet officiel
 
 $
-abs(a_(i,i)) >= sum_(j != i) abs(a_(i,j)).
+A=mat(
+  2,-1,0,0;
+  -1,2,-1,0;
+  0,-1,2,-1;
+  0,0,-1,2
+), quad
+B=mat(
+  4,1,1,0;
+  1,4,0,1;
+  1,0,4,1;
+  0,1,1,4
+).
 $
 
-Elle est *à diagonale strictement dominante* lorsque, pour tout $i$,
+== 1. Les matrices sont-elles à diagonale strictement dominante ?
 
+Une matrice $M$ est *strictement à diagonale dominante par lignes* si
 $
-abs(a_(i,i)) > sum_(j != i) abs(a_(i,j)).
+forall i, quad abs(m_(i,i))>sum_(j!=i) abs(m_(i,j)).
 $
 
-== Réponses notées en séance
+Pour $A$, les sommes des valeurs absolues hors diagonale, ligne par ligne, sont $1,2,2,1$. Les coefficients diagonaux valent tous $2$ : les lignes 2 et 3 vérifient l'égalité, et non l'inégalité stricte. Donc *$A$ est à diagonale dominante, mais pas strictement*.
 
-- La matrice $A$ de l'énoncé est à diagonale dominante, mais *pas strictement* dominante.
-- La matrice $B$ de l'énoncé est *à diagonale strictement dominante*.
+Pour $B$, les sommes hors diagonale valent $2$ dans chacune des quatre lignes, tandis que les coefficients diagonaux valent $4$. On a $4>2$ sur toutes les lignes : *$B$ est strictement à diagonale dominante*.
 
-Les coefficients de ces deux matrices ne sont pas visibles sur la photographie ; il est donc impossible de vérifier numériquement ces deux classements à partir de cette source.
+== 2. Symétrie et définition positive
 
-== Point de vigilance — Positivité
+Les matrices *$A$ et $B$ sont symétriques*.
 
-Les notes associent une matrice à diagonale strictement dominante à une matrice « définie positive » et une matrice à diagonale dominante à une matrice « semi-définie positive ».
+Pour $A$, en notant $x=(x_1,x_2,x_3,x_4)^T$, on obtient
+$
+x^T A x
+= x_1^2+x_4^2
++(x_1-x_2)^2+(x_2-x_3)^2+(x_3-x_4)^2.
+$
+Cette somme de carrés est positive, et ne peut être nulle que si $x_1=x_4=0$ et $x_1=x_2=x_3=x_4$. Alors $x=0$. Donc *$A$ est définie positive*.
 
-*Ces implications ne sont pas valables pour une matrice quelconque.* La dominance diagonale stricte implique notamment l'inversibilité, mais ne suffit pas à elle seule à garantir la positivité.
+Pour $B$, chaque produit croisé $2x_i x_j$ est minoré par $-x_i^2-x_j^2$. Les quatre arêtes correspondantes sont $(1,2)$, $(1,3)$, $(2,4)$, $(3,4)$ : chaque variable apparaît exactement deux fois dans ces produits. Ainsi
+$
+x^T B x >= 4sum_(i=1)^4 x_i^2-2sum_(i=1)^4 x_i^2
+=2sum_(i=1)^4 x_i^2.
+$
+Pour $x!=0$, cette borne est strictement positive. Donc *$B$ est définie positive*.
 
-Par exemple, la matrice $(-2)$ est strictement diagonale dominante et n'est pas définie positive.
+== Bilan
 
-Pour une matrice réelle *symétrique* dont les coefficients diagonaux sont *positifs*, la dominance diagonale stricte garantit en revanche qu'elle est définie positive.
+#table(columns: (1fr,1.7fr,1.6fr,1.4fr), inset: 5pt,
+  [*Matrice*],[*Diagonale strictement dominante ?*],[*Symétrique ?*],[*Définie positive ?*],
+  [$A$],[Non],[Oui],[Oui],
+  [$B$],[Oui],[Oui],[Oui],
+)
+
+*Attention :* « diagonale dominante » n'implique pas automatiquement « définie positive » pour une matrice quelconque. La conclusion pour $A$ et $B$ ci-dessus a été prouvée à partir de leurs coefficients exacts.
