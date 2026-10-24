@@ -1,8 +1,7 @@
 // source-confidence: high
 // source-note: photographie manuscrite 10995.jpg, en-tête « TD 3 », « exercice 1 ».
 // source-note: questions 1 à 4 et leurs définitions retranscrites en conservant la distinction MCD / MLD.
-// source-uncertainty: l'énoncé imprimé du TD03 n'est pas fourni ; les libellés des quatre questions sont ceux inférés des réponses.
-// source-uncertainty: la dernière ligne du verso ou une éventuelle suite de l'exercice n'est pas visible.
+// source-note: TD03_modele-logique-donnees.pdf, exercice 1, questions 1 à 4 vérifiées sur l'énoncé officiel.
 // source-verification: les précisions pédagogiques ajoutées sont identifiées explicitement et ne sont pas présentées comme extraites de la copie.
 
 #set page(paper: "a4", margin: 2cm)

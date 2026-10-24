@@ -1,6 +1,6 @@
 // source-confidence: high
 // source-note: photos 10959 et 10961, intitulées « TD3 — Ex1 » puis suite de la question b).
-// source-note: les abscisses et les valeurs y_i sont reconstituées des bases de Lagrange et des coefficients écrits ; l'énoncé imprimé n'est pas reproduit.
+// source-note: les cinq abscisses et les valeurs y_i des questions a et b sont confirmées par le document officiel TD03_interpolation-approximation.pdf.
 // source-verification: calculs des polynômes P et des bases de Lagrange vérifiés indépendamment.
 // source-uncertainty: le dénominateur de l_1 de la question b) est peu lisible dans la dernière substitution manuscrite ; la formule ci-dessous utilise la valeur mathématiquement correcte 2(1-a²).
 

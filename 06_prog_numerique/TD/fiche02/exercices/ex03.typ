@@ -1,134 +1,89 @@
-// source-confidence: medium
-// source-note: la photographie donne le système, sa solution et un dessin des deux droites ; les parcours Jacobi/Gauss-Seidel sur le graphe ne sont pas entièrement identifiables.
-// source-note: les tableaux complémentaires montrent des trajectoires graphiques de Jacobi et Gauss–Seidel ; les relations ajoutées ci-dessous sont déduites du système affiché.
-// source-uncertainty: les flèches manuscrites ne permettent pas de fixer avec certitude chaque point initial de la construction du tableau ; le SVG ne représente que les droites.
+// source-confidence: high
+// source-note: TD02_systemes-lineaires-2.pdf, exercice 3 : équations, tableau de Jacobi/Gauss-Seidel et départ M0=(3,3) vérifiés sur l'énoncé officiel.
+// source-correction: une version précédente construisait un exemple depuis (0,0) au lieu de traiter le tableau officiel ; elle est remplacée par la résolution demandée.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
-= TD 2 — Exercice 3 — Résolution graphique
+= TD 2 — Exercice 3 — Résolution graphique et comparaison de Jacobi / Gauss–Seidel
 
-== 1. Résoudre le système
+== Énoncé officiel et résolution géométrique
 
-Les deux équations sont
-
+On considère
 $
-cases(
-  y=-1+2x,
-  x+y=2.
-)
+cases(-2x+y=-1, x+y=2).
 $
+Ces deux équations donnent les droites $y=2x-1$ et $y=2-x$.
 
-En remplaçant $y$ dans la seconde équation,
-
-$
-x+(-1+2x)=2
-<=> 3x=3
-<=> x=1.
-$
-
-Puis
-
-$
-y=-1+2(1)=1.
-$
-
-Ainsi, l'unique solution est
-
-$
-(x,y)=(1,1).
-$
-
-Chaque équation représente une droite dans le plan ; leur point d'intersection représente la solution du système.
+À l'intersection, $2x-1=2-x$, donc $3x=3$, $x=1$ et $y=1$. *La solution unique est $(1,1)$.*
 
 #align(center)[
   #image("../figures/ex03-droites.svg", width: 82%)
 ]
 
-== 2. Écritures des deux équations
+== 2. Tableau d'itérations figurant dans le sujet
 
-La feuille utilise aussi les formes
+Les itérations du sujet partent de *$M_0=(3,3)$*, et non de $(0,0)$.
 
-$
--2x+y=-1
-quad "et" quad
-x+y=2,
-$
-
-c'est-à-dire
-
-$
-y=-1+2x
-quad "et" quad
-y=2-x.
-$
-
-Les noms *Jacobi* et *Gauss–Seidel* figurent sur le dessin de la séance. Celui-ci montre des constructions d'itérations, mais la photographie ne permet pas d'en reconstituer avec certitude le point de départ ni toutes les flèches : ces trajectoires sont donc omises.
-
-
-== 3. Jacobi et Gauss–Seidel : interprétation des trajectoires
-
-Les photographies du tableau montrent des itérations graphiques construites à partir des deux droites qui se coupent en $(1,1)$.
-
-Pour comparer les méthodes à partir du système
-
-$
-cases(
-  -2x+y=-1,
-  x+y=2,
+#table(columns: (0.7fr, 1.5fr, 1.5fr), inset: 6pt, align: center,
+  [*Point*],[*Jacobi (J)*],[*Gauss–Seidel (GS)*],
+  [$M_0$],[$(3,3)$],[$(3,3)$],
+  [$M_1$],[$(2,-1)$],[$(2,0)$],
+  [$M_2$],[$(0,0)$],[$(1/2,3/2)$],
+  [$M_3$],[$(1/2,2)$],[$(5/4,3/4)$],
+  [$M_4$],[$(3/2,3/2)$],[$(7/8,9/8)$],
 )
+
+== Justifier les valeurs du tableau
+
+On isole $x$ dans la première équation et $y$ dans la seconde :
+$
+x=(y+1)/2, quad y=2-x.
 $
 
-on l'écrit sous la forme
+=== Méthode de Jacobi
 
+Les nouvelles valeurs sont calculées *toutes deux à partir de l'itération précédente* :
 $
-cases(
-  x=(y+1)/2,
-  y=2-x.
-)
-$
-
-=== Itération de Jacobi
-
-Les deux nouvelles coordonnées utilisent seulement les coordonnées de l'itération précédente :
-
-$
-cases(
-  x^(k+1)=(y^k+1)/2,
-  y^(k+1)=2-x^k.
-)
+cases(x^(k+1)=(y^k+1)/2,
+      y^(k+1)=2-x^k).
 $
 
-À titre d'exemple, en choisissant $u^0=(0,0)$,
-
+Depuis $M_0=(3,3)$, on obtient
 $
-u^1=(1/2,2),
-quad
-u^2=(3/2,3/2).
+M_1=(2,-1), quad M_2=(0,0),
 $
-
-=== Itération de Gauss–Seidel
-
-La seconde coordonnée utilise immédiatement le nouveau $x^(k+1)$ :
-
 $
-cases(
-  x^(k+1)=(y^k+1)/2,
-  y^(k+1)=2-x^(k+1).
-)
+M_3=(1/2,2), quad M_4=(3/2,3/2).
 $
 
-Depuis le même point $u^0=(0,0)$,
+=== Méthode de Gauss–Seidel
 
+Le nouveau $y$ réutilise immédiatement le $x$ qui vient d'être calculé :
 $
-u^1=(1/2,3/2),
-quad
-u^2=(5/4,3/4).
+cases(x^(k+1)=(y^k+1)/2,
+      y^(k+1)=2-x^(k+1)).
+$
+Ainsi
+$
+M_1=(2,0), quad M_2=(1/2,3/2),
+$
+$
+M_3=(5/4,3/4), quad M_4=(7/8,9/8).
 $
 
-Les deux constructions se dirigent vers l'intersection $(1,1)$ pour ce système.
+== Comparer la convergence
 
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Distinction source / calcul.* Le tableau contient les trajectoires illustratives. Le choix du point initial $(0,0)$ et les valeurs numériques des deux exemples ci-dessus sont ajoutés pour clarifier la méthode ; ils ne sont pas transcrits directement du dessin.
-]
+Les deux suites d'itérations convergent vers $(1,1)$, mais les coordonnées *Gauss–Seidel* s'en rapprochent ici plus rapidement. Après quatre itérations,
+$
+norm(M_4^("J")-(1,1))_2=sqrt(1/2),
+$
+alors que
+$
+norm(M_4^("GS")-(1,1))_2=sqrt(1/32).
+$
+
+La convergence peut être visualisée en plaçant les points du tableau dans le plan et en reliant les points successifs de chaque méthode.
+
+*Provenance.* Les deux droites et les points du tableau sont tirés de l'énoncé officiel. Les relations de récurrence et la comparaison des distances sont des vérifications calculées à partir de celui-ci.

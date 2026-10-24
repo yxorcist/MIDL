@@ -1,7 +1,7 @@
 // source-confidence: high
-// source-note: TD 1, exercice 4 ; données relues sur les photos 10813 et 10814.
+// source-note: TD01_systemes-lineaires.pdf, exercice 4 (deux systèmes officiels) ; premier système recoupé avec photos 10813 et 10814.
 // source-note: calculs d'élimination et résultat vérifiés indépendamment.
-// source-uncertainty: le déterminant -4 noté dans la copie est incorrect pour la matrice affichée ; la valeur correcte est -10.
+// source-correction: le premier système a pour déterminant -10, malgré un -4 manuscrit ; le -4 est le déterminant du second système donné dans le document officiel.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -147,3 +147,41 @@ A mat(1;-1;2;1)=mat(-6;0;8;6)=b.
 $
 
 La solution finale écrite dans les notes manuscrites est donc correcte.
+
+
+== 5. Deuxième système du même exercice (présent dans l'énoncé officiel)
+
+Le sujet contient, *après le premier système*, un deuxième système $A_2 x=b_2$ qui manquait dans la correction précédente :
+
+$
+A_2=mat(2,0,4,-2;1,0,2,1;0,1,0,2;1,3,1,2),
+quad b_2=mat(2;1;2;1).
+$
+
+=== a) Déterminant
+
+Par opérations élémentaires sur les lignes, ou par un développement de Laplace, on trouve
+$
+det(A_2)=-4.
+$
+La matrice $A_2$ est donc inversible.
+
+=== b) Résolution par la méthode de Gauss
+
+La réduction de la matrice augmentée $(A_2 | b_2)$ aboutit à
+$
+mat(1,0,0,0,-11;0,1,0,0,2;0,0,1,0,6;0,0,0,1,0).
+$
+La *solution unique* du deuxième système est donc
+$
+x=mat(-11;2;6;0).
+$
+
+=== c) Vérification
+
+Un contrôle direct donne
+$
+A_2 mat(-11;2;6;0)=mat(2;1;2;1)=b_2.
+$
+
+*Attention :* les deux déterminants de l'exercice 4 ne doivent pas être confondus : $det(A_1)=-10$ et $det(A_2)=-4$.

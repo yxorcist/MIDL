@@ -1,6 +1,6 @@
 // source-confidence: medium
-// source-note: transcription des pages manuscrites du TD2, exercice 2.
-// source-uncertainty: les valeurs écrites pour Gauss-Seidel sur la dernière page ne satisfont pas les relations itératives ; les valeurs corrigées sont identifiées ci-dessous.
+// source-note: énoncé officiel TD02_systemes-lineaires-2.pdf, exercice 2 (système, changement y'=y+2z et quatre questions) ; complété avec les notes manuscrites.
+// source-verification: les valeurs de Jacobi et Gauss–Seidel sont recalculées selon les quatre questions et les approximations des variables originales sont fournies.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -143,6 +143,14 @@ $
 u^2=mat(9/4;5/3;17/8).
 $
 
+=== Retour aux inconnues $(x,y,z)$ après Jacobi
+
+Le sujet demande d'en déduire les valeurs des variables *originales*. Puisque $y=y'-2z$, au terme de deux itérations de Jacobi, on a
+$
+(x,y,z) approx (9/4, 5/3-2 dot 17/8, 17/8)
+= (9/4,-31/12,17/8).
+$
+
 == 4. Gauss–Seidel sur le système transformé
 
 On écrit $A'=L+(A'-L)$, où $L$ est la partie triangulaire inférieure de $A'$, diagonale comprise.
@@ -209,6 +217,27 @@ y'^2=1+(137/48)/3=281/144.
 $
 
 Les notes manuscrites indiquent à la place $z^1=11/24$, $x^2=65/48$ et $y'^2=-28/36$. *Ces résultats sont incompatibles avec le système affiché et sont reproduits ici uniquement pour signaler l'écart de transcription/calcul.*
+
+=== Terminer la deuxième itération et revenir à $(x,y,z)$
+
+Le calcul ne doit pas s'arrêter à $x^2$ et $y'^2$ : la troisième coordonnée reste à calculer.
+$
+z^2=1+(137/48)/4+(5/8)(281/144)
+=1+137/192+1405/1152
+=3379/1152.
+$
+Ainsi, à la fin de la deuxième itération de Gauss–Seidel,
+$
+u^2=(137/48,281/144,3379/1152).
+$
+Comme $y=y'-2z$,
+$
+y=281/144-2 dot 3379/1152=-2255/576.
+$
+Les *approximations demandées* pour le système d'origine sont donc
+$
+(x,y,z) approx (137/48,-2255/576,3379/1152).
+$
 
 == 5. Critère d'arrêt
 
