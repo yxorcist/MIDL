@@ -1,6 +1,6 @@
 // source-confidence: high
-// source-note: photo 11487 (fin de la page gauche et haut de la page droite), exercice 6 : Raymond parcourt 80 km en 60 minutes.
-// source-reconstruction: on rend explicite la fonction décalée g(t)=f(t+30)-f(t), puis l'usage du TVI pour la valeur 40 km.
+// source-note: énoncé officiel TD03_continuite.pdf, exercice 6 ; photo 11487 : Raymond parcourt 80 km entre 8h et 9h.
+// source-verification: l'énoncé officiel propose explicitement g(t)=f(t+30)-f(t) ; l'encadrement et le TVI sont développés.
 // source-verification: g(0)-40 et g(30)-40 sont opposés, garantissant une solution t in [0,30].
 
 #set page(paper: "a4", margin: 2cm)
@@ -11,7 +11,7 @@
 
 == Situation du problème
 
-Raymond parcourt une distance totale de *80 km en 60 minutes*, sans interruption de son déplacement.
+Raymond part à *8 h* et arrive à *9 h*, après un trajet de *80 km en 60 minutes*.
 
 On note $f(t)$ la distance parcourue depuis le départ, en kilomètres, au temps $t$, mesuré en minutes.
 
