@@ -14,19 +14,17 @@ On prend $NN=\{0,1,2,dots\}$ et $NN^*=\{1,2,3,dots\}$. Un entier *impair* est de
 
 Une correspondance est une *fonction* si chaque entrée possède au plus une image ; elle est une *application* si chacune possède exactement une image.
 
-== 1. $NN -> NN$, $x=2^y z$, avec $z in NN$
+== 1. $NN -> NN$, $x=2 y z$, avec $z in NN$
 
-Pour $x=0$, les choix $z=0$ et $y$ arbitraire vérifient $0=2^y z$ : l'entrée $0$ admet plusieurs images distinctes $y$.
+Pour $x=0$, les choix $z=0$ et $y$ arbitraire vérifient $0=2 y z$ : l'entrée $0$ admet plusieurs images distinctes $y$.
 
 *Ce n'est pas une fonction* (correspondance multivaluée).
 
-== 2. $NN -> NN$, $x=2^y z$, avec $z$ impair
+== 2. $NN -> NN$, $x=2 y z$, avec $z$ impair
 
-Pour tout $x>0$, la décomposition $x=2^y z$ avec $z$ impair positif existe et impose un unique exposant $y>=0$.
+*Ce n'est pas une fonction.* En effet, $x=6$ possède deux images distinctes : $6=2 dot 3 dot 1=2 dot 1 dot 3$, où $1$ et $3$ sont impairs. On peut donc avoir $y=3$ ou $y=1$ pour la même entrée $x=6$.
 
-En revanche $x=0$ n'a *aucune* décomposition de cette forme : une puissance de $2$ multipliée par un entier impair ne peut être nulle.
-
-*C'est une fonction partielle, mais pas une application.*
+Le fait que certains entiers impairs ne possèdent aucune image n'est pas le problème principal : la non-unicité pour $x=6$ suffit à exclure une fonction.
 
 == 3. $NN^* -> NN$, $x=2^y z$, avec $z$ impair
 
@@ -61,11 +59,11 @@ C'est une *application*. Elle est *surjective* car $f(2^y)=y$. Elle n'est *pas i
 #table(columns: (1fr, 2fr), inset: 6pt,
   [*Cas*], [*Statut*],
   [1], [Pas une fonction],
-  [2], [Fonction partielle, non totale],
+  [2], [Pas une fonction],
   [3], [Application surjective, non injective],
   [4], [Application bijective],
   [5], [Pas une fonction],
   [6], [Application surjective, non injective],
 )
 
-*Note de lecture :* le sujet imprimé utilise la puissance $2^y$ dans les questions 2 à 4, conformément aux arguments de décomposition vus sur les photos.
+*Note de lecture :* le sujet utilise le *produit* $2 y z$ dans les cas 1 et 2, mais la *puissance* $2^y z$ dans les cas 3 et 4. La confusion entre les deux notations modifie la classification du cas 2.
