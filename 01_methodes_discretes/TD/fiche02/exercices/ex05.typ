@@ -1,38 +1,29 @@
 // source-confidence: high
-// source-note: exercice 5, fiche officielle TD02_construction-inductive.pdf ; photo 11489.
- // source-reconstruction: le point de rupture du raisonnement (de 1 à 2) est explicité à partir de l'énoncé complet.
-
+// source-note: énoncé officiel TD02 Construction inductive, exercice 5 ; photo manuscrite du raisonnement par groupes.
+ 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
-= Exercice 5 — Où échoue la récurrence « tous du même âge » ?
+= Exercice 5 — Fausse récurrence sur l'âge des personnes
 
-== Raisonnement proposé
+== Énoncé
 
-On prétend démontrer par induction la propriété
+On prétend démontrer par récurrence la propriété $P(n)$ : « Dans tout groupe de $n$ personnes, toutes les personnes ont le même âge ».
 
-$ P(n): "dans tout groupe de " n " personnes, toutes ont le même âge". $
+*Initialisation.* $P(1)$ est vraie : un groupe contenant une seule personne a un seul âge.
 
-*Base.* $P(1)$ est vraie, puisque l'unique personne d'un groupe est du même âge qu'elle-même.
+*Étape proposée.* Supposons $P(n)$ vraie. Pour un groupe de $n+1$ personnes, soit $G_1$ celui des $n$ premières, et $G_2$ celui des $n$ dernières. Chacun est formé de personnes du même âge par hypothèse de récurrence. L'argument prétend qu'ils ont un membre en commun qui relie les deux âges.
 
-*Hérédité proposée.* Supposons $P(n)$ vraie. Pour $n+1$ personnes numérotées $1,dots,n+1$, on construit
+== Où est l'erreur ?
 
-- $G_1$, formé des $n$ premières personnes ;
-- $G_2$, formé des $n$ dernières personnes.
+L'intersection $G_1 inter G_2$ est composée des personnes numérotées $2$ à $n$ : elle possède $n-1$ éléments.
 
-L'hypothèse affirme que tous les membres de $G_1$ ont le même âge et que ceux de $G_2$ ont le même âge. Le raisonnement conclut que les deux âges sont égaux, car les groupes auraient une personne commune.
+- Si $n>=2$, l'intersection est non vide. Les deux groupes ont alors une personne commune, ce qui permet effectivement de conclure pour un groupe de $n+1$ personnes.
+- Mais si $n=1$, les groupes sont $G_1=\{1\}$ et $G_2=\{2\}$ : leur intersection est *vide*. L'argument ne peut pas affirmer que les deux personnes ont le même âge.
 
-== Erreur : le passage de $n=1$ à $n=2$
+Le passage crucial $P(1) => P(2)$ *n'a pas été démontré* et est faux en général. Une induction qui fonctionne seulement à partir de $n=2$ ne suffit pas lorsque l'on ne dispose que de $P(1)$.
 
-Si $n=1$, on a
+== Méthode à retenir
 
-$ G_1=\{"personne 1"\}, quad G_2=\{"personne 2"\}. $
-
-L'intersection $G_1 inter G_2$ est *vide* : personne ne transmet l'égalité des âges d'un groupe à l'autre.
-
-Pour $n>=2$, les deux groupes ont effectivement $n-1>=1$ personnes communes, mais ce fait ne répare pas le premier passage $P(1) => P(2)$, qui est invalide.
-
-*Conclusion :* le schéma d'induction échoue exactement à la première étape. La propriété générale est fausse : deux personnes peuvent avoir des âges différents.
-
-*À retenir :* en induction, vérifier explicitement que l'argument d'hérédité est valable dès la *première valeur* et pas seulement à partir d'un rang plus grand.
+Lorsqu'une récurrence manipule deux sous-ensembles se recouvrant, *vérifier que leur intersection est non vide au premier rang de l'hérédité*. Le problème apparaît précisément ici pour $n=1$.
