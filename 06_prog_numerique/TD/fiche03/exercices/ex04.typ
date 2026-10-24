@@ -1,6 +1,6 @@
 // source-confidence: high
 // source-note: photos 10961 et 10963, rubrique « Ex4 — Moindres carrés ».
-// source-note: le tableau d'origine des points (x_i,y_i) n'est pas visible ; seules les moyennes numériques sont retranscrites.
+// source-note: énoncé officiel TD03_interpolation-approximation.pdf ex04 : cinq couples vérifiés directement dans le tableau imprimé.
 // source-verification: les dérivées, équations normales et coefficients ont été recalculés.
 // source-uncertainty: le résultat manuscrit b≈-1,71 est incompatible avec les quatre moyennes écrites ; la valeur correcte est b≈1,01.
 
@@ -114,9 +114,17 @@ $
 b=(bar(y)bar(x^2)-bar(x)bar(x y))/(bar(x^2)-bar(x)^2).
 $
 
+== Tableau officiel des points
+
+#table(columns: 5, inset: 5pt, align: center,
+  [$x_i$],[$1$],[$3$],[$4$],[$6$],
+  [$y_i$],[$1.5$],[$2$],[$2.6$],[$4$],
+)
+Le dernier couple est $(7,3.5)$ ; les cinq points ont donc pour abscisses $1,3,4,6,7$ et ordonnées $1.5,2,2.6,4,3.5$.
+
 == Application numérique visible dans la copie
 
-Les seules statistiques recopiées sont
+Les statistiques calculées à partir des cinq couples officiels sont
 
 $
 bar(x)=4.2,
@@ -160,5 +168,5 @@ $
 ]
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Limite de la source.* L'énoncé contenant la liste des points n'est pas visible : les moyennes ont été utilisées telles qu'écrites, sans les attribuer à un tableau de données reconstitué.
+  *Vérification de la source.* Les cinq couples ont été relevés du TD officiel et les quatre moyennes de la copie sont compatibles avec les données imprimées.
 ]
