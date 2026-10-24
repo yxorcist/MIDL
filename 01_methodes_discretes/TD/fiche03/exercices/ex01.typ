@@ -39,7 +39,7 @@ est un sous-ensemble de $E$ (axiome de séparation). On choisit uniquement les �
 
 L'ensemble $A=\{x in NN mid exists y in NN, x=2y\}$ est l'ensemble des entiers naturels *pairs*. Son complémentaire dans $NN$ est l'ensemble des entiers naturels *impairs* :
 
-$ NN \ A = \{2k+1 mid k in NN\}. $
+$ NN ∖ A = \{2k+1 mid k in NN\}. $
 
 == Méthode
 
