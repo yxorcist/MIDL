@@ -434,10 +434,29 @@ def cmd_open(args: list[str]) -> int:
     return subprocess.call(editor.split() + [path.name], cwd=path.parent)
 
 
-def rclone_filter_literal(name: str) -> str:
-    """Escape one path component for use in an rclone glob filter."""
-    reserved = {"*", "?", "\\", "[", "]", "{", "}"}
-    return "".join(f"\\{char}" if char in reserved else char for char in name)
+def inbox_selected_paths(parent: Path, batch: list[Path]) -> tuple[list[str], list[str]]:
+    """List exactly the chosen files and empty directories relative to parent.
+
+    rclone --files-from0 accepts literal path names, unlike --include globs.
+    Directory arguments expand recursively without matching sibling paths.
+    """
+    files: set[str] = set()
+    empty_dirs: set[str] = set()
+    for source in batch:
+        if source.is_file():
+            files.add(source.relative_to(parent).as_posix())
+            continue
+
+        # A literal file list needs the contents of selected directories
+        # expanded. Also remember genuinely empty directories.
+        if not any(source.iterdir()):
+            empty_dirs.add(source.relative_to(parent).as_posix())
+        for child in source.rglob("*"):
+            if child.is_file():
+                files.add(child.relative_to(parent).as_posix())
+            elif child.is_dir() and not any(child.iterdir()):
+                empty_dirs.add(child.relative_to(parent).as_posix())
+    return sorted(files), sorted(empty_dirs)
 
 
 def cmd_inbox(args: list[str]) -> int:
@@ -463,13 +482,9 @@ def cmd_inbox(args: list[str]) -> int:
             sources.append(source)
             seen.add(source)
 
-    # rclone can transfer multiple selected children of one local directory in
-    # a single process. Grouping by parent preserves the INBOX layout while
-    # making the common `midl inbox *` case one batched invocation.
-    #
-    # Inbox is an ingest command: after rclone confirms a successful move,
-    # local files are gone. Selected directories may retain empty directory
-    # shells, so prune only empty directories afterwards.
+    # Group arguments by parent for one rclone process per source directory.
+    # Explicit directories are recursively expanded, including the common
+    # shell-expanded "midl inbox *" use case.
     groups: dict[Path, list[Path]] = {}
     for source in sources:
         groups.setdefault(source.parent, []).append(source)
@@ -482,16 +497,28 @@ def cmd_inbox(args: list[str]) -> int:
             f"{parent}/ -> {destination}/"
         )
 
-        cmd = ["rclone", "move", str(parent), destination]
+        files, empty_dirs = inbox_selected_paths(parent, batch)
+        if files:
+            # NUL-separated bytes preserve literal spaces, backslashes, '[',
+            # ']', '*', '?', '{', '}', leading '#', and embedded newlines.
+            # stdin avoids temporary filter files and a long argv.
+            payload = b"".join(os.fsencode(name) + b"\0" for name in files)
+            subprocess.run(
+                [
+                    "rclone", "move", str(parent), destination,
+                    "--files-from0", "-", "--progress",
+                ],
+                input=payload,
+                cwd=ROOT,
+                check=True,
+            )
 
-        for source in batch:
-            name = rclone_filter_literal(source.name)
-            pattern = f"/{name}/**" if source.is_dir() else f"/{name}"
-            cmd.extend(["--include", pattern])
+        # --files-from0 selects files, not empty folders; create those
+        # explicitly using literal remote paths (no glob parsing).
+        for directory in empty_dirs:
+            run(["rclone", "mkdir", f"{destination}/{directory}"])
 
-        cmd.extend(["--create-empty-src-dirs", "--progress"])
-        run(cmd)
-
+        # Only prune source directories after every transfer succeeded.
         for source in batch:
             if not source.is_dir():
                 continue
