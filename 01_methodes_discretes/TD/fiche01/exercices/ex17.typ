@@ -79,17 +79,17 @@ $
 
 *Étape 1 — Utiliser « décomposable ».* Comme $n$ est décomposable, il existe des entiers $a,b>1$ tels que
 $
-n=ab.
+n=a b.
 $
 Cela nous donne deux diviseurs de $n$, sans garantie qu'ils soient premiers ou assez petits.
 
 *Étape 2 — Obtenir un facteur assez petit.* Si $a>sqrt(n)$ *et* $b>sqrt(n)$, alors en multipliant ces inégalités positives :
 $
-n=ab>sqrt(n) sqrt(n)=n,
+n=a b>sqrt(n) sqrt(n)=n,
 $
 ce qui est impossible. Donc *au moins un* facteur vérifie $a<=sqrt(n)$ ou $b<=sqrt(n)$.
 
-*Étape 3 — Choisir son nom.* Les deux facteurs sont interchangeables puisque $ab=ba$. Nous appelons $a$ celui qui est inférieur ou égal à $sqrt(n)$. C'est le sens de « sans perte de généralité » : si c'était initialement $b$, il suffit d'échanger les lettres. Désormais,
+*Étape 3 — Choisir son nom.* Les deux facteurs sont interchangeables puisque $a b=b a$. Nous appelons $a$ celui qui est inférieur ou égal à $sqrt(n)$. C'est le sens de « sans perte de généralité » : si c'était initialement $b$, il suffit d'échanger les lettres. Désormais,
 $
 1<a<=sqrt(n) quad "et" quad a divides n.
 $
@@ -100,11 +100,11 @@ p " premier" quad "et" quad p divides a.
 $
 Ce n'est *pas* un nombre premier arbitraire. Nous le choisissons *parmi les diviseurs premiers de $a$*. Si $a$ est premier, on peut prendre directement $p=a$ ; sinon, on prend l'un de ses facteurs premiers.
 
-*Étape 5 — Vérifier $p divides n$.* De $p divides a$, il existe un entier $r$ avec $a=pr$. De $n=ab$, on tire
+*Étape 5 — Vérifier $p divides n$.* De $p divides a$, il existe un entier $r$ avec $a=p r$. De $n=a b$, on tire
 $
-n=(pr)b=p(rb).
+n=(p r) b=p (r b).
 $
-Le produit $rb$ est entier : donc $p divides n$. C'est la transitivité de la divisibilité ($p divides a$ et $a divides n$ impliquent $p divides n$).
+Le produit $r b$ est entier : donc $p divides n$. C'est la transitivité de la divisibilité ($p divides a$ et $a divides n$ impliquent $p divides n$).
 
 *Étape 6 — Vérifier la borne.* Un diviseur positif d'un entier positif ne le dépasse pas : de $p divides a$ on déduit $p<=a$. Or $a<=sqrt(n)$, donc
 $
