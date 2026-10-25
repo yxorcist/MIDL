@@ -1,88 +1,43 @@
-// source-confidence: high
-
+// source: TD01_preuves.pdf ; enrichi à partir des échanges pédagogiques
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
+#set par(justify: true, leading: 0.65em)
 
-= Exercice 4
+= Exercice 4 — Fonction plafond et parité
 
-Montrons que, pour tout $n in NN$,
-
+*Énoncé.* Montrer que, pour tout $n in NN$,
 $
-ceil(n/2)
-=
-cases(
+ceil(n/2)=cases(
 n/2 & "si " n " est pair",
 (n+1)/2 & "si " n " est impair".
 )
 $
 
-On distingue deux cas.
+== Définition à utiliser
 
-== Cas 1 : $n$ est pair
+$ceil(x)$ est le plus petit entier *supérieur ou égal* au réel $x$. Si $x$ est déjà entier, $ceil(x)=x$ ; si $x=r+1/2$ avec $r$ entier, $ceil(x)=r+1$.
 
-Il existe $k in NN$ tel que
+== Preuve par cas
 
+*Cas 1 :* $n$ pair. Écrivons $n=2r$, avec $r in NN$. Alors
 $
-n=2k.
+ceil(n/2)=ceil((2r)/2)=ceil(r)=r=n/2,
 $
+car $r$ est entier.
 
-Alors
-
+*Cas 2 :* $n$ impair. Écrivons $n=2r+1$, avec $r in NN$. Alors
 $
-ceil(n/2)
-=
-ceil((2k)/2)
-=
-ceil(k)
-=
-k
-=
-n/2.
+n/2=r+1/2.
+$
+Le réel $r+1/2$ se situe strictement entre les entiers consécutifs $r$ et $r+1$. Le plus petit entier qui lui est supérieur ou égal est donc $r+1$ :
+$
+ceil(n/2)=ceil(r+1/2)=r+1=(n+1)/2.
 $
 
-== Cas 2 : $n$ est impair
+Les deux cas établissent la formule.
 
-Il existe $k in NN$ tel que
+== À retenir
 
-$
-n=2k+1.
-$
-
-Alors
-
-$
-ceil(n/2)
-=
-ceil((2k+1)/2)
-=
-ceil(k+1/2)
-=
-k+1.
-$
-
-Or
-
-$
-k+1
-=
-(n+1)/2.
-$
-
-Donc
-
-$
-ceil(n/2)
-=
-(n+1)/2.
-$
-
-Ainsi,
-
-$
-ceil(n/2)
-=
-cases(
-n/2 & "si " n " est pair",
-(n+1)/2 & "si " n " est impair".
-)
-$
+- Justifier le passage $ceil(r+1/2)=r+1$ par *la définition du plafond*, et non par une règle non expliquée.
+- Dans une preuve par cas, faire apparaître à la fin *exactement l'expression de l'énoncé*.
+- Ne pas confondre le plafond $ceil(x)$ avec l'arrondi à l'entier le plus proche.
