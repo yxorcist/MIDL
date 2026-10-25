@@ -17,7 +17,7 @@ Supposons par l'absurde que $sqrt(6) in QQ$. Alors il existe $a,b in ZZ$, avec $
 $
 sqrt(6)=a/b.
 $
-L'irréductibilité signifie que $a$ et $b$ n'ont pas de diviseur commun strictement supérieur à $1$, ou encore $pgcd(abs(a),abs(b))=1$.
+L'irréductibilité signifie que $a$ et $b$ n'ont pas de diviseur commun strictement supérieur à $1$, ou encore $"pgcd"(abs(a),abs(b))=1$.
 
 Élevons l'égalité au carré, puis multiplions par $b^2$ :
 $
