@@ -22,14 +22,14 @@ $
 $
 Les deux membres sont positifs ou nuls. En élevant au carré et en multipliant par $4>0$ :
 $
-(x+y)^2<4xy.
+(x+y)^2<4 x y.
 $
 Développons, puis regroupons :
 $
-x^2+2xy+y^2<4xy,
+x^2+2 x y+y^2<4 x y,
 $
 $
-x^2-2xy+y^2<0,
+x^2-2 x y+y^2<0,
 $
 $
 (x-y)^2<0.
@@ -43,9 +43,9 @@ $
 
 L'inégalité $(x-y)^2>=0$ donne
 $
-(x+y)^2>=4xy.
+(x+y)^2>=4 x y.
 $
-Comme $x+y>=0$ et $2sqrt(xy)>=0$, on en déduit $x+y>=2sqrt(xy)$, puis la conclusion. L'égalité se produit exactement quand $x=y$.
+Comme $x+y>=0$ et $2 sqrt(x y)>=0$, on en déduit $x+y>=2 sqrt(x y)$, puis la conclusion. L'égalité se produit exactement quand $x=y$.
 
 == À retenir
 
