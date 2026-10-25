@@ -38,6 +38,6 @@ C'est l'inégalité triangulaire.
 
 == À retenir
 
-- La justification est $2 x y<=2 abs(x y)$ pour *tous* $x,y$, et non seulement « $xy$ peut être négatif ».
+- La justification est $2 x y<=2 abs(x y)$ pour *tous* $x,y$, et non seulement « $x y$ peut être négatif ».
 - Le zéro est possible : dire « les deux membres sont *positifs ou nuls* », pas « strictement positifs ».
 - Une inégalité entre carrés ne donne l'inégalité souhaitée qu'après avoir contrôlé le signe des quantités.
