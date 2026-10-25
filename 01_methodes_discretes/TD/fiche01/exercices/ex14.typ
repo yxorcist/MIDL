@@ -20,7 +20,7 @@ Pour tous $x,y in RR$,
 $
 abs(x+y)^2=(x+y)^2=x^2+2 x y+y^2.
 $
-Or, pour tout réel $t$, $t<=abs(t)$. En prenant $t=xy$, on obtient
+Or, pour tout réel $t$, $t<=abs(t)$. En prenant $t=x y$, on obtient
 $
 2 x y<=2 abs(x y)=2 abs(x) abs(y).
 $
