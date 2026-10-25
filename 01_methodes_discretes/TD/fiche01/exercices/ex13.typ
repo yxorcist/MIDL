@@ -34,7 +34,7 @@ x^y=((sqrt(2))^(sqrt(2)))^(sqrt(2))
 =(sqrt(2))^2
 =2 in QQ.
 $
-Ici l'identité $(u^v)^w=u^(vw)$ est applicable car $u=sqrt(2)>0$.
+Ici l'identité $(u^v)^w=u^(v w)$ est applicable car $u=sqrt(2)>0$.
 
 Dans les deux cas, il existe deux irrationnels dont la puissance est rationnelle. La propriété est démontrée.
 
