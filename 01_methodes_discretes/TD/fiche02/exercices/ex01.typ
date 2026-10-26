@@ -4,9 +4,7 @@
 
 = Exercice 1
 
-Posons $S_n = sum_(i=0)^n floor(i/2)$.
-
-On note $P(n)$ la propriété :
+Posons $S_n = sum_(i=0)^n floor(i/2)$ et notons $P(n)$ la propriété :
 
 $
 S_n = cases(
@@ -27,7 +25,7 @@ Donc $P(0)$ est vraie.
 
 == Hérédité
 
-Soit $n in NN$. Supposons $P(n)$ vraie. Montrons $P(n+1)$.
+Soit $n in NN$. Supposons $P(n)$ vraie et montrons $P(n+1)$.
 
 $
 S_(n+1) = S_n + floor((n+1)/2).
@@ -39,9 +37,9 @@ Alors $n+1$ est impair et $floor((n+1)/2) = n/2$.
 Par $P(n)$ :
 
 $
-S_(n+1)
-= n^2/4 + n/2
-= ((n+1)^2-1)/4.
+S_(n+1) &= n^2/4 + n/2 \
+        &= (n^2+2n)/4 \
+        &= ((n+1)^2-1)/4.
 $
 
 Donc $P(n+1)$ est vraie.
@@ -52,19 +50,18 @@ Alors $n+1$ est pair et $floor((n+1)/2) = (n+1)/2$.
 Par $P(n)$ :
 
 $
-S_(n+1)
-= (n^2-1)/4 + (n+1)/2
-= (n+1)^2/4.
+S_(n+1) &= (n^2-1)/4 + (n+1)/2 \
+        &= (n^2+2n+1)/4 \
+        &= (n+1)^2/4.
 $
 
 Donc $P(n+1)$ est vraie.
 
 == Conclusion
 
-Les deux cas établissent $P(n) => P(n+1)$.
+Les deux cas donnent $P(n) => P(n+1)$.
 Par récurrence, $forall n in NN$, $P(n)$.
 
-_Remarque._ Vérifier aussi $P(1)$ est possible, mais inutile ici :
-l'hérédité porte sur $n+1$ et traite les deux parités.
-Deux initialisations seraient nécessaires pour une hérédité
-de la forme $P(n) => P(n+2)$.
+_Remarque._ La vérification de $P(1)$ serait correcte mais redondante :
+l'étape $P(n) => P(n+1)$ couvre les deux parités. En revanche,
+une récurrence de pas $2$ requiert les bases $P(0)$ et $P(1)$.
