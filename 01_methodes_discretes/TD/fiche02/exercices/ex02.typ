@@ -28,7 +28,7 @@ Donc $P(0)$ est vraie.
 Soit $n in NN$. Supposons $P(n)$ vraie. Montrons $P(n+1)$.
 
 Par hypothèse de récurrence, il existe $k in ZZ$ tel que
-$a^n-b^n=km$. Or, par hypothèse de l'énoncé, $a-b=m$.
+$a^n-b^n=k m$. Or, par hypothèse de l'énoncé, $a-b=m$.
 
 $
 a^(n+1)-b^(n+1)
