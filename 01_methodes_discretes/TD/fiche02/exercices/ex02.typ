@@ -49,7 +49,7 @@ _Remarques._
 
 - L'identité utilisée dans l'hérédité s'obtient en ajoutant
   et en retranchant $a b^n$. Elle fait apparaître l'expression de $P(n)$.
-- La divisibilité signifie $m divides x iff exists k in ZZ, x=m k$,
+- La divisibilité $m divides x$ signifie qu\'il existe $k in ZZ$ tel que $x=m k$,
   y compris pour $m=0$ (où $0 divides x$ impose $x=0$).
 - Lorsque $a=0$ ou $b=0$, l'initialisation au rang $0$ nécessite
   la convention $0^0=1$. Sans elle, l'énoncé doit être formulé
