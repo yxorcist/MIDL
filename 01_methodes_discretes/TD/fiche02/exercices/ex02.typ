@@ -5,71 +5,52 @@
 
 = Exercice 2
 
-Soient $a,b in NN$ tels que
+Soient $a,b,m in NN$ tels que $a-b=m$.
+
+On note $P(n)$ la propriété :
 
 $
-a-b=m in NN.
-$
-
-Montrons que, pour tout $n in NN$,
-
-$
-m divides (a^n-b^n).
+P(n): m divides (a^n-b^n).
 $
 
 == Initialisation
 
-Pour $n=0$,
+Pour $n=0$ (avec la convention $0^0=1$) :
 
 $
-a^0-b^0=0,
+a^0-b^0 = 1-1 = 0 = m times 0.
 $
 
-donc $m$ divise $a^0-b^0$.
+Donc $P(0)$ est vraie.
 
 == Hérédité
 
-Supposons la propriété vraie au rang $n$ : il existe $K in ZZ$ tel que
+Soit $n in NN$. Supposons $P(n)$ vraie. Montrons $P(n+1)$.
 
-$
-a^n-b^n=K m.
-$
-
-Montrons qu'elle est vraie au rang $n+1$.
+Par hypothèse de récurrence, il existe $k in ZZ$ tel que
+$a^n-b^n=km$. Or, par hypothèse de l'énoncé, $a-b=m$.
 
 $
 a^(n+1)-b^(n+1)
-= a(a^n-b^n)+b^n(a-b).
+= a(a^n-b^n)+b^n(a-b)
+= a k m+b^n m
+= m(a k+b^n).
 $
 
-Par hypothèse de récurrence,
+Puisque $a k+b^n in ZZ$, on a
+$m divides (a^(n+1)-b^(n+1))$.
+Donc $P(n+1)$ est vraie.
 
-$
-a^n-b^n=K m,
-$
+== Conclusion
 
-et, par hypothèse,
+Par récurrence, $forall n in NN$, $P(n)$.
 
-$
-a-b=m.
-$
+_Remarques._
 
-Ainsi,
-
-$
-a^(n+1)-b^(n+1)
-= a K m+b^n m
-= m(a K+b^n).
-$
-
-Donc
-
-$
-m divides (a^(n+1)-b^(n+1)).
-$
-
-Par récurrence,
-
-$
-forall n in NN, quad m divides (a^n-b^n).
-$
+- L'identité utilisée dans l'hérédité s'obtient en ajoutant
+  et en retranchant $a b^n$. Elle fait apparaître l'expression de $P(n)$.
+- La divisibilité signifie $m divides x iff exists k in ZZ, x=m k$,
+  y compris pour $m=0$ (où $0 divides x$ impose $x=0$).
+- Lorsque $a=0$ ou $b=0$, l'initialisation au rang $0$ nécessite
+  la convention $0^0=1$. Sans elle, l'énoncé doit être formulé
+  à partir de $n=1$ dans ces cas.
