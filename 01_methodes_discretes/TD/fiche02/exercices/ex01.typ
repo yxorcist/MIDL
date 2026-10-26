@@ -4,136 +4,67 @@
 
 = Exercice 1
 
-Montrons par récurrence que, pour tout $n in NN$,
+Posons $S_n = sum_(i=0)^n floor(i/2)$.
+
+On note $P(n)$ la propriété :
 
 $
-sum_(i=0)^n floor(i/2)
-=
-cases(
-n^2/4 & "si " n " est pair",
-(n^2-1)/4 & "si " n " est impair".
+S_n = cases(
+  n^2/4 & "si " n " est pair",
+  (n^2-1)/4 & "si " n " est impair".
 )
 $
 
 == Initialisation
 
-Pour $n=0$,
+Pour $n=0$ :
 
 $
-sum_(i=0)^0 floor(i/2)
-=
-floor(0/2)
-=
-0
-=
-0^2/4.
+S_0 = floor(0/2) = 0 = 0^2/4.
 $
 
-La propriété est vraie au rang $0$.
-
-Pour $n=1$,
-
-$
-sum_(i=0)^1 floor(i/2)
-=
-floor(0/2)+floor(1/2)
-=
-0
-=
-(1^2-1)/4.
-$
-
-La propriété est vraie au rang $1$.
+Donc $P(0)$ est vraie.
 
 == Hérédité
 
-Supposons la propriété vraie au rang $n$.
-
-On a
+Soit $n in NN$. Supposons $P(n)$ vraie. Montrons $P(n+1)$.
 
 $
-sum_(i=0)^(n+1) floor(i/2)
-=
-sum_(i=0)^n floor(i/2)
-+
-floor((n+1)/2).
+S_(n+1) = S_n + floor((n+1)/2).
 $
 
-On distingue deux cas.
+=== Cas 1 : $n$ pair
 
-=== Cas 1 : $n+1$ est impair
-
-Il existe $k in NN$ tel que
-
-$
-n+1=2k+1.
-$
-
-Alors $n=2k$ est pair. Par hypothèse de récurrence,
+Alors $n+1$ est impair et $floor((n+1)/2) = n/2$.
+Par $P(n)$ :
 
 $
-sum_(i=0)^n floor(i/2)
-=
-n^2/4.
+S_(n+1)
+= n^2/4 + n/2
+= ((n+1)^2-1)/4.
 $
 
-De plus,
+Donc $P(n+1)$ est vraie.
+
+=== Cas 2 : $n$ impair
+
+Alors $n+1$ est pair et $floor((n+1)/2) = (n+1)/2$.
+Par $P(n)$ :
 
 $
-floor((n+1)/2)
-=
-floor(k+1/2)
-=
-k
-=
-n/2.
+S_(n+1)
+= (n^2-1)/4 + (n+1)/2
+= (n+1)^2/4.
 $
 
-Ainsi,
+Donc $P(n+1)$ est vraie.
 
-$
-sum_(i=0)^(n+1) floor(i/2)
-=
-n^2/4+n/2
-=
-(n^2+2n)/4
-=
-((n+1)^2-1)/4.
-$
+== Conclusion
 
-La formule est donc vérifiée pour $n+1$ impair.
+Les deux cas établissent $P(n) => P(n+1)$.
+Par récurrence, $forall n in NN$, $P(n)$.
 
-=== Cas 2 : $n+1$ est pair
-
-Alors $n$ est impair. Par hypothèse de récurrence,
-
-$
-sum_(i=0)^n floor(i/2)
-=
-(n^2-1)/4.
-$
-
-Comme
-
-$
-floor((n+1)/2)=(n+1)/2,
-$
-
-on obtient
-
-$
-sum_(i=0)^(n+1) floor(i/2)
-=
-(n^2-1)/4+(n+1)/2
-$
-
-$
-=
-(n^2+2n+1)/4
-=
-(n+1)^2/4.
-$
-
-La formule est donc vérifiée pour $n+1$ pair.
-
-Par récurrence, la propriété est vraie pour tout $n in NN$.
+_Remarque._ Vérifier aussi $P(1)$ est possible, mais inutile ici :
+l'hérédité porte sur $n+1$ et traite les deux parités.
+Deux initialisations seraient nécessaires pour une hérédité
+de la forme $P(n) => P(n+2)$.
