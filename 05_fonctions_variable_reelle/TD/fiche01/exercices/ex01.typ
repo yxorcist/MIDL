@@ -1,4 +1,6 @@
 // source-confidence: high
+// study-validation: 2026-10-28 — exercice 1 entièrement résolu à la main et vérifié (questions 1, 2a, 2b, 2c).
+// study-feedback: la dernière copie corrige le signe final du télescopage; toujours distinguer u_n (terme) de sum u_n (série).
 // source: TD01_series-positives.pdf, exercice 1 (énoncé officiel).
 // presentation: énoncé fidèle, choix de méthode, preuve courte, pièges relevés lors du travail manuscrit.
 
