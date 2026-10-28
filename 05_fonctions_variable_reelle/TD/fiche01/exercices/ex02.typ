@@ -1,4 +1,6 @@
 // source-confidence: high
+// study-validation: 2026-10-28 — exercice 2 entièrement résolu à la main et vérifié (questions 1 et 2).
+// study-feedback: préciser systématiquement la condition abs(q) < 1 avant d'utiliser la somme d'une série géométrique infinie.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -42,11 +44,8 @@ sum_(k=1)^infinity
 (1/100)^k.
 $
 
-Il s'agit d'une série géométrique de raison
-
-$
-1/100<1.
-$
+Il s'agit d'une série géométrique de raison $q=1/100$.
+Comme $abs(q) = 1/100 < 1$, la série converge et la formule de somme infinie s'applique.
 
 Ainsi,
 
@@ -94,11 +93,8 @@ $
 sum_(k=1)^infinity 9/10^k
 $
 
-est géométrique de raison
-
-$
-1/10<1.
-$
+est géométrique de raison $q=1/10$.
+Comme $abs(q) = 1/10 < 1$, elle converge.
 
 Donc
 
@@ -128,3 +124,10 @@ Par conséquent,
 $
 0,99999 dots=1.
 $
+
+== À retenir
+
+- Une suite géométrique peut avoir n'importe quelle raison réelle $q$.
+- Pour une série géométrique infinie de premier coefficient non nul, la convergence exige $abs(q) < 1$, pas seulement $q < 1$.
+- Pour $abs(q) < 1$, on utilise $sum_(k=1)^infinity q^k = q/(1-q)$.
+- Écrire l'indice de départ de la somme avant d'appliquer la formule.
