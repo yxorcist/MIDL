@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-28 — TD01 ex03 question 11 vérifiée sur copie manuscrite : cas alpha>0 par DL et Riemann (seuil alpha=2), cas alpha<=0 par comparaison avec (1/ln(2)) (1/n - sin(1/n)) ; erreur initiale de coefficient dans la majoration corrigée.
 // study-validation: 2026-10-28 — TD01 ex03 question 10 vérifiée sur copie manuscrite : 0 < sin(1/n) < 1/n, puissance n, majoration par 1/n² pour n >= 2, convergence par comparaison avec Riemann alpha=2.
 // study-validation: 2026-10-28 — TD01 ex03 question 9 vérifiée sur copie manuscrite : comparaison 1/(n cos²(n)) >= 1/n, divergence de la série harmonique et théorème de comparaison des séries positives.
 // study-validation: 2026-10-28 — TD01 ex03 question 8 vérifiée sur copie manuscrite : factorisation, DL, reste o(1/n) et équivalent -6/(5n^(2/5)), divergence par Riemann.
@@ -595,7 +596,11 @@ $
 1/(6n^3),
 $
 
-donc la série de terme général $u_n$ converge.
+donc $sum (1/n - sin(1/n))$ converge par équivalence avec
+une série de Riemann de puissance $3>1$.
+
+Par comparaison des séries à termes positifs,
+$sum u_n$ converge pour $alpha<=0$.
 
 Finalement,
 
