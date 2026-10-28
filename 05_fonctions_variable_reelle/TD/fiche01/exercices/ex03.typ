@@ -38,46 +38,28 @@ et si $sum v_n$ converge, alors $sum u_n$ converge.
 
 == 1.
 
-On considère
+On pose $u_n = n^4 / e^n$ et $v_n = 1 / (sqrt(e))^n$.
+
+Par croissance comparée,
 
 $
-u_n=n^4 exp(-n).
+u_n / v_n = n^4 / e^(n/2) -> 0.
 $
 
-On compare avec
+Comme $u_n >= 0$ et $v_n > 0$, on en déduit qu'à partir d'un certain rang,
 
 $
-v_n=exp(-n/2).
+0 <= u_n <= v_n.
 $
 
-On a
+Or, $sum v_n$ est une série géométrique convergente de raison
+$q = 1 / sqrt(e) < 1$.
+
+Par le théorème de comparaison des séries à termes positifs,
 
 $
-u_n/v_n
-=
-n^4 exp(-n/2)
-->0
+sum u_n " converge."
 $
-
-par croissance comparée. Ainsi,
-
-$
-u_n=o(exp(-n/2)).
-$
-
-La série de terme général $exp(-n/2)$ est géométrique de raison
-
-$
-exp(-1/2)<1,
-$
-
-donc elle converge. Par comparaison des séries positives,
-
-$
-sum n^4 exp(-n)
-$
-
-converge.
 
 == 2.
 
