@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-28 — TD01 ex03 question 3 vérifiée sur copie manuscrite : équivalence à 1/n², série de Riemann alpha=2 et positivité explicite.
 // study-validation: 2026-10-28 — TD01 ex03 question 2 vérifiée sur copie manuscrite : équivalence avec la série harmonique et positivité explicite.
 // source-note: questions 8 to 12 were rechecked against the newly supplied handwritten correction and the official TD01 statement.
 // source-note: question 13 appears on the official TD sheet but was not treated in class, so no correction is expected in these notes.
@@ -88,26 +89,28 @@ $
 
 == 3.
 
-On considère
+On pose $u_n=(n-1)/(n^3+2)$ et $v_n=1/n^2$.
+
+On calcule :
 
 $
-u_n=(n-1)/(n^3+2).
+u_n/v_n
+= (n^2(n-1))/(n^3+2)
+= (1-1/n)/(1+2/n^3)
+-> 1 quad (n -> +infinity).
 $
 
-On a
+Donc $u_n ~ v_n$.
+
+Or $sum v_n = sum 1/n^2$ converge (série de Riemann,
+$alpha=2>1$).
+
+Comme $u_n >= 0$ et $v_n > 0$ pour $n>=1$, le théorème
+d'équivalence des séries à termes positifs donne :
 
 $
-u_n ~ 1/n^2.
+sum u_n " converge."
 $
-
-Comme
-
-$
-sum 1/n^2
-$
-
-converge, la série de terme général $u_n$ converge par comparaison des séries
-positives.
 
 == 4.
 
