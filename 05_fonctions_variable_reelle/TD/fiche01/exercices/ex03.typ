@@ -273,9 +273,7 @@ $
 Il s'agit d'une série de Riemann multipliée par la constante positive $1/6$, avec exposant $p=3-alpha$. Pour qu'elle converge, il faut $p>1$, soit :
 
 $
-3-alpha>1
-iff
-alpha<2.
+3-alpha>1 quad "équivaut à" quad alpha<2.
 $
 
 Ainsi, dans le cas $alpha>0$, *$sum u_n$ converge pour $0<alpha<2$ et diverge pour $alpha>=2$* (y compris pour $alpha=2$, où l'on retrouve la série harmonique).
