@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-29 — TD01 ex03 question 13 résolue sur copie manuscrite : cas alpha != 2 divergent, alpha = 2 convergent ; conclusion vérifiée et justification rendue rigoureuse par le conjugué, sans notation grand O.
 // study-validation: 2026-10-28 — TD01 ex03 question 12 vérifiée sur copie manuscrite : DL du logarithme et de l'exponentielle, équivalent u_n ~ e/(2n), divergence par équivalence avec la série harmonique multipliée par e/2 > 0.
 // study-validation: 2026-10-28 — TD01 ex03 question 11 vérifiée sur copie manuscrite : cas alpha>0 par DL et Riemann (seuil alpha=2), cas alpha<=0 par comparaison avec (1/ln(2)) (1/n - sin(1/n)) ; erreur initiale de coefficient dans la majoration corrigée.
 // study-validation: 2026-10-28 — TD01 ex03 question 10 vérifiée sur copie manuscrite : 0 < sin(1/n) < 1/n, puissance n, majoration par 1/n² pour n >= 2, convergence par comparaison avec Riemann alpha=2.
@@ -11,7 +12,7 @@
 // study-validation: 2026-10-28 — TD01 ex03 question 3 vérifiée sur copie manuscrite : équivalence à 1/n², série de Riemann alpha=2 et positivité explicite.
 // study-validation: 2026-10-28 — TD01 ex03 question 2 vérifiée sur copie manuscrite : équivalence avec la série harmonique et positivité explicite.
 // source-note: questions 8 to 12 were rechecked against the newly supplied handwritten correction and the official TD01 statement.
-// source-note: question 13 appears on the official TD sheet but was not treated in class, so no correction is expected in these notes.
+// source-note: question 13 apparaît sur la fiche officielle, n'a pas été traitée en classe, puis a été résolue en travail personnel (méthode du conjugué).
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -349,15 +350,67 @@ Donc $u_n ~ e/(2n)$. La série $sum e/(2n)$ est la série harmonique multipliée
 
 == 13.
 
-Le sujet officiel donne, pour $alpha in RR$ :
+On considère, pour $alpha in RR$ et $n$ assez grand pour que les racines soient définies :
 
 $
 u_n=sqrt(n^4+2n+1)-sqrt(n^4+alpha n).
 $
 
-Il faut déterminer la nature de $sum u_n$ selon $alpha$.
+*Méthode du conjugué* (sans développement limité supplémentaire).
+
+On multiplie par la somme des deux racines :
+
+$
+u_n
+&= ((n^4+2n+1)-(n^4+alpha n)) /
+   (sqrt(n^4+2n+1)+sqrt(n^4+alpha n)) \\
+&= ((2-alpha)n+1) /
+   (sqrt(n^4+2n+1)+sqrt(n^4+alpha n)).
+$
+
+En factorisant $n^2$ au dénominateur :
+
+$
+sqrt(n^4+2n+1)+sqrt(n^4+alpha n)
+= n^2[sqrt(1+2/n^3+1/n^4)+sqrt(1+alpha/n^3)].
+$
+
+Comme $2/n^3+1/n^4 -> 0$ et $alpha/n^3 -> 0$, les deux racines entre crochets tendent vers $1$. Ainsi :
+
+$
+sqrt(n^4+2n+1)+sqrt(n^4+alpha n) ~ 2n^2.
+$
+
+=== Si $alpha != 2$
+
+Le numérateur vérifie $((2-alpha)n+1) ~ (2-alpha)n$, donc :
+
+$
+u_n ~ (2-alpha)/(2n).
+$
+
+Si $alpha<2$, le coefficient est positif et la série diverge par équivalence avec la série harmonique. Si $alpha>2$, $u_n$ est négatif à partir d'un certain rang et $-u_n ~ (alpha-2)/(2n)$ : la série de terme général $-u_n$ diverge par comparaison avec la série harmonique. Ainsi, *$sum u_n$ diverge pour $alpha != 2$*.
+
+=== Si $alpha = 2$
+
+Le numérateur est exactement $1$, donc :
+
+$
+u_n = 1/(sqrt(n^4+2n+1)+sqrt(n^4+2n))
+~ 1/(2n^2).
+$
+
+La série de Riemann $sum 1/n^2$ converge ($p=2>1$). Par équivalence des séries positives, *$sum u_n$ converge pour $alpha=2$*.
+
+Finalement :
+
+$
+sum u_n " converge si " alpha=2,
+$
+
+et diverge pour $alpha != 2$.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Non traité en classe.* La question 13 figure sur la fiche officielle,
-  mais n'a pas été faite en séance.
+  *Non traité en classe.* Cette question figure sur la fiche officielle et a été
+  résolue en travail personnel, avec distinction des cas $alpha=2$ et $alpha != 2$.
 ]
