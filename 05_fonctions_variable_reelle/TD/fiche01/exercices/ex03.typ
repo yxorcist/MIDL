@@ -12,695 +12,145 @@
 // source-note: questions 8 to 12 were rechecked against the newly supplied handwritten correction and the official TD01 statement.
 // source-note: question 13 appears on the official TD sheet but was not treated in class, so no correction is expected in these notes.
 
-#set page(paper: "a4", margin: 2cm)
-#set text(lang: "fr", size: 11pt)
-#set par(justify: true, leading: 0.65em)
+#set page(paper: "a4", margin: (x: 1.65cm, y: 1.65cm))
+#set text(lang: "fr", size: 10.5pt)
+#set par(justify: true, leading: 0.5em, spacing: 0.55em)
 
 = Exercice 3
 
 == Rappel — comparaison des séries positives
 
-Pour deux suites positives $(u_n)$ et $(v_n)$, si à partir d'un certain rang
-
-$
-0 <= u_n <= v_n,
-$
-
-alors la convergence de
-
-$
-sum v_n
-$
-
-entraîne celle de
-
-$
-sum u_n.
-$
-
-En particulier, si
-
-$
-u_n=o(v_n)
-$
-
-et si $sum v_n$ converge, alors $sum u_n$ converge.
+Si $0 <= u_n <= v_n$ à partir d'un certain rang, la convergence de $sum v_n$ entraîne celle de $sum u_n$ (comparaison des séries à termes positifs). En particulier, si $u_n=o(v_n)$ et si les suites sont positives à partir d'un certain rang, on peut conclure de la même manière.
 
 == 1.
 
-On pose $u_n = n^4 / e^n$ et $v_n = 1 / (sqrt(e))^n$.
-
-Par croissance comparée,
-
-$
-u_n / v_n = n^4 / e^(n/2) -> 0.
-$
-
-Comme $u_n >= 0$ et $v_n > 0$, on en déduit qu'à partir d'un certain rang,
-
-$
-0 <= u_n <= v_n.
-$
-
-Or, $sum v_n$ est une série géométrique convergente de raison
-$q = 1 / sqrt(e) < 1$.
-
-Par le théorème de comparaison des séries à termes positifs,
-
-$
-sum u_n " converge."
-$
+On pose $u_n=n^4/e^n$ et $v_n=1/(sqrt(e))^n=e^(-n/2)$. Par croissance comparée, $u_n/v_n=n^4/e^(n/2) -> 0$, donc $u_n=o(v_n)$. Comme $u_n>=0$ et $v_n>0$, on a $0<=u_n<=v_n$ à partir d'un certain rang. Or $sum v_n$ est une série géométrique de raison $q=1/sqrt(e)$, avec $0<q<1$ : elle converge. *Par comparaison, $sum u_n$ converge.*
 
 == 2.
 
-On pose $u_n = n/(n^2+1) = 1/(n+1/n)$ et $v_n=1/n$.
-
-On calcule :
-
-$
-u_n/v_n
-= n/(n+1/n)
-= 1/(1+1/n^2)
--> 1 quad (n -> +infinity).
-$
-
-Donc $u_n ~ v_n$.
-
-Or $sum v_n = sum 1/n$ diverge (série harmonique).
-
-Comme $u_n > 0$ et $v_n > 0$ pour $n >= 1$, le théorème d'équivalence
-des séries à termes positifs donne :
-
-$
-sum u_n " diverge."
-$
+On pose $u_n=n/(n^2+1)=1/(n+1/n)$ et $v_n=1/n$. Le quotient $u_n/v_n=1/(1+1/n^2) -> 1$, donc $u_n ~ 1/n$. Les deux termes sont positifs pour $n>=1$. La série harmonique $sum 1/n$ diverge : *par équivalence des séries à termes positifs, $sum u_n$ diverge.*
 
 == 3.
 
-On pose $u_n=(n-1)/(n^3+2)$ et $v_n=1/n^2$.
-
-On calcule :
-
-$
-u_n/v_n
-= (n^2(n-1))/(n^3+2)
-= (1-1/n)/(1+2/n^3)
--> 1 quad (n -> +infinity).
-$
-
-Donc $u_n ~ v_n$.
-
-Or $sum v_n = sum 1/n^2$ converge (série de Riemann,
-$alpha=2>1$).
-
-Comme $u_n >= 0$ et $v_n > 0$ pour $n>=1$, le théorème
-d'équivalence des séries à termes positifs donne :
-
-$
-sum u_n " converge."
-$
+On pose $u_n=(n-1)/(n^3+2)$ et $v_n=1/n^2$. On calcule $u_n/v_n=(1-1/n)/(1+2/n^3) -> 1$, donc $u_n ~ 1/n^2$. Pour $n>=1$, $u_n>=0$ et $v_n>0$ ; or $sum 1/n^2$ converge par le critère de Riemann ($alpha=2>1$). *Par équivalence des séries positives, $sum u_n$ converge.*
 
 == 4.
 
-On pose $u_n = n^819 / e^(n/2)$ et $v_n = 1 / e^(n/4)$.
-
-Par croissance comparée,
-
-$
-u_n / v_n
-= n^819 / e^(n/4)
--> 0 quad (n -> +infinity).
-$
-
-Donc $u_n = o(v_n)$. Comme $u_n >= 0$ et $v_n > 0$,
-on a $0 <= u_n <= v_n$ à partir d'un certain rang.
-
-Or $sum v_n$ est une série géométrique de raison
-$q = 1 / e^(1/4)$, avec $0 < q < 1$ : elle converge.
-
-Par le théorème de comparaison des séries à termes positifs,
-
-$
-sum u_n " converge."
-$
+On pose $u_n=n^819/e^(n/2)$ et $v_n=1/e^(n/4)$. Par croissance comparée, $u_n/v_n=n^819/e^(n/4) -> 0$, d'où $u_n=o(v_n)$ et, puisque les termes sont positifs, $0<=u_n<=v_n$ à partir d'un certain rang. La série $sum v_n$ est géométrique de raison $q=e^(-1/4)$, avec $0<q<1$. *Elle converge, donc $sum u_n$ converge par comparaison.*
 
 == 5.
 
-On pose
+On considère $u_n=(sqrt(n+1) ln(n)-sqrt(n) ln(n+1))/n^(3/4)$ et on note $N_n$ son numérateur. Puisque $ln(n+1)=ln(n)+ln(1+1/n)$, la factorisation donne
 
 $
-u_n = (sqrt(n+1) ln(n) - sqrt(n) ln(n+1)) / n^(3/4)
+N_n=sqrt(n)[(sqrt(1+1/n)-1)ln(n)-ln(1+1/n)].
 $
 
-et on étudie d'abord le numérateur $N_n$.
-
-Comme $ln(n+1)=ln(n)+ln(1+1/n)$, on factorise :
+Par DL en $0$, $sqrt(1+1/n)=1+1/(2n)+o(1/n)$ et $ln(1+1/n)=1/n-1/(2n^2)+o(1/n^2)$. Ainsi,
 
 $
-N_n = sqrt(n) [
-  (sqrt(1+1/n)-1) ln(n) - ln(1+1/n)
-].
+N_n=sqrt(n)[ln(n)/(2n)-1/n+1/(2n^2)+o(ln(n)/n)].
 $
 
-Par développement limité au voisinage de $0$,
-
-$
-sqrt(1+1/n) &= 1+1/(2n)+o(1/n), \
-ln(1+1/n) &= 1/n-1/(2n^2)+o(1/n^2).
-$
-
-Donc
-
-$
-N_n
-= sqrt(n) [
-  ln(n)/(2n)-1/n+1/(2n^2)+o(ln(n)/n)
-].
-$
-
-Comme $1/n = o(ln(n)/n)$, le terme dominant donne
-
-$
-N_n ~ ln(n)/(2sqrt(n)), quad
-u_n ~ ln(n)/(2n^(5/4)).
-$
-
-On pose $v_n=1/n^(9/8)$. Par croissance comparée,
-
-$
-u_n/v_n ~ ln(n)/(2n^(1/8)) -> 0.
-$
-
-Ainsi $u_n=o(v_n)$. Or $sum v_n$ converge : c'est une série
-de Riemann de paramètre $alpha=9/8>1$.
-
-Comme $u_n >= 0$ à partir d'un certain rang et $v_n>0$,
-le théorème de comparaison des séries à termes positifs donne :
-
-$
-sum u_n " converge."
-$
+Comme $1/n=o(ln(n)/n)$, on obtient $N_n ~ ln(n)/(2sqrt(n))$, puis $u_n ~ ln(n)/(2n^(5/4))$. On choisit $v_n=1/n^(9/8)$ ; alors $u_n/v_n ~ ln(n)/(2n^(1/8)) -> 0$ par croissance comparée. Les $u_n$ sont positifs à partir d'un certain rang et $v_n>0$ ; puisque $sum v_n$ converge par Riemann ($9/8>1$), *$sum u_n$ converge par comparaison.*
 
 == 6.
 
-On pose $u_n = n sin(pi/n)$.
-
-Comme $pi/n -> 0$, par DL en $0$,
-
-$
-sin(pi/n) = pi/n + o(1/n).
-$
-
-Donc
-
-$
-u_n = n (pi/n + o(1/n)) = pi + o(1).
-$
-
-Ainsi, $u_n -> pi != 0$.
-
-La condition nécessaire de convergence d'une série n'est donc
-pas satisfaite :
-
-$
-sum u_n " diverge grossièrement."
-$
+On pose $u_n=n sin(pi/n)$. Comme $pi/n -> 0$, le DL $sin(x)=x+o(x)$ donne $sin(pi/n)=pi/n+o(1/n)$, puis $u_n=pi+o(1) -> pi != 0$. La condition nécessaire $u_n -> 0$ pour la convergence d'une série n'est pas vérifiée : *$sum u_n$ diverge grossièrement.*
 
 == 7.
 
-Pour $n>=1$, on considère
+On considère $u_n=n ln(1+1/n)-cos(1/sqrt(n))$. Les DL en $0$ sont $ln(1+x)=x-x^2/2+x^3/3+o(x^3)$ et $cos(x)=1-x^2/2+x^4/24+o(x^4)$. On en déduit
 
 $
-u_n
-=
-n ln(1+1/n)
--
-cos(1/sqrt(n)).
+n ln(1+1/n) &= 1-1/(2n)+1/(3n^2)+o(1/n^2), \
+cos(1/sqrt(n)) &= 1-1/(2n)+1/(24n^2)+o(1/n^2).
 $
 
-Par développements limités en $0$,
-
-$
-ln(1+x)
-=
-x-x^2/2+x^3/3+o(x^3)
-$
-
-et
-
-$
-cos(x)
-=
-1-x^2/2+x^4/24+o(x^4).
-$
-
-Ainsi,
-
-$
-n ln(1+1/n)
-=
-1-1/(2n)+1/(3n^2)+o(1/n^2)
-$
-
-et
-
-$
-cos(1/sqrt(n))
-=
-1-1/(2n)+1/(24n^2)+o(1/n^2).
-$
-
-En soustrayant, les termes constants et les termes en $1/n$ s'annulent :
-
-$
-u_n
-=
-(1/3-1/24)/n^2+o(1/n^2)
-=
-7/(24n^2)+o(1/n^2).
-$
-
-D'où
-
-$
-u_n ~ 7/(24n^2).
-$
-
-Comme $7/24>0$, les termes $u_n$ sont positifs à partir d'un certain
-rang. La série de Riemann $sum 1/n^2$ converge ($alpha=2>1$).
-
-Par équivalence des séries à termes positifs à partir d'un certain rang,
-
-$
-sum u_n " converge."
-$
+En soustrayant, les constantes et les termes en $1/n$ s'annulent : $u_n=(1/3-1/24)/n^2+o(1/n^2)=7/(24n^2)+o(1/n^2)$. Ainsi $u_n ~ 7/(24n^2)$ et $u_n>0$ à partir d'un certain rang. Comme $sum 1/n^2$ converge par Riemann ($2>1$), *$sum u_n$ converge par équivalence des séries positives.*
 
 == 8.
 
-On considère
+On considère $u_n=(n^3+2n+1)^(1/5)-(n+2)^(3/5)$. En factorisant $n^(3/5)$ dans chaque terme,
 
 $
-u_n
-=
-(n^3+2n+1)^(1/5)
--
-(n+2)^(3/5).
+u_n=n^(3/5)[(1+2/n^2+1/n^3)^(1/5)-(1+2/n)^(3/5)].
 $
 
-On factorise $n^(3/5)$ :
+On utilise $(1+x)^beta=1+beta x+(beta(beta-1))/2 x^2+o(x^2)$ en $0$. Pour le premier terme, avec $x=2/n^2+1/n^3$, on obtient $(1+x)^(1/5)=1+(2/n^2+1/n^3)/5+o(1/n^2)=1+2/(5n^2)+o(1/n^2)$. Pour le second,
 
 $
-u_n
-=
-n^(3/5)
-[
-(1+2/n^2+1/n^3)^(1/5)
--
-(1+2/n)^(3/5)
-].
+(1+2/n)^(3/5)=1+6/(5n)-12/(25n^2)+o(1/n^2).
 $
 
-On utilise le développement limité
+Le terme dominant de la différence est $-6/(5n)$ : les contributions en $1/n^2$ sont $o(1/n)$. Donc
 
 $
-(1+x)^alpha
-=
-1+alpha x
-+
-(alpha(alpha-1))/2 x^2
-+
-o(x^2).
+u_n=n^(3/5)[-6/(5n)+o(1/n)]
+=-6/(5n^(2/5))+o(1/n^(2/5)).
 $
 
-Pour le premier terme,
-
-$
-(1+2/n^2+1/n^3)^(1/5)
-=
-1
-+
-1/5(2/n^2+1/n^3)
-+
-o(1/n^2).
-$
-
-Donc
-
-$
-(1+2/n^2+1/n^3)^(1/5)
-=
-1+2/(5n^2)+o(1/n^2).
-$
-
-Pour le second terme,
-
-$
-(1+2/n)^(3/5)
-=
-1
-+
-6/(5n)
--
-12/(25n^2)
-+
-o(1/n^2).
-$
-
-Comme $1/n^2=o(1/n)$, les contributions d'ordre $1/n^2$ et les
-restes $o(1/n^2)$ peuvent être absorbés dans $o(1/n)$.
-
-Ainsi,
-
-$
-u_n
-=
-n^(3/5)
-[
--6/(5n)
-+
-o(1/n)
-].
-$
-
-Après multiplication par $n^(3/5)$,
-
-$
-u_n
-=
--6/(5n^(2/5))
-+
-o(1/n^(2/5)).
-$
-
-Par conséquent,
-
-$
-u_n
-~
--6/(5n^(2/5)).
-$
-
-La série de terme général
-
-$
-6/(5n^(2/5))
-$
-
-diverge par le critère de Riemann.
-
-Comme $u_n$ est de signe constant à partir d'un certain rang et équivalent à
-
-$
--6/(5n^(2/5)),
-$
-
-la série
-
-$
-sum u_n
-$
-
-diverge.
+Ainsi $u_n ~ -6/(5n^(2/5))$ ; il est négatif à partir d'un certain rang. La série positive $sum 6/(5n^(2/5))$ diverge par Riemann ($2/5<1$) : *$sum u_n$ diverge* (vers $-infinity$).
 
 == 9.
 
-On considère
-
-$
-u_n = 1 / (n cos^2(n)).
-$
-
-Comme
-
-$
-cos^2(n) <= 1,
-$
-
-on a
-
-$
-n cos^2(n) <= n.
-$
-
-Les deux membres étant strictement positifs, le passage à l'inverse renverse
-l'inégalité :
-
-$
-u_n = 1/(n cos^2(n)) >= 1/n.
-$
-
-Or la série harmonique
-
-$
-sum_(n>=1) 1/n
-$
-
-diverge. Par comparaison des séries positives,
-
-$
-sum_(n>=1) u_n
-$
-
-diverge.
+On considère $u_n=1/(n cos^2(n))$. Pour tout entier $n>=1$, $0<cos^2(n)<=1$, donc $0<n cos^2(n)<=n$. En passant aux inverses de ces quantités strictement positives, le sens de l'inégalité s'inverse : $u_n=1/(n cos^2(n))>=1/n>0$. Or la série harmonique $sum 1/n$ diverge. *Par comparaison des séries positives, $sum u_n$ diverge.*
 
 == 10.
 
-On considère
+On considère $u_n=(sin(1/n))^n$. Pour tout entier $n>=1$, $0<1/n<=1<pi$ ; ainsi $1/n$ appartient à l'intervalle où $sin(x)>0$. De plus, l'inégalité $sin(x)<x$ pour $x>0$ donne $sin(1/n)<1/n$. Par conséquent,
 
 $
-u_n=(sin(1/n))^n.
+0<sin(1/n)<1/n<=1.
 $
 
-Pour $n>=1$,
-
-$
-0<sin(1/n)<1/n.
-$
-
-Donc, pour $n>=2$,
+En élevant les membres positifs à la puissance entière $n>=1$, ce qui conserve les inégalités, on trouve $0<u_n=(sin(1/n))^n<(1/n)^n<=1$. Le cas $n=1$ n'influe pas sur la nature de la série. Pour $n>=2$, on a $n^n>=n^2$, d'où
 
 $
 0<u_n<(1/n)^n<=1/n^2.
 $
 
-Comme
-
-$
-sum 1/n^2
-$
-
-converge, le théorème de comparaison des séries positives donne
-
-$
-sum u_n
-$
-
-convergente.
+Comme $sum_(n>=2) 1/n^2$ converge par le critère de Riemann ($alpha=2>1$), *$sum u_n$ converge par comparaison des séries à termes positifs.*
 
 == 11.
 
-On considère, pour $alpha in RR$,
+Pour $alpha in RR$, on étudie $u_n=(1/n-sin(1/n))/ln(1+1/n^alpha)$. Au voisinage de $0$, $sin(x)=x-x^3/6+o(x^3)$, donc $1/n-sin(1/n)=1/(6n^3)+o(1/n^3)$. Le numérateur et le dénominateur sont positifs pour $n>=1$.
+
+=== Cas $alpha>0$
+
+Puisque $1/n^alpha -> 0$, le DL $ln(1+x)=x+o(x)$ donne $ln(1+1/n^alpha) ~ 1/n^alpha$. Par quotient,
 
 $
-u_n =
-(1/n - sin(1/n))
-/
-ln(1 + 1/n^alpha).
+u_n ~ (1/(6n^3))/(1/n^alpha) = 1/(6n^(3-alpha)).
 $
 
-Au voisinage de $0$,
+Il s'agit d'un équivalent positif de type Riemann, d'exposant $p=3-alpha$. La convergence équivaut à $3-alpha>1$, c'est-à-dire $alpha<2$ ; *pour $alpha>0$, la série converge si $0<alpha<2$ et diverge si $alpha>=2$.*
+
+=== Cas $alpha<=0$
+
+Pour tout $n>=1$, on a $1/n^alpha>=1$, donc $ln(1+1/n^alpha)>=ln(2)>0$. En passant à l'inverse, et puisque $1/n-sin(1/n)>=0$,
 
 $
-sin(x)
-=
-x - x^3/6 + o(x^3).
+0<=u_n<=(1/ln(2))(1/n-sin(1/n)).
 $
 
-Donc
+Or $1/n-sin(1/n) ~ 1/(6n^3)$ et $sum 1/n^3$ converge par Riemann ($3>1$). *Par comparaison des séries positives, $sum u_n$ converge pour $alpha<=0$.*
 
-$
-1/n - sin(1/n)
-=
-1/(6n^3) + o(1/n^3).
-$
-
-=== Cas $alpha > 0$
-
-On a
-
-$
-ln(1+x)=x+o(x)
-$
-
-au voisinage de $0$. Avec $x=1/n^alpha$,
-
-$
-ln(1+1/n^alpha)
-~
-1/n^alpha.
-$
-
-Par conséquent,
-
-$
-u_n
-~
-1/(6 n^(3-alpha)).
-$
-
-La série de Riemann associée converge si
-
-$
-3-alpha > 1,
-$
-
-c'est-à-dire si
-
-$
-alpha < 2.
-$
-
-Elle diverge si
-
-$
-alpha >= 2.
-$
-
-=== Cas $alpha <= 0$
-
-Pour $n >= 1$,
-
-$
-1/n^alpha >= 1,
-$
-
-donc
-
-$
-ln(1+1/n^alpha) >= ln(2).
-$
-
-Ainsi,
-
-$
-0 <= u_n
-<=
-(1/ln(2)) (1/n - sin(1/n)).
-$
-
-Or
-
-$
-1/n - sin(1/n)
-~
-1/(6n^3),
-$
-
-donc $sum (1/n - sin(1/n))$ converge par équivalence avec
-une série de Riemann de puissance $3>1$.
-
-Par comparaison des séries à termes positifs,
-$sum u_n$ converge pour $alpha<=0$.
-
-Finalement,
-
-$
-sum u_n " converge si " alpha < 2,
-$
-
-et diverge si
-
-$
-alpha >= 2.
-$
+*Conclusion : $sum u_n$ converge pour $alpha<2$ et diverge pour $alpha>=2$.*
 
 == 12.
 
-On considère
+On considère $u_n=e-(1+1/n)^n$. En écrivant $(1+1/n)^n=exp(n ln(1+1/n))$ et en utilisant $ln(1+x)=x-x^2/2+o(x^2)$, on trouve $n ln(1+1/n)=1-1/(2n)+o(1/n)$. Donc
 
 $
-u_n = e - (1 + 1/n)^n.
+(1+1/n)^n=e exp(-1/(2n)+o(1/n))
+=e(1-1/(2n)+o(1/n)),
 $
 
-On écrit
-
-$
-(1+1/n)^n
-=
-exp(n ln(1+1/n)).
-$
-
-Or
-
-$
-ln(1+x)
-=
-x - x^2/2 + o(x^2),
-$
-
-donc
-
-$
-n ln(1+1/n)
-=
-1 - 1/(2n) + o(1/n).
-$
-
-Ainsi,
-
-$
-(1+1/n)^n
-=
-e exp(-1/(2n)+o(1/n)).
-$
-
-Puis, avec $exp(x)=1+x+o(x)$,
-
-$
-(1+1/n)^n
-=
-e (1 - 1/(2n) + o(1/n)).
-$
-
-Par conséquent,
-
-$
-u_n
-=
-e/(2n)+o(1/n),
-$
-
-donc
-
-$
-u_n ~ e/(2n).
-$
-
-Par comparaison avec la série harmonique,
-
-$
-sum u_n
-$
-
-diverge.
-
+où la seconde égalité utilise $exp(x)=1+x+o(x)$. Par soustraction, $u_n=e/(2n)+o(1/n)$, donc $u_n ~ e/(2n)>0$ à partir d'un certain rang. La série harmonique diverge : *$sum u_n$ diverge par équivalence des séries positives.*
 
 == 13.
 
-Le sujet officiel donne, pour $alpha in RR$,
+Le sujet officiel donne, pour $alpha in RR$, $u_n=sqrt(n^4+2n+1)-sqrt(n^4+alpha n)$. Il demande de déterminer la nature de $sum u_n$ selon $alpha$.
 
-$
-u_n
-=
-sqrt(n^4+2n+1)
--
-sqrt(n^4+alpha n).
-$
-
-Il faut déterminer la nature de la série de terme général $u_n$ selon les
-valeurs de $alpha$.
-
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Non traité en classe.* La question 13 figure sur la fiche TD officielle,
-  mais elle n'a pas été faite en séance.
-]
+#block(stroke: 0.6pt + gray, inset: 6pt)[*Non traité en classe.* La question 13 figure sur la fiche officielle, mais n'a pas été faite en séance.]
