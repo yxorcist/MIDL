@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-28 — TD01 ex03 question 2 vérifiée sur copie manuscrite : équivalence avec la série harmonique et positivité explicite.
 // source-note: questions 8 to 12 were rechecked against the newly supplied handwritten correction and the official TD01 statement.
 // source-note: question 13 appears on the official TD sheet but was not treated in class, so no correction is expected in these notes.
 
@@ -63,36 +64,27 @@ $
 
 == 2.
 
-On considère
+On pose $u_n = n/(n^2+1) = 1/(n+1/n)$ et $v_n=1/n$.
+
+On calcule :
 
 $
-u_n=n/(n^2+1).
+u_n/v_n
+= n/(n+1/n)
+= 1/(1+1/n^2)
+-> 1 quad (n -> +infinity).
 $
 
-On a
+Donc $u_n ~ v_n$.
+
+Or $sum v_n = sum 1/n$ diverge (série harmonique).
+
+Comme $u_n > 0$ et $v_n > 0$ pour $n >= 1$, le théorème d'équivalence
+des séries à termes positifs donne :
 
 $
-u_n
-=
-1/n dot 1/(1+1/n^2)
-~
-
-1/n.
+sum u_n " diverge."
 $
-
-La série harmonique
-
-$
-sum 1/n
-$
-
-diverge. Comme les termes sont positifs et équivalents,
-
-$
-sum n/(n^2+1)
-$
-
-diverge.
 
 == 3.
 
