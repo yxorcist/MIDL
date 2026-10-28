@@ -363,7 +363,7 @@ On multiplie par la somme des deux racines :
 $
 u_n
 &= ((n^4+2n+1)-(n^4+alpha n)) /
-   (sqrt(n^4+2n+1)+sqrt(n^4+alpha n)) \\
+   (sqrt(n^4+2n+1)+sqrt(n^4+alpha n)) \
 &= ((2-alpha)n+1) /
    (sqrt(n^4+2n+1)+sqrt(n^4+alpha n)).
 $
