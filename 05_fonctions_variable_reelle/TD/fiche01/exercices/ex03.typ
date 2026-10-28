@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-28 — TD01 ex03 question 7 vérifiée sur copie manuscrite : DL jusqu'à 1/n², équivalent 7/(24n²), positivité éventuelle et convergence par Riemann.
 // study-validation: 2026-10-28 — TD01 ex03 question 6 vérifiée sur copie manuscrite : DL de sin en 0, u_n = pi + o(1), divergence grossière de la série.
 // study-validation: 2026-10-28 — TD01 ex03 question 5 vérifiée sur copie manuscrite : DL, terme dominant, comparaison à Riemann alpha=9/8 et positivité à partir d'un certain rang.
 // study-validation: 2026-10-28 — TD01 ex03 question 4 vérifiée sur copie manuscrite : comparaison à la série géométrique de raison e^(-1/4) et justification de sa convergence.
@@ -233,7 +234,7 @@ n ln(1+1/n)
 cos(1/sqrt(n)).
 $
 
-On utilise
+Par développements limités en $0$,
 
 $
 ln(1+x)
@@ -246,7 +247,7 @@ et
 $
 cos(x)
 =
-1-x^2/2+o(x^3).
+1-x^2/2+x^4/24+o(x^4).
 $
 
 Ainsi,
@@ -262,17 +263,33 @@ et
 $
 cos(1/sqrt(n))
 =
-1-1/(2n)+o(1/n^(3/2)).
+1-1/(2n)+1/(24n^2)+o(1/n^2).
 $
 
-Les termes principaux se compensent. Les notes concluent que le terme général
-est négligeable devant une série de Riemann convergente, donc
+En soustrayant, les termes constants et les termes en $1/n$ s'annulent :
 
 $
-sum u_n
+u_n
+=
+(1/3-1/24)/n^2+o(1/n^2)
+=
+7/(24n^2)+o(1/n^2).
 $
 
-converge.
+D'où
+
+$
+u_n ~ 7/(24n^2).
+$
+
+Comme $7/24>0$, les termes $u_n$ sont positifs à partir d'un certain
+rang. La série de Riemann $sum 1/n^2$ converge ($alpha=2>1$).
+
+Par équivalence des séries à termes positifs à partir d'un certain rang,
+
+$
+sum u_n " converge."
+$
 
 == 8.
 
