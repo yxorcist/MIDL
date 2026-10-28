@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-28 — TD01 ex03 question 4 vérifiée sur copie manuscrite : comparaison à la série géométrique de raison e^(-1/4) et justification de sa convergence.
 // study-validation: 2026-10-28 — TD01 ex03 question 3 vérifiée sur copie manuscrite : équivalence à 1/n², série de Riemann alpha=2 et positivité explicite.
 // study-validation: 2026-10-28 — TD01 ex03 question 2 vérifiée sur copie manuscrite : équivalence avec la série harmonique et positivité explicite.
 // source-note: questions 8 to 12 were rechecked against the newly supplied handwritten correction and the official TD01 statement.
@@ -114,45 +115,27 @@ $
 
 == 4.
 
-On considère
-
-$
-u_n=n^819 exp(-n/2).
-$
-
-Pour $n>=1$,
-
-$
-n^2 u_n
-=
-n^821 exp(-n/2).
-$
+On pose $u_n = n^819 / e^(n/2)$ et $v_n = 1 / e^(n/4)$.
 
 Par croissance comparée,
 
 $
-n^821 exp(-n/2)->0.
+u_n / v_n
+= n^819 / e^(n/4)
+-> 0 quad (n -> +infinity).
 $
 
-Donc
+Donc $u_n = o(v_n)$. Comme $u_n >= 0$ et $v_n > 0$,
+on a $0 <= u_n <= v_n$ à partir d'un certain rang.
+
+Or $sum v_n$ est une série géométrique de raison
+$q = 1 / e^(1/4)$, avec $0 < q < 1$ : elle converge.
+
+Par le théorème de comparaison des séries à termes positifs,
 
 $
-u_n=o(1/n^2).
+sum u_n " converge."
 $
-
-Comme $u_n>=0$ et que
-
-$
-sum 1/n^2
-$
-
-converge, le théorème de comparaison des séries positives donne
-
-$
-sum u_n
-$
-
-convergente.
 
 == 5.
 
