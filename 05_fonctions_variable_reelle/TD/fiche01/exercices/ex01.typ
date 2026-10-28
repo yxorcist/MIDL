@@ -1,175 +1,125 @@
 // source-confidence: high
+// source: TD01_series-positives.pdf, exercice 1 (énoncé officiel).
+// presentation: énoncé fidèle, choix de méthode, preuve courte, pièges relevés lors du travail manuscrit.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
-= Exercice 1
+= TD01 — Exercice 1 : séries télescopiques
 
-== Question 1
+== Énoncé
 
-On considère, pour $n>=1$,
+*1.* Pour $n >= 1$, on pose $u_n = 1/sqrt(n) - 1/sqrt(n+1)$.
+Justifier que $u_n > 0$. En calculant les sommes partielles, montrer que
+$sum_(n=1)^infinity u_n$ converge et déterminer sa somme.
 
+*2.* Pour $n >= 2$, on pose
 $
-u_n=1/sqrt(n)-1/sqrt(n+1).
+u_n = 1/sqrt(n-1) - 2/sqrt(n) + 1/sqrt(n+1).
 $
+a) Trouver $(v_n)_(n >= 2)$ telle que $u_n = v_n - v_(n+1)$.
 
-Pour $n>=1$,
+b) Calculer $S_N = sum_(n=2)^N u_n$ pour $N >= 2$.
 
+c) Déterminer la nature de la série et, si elle converge, sa somme.
+
+== Réflexe : reconnaître le télescopage
+
+Quand $u_n$ est une différence de deux termes consécutifs,
+chercher une suite $(a_n)$ telle que
 $
-sqrt(n+1)>sqrt(n),
-$
-
-donc
-
-$
-1/sqrt(n)>1/sqrt(n+1).
-$
-
-Ainsi,
-
-$
-u_n>0.
+u_n = a_n - a_(n+1).
 $
 
-Pour $N>=1$,
-
+Les termes intermédiaires s'annulent :
 $
-S_N
-=
-sum_(k=1)^N u_k
-=
-sum_(k=1)^N
-(1/sqrt(k)-1/sqrt(k+1)).
+sum_(n=p)^N (a_n-a_(n+1)) = a_p-a_(N+1).
 $
 
-La somme est télescopique :
+*Important :* l'annulation seule ne prouve pas la convergence.
+Il faut ensuite calculer la limite des sommes partielles.
 
-$
-S_N
-=
-1-1/sqrt(N+1).
-$
+== 1. Première série
 
-Comme
+=== Positivité
 
+Pour tout $n >= 1$, on a
 $
-1/sqrt(N+1)->0,
+sqrt(n) < sqrt(n+1).
 $
+Comme les deux racines sont strictement positives, le passage aux inverses
+*renverse le sens de l'inégalité* :
+$
+1/sqrt(n) > 1/sqrt(n+1).
+$
+Donc $u_n > 0$.
 
-on obtient
+=== Sommes partielles et convergence
 
+Posons $a_n = 1/sqrt(n)$. Alors $u_n=a_n-a_(n+1)$ et, pour tout $N >= 1$,
 $
-S_N->1.
-$
-
-Donc la série converge et
-
-$
-sum_(k=1)^infinity
-(1/sqrt(k)-1/sqrt(k+1))
-=
-1.
+S_N &= sum_(n=1)^N (a_n-a_(n+1)) \
+    &= a_1-a_(N+1) \
+    &= 1-1/sqrt(N+1).
 $
 
-== Question 2.a
+Or $1/sqrt(N+1) -> 0$ lorsque $N -> +infinity$. Par conséquent,
+$
+lim_(N -> +infinity) S_N=1.
+$
 
-Pour $n>=2$,
+*Conclusion :* la série converge, et
+$
+sum_(n=1)^infinity (1/sqrt(n)-1/sqrt(n+1))=1.
+$
 
+== 2. Seconde série
+
+=== a) Construire la différence $v_n-v_(n+1)$
+
+Les trois termes suggèrent de regrouper :
 $
 u_n
-=
-1/sqrt(n-1)
--
-2/sqrt(n)
-+
-1/sqrt(n+1).
+= (1/sqrt(n-1)-1/sqrt(n))
+  - (1/sqrt(n)-1/sqrt(n+1)).
 $
 
-On pose
-
+Posons donc
 $
-v_n
-=
-1/sqrt(n-1)-1/sqrt(n).
+v_n=1/sqrt(n-1)-1/sqrt(n).
 $
 
-Alors
-
-$
-v_(n+1)
-=
-1/sqrt(n)-1/sqrt(n+1),
-$
-
-et donc
-
+Comme $v_(n+1)=1/sqrt(n)-1/sqrt(n+1)$, on a bien
 $
 u_n=v_n-v_(n+1).
 $
 
-== Question 2.b
+=== b) Calculer $S_N$
 
-Pour $N>=2$,
-
+Pour tout $N >= 2$,
 $
-sum_(k=2)^N u_k
-=
-sum_(k=2)^N (v_k-v_(k+1)).
-$
-
-La somme est télescopique :
-
-$
-sum_(k=2)^N u_k
-=
-v_2-v_(N+1).
+S_N &= sum_(n=2)^N (v_n-v_(n+1)) \
+    &= v_2-v_(N+1) \
+    &= 1-1/sqrt(2)-1/sqrt(N)+1/sqrt(N+1).
 $
 
-Or
+=== c) Déterminer la nature et la somme
 
+Puisque $1/sqrt(N) -> 0$ et $1/sqrt(N+1) -> 0$,
 $
-v_2=1-1/sqrt(2)
-$
-
-et
-
-$
-v_(N+1)=1/sqrt(N)-1/sqrt(N+1).
+lim_(N -> +infinity) S_N=1-1/sqrt(2).
 $
 
-Ainsi,
-
+*Conclusion :* la série converge et
 $
-sum_(k=2)^N u_k
-=
-1-1/sqrt(2)
--
-(
-1/sqrt(N)-1/sqrt(N+1)
-).
+sum_(n=2)^infinity u_n=1-1/sqrt(2).
 $
 
-== Question 2.c
+== À retenir
 
-Comme
-
-$
-1/sqrt(N)-1/sqrt(N+1)->0,
-$
-
-on obtient
-
-$
-sum_(k=2)^N u_k
-->
-1-1/sqrt(2).
-$
-
-Donc la série converge et
-
-$
-sum_(k=2)^infinity u_k
-=
-1-1/sqrt(2).
-$
+- *Détecter* $a_n-a_(n+1)$ avant de chercher un critère de comparaison.
+- *Écrire les bornes* : $sum_(n=p)^N (a_n-a_(n+1))=a_p-a_(N+1)$.
+- *Vérifier le signe moins* : jamais $a_p+a_(N+1)$.
+- *Conclure avec une limite finie* ; une série télescopique peut diverger.
+- *Justifier l'inversion d'une inégalité* en précisant que les termes sont positifs.
