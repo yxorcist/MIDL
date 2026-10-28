@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-28 — TD01 ex03 question 8 vérifiée sur copie manuscrite : factorisation, DL, reste o(1/n) et équivalent -6/(5n^(2/5)), divergence par Riemann.
 // study-validation: 2026-10-28 — TD01 ex03 question 7 vérifiée sur copie manuscrite : DL jusqu'à 1/n², équivalent 7/(24n²), positivité éventuelle et convergence par Riemann.
 // study-validation: 2026-10-28 — TD01 ex03 question 6 vérifiée sur copie manuscrite : DL de sin en 0, u_n = pi + o(1), divergence grossière de la série.
 // study-validation: 2026-10-28 — TD01 ex03 question 5 vérifiée sur copie manuscrite : DL, terme dominant, comparaison à Riemann alpha=9/8 et positivité à partir d'un certain rang.
@@ -362,6 +363,9 @@ $
 o(1/n^2).
 $
 
+Comme $1/n^2=o(1/n)$, les contributions d'ordre $1/n^2$ et les
+restes $o(1/n^2)$ peuvent être absorbés dans $o(1/n)$.
+
 Ainsi,
 
 $
@@ -373,6 +377,16 @@ n^(3/5)
 +
 o(1/n)
 ].
+$
+
+Après multiplication par $n^(3/5)$,
+
+$
+u_n
+=
+-6/(5n^(2/5))
++
+o(1/n^(2/5)).
 $
 
 Par conséquent,
