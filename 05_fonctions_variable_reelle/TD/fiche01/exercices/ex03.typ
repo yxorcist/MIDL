@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-28 — TD01 ex03 question 10 vérifiée sur copie manuscrite : 0 < sin(1/n) < 1/n, puissance n, majoration par 1/n² pour n >= 2, convergence par comparaison avec Riemann alpha=2.
 // study-validation: 2026-10-28 — TD01 ex03 question 9 vérifiée sur copie manuscrite : comparaison 1/(n cos²(n)) >= 1/n, divergence de la série harmonique et théorème de comparaison des séries positives.
 // study-validation: 2026-10-28 — TD01 ex03 question 8 vérifiée sur copie manuscrite : factorisation, DL, reste o(1/n) et équivalent -6/(5n^(2/5)), divergence par Riemann.
 // study-validation: 2026-10-28 — TD01 ex03 question 7 vérifiée sur copie manuscrite : DL jusqu'à 1/n², équivalent 7/(24n²), positivité éventuelle et convergence par Riemann.
