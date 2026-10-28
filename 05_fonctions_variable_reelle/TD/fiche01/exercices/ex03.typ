@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-28 — TD01 ex03 question 6 vérifiée sur copie manuscrite : DL de sin en 0, u_n = pi + o(1), divergence grossière de la série.
 // study-validation: 2026-10-28 — TD01 ex03 question 5 vérifiée sur copie manuscrite : DL, terme dominant, comparaison à Riemann alpha=9/8 et positivité à partir d'un certain rang.
 // study-validation: 2026-10-28 — TD01 ex03 question 4 vérifiée sur copie manuscrite : comparaison à la série géométrique de raison e^(-1/4) et justification de sa convergence.
 // study-validation: 2026-10-28 — TD01 ex03 question 3 vérifiée sur copie manuscrite : équivalence à 1/n², série de Riemann alpha=2 et positivité explicite.
@@ -197,37 +198,28 @@ $
 
 == 6.
 
-On considère
+On pose $u_n = n sin(pi/n)$.
+
+Comme $pi/n -> 0$, par DL en $0$,
 
 $
-u_n=n sin(pi/n).
-$
-
-Comme
-
-$
-sin(pi/n) ~ pi/n,
-$
-
-on a
-
-$
-u_n ~ pi.
+sin(pi/n) = pi/n + o(1/n).
 $
 
 Donc
 
 $
-u_n -> pi != 0.
+u_n = n (pi/n + o(1/n)) = pi + o(1).
 $
 
-La condition nécessaire de convergence n'est pas satisfaite. Par conséquent,
+Ainsi, $u_n -> pi != 0$.
+
+La condition nécessaire de convergence d'une série n'est donc
+pas satisfaite :
 
 $
-sum u_n
+sum u_n " diverge grossièrement."
 $
-
-diverge grossièrement.
 
 == 7.
 
