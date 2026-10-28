@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-28 — TD01 ex03 question 5 vérifiée sur copie manuscrite : DL, terme dominant, comparaison à Riemann alpha=9/8 et positivité à partir d'un certain rang.
 // study-validation: 2026-10-28 — TD01 ex03 question 4 vérifiée sur copie manuscrite : comparaison à la série géométrique de raison e^(-1/4) et justification de sa convergence.
 // study-validation: 2026-10-28 — TD01 ex03 question 3 vérifiée sur copie manuscrite : équivalence à 1/n², série de Riemann alpha=2 et positivité explicite.
 // study-validation: 2026-10-28 — TD01 ex03 question 2 vérifiée sur copie manuscrite : équivalence avec la série harmonique et positivité explicite.
@@ -139,82 +140,60 @@ $
 
 == 5.
 
-On considère
+On pose
 
 $
-u_n
-=
-(
-sqrt(n+1) ln(n)
--
-sqrt(n) ln(n+1)
-)
-/n^(3/4).
+u_n = (sqrt(n+1) ln(n) - sqrt(n) ln(n+1)) / n^(3/4)
 $
 
-Les notes étudient d'abord le numérateur
+et on étudie d'abord le numérateur $N_n$.
+
+Comme $ln(n+1)=ln(n)+ln(1+1/n)$, on factorise :
 
 $
-N_n
-=
-sqrt(n+1) ln(n)
--
-sqrt(n) ln(n+1).
+N_n = sqrt(n) [
+  (sqrt(1+1/n)-1) ln(n) - ln(1+1/n)
+].
 $
 
-On utilise
+Par développement limité au voisinage de $0$,
 
 $
-sqrt(n+1)
-=
-sqrt(n) sqrt(1+1/n)
-=
-sqrt(n)
-(
-1+1/(2n)+o(1/n)
-)
+sqrt(1+1/n) &= 1+1/(2n)+o(1/n), \
+ln(1+1/n) &= 1/n-1/(2n^2)+o(1/n^2).
 $
 
-et
-
-$
-ln(n+1)
-=
-ln(n)+ln(1+1/n)
-=
-ln(n)+1/n+o(1/n).
-$
-
-Ainsi,
+Donc
 
 $
 N_n
-=
-ln(n)/(2sqrt(n))
--
-1/sqrt(n)
-+
-o(ln(n)/sqrt(n)).
+= sqrt(n) [
+  ln(n)/(2n)-1/n+1/(2n^2)+o(ln(n)/n)
+].
 $
 
-Après division par $n^(3/4)$,
+Comme $1/n = o(ln(n)/n)$, le terme dominant donne
 
 $
-u_n
-=
-ln(n)/(2n^(5/4))
-+
-o(ln(n)/n^(5/4)).
+N_n ~ ln(n)/(2sqrt(n)), quad
+u_n ~ ln(n)/(2n^(5/4)).
 $
 
-Le terme général est donc dominé, à partir d'un certain rang, par une série de
-Riemann convergente. On conclut que
+On pose $v_n=1/n^(9/8)$. Par croissance comparée,
 
 $
-sum u_n
+u_n/v_n ~ ln(n)/(2n^(1/8)) -> 0.
 $
 
-converge.
+Ainsi $u_n=o(v_n)$. Or $sum v_n$ converge : c'est une série
+de Riemann de paramètre $alpha=9/8>1$.
+
+Comme $u_n >= 0$ à partir d'un certain rang et $v_n>0$,
+le théorème de comparaison des séries à termes positifs donne :
+
+$
+sum u_n " converge."
+$
 
 == 6.
 
