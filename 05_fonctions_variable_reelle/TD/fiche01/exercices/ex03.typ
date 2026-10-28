@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-28 — TD01 ex03 question 12 vérifiée sur copie manuscrite : DL du logarithme et de l'exponentielle, équivalent u_n ~ e/(2n), divergence par équivalence avec la série harmonique multipliée par e/2 > 0.
 // study-validation: 2026-10-28 — TD01 ex03 question 11 vérifiée sur copie manuscrite : cas alpha>0 par DL et Riemann (seuil alpha=2), cas alpha<=0 par comparaison avec (1/ln(2)) (1/n - sin(1/n)) ; erreur initiale de coefficient dans la majoration corrigée.
 // study-validation: 2026-10-28 — TD01 ex03 question 10 vérifiée sur copie manuscrite : 0 < sin(1/n) < 1/n, puissance n, majoration par 1/n² pour n >= 2, convergence par comparaison avec Riemann alpha=2.
 // study-validation: 2026-10-28 — TD01 ex03 question 9 vérifiée sur copie manuscrite : comparaison 1/(n cos²(n)) >= 1/n, divergence de la série harmonique et théorème de comparaison des séries positives.
@@ -227,7 +228,7 @@ $
 =e(1-1/(2n)+o(1/n)).
 $
 
-Donc $u_n=e/(2n)+o(1/n)$ et $u_n ~ e/(2n)$, de signe positif à partir d'un certain rang. Comme $sum 1/n$ diverge, *$sum u_n$ diverge par équivalence des séries positives.*
+Donc $u_n=e/(2n)+o(1/n)$, d'où $u_n ~ e/(2n)$. Comme $e/2>0$, la série $sum e/(2n)$ est la série harmonique multipliée par une constante strictement positive : elle diverge. Par équivalence des séries à termes positifs à partir d'un certain rang, *$sum u_n$ diverge* (alors que $u_n -> 0$).
 
 == 13.
 
