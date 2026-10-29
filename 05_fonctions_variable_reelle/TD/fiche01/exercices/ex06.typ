@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-revision: 2026-10-29 — TD01 ex06 Q1 remplacée selon la dernière copie manuscrite : d'abord [n,n+1] pour n>=1 et l'inégalité inférieure (**), ensuite [n-1,n] pour n>=2 et l'inégalité supérieure (*), puis encadrement ; labels maintenus pour Q2.
 // study-validation: 2026-10-29 — TD01 ex06 questions 1 et 2 reconstruites sans correction sur copie manuscrite (10/10) : décroissance, intégration, sommations n=1..N pour la minoration et n=2..N pour la majoration, puis Chasles ; question 2 condensée et cas N=1 explicité.
 // study-validation: 2026-10-29 — TD01 ex06 question 1 validée sur deux copies manuscrites (10/10) : décroissance sur [n-1,n] et [n,n+1], intégration sur des intervalles de longueur 1 ; rédaction condensée, repères (*) et (**) conservés pour la question 2.
 
@@ -26,18 +27,10 @@ $
 
 == Question 1
 
-Pour $n>=2$ et $t in [n-1,n]$, la décroissance de $f$ donne $f(t)>=f(n)$.
-Par croissance de l'intégrale et puisque l'intervalle est de longueur $1$,
+Comme $f$ est décroissante :
 
-$
-integral_(n-1)^n f(t) dif t
->= integral_(n-1)^n f(n) dif t
-= f(n).
-$
-
-On note cette inégalité $(*)$.
-
-De même, pour $n>=1$ et $t in [n,n+1]$, on a $f(t)<=f(n)$, d'où
+Pour $n>=1$ et $t in [n,n+1]$, on a $t>=n$, donc $f(t)<=f(n)$.
+Par croissance de l'intégrale,
 
 $
 integral_n^(n+1) f(t) dif t
@@ -47,7 +40,18 @@ $
 
 On note cette inégalité $(**)$.
 
-Ainsi, pour tout $n>=2$,
+Pour $n>=2$ et $t in [n-1,n]$, on a $t<=n$, donc $f(t)>=f(n)$.
+Par croissance de l'intégrale,
+
+$
+integral_(n-1)^n f(t) dif t
+>= integral_(n-1)^n f(n) dif t
+= f(n).
+$
+
+On note cette inégalité $(*)$.
+
+Donc, pour tout $n>=2$,
 
 $
 integral_n^(n+1) f(t) dif t
