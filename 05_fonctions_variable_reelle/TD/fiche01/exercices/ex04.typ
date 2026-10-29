@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-29 — TD01 ex04 question 3 validée sur copie manuscrite : DL de sin, u_n-u_(n+1) ~ u_n³/6, somme télescopique convergente (u_n -> 0), équivalence des séries positives ; ne pas confondre nature et valeur de somme.
 // study-validation: 2026-10-29 — TD01 ex04 question 2 validée sur copie manuscrite : sin(u_n) < u_n pour u_n > 0, suite décroissante et minorée par 0, théorème de convergence monotone, continuité de sin et seule limite possible ell = 0.
 // study-validation: 2026-10-29 — TD01 ex04 question 1 validée sur copie manuscrite : récurrence, croissance stricte de sin sur [0, pi/2], encadrement 0 < u_(n+1) < 1 < pi/2 ; pas besoin de sin(x) < x à cette question.
 // source-note: questions 1 to 5 were cross-checked against the official TD01 statement and the supplied handwritten correction.
@@ -101,13 +102,19 @@ sum_(n=0)^N (u_n - u_(n+1))
 = u_0 - u_(N+1)
 $
 
-converge lorsque $N -> infinity$. Comme les termes sont positifs, le théorème de comparaison des séries positives donne
+converge lorsque $N -> infinity$ puisque $u_(N+1) -> 0$. De plus, $u_n-u_(n+1)>0$ et $u_n^3/6>0$ ; comme
+
+$
+u_n-u_(n+1) ~ u_n^3/6,
+$
+
+le théorème d'équivalence des séries à termes positifs montre que
 
 $
 sum u_n^3
 $
 
-convergente.
+converge. L'équivalence garantit ici la même nature, pas la même somme.
 
 == Question 4
 
