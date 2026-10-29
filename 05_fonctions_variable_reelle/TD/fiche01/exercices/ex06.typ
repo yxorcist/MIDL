@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-30 — TD01 ex06 question 3.d validée sur dernière rédaction manuscrite : partir de l'adjacence de Q3.c et de la limite commune gamma, obtenir v_N=gamma+o(1) puis H_N=ln(N)+gamma+o(1), enfin gamma>=w_2=1-ln(2)>0. Exercice 6 terminé (6/6).
 // study-validation: 2026-10-29 — TD01 ex06 question 3.c validée sur dernière copie manuscrite (10/10) : v_N décroissante ; w_N croissante pour N>=2 via x=1/N dans Q3.b ; v_N-w_N=1/N -> 0. Suites adjacentes à partir du rang 2, sans exiger de vérification du cas N=1.
 // study-validation: 2026-10-29 — TD01 ex06 question 3.b validée sur deuxième copie manuscrite (10/10) : 0 <= t <= x < 1, chaîne 1-t <= 1 <= 1+t, positivité avant passage aux inverses, intégration sur [0,x] et conclusion ln(1+x) <= x <= -ln(1-x), puis les deux différences de signe demandé ; correction du signe de la première tentative.
 // study-validation: 2026-10-29 — TD01 ex06 question 3.a validée sur deux copies manuscrites (10/10) : f(t)=1/t, encadrement intégral issu de Q2, 0 <= H_N-ln(N) <= 1, division par ln(N)>0 pour N>=2, gendarmes et H_N ~ ln(N) ; dernière rédaction retenue.
@@ -230,58 +231,37 @@ Les deux suites sont donc adjacentes à partir du rang $2$
 
 == Question 3.d — Constante d'Euler
 
-Les suites $(w_N)$ et $(v_N)$ étant adjacentes, elles convergent vers une même limite, notée $gamma$.
+D'après la question 3.c, les suites $(v_N)$ et $(w_N)$ sont adjacentes à partir du rang $2$.
+Par le théorème des suites adjacentes, elles convergent vers une même limite $gamma$.
 
 Ainsi,
 
 $
-v_N=gamma+o(1).
+v_N -> gamma
+quad <=> quad
+v_N = gamma+o(1).
 $
 
-Comme
+Or $v_N=H_N-ln(N)$, donc
 
 $
-v_N=H_N-ln(N),
-$
-
-on obtient
-
-$
-H_N-ln(N)=gamma+o(1),
-$
-
-puis
-
-$
+H_N-ln(N)=gamma+o(1)
+quad => quad
 H_N=ln(N)+gamma+o(1).
 $
 
-Les notes vérifient également que $gamma>0$.
-
-En effet,
-
-$
-w_2
-=
-H_2-ln(2)-1/2
-=
-1-ln(2).
-$
-
-Comme $2<e$,
+Montrons que $gamma>0$.
+On calcule
 
 $
-ln(2)<1,
+w_2=H_2-ln(2)-1/2
+=1+1/2-ln(2)-1/2
+=1-ln(2)>0.
 $
 
-donc
+Comme $(w_N)$ est croissante pour $N>=2$ et converge vers $gamma$,
 
 $
-w_2>0.
+gamma>=w_2=1-ln(2)>0.
 $
 
-La suite $(w_N)$ étant croissante et convergeant vers $gamma$,
-
-$
-gamma>0.
-$
