@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-29 — TD01 ex04 question 4 vérifiée sur copie manuscrite et corrigée : quotient sin(u_n)/u_n = 1-u_n²/6+o(u_n²), DL de ln, équivalence de séries positives avec la différence télescopique des logarithmes, divergence de sum u_n².
 // study-validation: 2026-10-29 — TD01 ex04 question 3 validée sur dernière copie manuscrite : preuve directe par DL de sin, équivalent u_n-u_(n+1) ~ u_n³/6, série télescopique convergente (u_n -> 0), puis équivalence des séries positives.
 // study-validation: 2026-10-29 — TD01 ex04 question 2 validée sur copie manuscrite : sin(u_n) < u_n pour u_n > 0, suite décroissante et minorée par 0, théorème de convergence monotone, continuité de sin et seule limite possible ell = 0.
 // study-validation: 2026-10-29 — TD01 ex04 question 1 validée sur copie manuscrite : récurrence, croissance stricte de sin sur [0, pi/2], encadrement 0 < u_(n+1) < 1 < pi/2 ; pas besoin de sin(x) < x à cette question.
@@ -111,56 +112,60 @@ $
 
 == Question 4
 
-On écrit
+D'après la question 2, $u_n>0$, $u_(n+1)>0$ et $u_n -> 0$.
+
+On utilise la relation $u_(n+1)=sin(u_n)$ et le DL du sinus en $0$ :
 
 $
-ln(u_(n+1)) - ln(u_n)
-= ln((sin(u_n))/u_n).
+u_(n+1)
+= u_n-u_n^3/6+o(u_n^3).
 $
 
-Or
+En divisant par $u_n>0$, on obtient :
 
 $
-(sin(u_n))/u_n
-= 1 - u_n^2/6 + o(u_n^2),
+u_(n+1)/u_n
+=1-u_n^2/6+o(u_n^2).
 $
 
-et $ln(1+x) = x + o(x)$ lorsque $x -> 0$. Donc
+Ainsi,
 
 $
-ln(u_(n+1)) - ln(u_n)
-~
--u_n^2/6.
+ln(u_(n+1))-ln(u_n)
+=ln(u_(n+1)/u_n)
+=ln(1-u_n^2/6+o(u_n^2)).
 $
 
-Équivalemment,
+Comme $u_n -> 0$, le DL $ln(1+x)=x+o(x)$ donne
 
 $
-ln(u_n) - ln(u_(n+1))
-~
-u_n^2/6.
+ln(u_(n+1))-ln(u_n)
+=-u_n^2/6+o(u_n^2).
 $
 
-Pour $N in NN$,
+Donc
 
 $
-sum_(n=0)^N (ln(u_n) - ln(u_(n+1)))
-= ln(u_0) - ln(u_(N+1)).
+ln(u_n)-ln(u_(n+1))
+~ u_n^2/6.
 $
 
-Comme $u_(N+1) -> 0^+$,
+Or $ln(u_n)-ln(u_(n+1))>0$ puisque $(u_n)$ est strictement décroissante.
+
+Cette différence forme une série télescopique :
 
 $
-ln(u_(N+1)) -> -infinity,
+sum_(n=0)^N (ln(u_n)-ln(u_(n+1)))
+=ln(u_0)-ln(u_(N+1)).
 $
 
-donc cette série diverge vers $+infinity$. Par comparaison des séries positives,
+Puisque $u_(N+1)->0^+$, on a $ln(u_(N+1))->-infinity$ : la série télescopique diverge vers $+infinity$.
+
+Par équivalence des séries à termes positifs, on en déduit que
 
 $
-sum u_n^2
+sum u_n^2 " diverge."
 $
-
-diverge.
 
 == Question 5
 
