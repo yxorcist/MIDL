@@ -1,4 +1,6 @@
 // source-confidence: high
+// study-validation: 2026-10-29 — TD01 ex05 question 3 validée sur copie manuscrite : choix v_n=1/n^(2beta), série de Riemann (2beta>1), application de la question 2 et identification sqrt(u_n v_n)=sqrt(u_n)/n^beta.
+// study-validation: 2026-10-29 — TD01 ex05 question 2 validée sur copie manuscrite : somme des séries convergentes, inégalité 0 <= sqrt(u_n v_n) <= (u_n+v_n)/2 obtenue à la question 1, comparaison des séries positives.
 // study-validation: 2026-10-29 — TD01 ex05 question 1 validée sur copie manuscrite : preuve de l'inégalité géométrique-arithmétique par équivalences après élévation au carré, x,y >= 0, conclusion 0 <= (x-y)^2 ; égalité pour x=y.
 // source-note: statement cross-checked against the official TD01 sheet; handwritten correction supplied for questions 1 to 3.
 
@@ -37,96 +39,46 @@ L'égalité a lieu si et seulement si $x=y$.
 
 == Question 2
 
-Supposons que les séries
+Supposons $sum_(n>=1) u_n$ et $sum_(n>=1) v_n$ convergentes, avec $u_n,v_n>=0$.
 
-$
-sum_(n>=1) u_n
-quad "et" quad
-sum_(n>=1) v_n
-$
-
-soient convergentes.
-
-Par opérations arithmétiques sur les séries convergentes,
-
-$
-sum_(n>=1) 1/2 (u_n+v_n)
-$
-
-est convergente.
+Par somme et multiplication par $1/2$ de séries convergentes,
+$sum_(n>=1) (u_n+v_n)/2$ converge.
 
 D'après la question 1, pour tout $n>=1$,
 
 $
-0 <= sqrt(u_n v_n) <= 1/2 (u_n+v_n).
+0 <= sqrt(u_n v_n) <= (u_n+v_n)/2.
 $
 
-Par comparaison de séries à termes positifs,
+Par comparaison des séries à termes positifs,
 
 $
-sum_(n>=1) sqrt(u_n v_n)
+sum_(n>=1) sqrt(u_n v_n) " converge."
 $
-
-est convergente.
 
 == Question 3
 
-On suppose que
+On suppose $u_n>=0$ et $sum_(n>=1) u_n$ convergente. Soit $beta>1/2$.
+
+On pose $v_n=1/n^(2beta)$. Comme $2beta>1$, la série
+$sum_(n>=1) v_n$ converge par Riemann.
+
+En appliquant la question 2 aux deux séries positives convergentes :
 
 $
-sum_(n>=1) u_n
-$
-
-est convergente et que $u_n>=0$.
-
-Soit
-
-$
-beta>1/2.
-$
-
-Alors
-
-$
-2beta>1.
-$
-
-D'après le critère de Riemann,
-
-$
-sum_(n>=1) 1/n^(2beta)
-$
-
-est convergente.
-
-On applique la question 2 aux suites
-
-$
-u_n
-quad "et" quad
-v_n=1/n^(2beta).
-$
-
-On obtient la convergence de
-
-$
-sum_(n>=1) sqrt(u_n v_n).
+sum_(n>=1) sqrt(u_n v_n) " converge."
 $
 
 Or
 
 $
 sqrt(u_n v_n)
-=
-sqrt(u_n/n^(2beta))
-=
-sqrt(u_n)/n^beta.
+=sqrt(u_n/n^(2beta))
+=sqrt(u_n)/n^beta.
 $
 
 Ainsi,
 
 $
-sum_(n>=1) sqrt(u_n)/n^beta
+sum_(n>=1) sqrt(u_n)/n^beta " converge pour tout " beta>1/2.
 $
-
-est convergente.
