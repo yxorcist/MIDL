@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-29 — TD01 ex06 question 1 validée sur deux copies manuscrites (10/10) : décroissance sur [n-1,n] et [n,n+1], intégration sur des intervalles de longueur 1 ; rédaction condensée, repères (*) et (**) conservés pour la question 2.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -24,41 +25,34 @@ $
 
 == Question 1
 
-Soit $f$ une fonction décroissante.
-
-Pour $n >= 2$ et $t in [n-1, n]$, on a $t <= n$. Comme $f$ est décroissante,
-
-$
-f(n) <= f(t).
-$
-
-Par croissance de l'intégrale,
+Pour $n>=2$ et $t in [n-1,n]$, la décroissance de $f$ donne $f(t)>=f(n)$.
+Par croissance de l'intégrale et puisque l'intervalle est de longueur $1$,
 
 $
-integral_(n-1)^n f(n) dif t <= integral_(n-1)^n f(t) dif t.
-$
-
-Comme l'intervalle est de longueur $1$,
-
-$
-f(n) <= integral_(n-1)^n f(t) dif t.
+integral_(n-1)^n f(t) dif t
+>= integral_(n-1)^n f(n) dif t
+= f(n).
 $
 
 On note cette inégalité $(*)$.
 
-De même, pour $n >= 1$ et $t in [n, n+1]$, on a $n <= t$, donc
+De même, pour $n>=1$ et $t in [n,n+1]$, on a $f(t)<=f(n)$, d'où
 
 $
-f(t) <= f(n).
-$
-
-Ainsi,
-
-$
-integral_n^(n+1) f(t) dif t <= f(n).
+integral_n^(n+1) f(t) dif t
+<= integral_n^(n+1) f(n) dif t
+= f(n).
 $
 
 On note cette inégalité $(**)$.
+
+Ainsi, pour tout $n>=2$,
+
+$
+integral_n^(n+1) f(t) dif t
+<= f(n)
+<= integral_(n-1)^n f(t) dif t.
+$
 
 == Question 2
 
