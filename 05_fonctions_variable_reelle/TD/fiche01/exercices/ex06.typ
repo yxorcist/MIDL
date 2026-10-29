@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-29 — TD01 ex06 question 3.a validée sur deux copies manuscrites (10/10) : f(t)=1/t, encadrement intégral issu de Q2, 0 <= H_N-ln(N) <= 1, division par ln(N)>0 pour N>=2, gendarmes et H_N ~ ln(N) ; dernière rédaction retenue.
 // study-revision: 2026-10-29 — TD01 ex06 Q1 remplacée selon la dernière copie manuscrite : d'abord [n,n+1] pour n>=1 et l'inégalité inférieure (**), ensuite [n-1,n] pour n>=2 et l'inégalité supérieure (*), puis encadrement ; labels maintenus pour Q2.
 // study-validation: 2026-10-29 — TD01 ex06 questions 1 et 2 reconstruites sans correction sur copie manuscrite (10/10) : décroissance, intégration, sommations n=1..N pour la minoration et n=2..N pour la majoration, puis Chasles ; question 2 condensée et cas N=1 explicité.
 // study-validation: 2026-10-29 — TD01 ex06 question 1 validée sur deux copies manuscrites (10/10) : décroissance sur [n-1,n] et [n,n+1], intégration sur des intervalles de longueur 1 ; rédaction condensée, repères (*) et (**) conservés pour la question 2.
@@ -91,63 +92,51 @@ $
 
 == Question 3.a
 
-On pose
+On pose $H_N=sum_(n=1)^N 1/n$ et $f(t)=1/t$, continue, positive et décroissante sur $[1,+oo[$.
 
-$
-H_N = sum_(n=1)^N 1/n.
-$
-
-Sur $x >= 1$, la fonction
-
-$
-f(x) = 1/x
-$
-
-est continue, positive et décroissante. On peut donc appliquer le résultat précédent :
+D'après la question 2,
 
 $
 integral_1^(N+1) 1/t dif t
 <= H_N
-<= 1 + integral_1^N 1/t dif t.
+<= 1+integral_1^N 1/t dif t,
 $
 
-Ainsi,
+soit
 
 $
-ln(N+1) <= H_N <= 1 + ln(N).
+ln(N+1) <= H_N <= 1+ln(N).
 $
 
-Pour $N >= 1$,
+En soustrayant $ln(N)$,
 
 $
-ln(N+1) - ln(N)
-<= H_N - ln(N)
-<= 1.
+ln(N+1)-ln(N) <= H_N-ln(N) <= 1.
 $
 
-Or
+Or $ln(N+1)-ln(N)=ln(1+1/N)>=0$, donc
 
 $
-ln(N+1) - ln(N)
-= ln(1 + 1/N) >= 0.
+0 <= H_N-ln(N) <= 1.
 $
 
-Donc
+Pour $N>=2$, on divise par $ln(N)>0$ :
 
 $
-0 <= H_N - ln(N) <= 1.
+0 <= (H_N-ln(N))/ln(N) <= 1/ln(N).
 $
 
-La suite $H_N - ln(N)$ est bornée, donc
+Comme $1/ln(N) -> 0$, le théorème des gendarmes donne
 
 $
-(H_N - ln(N))/ln(N) -> 0.
+(H_N-ln(N))/ln(N) -> 0.
 $
 
-Par conséquent,
+Or $(H_N-ln(N))/ln(N)=H_N/ln(N)-1$. Ainsi,
 
 $
-H_N / ln(N) -> 1.
+H_N/ln(N) -> 1,
+quad "donc" quad H_N ~ ln(N).
 $
 
 == Question 3.b
