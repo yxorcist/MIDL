@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-29 — TD01 ex06 question 3.c validée sur copies manuscrites : décroissance de v_N et croissance de w_N par les deux inégalités de Q3.b, puis dernière conclusion manuscrite v_N-w_N=1/N -> 0 ; cas N=1 de la croissance traité séparément car x=1/N hors de [0,1[.
 // study-validation: 2026-10-29 — TD01 ex06 question 3.b validée sur deuxième copie manuscrite (10/10) : 0 <= t <= x < 1, chaîne 1-t <= 1 <= 1+t, positivité avant passage aux inverses, intégration sur [0,x] et conclusion ln(1+x) <= x <= -ln(1-x), puis les deux différences de signe demandé ; correction du signe de la première tentative.
 // study-validation: 2026-10-29 — TD01 ex06 question 3.a validée sur deux copies manuscrites (10/10) : f(t)=1/t, encadrement intégral issu de Q2, 0 <= H_N-ln(N) <= 1, division par ln(N)>0 pour N>=2, gendarmes et H_N ~ ln(N) ; dernière rédaction retenue.
 // study-revision: 2026-10-29 — TD01 ex06 Q1 remplacée selon la dernière copie manuscrite : d'abord [n,n+1] pour n>=1 et l'inégalité inférieure (**), ensuite [n-1,n] pour n>=2 et l'inégalité supérieure (*), puis encadrement ; labels maintenus pour Q2.
@@ -190,131 +191,32 @@ Si deux suites sont adjacentes, elles convergent et ont la même limite.
 
 == Question 3.c
 
-Pour $N>=1$, posons
+On pose $v_N=H_N-ln(N)$ et $w_N=v_N-1/N$.
 
-$
-v_N=H_N-ln(N).
-$
-
-On calcule
+Comme $H_(N+1)-H_N=1/(N+1)$,
 
 $
 v_(N+1)-v_N
-=
-H_(N+1)-ln(N+1)-H_N+ln(N).
+=1/(N+1)+ln(N/(N+1))
+=1/(N+1)+ln(1-1/(N+1)).
 $
 
-Comme
+D'après la question 3.b, $x+ln(1-x)<=0$ pour $x in [0,1[$.
+Avec $x=1/(N+1)$, on a $v_(N+1)-v_N<=0$ :
+$(v_N)$ est décroissante.
 
-$
-H_(N+1)-H_N=1/(N+1),
-$
-
-on obtient
-
-$
-v_(N+1)-v_N
-=
-1/(N+1)+ln(N/(N+1)).
-$
-
-Or
-
-$
-N/(N+1)=1-1/(N+1),
-$
-
-donc
-
-$
-v_(N+1)-v_N
-=
-1/(N+1)
-+
-ln(1-1/(N+1)).
-$
-
-D'après la question 3.b, avec
-
-$
-x=1/(N+1) in [0,1[,
-$
-
-on a
-
-$
-x+ln(1-x) <= 0.
-$
-
-Ainsi,
-
-$
-v_(N+1)-v_N <= 0.
-$
-
-La suite $(v_N)$ est donc décroissante.
-
-Posons maintenant
-
-$
-w_N=v_N-1/N
-=
-H_N-ln(N)-1/N.
-$
-
-Alors
+De même,
 
 $
 w_(N+1)-w_N
-=
-v_(N+1)-v_N
--1/(N+1)
-+1/N.
+=v_(N+1)-v_N-1/(N+1)+1/N
+=1/N-ln(1+1/N).
 $
 
-En utilisant l'expression précédente de $v_(N+1)-v_N$,
-
-$
-w_(N+1)-w_N
-=
-1/N
-+
-ln(1-1/(N+1)).
-$
-
-Comme
-
-$
-1-1/(N+1)=N/(N+1)=1/(1+1/N),
-$
-
-on obtient
-
-$
-w_(N+1)-w_N
-=
-1/N-ln(1+1/N).
-$
-
-D'après la question 3.b, avec
-
-$
-x=1/N,
-$
-
-on a
-
-$
-ln(1+x) <= x.
-$
-
-Donc
-
-$
-w_(N+1)-w_N >= 0.
-$
-
-La suite $(w_N)$ est donc croissante.
+Pour $N>=2$, on applique la question 3.b à $x=1/N in [0,1[$ :
+$x-ln(1+x)>=0$, donc $w_(N+1)-w_N>=0$.
+Pour $N=1$, on vérifie $w_2-w_1=1-ln(2)>0$.
+Ainsi, $(w_N)$ est croissante.
 
 Enfin,
 
