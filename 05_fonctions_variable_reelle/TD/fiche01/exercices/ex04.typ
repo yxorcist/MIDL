@@ -1,5 +1,5 @@
 // source-confidence: high
-// study-validation: 2026-10-29 — TD01 ex04 question 3 validée sur copie manuscrite : DL de sin, u_n-u_(n+1) ~ u_n³/6, somme télescopique convergente (u_n -> 0), équivalence des séries positives ; ne pas confondre nature et valeur de somme.
+// study-validation: 2026-10-29 — TD01 ex04 question 3 validée sur dernière copie manuscrite : preuve directe par DL de sin, équivalent u_n-u_(n+1) ~ u_n³/6, série télescopique convergente (u_n -> 0), puis équivalence des séries positives.
 // study-validation: 2026-10-29 — TD01 ex04 question 2 validée sur copie manuscrite : sin(u_n) < u_n pour u_n > 0, suite décroissante et minorée par 0, théorème de convergence monotone, continuité de sin et seule limite possible ell = 0.
 // study-validation: 2026-10-29 — TD01 ex04 question 1 validée sur copie manuscrite : récurrence, croissance stricte de sin sur [0, pi/2], encadrement 0 < u_(n+1) < 1 < pi/2 ; pas besoin de sin(x) < x à cette question.
 // source-note: questions 1 to 5 were cross-checked against the official TD01 statement and the supplied handwritten correction.
@@ -75,46 +75,39 @@ $
 
 == Question 3
 
-Au voisinage de $0$,
+D'après la question 2, $u_n -> 0$ et $u_n > u_(n+1) > 0$.
+
+Par développement limité de $sin$ en $0$ :
 
 $
-sin(x) = x - x^3/6 + o(x^3).
+u_(n+1) = sin(u_n)
+= u_n - u_n^3/6 + o(u_n^3).
 $
 
-Comme $u_n -> 0$,
+Donc
 
 $
-u_(n+1) - u_n
-= sin(u_n) - u_n
-= -u_n^3/6 + o(u_n^3).
+u_n-u_(n+1) = u_n^3/6 + o(u_n^3),
 $
 
-Ainsi,
+d'où
 
 $
-(u_n - u_(n+1)) / (u_n^3/6) -> 1.
+(u_n-u_(n+1))/(u_n^3/6) -> 1.
 $
 
-Or la série télescopique
+Or $sum (u_n-u_(n+1))$ est une série télescopique :
 
 $
-sum_(n=0)^N (u_n - u_(n+1))
-= u_0 - u_(N+1)
+sum_(n=0)^N (u_n-u_(n+1))
+= u_0-u_(N+1) -> u_0 quad (N -> +infinity).
 $
 
-converge lorsque $N -> infinity$ puisque $u_(N+1) -> 0$. De plus, $u_n-u_(n+1)>0$ et $u_n^3/6>0$ ; comme
+Cette série converge donc. Comme $u_n-u_(n+1)>0$ et $u_n^3/6>0$, le théorème d'équivalence des séries à termes positifs donne
 
 $
-u_n-u_(n+1) ~ u_n^3/6,
+sum u_n^3 " converge."
 $
-
-le théorème d'équivalence des séries à termes positifs montre que
-
-$
-sum u_n^3
-$
-
-converge. L'équivalence garantit ici la même nature, pas la même somme.
 
 == Question 4
 
