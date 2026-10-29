@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-29 — TD01 ex06 questions 1 et 2 reconstruites sans correction sur copie manuscrite (10/10) : décroissance, intégration, sommations n=1..N pour la minoration et n=2..N pour la majoration, puis Chasles ; question 2 condensée et cas N=1 explicité.
 // study-validation: 2026-10-29 — TD01 ex06 question 1 validée sur deux copies manuscrites (10/10) : décroissance sur [n-1,n] et [n,n+1], intégration sur des intervalles de longueur 1 ; rédaction condensée, repères (*) et (**) conservés pour la question 2.
 
 #set page(paper: "a4", margin: 2cm)
@@ -56,56 +57,32 @@ $
 
 == Question 2
 
-On utilise la relation de Chasles.
-
-Pour $N >= 2$, en sommant $(*)$ pour $n = 2, dots, N$,
-
-$
-sum_(n=2)^N f(n)
-<=
-sum_(n=2)^N integral_(n-1)^n f(t) dif t
-=
-integral_1^N f(t) dif t.
-$
-
-Si
-
-$
-U_N = sum_(n=1)^N f(n),
-$
-
-alors
-
-$
-U_N - f(1) <= integral_1^N f(t) dif t,
-$
-
-donc
-
-$
-U_N <= f(1) + integral_1^N f(t) dif t.
-$
-
-En sommant $(**)$ pour $n = 1, dots, N$,
+Pour $N>=1$, on somme $(**)$ de $n=1$ à $N$. Par Chasles,
 
 $
 sum_(n=1)^N integral_n^(n+1) f(t) dif t
-<=
-sum_(n=1)^N f(n),
-$
-
-d'où
-
-$
+<= sum_(n=1)^N f(n)
+quad => quad
 integral_1^(N+1) f(t) dif t <= U_N.
 $
 
-Finalement,
+Pour $N>=2$, on somme $(*)$ de $n=2$ à $N$ :
+
+$
+sum_(n=2)^N f(n)
+<= sum_(n=2)^N integral_(n-1)^n f(t) dif t
+quad => quad
+U_N-f(1) <= integral_1^N f(t) dif t.
+$
+
+D'où $U_N <= f(1)+integral_1^N f(t) dif t$. Cette majoration est aussi vraie pour $N=1$.
+
+Finalement, pour tout $N>=1$,
 
 $
 integral_1^(N+1) f(t) dif t
 <= U_N
-<= f(1) + integral_1^N f(t) dif t.
+<= f(1)+integral_1^N f(t) dif t.
 $
 
 == Question 3.a
