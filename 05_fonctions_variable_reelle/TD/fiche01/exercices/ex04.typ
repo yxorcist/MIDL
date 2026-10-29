@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-29 — TD01 ex04 question 2 validée sur copie manuscrite : sin(u_n) < u_n pour u_n > 0, suite décroissante et minorée par 0, théorème de convergence monotone, continuité de sin et seule limite possible ell = 0.
 // study-validation: 2026-10-29 — TD01 ex04 question 1 validée sur copie manuscrite : récurrence, croissance stricte de sin sur [0, pi/2], encadrement 0 < u_(n+1) < 1 < pi/2 ; pas besoin de sin(x) < x à cette question.
 // source-note: questions 1 to 5 were cross-checked against the official TD01 statement and the supplied handwritten correction.
 
