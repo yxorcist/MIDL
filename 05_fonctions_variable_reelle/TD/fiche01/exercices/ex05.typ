@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-review: 2026-10-29 — TD01 ex05 balayage chronométré sans correction : 7 minutes (repères 37 -> 44), questions 1 à 3 reconstruites, évaluation 9,5/10 ; attention à écrire la convergence de la série et non seulement celle de son terme général.
 // study-validation: 2026-10-29 — TD01 ex05 question 3 validée sur copie manuscrite : choix v_n=1/n^(2beta), série de Riemann (2beta>1), application de la question 2 et identification sqrt(u_n v_n)=sqrt(u_n)/n^beta.
 // study-validation: 2026-10-29 — TD01 ex05 question 2 validée sur copie manuscrite : somme des séries convergentes, inégalité 0 <= sqrt(u_n v_n) <= (u_n+v_n)/2 obtenue à la question 1, comparaison des séries positives.
 // study-validation: 2026-10-29 — TD01 ex05 question 1 validée sur copie manuscrite : preuve de l'inégalité géométrique-arithmétique par équivalences après élévation au carré, x,y >= 0, conclusion 0 <= (x-y)^2 ; égalité pour x=y.
@@ -77,7 +78,7 @@ sqrt(u_n v_n)
 =sqrt(u_n)/n^beta.
 $
 
-Ainsi,
+Ainsi, par identification des termes généraux, c'est bien la série qui converge :
 
 $
 sum_(n>=1) sqrt(u_n)/n^beta " converge pour tout " beta>1/2.
