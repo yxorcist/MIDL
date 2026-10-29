@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-29 — TD01 ex04 question 5 vérifiée sur copie manuscrite : u_n^3 ~ A^3/n^(3alpha), u_n^2 ~ A^2/n^(2alpha) ; Riemann donne 1/3 < alpha <= 1/2 (égalités de puissances remplacées par des équivalences).
 // study-validation: 2026-10-29 — TD01 ex04 question 4 vérifiée sur copie manuscrite et corrigée : quotient sin(u_n)/u_n = 1-u_n²/6+o(u_n²), DL de ln, équivalence de séries positives avec la différence télescopique des logarithmes, divergence de sum u_n².
 // study-validation: 2026-10-29 — TD01 ex04 question 3 validée sur dernière copie manuscrite : preuve directe par DL de sin, équivalent u_n-u_(n+1) ~ u_n³/6, série télescopique convergente (u_n -> 0), puis équivalence des séries positives.
 // study-validation: 2026-10-29 — TD01 ex04 question 2 validée sur copie manuscrite : sin(u_n) < u_n pour u_n > 0, suite décroissante et minorée par 0, théorème de convergence monotone, continuité de sin et seule limite possible ell = 0.
@@ -12,63 +13,28 @@
 
 = Exercice 4
 
+On considère $0<u_0<pi/2$ et $u_(n+1)=sin(u_n)$ pour tout $n in NN$.
+
 == Question 1
 
-On considère la suite $(u_n)_(n in NN)$ définie par
+Montrons par récurrence que $0<u_n<pi/2$.
+
+*Initialisation.* Vraie pour $n=0$ par hypothèse.
+
+*Hérédité.* Si $0<u_n<pi/2$, la stricte croissance de $sin$ sur $[0,pi/2]$ donne
 
 $
-0 < u_0 < pi/2
+0=sin(0)<u_(n+1)=sin(u_n)<sin(pi/2)=1<pi/2.
 $
 
-et, pour tout $n in NN$,
-
-$
-u_(n+1) = sin(u_n).
-$
-
-Montrons par récurrence que
-
-$
-forall n in NN, quad 0 < u_n < pi/2.
-$
-
-*Initialisation.* Pour $n = 0$, la propriété est vraie par hypothèse.
-
-*Hérédité.* Supposons que $0 < u_n < pi/2$. Comme $sin$ est strictement croissante sur $[0, pi/2]$,
-
-$
-0 = sin(0) < sin(u_n) < sin(pi/2) = 1 < pi/2.
-$
-
-Donc
-
-$
-0 < u_(n+1) < pi/2.
-$
-
-Ainsi,
-
-$
-forall n in NN, quad 0 < u_n < pi/2.
-$
+La propriété est donc vraie pour tout $n in NN$.
 
 == Question 2
 
-Pour tout $x > 0$, on a $sin(x) < x$. Comme $u_n > 0$,
+Comme $u_n>0$ et $sin(x)<x$ pour $x>0$, on a $u_(n+1)<u_n$.
+La suite est décroissante et minorée par $0$ : par le théorème de convergence monotone, $u_n -> ell>=0$.
 
-$
-u_(n+1) = sin(u_n) < u_n.
-$
-
-La suite $(u_n)$ est donc décroissante et minorée par $0$. Par le théorème de convergence monotone, elle converge vers une limite $ell >= 0$.
-
-La fonction $sin$ étant continue,
-
-$
-ell = sin(ell).
-$
-
-Sur $[0, pi/2[$, l'unique solution est $ell = 0$. Donc
+Par continuité de $sin$, $ell=sin(ell)$. Or $sin(x)<x$ pour $x>0$, donc la seule possibilité est $ell=0$ :
 
 $
 u_n -> 0.
@@ -76,35 +42,23 @@ $
 
 == Question 3
 
-D'après la question 2, $u_n -> 0$ et $u_n > u_(n+1) > 0$.
-
-Par développement limité de $sin$ en $0$ :
+Puisque $u_n -> 0$, le DL $sin(x)=x-x^3/6+o(x^3)$ donne
 
 $
-u_(n+1) = sin(u_n)
-= u_n - u_n^3/6 + o(u_n^3).
+u_n-u_(n+1)
+=u_n-sin(u_n)
+=u_n^3/6+o(u_n^3)
+~ u_n^3/6.
 $
 
-Donc
-
-$
-u_n-u_(n+1) = u_n^3/6 + o(u_n^3),
-$
-
-d'où
-
-$
-(u_n-u_(n+1))/(u_n^3/6) -> 1.
-$
-
-Or $sum (u_n-u_(n+1))$ est une série télescopique :
+Or, par télescopage,
 
 $
 sum_(n=0)^N (u_n-u_(n+1))
-= u_0-u_(N+1) -> u_0 quad (N -> +infinity).
+=u_0-u_(N+1) -> u_0.
 $
 
-Cette série converge donc. Comme $u_n-u_(n+1)>0$ et $u_n^3/6>0$, le théorème d'équivalence des séries à termes positifs donne
+La série télescopique converge. Ses termes et $u_n^3/6$ sont positifs (question 2) ; par équivalence des séries positives,
 
 $
 sum u_n^3 " converge."
@@ -112,56 +66,32 @@ $
 
 == Question 4
 
-D'après la question 2, $u_n>0$, $u_(n+1)>0$ et $u_n -> 0$.
-
-On utilise la relation $u_(n+1)=sin(u_n)$ et le DL du sinus en $0$ :
-
-$
-u_(n+1)
-= u_n-u_n^3/6+o(u_n^3).
-$
-
-En divisant par $u_n>0$, on obtient :
+Du DL précédent et de $u_n>0$ :
 
 $
 u_(n+1)/u_n
+=sin(u_n)/u_n
 =1-u_n^2/6+o(u_n^2).
 $
 
-Ainsi,
-
-$
-ln(u_(n+1))-ln(u_n)
-=ln(u_(n+1)/u_n)
-=ln(1-u_n^2/6+o(u_n^2)).
-$
-
-Comme $u_n -> 0$, le DL $ln(1+x)=x+o(x)$ donne
-
-$
-ln(u_(n+1))-ln(u_n)
-=-u_n^2/6+o(u_n^2).
-$
-
-Donc
+Avec $ln(1+x)=x+o(x)$ lorsque $x -> 0$ :
 
 $
 ln(u_n)-ln(u_(n+1))
+=-ln(1-u_n^2/6+o(u_n^2))
 ~ u_n^2/6.
 $
 
-Or $ln(u_n)-ln(u_(n+1))>0$ puisque $(u_n)$ est strictement décroissante.
-
-Cette différence forme une série télescopique :
+D'autre part,
 
 $
 sum_(n=0)^N (ln(u_n)-ln(u_(n+1)))
-=ln(u_0)-ln(u_(N+1)).
+=ln(u_0)-ln(u_(N+1)) -> +infinity,
 $
 
-Puisque $u_(N+1)->0^+$, on a $ln(u_(N+1))->-infinity$ : la série télescopique diverge vers $+infinity$.
+car $u_(N+1)->0^+$. Les différences de logarithmes sont positives puisque $u_(n+1)<u_n$.
 
-Par équivalence des séries à termes positifs, on en déduit que
+Par équivalence des séries positives,
 
 $
 sum u_n^2 " diverge."
@@ -169,84 +99,23 @@ $
 
 == Question 5
 
-On admet qu'il existe
+On admet $u_n ~ A/n^alpha$ avec $A>0$ et $alpha in RR$. Alors
 
 $
-A>0
+u_n^3 ~ A^3/n^(3alpha), quad
+u_n^2 ~ A^2/n^(2alpha).
 $
 
-et
+Les constantes $A^3$ et $A^2$ sont strictement positives.
+
+D'après la question 3, $sum u_n^3$ converge ; par Riemann,
+$3alpha>1$, donc $alpha>1/3$.
+
+D'après la question 4, $sum u_n^2$ diverge ; par Riemann,
+$2alpha<=1$, donc $alpha<=1/2$.
+
+Ainsi, le plus petit intervalle possible est
 
 $
-alpha in RR
-$
-
-tels que
-
-$
-u_n ~ A/n^alpha.
-$
-
-Alors
-
-$
-u_n^2 ~ A^2/n^(2alpha)
-$
-
-et
-
-$
-u_n^3 ~ A^3/n^(3alpha).
-$
-
-D'après la question 3,
-
-$
-sum u_n^3
-$
-
-converge.
-
-Par comparaison avec une série de Riemann, on doit donc avoir
-
-$
-3alpha>1.
-$
-
-Ainsi,
-
-$
-alpha>1/3.
-$
-
-D'après la question 4,
-
-$
-sum u_n^2
-$
-
-diverge.
-
-Par comparaison avec une série de Riemann, cela impose
-
-$
-2alpha<=1.
-$
-
-Donc
-
-$
-alpha<=1/2.
-$
-
-Finalement,
-
-$
-1/3<alpha<=1/2.
-$
-
-L'intervalle le plus petit possible est donc
-
-$
-]1/3,1/2].
+alpha in ]1/3,1/2].
 $
