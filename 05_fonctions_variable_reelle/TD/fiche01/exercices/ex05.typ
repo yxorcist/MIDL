@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-29 — TD01 ex05 question 1 validée sur copie manuscrite : preuve de l'inégalité géométrique-arithmétique par équivalences après élévation au carré, x,y >= 0, conclusion 0 <= (x-y)^2 ; égalité pour x=y.
 // source-note: statement cross-checked against the official TD01 sheet; handwritten correction supplied for questions 1 to 3.
 
 #set page(paper: "a4", margin: 2cm)
@@ -17,29 +18,22 @@ $
 sqrt(x y) <= 1/2 (x+y).
 $
 
-Comme
+Comme $x,y>=0$, les deux membres sont positifs : on peut élever au carré en conservant l'équivalence.
 
 $
-(sqrt(x)-sqrt(y))^2 >= 0,
+sqrt(x y) <= (x+y)/2
+&<=> 4x y <= (x+y)^2 \
+&<=> 0 <= x^2-2x y+y^2 \
+&<=> 0 <= (x-y)^2.
 $
 
-on a
+La dernière inégalité est toujours vraie. Ainsi, pour tous $x,y>=0$,
 
 $
-x+y-2sqrt(x y) >= 0.
+sqrt(x y) <= (x+y)/2.
 $
 
-Donc
-
-$
-2sqrt(x y) <= x+y,
-$
-
-d'où
-
-$
-sqrt(x y) <= 1/2 (x+y).
-$
+L'égalité a lieu si et seulement si $x=y$.
 
 == Question 2
 
