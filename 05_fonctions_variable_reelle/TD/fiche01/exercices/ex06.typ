@@ -1,5 +1,5 @@
 // source-confidence: high
-// study-validation: 2026-10-29 — TD01 ex06 question 3.c validée sur copies manuscrites : décroissance de v_N et croissance de w_N par les deux inégalités de Q3.b, puis dernière conclusion manuscrite v_N-w_N=1/N -> 0 ; cas N=1 de la croissance traité séparément car x=1/N hors de [0,1[.
+// study-validation: 2026-10-29 — TD01 ex06 question 3.c validée sur dernière copie manuscrite (10/10) : v_N décroissante ; w_N croissante pour N>=2 via x=1/N dans Q3.b ; v_N-w_N=1/N -> 0. Suites adjacentes à partir du rang 2, sans exiger de vérification du cas N=1.
 // study-validation: 2026-10-29 — TD01 ex06 question 3.b validée sur deuxième copie manuscrite (10/10) : 0 <= t <= x < 1, chaîne 1-t <= 1 <= 1+t, positivité avant passage aux inverses, intégration sur [0,x] et conclusion ln(1+x) <= x <= -ln(1-x), puis les deux différences de signe demandé ; correction du signe de la première tentative.
 // study-validation: 2026-10-29 — TD01 ex06 question 3.a validée sur deux copies manuscrites (10/10) : f(t)=1/t, encadrement intégral issu de Q2, 0 <= H_N-ln(N) <= 1, division par ln(N)>0 pour N>=2, gendarmes et H_N ~ ln(N) ; dernière rédaction retenue.
 // study-revision: 2026-10-29 — TD01 ex06 Q1 remplacée selon la dernière copie manuscrite : d'abord [n,n+1] pour n>=1 et l'inégalité inférieure (**), ensuite [n-1,n] pour n>=2 et l'inégalité supérieure (*), puis encadrement ; labels maintenus pour Q2.
@@ -193,30 +193,31 @@ Si deux suites sont adjacentes, elles convergent et ont la même limite.
 
 On pose $v_N=H_N-ln(N)$ et $w_N=v_N-1/N$.
 
-Comme $H_(N+1)-H_N=1/(N+1)$,
+On calcule :
 
 $
 v_(N+1)-v_N
+=H_(N+1)-H_N-ln(N+1)+ln(N)
 =1/(N+1)+ln(N/(N+1))
 =1/(N+1)+ln(1-1/(N+1)).
 $
 
 D'après la question 3.b, $x+ln(1-x)<=0$ pour $x in [0,1[$.
-Avec $x=1/(N+1)$, on a $v_(N+1)-v_N<=0$ :
-$(v_N)$ est décroissante.
+En prenant $x=1/(N+1)$, on obtient $v_(N+1)-v_N<=0$.
+Donc $(v_N)$ est décroissante.
 
-De même,
+D'autre part,
 
 $
 w_(N+1)-w_N
+=(v_(N+1)-1/(N+1))-(v_N-1/N)
 =v_(N+1)-v_N-1/(N+1)+1/N
 =1/N-ln(1+1/N).
 $
 
-Pour $N>=2$, on applique la question 3.b à $x=1/N in [0,1[$ :
-$x-ln(1+x)>=0$, donc $w_(N+1)-w_N>=0$.
-Pour $N=1$, on vérifie $w_2-w_1=1-ln(2)>0$.
-Ainsi, $(w_N)$ est croissante.
+D'après la question 3.b, $x-ln(1+x)>=0$ pour $x in [0,1[$.
+Pour $N>=2$, on peut prendre $x=1/N in [0,1[$ et obtenir
+$w_(N+1)-w_N>=0$. Ainsi, $(w_N)$ est croissante à partir du rang $2$.
 
 Enfin,
 
@@ -224,7 +225,8 @@ $
 v_N-w_N=1/N -> 0.
 $
 
-Les suites $(w_N)$ et $(v_N)$ sont donc adjacentes.
+Les deux suites sont donc adjacentes à partir du rang $2$
+(et convergent ainsi vers une même limite).
 
 == Question 3.d — Constante d'Euler
 
