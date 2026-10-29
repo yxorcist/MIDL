@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-30 — TD01 ex07 question 1 validée (10/10) : preuve manuscrite directe par epsilon, encadrement de u_n/v_n, multiplication par v_n>0, sommation des restes convergents puis encadrement de R_N^u/R_N^v ; correction raccourcie, Q2/Q3 préservées.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -8,96 +9,39 @@
 
 == Question 1 — Équivalence des restes
 
-Soient $(u_n)$ et $(v_n)$ deux suites positives telles que
+On suppose $u_n ~ v_n$, avec $(u_n)$ et $(v_n)$ positives et
+$sum_(n>=0) u_n$, $sum_(n>=0) v_n$ convergentes. On pose
 
 $
-u_n ~ v_n.
-$
-
-On suppose que les deux séries
-
-$
-sum_(n>=0) u_n
+R_N^u=sum_(n=N+1)^infinity u_n
 quad "et" quad
-sum_(n>=0) v_n
+R_N^v=sum_(n=N+1)^infinity v_n.
 $
 
-convergent.
-
-Les notes montrent que les restes correspondants sont équivalents :
-
-$
-sum_(n=N+1)^infinity u_n
-~
-sum_(n=N+1)^infinity v_n.
-$
-
-Comme
+Comme $u_n/v_n -> 1$, pour tout $epsilon>0$, il existe $N_epsilon$
+tel que, pour tout $n>=N_epsilon$,
 
 $
-u_n ~ v_n,
+abs(u_n/v_n-1)<epsilon
+quad <=> quad
+1-epsilon < u_n/v_n < 1+epsilon.
 $
 
-on a
+Puisque $v_n>0$ à partir d'un certain rang, on multiplie par $v_n$,
+puis on somme de $n=N+1$ à $+infinity$, pour $N$ assez grand :
 
 $
-abs(u_n-v_n)=o(v_n).
+(1-epsilon) R_N^v <= R_N^u <= (1+epsilon) R_N^v.
 $
 
-Ainsi, pour tout $epsilon>0$, il existe $N_epsilon in NN$ tel que, pour tout
-$n>=N_epsilon$,
+Comme $R_N^v>0$, on divise :
 
 $
-abs(u_n-v_n)<epsilon v_n.
+1-epsilon <= R_N^u/R_N^v <= 1+epsilon.
 $
 
-Soient $n<=n'$ avec $n>=N_epsilon$. Alors
-
-$
-abs(
-  sum_(k=n)^(n') u_k
-  -
-  sum_(k=n)^(n') v_k
-)
-<=
-sum_(k=n)^(n') abs(u_k-v_k)
-<
-epsilon
-sum_(k=n)^(n') v_k.
-$
-
-En faisant tendre $n'$ vers $+infinity$,
-
-$
-abs(
-  sum_(k=n)^infinity u_k
-  -
-  sum_(k=n)^infinity v_k
-)
-<=
-epsilon
-sum_(k=n)^infinity v_k.
-$
-
-Donc
-
-$
-sum_(k=n)^infinity u_k
--
-sum_(k=n)^infinity v_k
-=
-o(
-  sum_(k=n)^infinity v_k
-).
-$
-
-Par conséquent,
-
-$
-sum_(k=n)^infinity u_k
-~
-sum_(k=n)^infinity v_k.
-$
+Cet encadrement valant pour tout $epsilon>0$ à partir d'un certain rang,
+$R_N^u/R_N^v -> 1$. Donc $R_N^u ~ R_N^v$.
 
 == Question 2
 
