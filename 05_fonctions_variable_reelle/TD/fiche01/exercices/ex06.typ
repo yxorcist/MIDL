@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-29 — TD01 ex06 question 3.b validée sur deuxième copie manuscrite (10/10) : 0 <= t <= x < 1, chaîne 1-t <= 1 <= 1+t, positivité avant passage aux inverses, intégration sur [0,x] et conclusion ln(1+x) <= x <= -ln(1-x), puis les deux différences de signe demandé ; correction du signe de la première tentative.
 // study-validation: 2026-10-29 — TD01 ex06 question 3.a validée sur deux copies manuscrites (10/10) : f(t)=1/t, encadrement intégral issu de Q2, 0 <= H_N-ln(N) <= 1, division par ln(N)>0 pour N>=2, gendarmes et H_N ~ ln(N) ; dernière rédaction retenue.
 // study-revision: 2026-10-29 — TD01 ex06 Q1 remplacée selon la dernière copie manuscrite : d'abord [n,n+1] pour n>=1 et l'inégalité inférieure (**), ensuite [n-1,n] pour n>=2 et l'inégalité supérieure (*), puis encadrement ; labels maintenus pour Q2.
 // study-validation: 2026-10-29 — TD01 ex06 questions 1 et 2 reconstruites sans correction sur copie manuscrite (10/10) : décroissance, intégration, sommations n=1..N pour la minoration et n=2..N pour la majoration, puis Chasles ; question 2 condensée et cas N=1 explicité.
@@ -141,54 +142,40 @@ $
 
 == Question 3.b
 
-Soit $x in [0,1[$.
-
-Pour tout $t in [0,x]$,
+Soient $x in [0,1[$ et $t in [0,x]$. Alors $0<=t<=x<1$, donc
 
 $
-1 >= 1/(1+t).
+1-t <= 1 <= 1+t
+quad "avec" quad
+1-t>0.
 $
 
-Par croissance de l'intégrale,
+En prenant les inverses (qui renversent les inégalités),
 
 $
-integral_0^x 1 dif t
->=
-integral_0^x 1/(1+t) dif t.
+1/(1+t) <= 1 <= 1/(1-t).
 $
 
-Donc
+Par croissance de l'intégrale sur $[0,x]$,
 
 $
-x >= ln(1+x).
-$
-
-De même, pour tout $t in [0,x]$,
-
-$
-1 <= 1/(1-t).
+integral_0^x 1/(1+t) dif t
+<= integral_0^x 1 dif t
+<= integral_0^x 1/(1-t) dif t.
 $
 
 Ainsi,
 
 $
-integral_0^x 1 dif t
-<=
-integral_0^x 1/(1-t) dif t,
+ln(1+x) <= x <= -ln(1-x).
 $
 
-d'où
+Donc, pour tout $x in [0,1[$,
 
 $
-x <= -ln(1-x).
-$
-
-On dispose donc des deux inégalités
-
-$
-ln(1+x) <= x <= -ln(1-x),
-quad
-x in [0,1[.
+x-ln(1+x)>=0
+quad "et" quad
+x+ln(1-x)<=0.
 $
 
 == Rappel — suites adjacentes
