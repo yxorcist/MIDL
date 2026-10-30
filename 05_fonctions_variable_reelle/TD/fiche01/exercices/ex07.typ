@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-30 — TD01 ex07 question 3 validée sur copie manuscrite (9,5/10) : comparaison u_n/(2/3)^n=sqrt(n)(3/4)^n -> 0, convergence de la série, positivité et télescopage de v_n, application de Q1 à u_n ~ 2v_n, équivalent R_N ~ sqrt(N)/2^N. Calcul télescopique rigoureux avec borne finie M. Exercice 7 terminé (3/3).
 // study-validation: 2026-10-30 — TD01 ex07 question 2 validée sur copie manuscrite indépendante (10/10) : factorisation de v_n=sqrt(n)/2^(n+1)(2-sqrt(1+1/n)), limite du facteur vers 1, puis u_n ~ 2v_n et alpha=2 ; rédaction condensée, Q1 et Q3 inchangées.
 // study-validation: 2026-10-30 — TD01 ex07 question 1 validée (10/10) : preuve manuscrite directe par epsilon, encadrement de u_n/v_n, multiplication par v_n>0, sommation des restes convergents puis encadrement de R_N^u/R_N^v ; correction raccourcie, Q2/Q3 préservées.
 
@@ -72,118 +73,53 @@ $
 
 == Question 3 — Équivalent du reste
 
-On pose
+On pose $R_N=sum_(k=N+1)^infinity u_k$, avec $u_n=sqrt(n)/2^n$.
+
+Vérifions la convergence de $sum_(n>=1) u_n$. On a
 
 $
-R_N
-=
-sum_(k=N+1)^infinity u_k,
+u_n/(2/3)^n
+= sqrt(n) (3/4)^n -> 0.
 $
 
-où
+Donc $u_n=o((2/3)^n)$. Comme $sum_(n>=1) (2/3)^n$ converge,
+$sum_(n>=1) u_n$ converge par comparaison des séries positives.
+
+D'après la factorisation de la question 2,
+$v_n=u_n-u_(n+1)=sqrt(n)/2^(n+1) (2-sqrt(1+1/n))>0$ pour $n>=1$.
+De plus, pour $M>=1$,
 
 $
-u_k=sqrt(k)/2^k.
+sum_(n=1)^M v_n=u_1-u_(M+1) -> u_1,
 $
 
-Les notes remarquent que
+puisque $u_n->0$. Ainsi $sum_(n>=1) v_n$ converge.
+
+La question 2 donne $u_n ~ 2v_n$ ; on applique donc la question 1 :
 
 $
-u_n=o((2/3)^n).
+R_N ~ 2 sum_(k=N+1)^infinity v_k.
 $
 
-La série géométrique
+Pour $M>N$, par télescopage,
 
 $
-sum (2/3)^n
+sum_(k=N+1)^M v_k
+=sum_(k=N+1)^M (u_k-u_(k+1))
+=u_(N+1)-u_(M+1).
 $
 
-converge. Par comparaison des séries positives,
+En faisant tendre $M$ vers $+infinity$,
 
 $
-sum u_n
+sum_(k=N+1)^infinity v_k=u_(N+1).
 $
 
-converge, donc $R_N$ est bien défini.
-
-D'après la question 2,
+Finalement,
 
 $
-u_n ~ 2v_n.
+R_N ~ 2u_(N+1)
+= sqrt(N+1)/2^N
+~ sqrt(N)/2^N.
 $
 
-En appliquant la question 1,
-
-$
-R_N
-~
-sum_(k=N+1)^infinity 2v_k.
-$
-
-Or
-
-$
-v_k=u_k-u_(k+1),
-$
-
-donc la somme est télescopique :
-
-$
-sum_(k=N+1)^infinity 2v_k
-=
-2
-sum_(k=N+1)^infinity
-(u_k-u_(k+1)).
-$
-
-Pour $K>N$,
-
-$
-sum_(k=N+1)^K
-(u_k-u_(k+1))
-=
-u_(N+1)-u_(K+1).
-$
-
-Comme
-
-$
-u_(K+1)->0,
-$
-
-on obtient
-
-$
-sum_(k=N+1)^infinity
-(u_k-u_(k+1))
-=
-u_(N+1).
-$
-
-Ainsi,
-
-$
-R_N ~ 2u_(N+1).
-$
-
-Enfin,
-
-$
-2u_(N+1)
-=
-2 sqrt(N+1)/2^(N+1)
-=
-sqrt(N+1)/2^N
-~
-sqrt(N)/2^N.
-$
-
-Donc
-
-$
-R_N
-~
-sqrt(N)/2^N
-=
-u_N.
-$
