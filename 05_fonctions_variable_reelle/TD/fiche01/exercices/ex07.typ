@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-30 — TD01 ex07 question 2 validée sur copie manuscrite indépendante (10/10) : factorisation de v_n=sqrt(n)/2^(n+1)(2-sqrt(1+1/n)), limite du facteur vers 1, puis u_n ~ 2v_n et alpha=2 ; rédaction condensée, Q1 et Q3 inchangées.
 // study-validation: 2026-10-30 — TD01 ex07 question 1 validée (10/10) : preuve manuscrite directe par epsilon, encadrement de u_n/v_n, multiplication par v_n>0, sommation des restes convergents puis encadrement de R_N^u/R_N^v ; correction raccourcie, Q2/Q3 préservées.
 
 #set page(paper: "a4", margin: 2cm)
@@ -45,79 +46,28 @@ $R_N^u/R_N^v -> 1$. Donc $R_N^u ~ R_N^v$.
 
 == Question 2
 
-On considère
+On pose $u_n=sqrt(n)/2^n$ et $v_n=u_n-u_(n+1)$.
 
-$
-u_n=sqrt(n)/2^n
-$
-
-et on pose
-
-$
-v_n=u_n-u_(n+1).
-$
-
-Alors
+En factorisant,
 
 $
 v_n
-=
-sqrt(n)/2^n
--
-sqrt(n+1)/2^(n+1).
+= sqrt(n)/2^n - sqrt(n+1)/2^(n+1)
+= sqrt(n)/2^(n+1) (2-sqrt(1+1/n)).
 $
 
-On factorise :
+Or $1/n -> 0$, donc $2-sqrt(1+1/n) -> 1$. Ainsi,
 
 $
-v_n
-=
-sqrt(n)/2^(n+1)
-(
-  2-sqrt((n+1)/n)
-).
+v_n ~ sqrt(n)/2^(n+1) = u_n/2.
 $
 
-Or
+Par conséquent,
 
 $
-sqrt((n+1)/n)
-=
-sqrt(1+1/n)
-->1.
-$
-
-Donc
-
-$
-2-sqrt((n+1)/n)
-->1.
-$
-
-Ainsi,
-
-$
-v_n
-~
-sqrt(n)/2^(n+1).
-$
-
-Comme
-
-$
-u_n=sqrt(n)/2^n,
-$
-
-on obtient
-
-$
-v_n ~ u_n/2,
-$
-
-c'est-à-dire
-
-$
-u_n ~ 2v_n.
+u_n ~ 2v_n
+quad "et donc" quad
+alpha=2.
 $
 
 == Question 3 — Équivalent du reste
