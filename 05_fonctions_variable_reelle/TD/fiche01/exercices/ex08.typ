@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-30 — TD01 ex08 questions 1 et 2 validées sur copies manuscrites (10/10) : Q1 décroissance de u_n/v_n et majoration u_n <= C v_n par positivité ; Q2 calcul (1+1/n)^(-alpha) puis DL à l'ordre 1. Q3 inchangée.
 // source-note: statement cross-checked against the official TD01 sheet; handwritten correction supplied through question 3.d.
 
 #set page(paper: "a4", margin: 2cm)
@@ -12,86 +13,55 @@ strictement positifs.
 
 == Question 1
 
-On suppose qu'il existe $n_0 in NN^*$ tel que, pour tout $n>=n_0$,
+Supposons qu'il existe $n_0 in NN^*$ tel que, pour tout $n>=n_0$,
 
 $
-u_(n+1)/u_n
-<=
-v_(n+1)/v_n.
+u_(n+1)/u_n <= v_(n+1)/v_n.
 $
 
-Comme tous les termes sont strictement positifs,
+Les termes étant strictement positifs, ceci équivaut à
 
 $
-u_(n+1)/v_(n+1)
-<=
-u_n/v_n.
+u_(n+1)/v_(n+1) <= u_n/v_n.
 $
 
-Donc la suite
+Ainsi, $(u_n/v_n)_(n>=n_0)$ est décroissante. Donc, pour $n>=n_0$,
 
 $
-(u_n/v_n)_(n>=n_0)
-$
-
-est décroissante.
-
-Ainsi, pour tout $n>=n_0$,
-
-$
-0
-<
-u_n/v_n
-<=
-u_(n_0)/v_(n_0).
+0 < u_n/v_n <= u_(n_0)/v_(n_0).
 $
 
 En multipliant par $v_n>0$,
 
 $
-0
-<=
-u_n
-<=
-(u_(n_0)/v_(n_0)) v_n.
+0 < u_n <= (u_(n_0)/v_(n_0)) v_n.
 $
 
-On suppose dorénavant que
+On peut donc prendre $C=u_(n_0)/v_(n_0)>0$.
 
-$
-u_n=1/n^alpha,
-quad
-alpha in RR.
-$
+On suppose dorénavant que $u_n=1/n^alpha$, avec $alpha in RR$.
 
 == Question 2
 
-On a
+On calcule directement :
 
 $
 u_(n+1)/u_n
-=
-(1/(n+1)^alpha)/(1/n^alpha)
-=
-(n/(n+1))^alpha
-=
-(1+1/n)^(-alpha).
+= (n/(n+1))^alpha
+= (1+1/n)^(-alpha).
 $
 
-Comme $1/n -> 0$, le développement limité de $(1+x)^(-alpha)$ en $0$ donne
+Comme $1/n -> 0$, le DL en $0$ de $(1+x)^(-alpha)$ donne
 
 $
 (1+1/n)^(-alpha)
-=
-1-alpha/n+o(1/n).
+=1-alpha/n+o(1/n).
 $
 
-Donc
+Ainsi,
 
 $
-u_(n+1)/u_n
-=
-1-alpha/n+o(1/n).
+u_(n+1)/u_n=1-alpha/n+o(1/n).
 $
 
 == Question 3
