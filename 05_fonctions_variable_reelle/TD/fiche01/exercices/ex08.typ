@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-31 — TD01 ex08 question 3.c validée sur dernière copie manuscrite (10/10) : alpha>1/2=beta, donc (alpha-beta)/n>0 ; l'équivalence de Q3.b donne le même signe à partir d'un certain rang N, puis u_(n+1)/u_n <= v_(n+1)/v_n. Q1 à Q3.b et Q3.d inchangées.
 // study-validation: 2026-10-31 — TD01 ex08 question 3.b validée sur deuxième copie manuscrite (10/10) : soustraction des deux DL à l'ordre 1, reste o(1/n), équivalence finale puisque alpha != beta ; ne pas soustraire de simples équivalents. Q1, Q2, Q3.a et Q3.c–d préservées.
 // study-validation: 2026-10-30 — TD01 ex08 question 3.a validée sur copie manuscrite (10/10) : quotient des produits v_(n+1)/v_n=(2n+1)/(2n+2), réécriture 1-1/(2n+2), développement de 1/(1+1/n), coefficient beta=1/2. Rédaction condensée ; Q1, Q2 et Q3.b–d inchangées.
 // study-validation: 2026-10-30 — TD01 ex08 questions 1 et 2 validées sur copies manuscrites (10/10) : Q1 décroissance de u_n/v_n et majoration u_n <= C v_n par positivité ; Q2 calcul (1+1/n)^(-alpha) puis DL à l'ordre 1. Q3 inchangée.
@@ -130,68 +131,27 @@ $
 
 === 3.c
 
-Supposons
+Supposons $alpha>1/2$. Comme $beta=1/2$, on a $alpha-beta>0$.
+
+D'après la question 3.b,
 
 $
-alpha>1/2.
+v_(n+1)/v_n-u_(n+1)/u_n ~ (alpha-beta)/n.
 $
 
-Comme
+Or $(alpha-beta)/n>0$ pour $n>=1$. Deux suites équivalentes étant de
+même signe à partir d'un certain rang, il existe $N in NN^*$ tel que,
+pour tout $n>=N$,
 
 $
-beta=1/2,
+v_(n+1)/v_n-u_(n+1)/u_n>0.
 $
 
-on a
+Donc, à partir de ce rang,
 
 $
-alpha-beta>0.
+u_(n+1)/u_n <= v_(n+1)/v_n.
 $
-
-D'après l'équivalent précédent,
-
-$
-(v_(n+1)/v_n-u_(n+1)/u_n)
-/((alpha-beta)/n)
-->
-1.
-$
-
-En prenant par exemple $epsilon=1/2$, il existe $N in NN$ tel que, pour tout
-$n>=N$,
-
-$
-1/2
-<
-(v_(n+1)/v_n-u_(n+1)/u_n)
-/((alpha-beta)/n)
-<
-3/2.
-$
-
-Comme
-
-$
-(alpha-beta)/n>0,
-$
-
-on obtient, pour tout $n>=N$,
-
-$
-v_(n+1)/v_n-u_(n+1)/u_n
->
-0.
-$
-
-Ainsi,
-
-$
-u_(n+1)/u_n
-<=
-v_(n+1)/v_n
-$
-
-à partir d'un certain rang.
 
 === 3.d
 
