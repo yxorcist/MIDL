@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-31 — TD02 ex01 Q1 : dernière copie manuscrite validée (10/10), preuve minimale par parité de u_n > -1 sans utiliser les limites. Q2 préservée ; Q3 rendue autonome pour sa majoration u_n <= 2.
 // study-validation: 2026-10-31 — TD02 ex01 : rédaction révisée selon la nouvelle copie manuscrite. Étude globale des sous-suites paire et impaire (premier terme, décroissance et limites 1 et -1), divergence, bornes strictes et larges ; Q1–Q3 déduites sans calculs redondants. Corrige u_(2p-1) <= 1 (égalité en p=1).
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet; the supplied handwritten page contains the complete correction of questions 1 to 3.
 
@@ -62,37 +63,25 @@ $
 sup(X)=M.
 $
 
-== Question 1 — Analyse des deux sous-suites
+== Question 1
 
-Pour tout $p in NN^*$,
-
-$
-u_(2p)=(-1)^(2p)+2/(2p)=1+1/p -> 1,
-$
+Soit $p in NN^*$.
 
 $
-u_(2p-1)=(-1)^(2p-1)+2/(2p-1)=-1+2/(2p-1) -> -1.
+u_(2p)=(-1)^(2p)+2/(2p)=1+1/p>-1,
 $
 
-Les deux sous-suites sont strictement décroissantes : la première part de
-$u_2=2$ et tend vers $1$ ; la seconde part de $u_1=1$ et tend vers $-1$.
-Leurs limites étant distinctes, $(u_n)_n$ diverge.
-
-Plus précisément, pour tout $p in NN^*$,
+et
 
 $
-1<u_(2p)<=2
-quad "et" quad
--1<u_(2p-1)<=1.
+u_(2p-1)=(-1)^(2p-1)+2/(2p-1)=-1+2/(2p-1)>-1.
 $
 
-Donc, pour tout $n in NN^*$,
+Les indices pairs et impairs couvrent $NN^*$, donc
 
 $
--1<u_n<=2.
+forall n in NN^*, quad u_n>-1.
 $
-
-En particulier, $u_n>-1$, comme demandé.
 
 == Question 2
 
@@ -112,8 +101,15 @@ Donc $E$ n'admet pas de minimum.
 
 == Question 3
 
-D'après la question 1, $u_n<=2$ pour tout $n>=1$ : $2$ est un majorant
-de $E$. De plus, $u_2=2 in E$.
+Pour tout $p in NN^*$,
+
+$
+u_(2p)=1+1/p<=2
+quad "et" quad
+u_(2p-1)=-1+2/(2p-1)<=1<=2.
+$
+
+Donc $2$ est un majorant de $E$. Or $u_2=2 in E$.
 
 Par conséquent,
 
