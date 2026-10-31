@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-31 — TD01 ex08 question 3.b validée sur deuxième copie manuscrite (10/10) : soustraction des deux DL à l'ordre 1, reste o(1/n), équivalence finale puisque alpha != beta ; ne pas soustraire de simples équivalents. Q1, Q2, Q3.a et Q3.c–d préservées.
 // study-validation: 2026-10-30 — TD01 ex08 question 3.a validée sur copie manuscrite (10/10) : quotient des produits v_(n+1)/v_n=(2n+1)/(2n+2), réécriture 1-1/(2n+2), développement de 1/(1+1/n), coefficient beta=1/2. Rédaction condensée ; Q1, Q2 et Q3.b–d inchangées.
 // study-validation: 2026-10-30 — TD01 ex08 questions 1 et 2 validées sur copies manuscrites (10/10) : Q1 décroissance de u_n/v_n et majoration u_n <= C v_n par positivité ; Q2 calcul (1+1/n)^(-alpha) puis DL à l'ordre 1. Q3 inchangée.
 // source-note: statement cross-checked against the official TD01 sheet; handwritten correction supplied through question 3.d.
@@ -105,36 +106,26 @@ $
 
 === 3.b
 
-Supposons
+Supposons $alpha != beta$. D'après les DL des questions 2 et 3.a,
 
 $
-alpha != beta.
+v_(n+1)/v_n = 1-beta/n+o(1/n)
+quad "et" quad
+u_(n+1)/u_n = 1-alpha/n+o(1/n).
 $
 
-D'après les développements précédents,
-
-$
-v_(n+1)/v_n-u_(n+1)/u_n
-=
-(1-beta/n+o(1/n))
--
-(1-alpha/n+o(1/n)).
-$
-
-Donc
+En soustrayant ces deux DL,
 
 $
 v_(n+1)/v_n-u_(n+1)/u_n
-=
-(alpha-beta)/n+o(1/n).
+= (1-beta/n)-(1-alpha/n)+o(1/n)
+= (alpha-beta)/n+o(1/n).
 $
 
-Comme $alpha-beta != 0$,
+Comme $alpha-beta != 0$, on conclut :
 
 $
-v_(n+1)/v_n-u_(n+1)/u_n
-~
-(alpha-beta)/n.
+v_(n+1)/v_n-u_(n+1)/u_n ~ (alpha-beta)/n.
 $
 
 === 3.c
