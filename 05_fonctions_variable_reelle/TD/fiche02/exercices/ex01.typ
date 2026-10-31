@@ -1,4 +1,5 @@
 // source-confidence: high
+// study-validation: 2026-10-31 — TD02 ex01 : rédaction révisée selon la nouvelle copie manuscrite. Étude globale des sous-suites paire et impaire (premier terme, décroissance et limites 1 et -1), divergence, bornes strictes et larges ; Q1–Q3 déduites sans calculs redondants. Corrige u_(2p-1) <= 1 (égalité en p=1).
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet; the supplied handwritten page contains the complete correction of questions 1 to 3.
 
 #set page(paper: "a4", margin: 2cm)
@@ -61,195 +62,61 @@ $
 sup(X)=M.
 $
 
-== Question 1
+== Question 1 — Analyse des deux sous-suites
 
-Pour tout
-
-$
-p in NN^*,
-$
-
-on a
+Pour tout $p in NN^*$,
 
 $
-u_(2p)
-=
-(-1)^(2p)+2/(2p)
-=
-1+1/p.
-$
-
-Donc
-
-$
-u_(2p)>1>-1.
-$
-
-De même,
-
-$
-u_(2p-1)
-=
-(-1)^(2p-1)+2/(2p-1)
-=
--1+2/(2p-1).
-$
-
-Comme
-
-$
-2/(2p-1)>0,
-$
-
-on obtient
-
-$
-u_(2p-1)>-1.
-$
-
-Ainsi, pour tout
-
-$
-n in NN^*,
+u_(2p)=(-1)^(2p)+2/(2p)=1+1/p -> 1,
 $
 
 $
-u_n>-1.
+u_(2p-1)=(-1)^(2p-1)+2/(2p-1)=-1+2/(2p-1) -> -1.
 $
+
+Les deux sous-suites sont strictement décroissantes : la première part de
+$u_2=2$ et tend vers $1$ ; la seconde part de $u_1=1$ et tend vers $-1$.
+Leurs limites étant distinctes, $(u_n)_n$ diverge.
+
+Plus précisément, pour tout $p in NN^*$,
+
+$
+1<u_(2p)<=2
+quad "et" quad
+-1<u_(2p-1)<=1.
+$
+
+Donc, pour tout $n in NN^*$,
+
+$
+-1<u_n<=2.
+$
+
+En particulier, $u_n>-1$, comme demandé.
 
 == Question 2
 
-D'après la question précédente,
+Puisque $u_n>-1$ pour tout $n>=1$, $-1$ est un minorant de $E$.
 
-$
-u_n>-1
-$
-
-pour tout $n in NN^*$.
-
-Donc $-1$ est un minorant de $E$.
-
-Par conséquent,
-
-$
--1<=inf(E).
-$
-
-Considérons maintenant la sous-suite des termes d'indice impair :
-
-$
-u_(2p-1)
-=
--1+2/(2p-1).
-$
-
-Lorsque
-
-$
-p->+infinity,
-$
-
-on a
-
-$
-u_(2p-1)->-1.
-$
-
-Comme tous les termes $u_(2p-1)$ appartiennent à $E$, la caractérisation séquentielle de la borne inférieure donne
-
-$
-inf(E)<=-1.
-$
-
-On en déduit
-
-$
-(inf(E)=-1).
-$
-
-D'après la question 1,
-
-$
-u_n>-1
-$
-
-pour tout $n in NN^*$.
+Or $u_(2p-1) -> -1$ et tous les termes de cette sous-suite appartiennent à
+$E$. Aucun nombre strictement supérieur à $-1$ ne peut donc minorer $E$.
 
 Ainsi,
 
 $
--1 in.not E.
+inf(E)=-1.
 $
 
+Comme $u_n>-1$ pour tout $n>=1$, on a $-1 in.not E$.
 Donc $E$ n'admet pas de minimum.
 
 == Question 3
 
-Pour tout
-
-$
-p>=1,
-$
-
-on a
-
-$
-u_(2p)
-=
-1+1/p.
-$
-
-Or
-
-$
-1/p<=1,
-$
-
-donc
-
-$
-u_(2p)<=2.
-$
-
-Pour les indices impairs,
-
-$
-u_(2p-1)
-=
--1+2/(2p-1)
-<=1<2.
-$
-
-Ainsi, pour tout
-
-$
-n in NN^*,
-$
-
-$
-u_n<=2.
-$
-
-Donc $2$ est un majorant de $E$.
-
-Enfin,
-
-$
-u_2
-=
-(-1)^2+2/2
-=
-2.
-$
-
-Donc
-
-$
-2 in E.
-$
+D'après la question 1, $u_n<=2$ pour tout $n>=1$ : $2$ est un majorant
+de $E$. De plus, $u_2=2 in E$.
 
 Par conséquent,
 
 $
-(max(E)=sup(E)=2).
+max(E)=sup(E)=2.
 $
