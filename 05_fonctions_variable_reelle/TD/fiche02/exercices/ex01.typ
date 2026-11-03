@@ -1,5 +1,5 @@
 // source-confidence: high
-// study-validation: 2026-11-03 — TD02 ex01 Q1 (preuve par parité) et Q2 (minorant -1, sous-suite impaire vers -1, absence de minimum) validées sur copies manuscrites, 10/10 ; rédaction concise. Q3 conservée. Rappel hors sujet supprimé.
+// study-validation: 2026-11-03 — TD02 ex01 Q1 (preuve par parité), Q2 (inf(E)=-1 non atteinte) et Q3 (majoration par parité, u_2=2 atteint) validées sur copies manuscrites, 10/10. Rédaction concise ; rappel hors sujet supprimé.
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet; the supplied handwritten page contains the complete correction of questions 1 to 3.
 
 #set page(paper: "a4", margin: 2cm)
@@ -65,10 +65,10 @@ Pour tout $p in NN^*$,
 $
 u_(2p)=1+1/p<=2
 quad "et" quad
-u_(2p-1)=-1+2/(2p-1)<=1<=2.
+u_(2p-1)=-1+2/(2p-1)<=1<2.
 $
 
-Donc $2$ est un majorant de $E$. Or $u_2=2 in E$.
+Donc $2$ est un majorant de $E$. Or $u_2=1+1=2 in E$.
 
 Par conséquent,
 
