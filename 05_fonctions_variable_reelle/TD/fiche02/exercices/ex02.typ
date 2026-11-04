@@ -1,6 +1,6 @@
 // source-confidence: high
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet.
-// source-note: statement and numbering cross-checked against the official FVR TD02 sheet; the supplied handwritten pages now contain corrections for A, B and C.
+// study-validation: 2026-11-04 — TD02 ex02 A, B, C validés sur copies manuscrites (10/10) : minorant atteint et suite non majorée pour A ; 0 atteint et 1 approché sans être atteint pour B ; 0 approché sans être atteint et suite non majorée pour C. Réécriture concise, variables fixées et limites explicites.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -30,37 +30,19 @@ $
 
 == Ensemble $A$
 
-Pour tout $(m,n) in (NN^*)^2$,
+Pour tous $m,n in NN^*$,
 
 $
-frac(n m,n+1)
->=
-frac(n,n+1)
-=
-1-frac(1,n+1).
+frac(m n,n+1)
+= m(1-frac(1,n+1))
+>= 1-frac(1,n+1)
+>= frac(1,2).
 $
 
-Comme $n>=1$,
+Ainsi, $1/2$ est un minorant de $A$. Or, pour $m=n=1$,
 
 $
-frac(n,n+1)>=frac(1,2).
-$
-
-Ainsi,
-
-$
-frac(1,2)
-$
-
-est un minorant de $A$.
-
-De plus,
-
-$
-frac(1 times 1,1+1)
-=
-frac(1,2)
-in A.
+frac(m n,n+1)=frac(1,2) in A.
 $
 
 Donc
@@ -69,156 +51,72 @@ $
 min(A)=inf(A)=frac(1,2).
 $
 
-Pour montrer que $A$ n'est pas majoré, on fixe $n=1$.
-
-Pour tout $m in NN^*$,
+Pour $n=1$, on obtient $m/2 in A$ pour tout $m in NN^*$, et
 
 $
-frac(m times 1,1+1)
-=
-frac(m,2)
-in A.
+frac(m,2) -> +infinity quad "lorsque" quad m -> +infinity.
 $
 
-Or
-
-$
-frac(m,2)->+infinity.
-$
-
-Ainsi, $A$ n'est pas majoré.
-
-Par conséquent, $A$ n'admet ni borne supérieure réelle ni maximum.
+Donc $A$ n'est pas majoré : il n'admet ni supremum réel ni maximum.
 
 == Ensemble $B$
 
-Pour tout $(m,n) in NN^* times NN$,
+Pour tout $m in NN^*$ et $n in NN$,
 
 $
-frac(n,n+m) >= 0.
+0 <= frac(n,n+m) < 1.
 $
 
-De plus,
-
-$
-0
-=
-frac(0,0+1)
-in B.
-$
-
-Ainsi, $0$ est le minimum de $B$ :
+En prenant $n=0$, on a $0 in B$. Donc
 
 $
 min(B)=inf(B)=0.
 $
 
-D'autre part, comme $m>=1$,
+En fixant $m=1$,
 
 $
-frac(n,n+m)
-<=
-frac(n,n+1)
-=
-1-frac(1,n+1)
-<
-1.
+frac(n,n+1) in B
+quad "et" quad
+frac(n,n+1) -> 1
+quad "lorsque" quad n -> +infinity.
 $
 
-Donc $1$ est un majorant de $B$.
-
-En prenant $m=1$, on obtient la suite d'éléments de $B$
-
-$
-frac(n,n+1),
-$
-
-et
-
-$
-frac(n,n+1) -> 1.
-$
-
-D'après la caractérisation séquentielle de la borne supérieure,
+Puisque $1$ est un majorant approché par des éléments de $B$,
 
 $
 sup(B)=1.
 $
 
-Comme aucun élément de $B$ n'est égal à $1$,
-
-$
-1 in.not B.
-$
-
-Ainsi, $B$ n'admet pas de maximum.
-
-En résumé,
-
-$
-min(B)=inf(B)=0,
-quad
-sup(B)=1,
-$
-
-et $B$ n'a pas de maximum.
+Comme tous les éléments de $B$ sont strictement inférieurs à $1$,
+$B$ n'admet pas de maximum.
 
 == Ensemble $C$
 
-Pour tout $(m,n) in (NN^*)^2$,
+Pour tous $m,n in NN^*$,
 
 $
 frac(m,n+1)>0.
 $
 
-Donc $0$ est un minorant de $C$.
-
-En prenant $m=1$,
+En fixant $m=1$,
 
 $
 frac(1,n+1) in C
+quad "et" quad
+frac(1,n+1) -> 0
+quad "lorsque" quad n -> +infinity.
 $
 
-et
+Donc $inf(C)=0$. Comme $0 in.not C$, $C$ n'admet pas de minimum.
 
-$
-frac(1,n+1) -> 0.
-$
-
-D'après la caractérisation séquentielle de la borne inférieure,
-
-$
-inf(C)=0.
-$
-
-Comme tous les éléments de $C$ sont strictement positifs,
-
-$
-0 in.not C.
-$
-
-Ainsi, $C$ n'admet pas de minimum.
-
-Pour montrer que $C$ n'est pas majoré, on fixe $n=1$ :
+En fixant $n=1$, on obtient
 
 $
 frac(m,2) in C
+quad "et" quad
+frac(m,2) -> +infinity
+quad "lorsque" quad m -> +infinity.
 $
 
-pour tout $m in NN^*$, et
-
-$
-frac(m,2) -> +infinity.
-$
-
-Donc $C$ n'est pas majoré.
-
-Par conséquent, $C$ n'admet ni borne supérieure réelle ni maximum.
-
-En résumé,
-
-$
-inf(C)=0,
-$
-
-$C$ n'a pas de minimum et n'est pas majoré.
+Ainsi, $C$ n'est pas majoré : il n'admet ni supremum réel ni maximum.
