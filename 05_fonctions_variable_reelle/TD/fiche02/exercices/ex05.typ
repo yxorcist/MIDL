@@ -108,33 +108,6 @@ $
 sup(A+B)=sup(A)+sup(B).
 $
 
-Les notes donnent aussi une autre méthode : on choisit des suites
-$(a_n)_n in A^NN$ et $(b_n)_n in B^NN$ telles que
-
-$
-a_n->sup(A)
-quad "et" quad
-b_n->sup(B).
-$
-
-Alors
-
-$
-a_n+b_n in A+B
-$
-
-pour tout $n$, et
-
-$
-a_n+b_n->sup(A)+sup(B).
-$
-
-La caractérisation séquentielle de la borne supérieure redonne
-
-$
-sup(A+B)>=sup(A)+sup(B).
-$
-
 == Question 2
 
 Soient $(x_n)_n$ et $(y_n)_n$ deux suites réelles majorées.
