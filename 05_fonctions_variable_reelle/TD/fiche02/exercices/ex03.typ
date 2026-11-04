@@ -2,6 +2,8 @@
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet.
 // source-uncertainty: the supplied handwritten correction covers question 1 only; no handwritten correction for question 2 was supplied.
 
+// study-validation: 2026-11-04 — Question 1 : rédaction concise validée sur la copie manuscrite (inégalités larges, raisonnement par définition). Énoncé et question 2 inchangés.
+
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
@@ -30,86 +32,22 @@ $
 
 === Correction
 
-Comme $B$ est borné, $B$ est minoré et majoré.
+Comme $B != emptyset$ et $B$ est borné, la propriété des bornes inférieure et supérieure garantit l'existence de $inf(B)$ et $sup(B)$.
 
-De plus,
-
-$
-B != emptyset.
-$
-
-D'après la propriété de la borne supérieure, les nombres
-
-$
-inf(B)
-quad "et" quad
-sup(B)
-$
-
-existent.
-
-Soit
-
-$
-a in A.
-$
-
-Comme
-
-$
-A subset.eq B,
-$
-
-on a aussi
-
-$
-a in B.
-$
-
-Par conséquent,
+Puisque $A != emptyset$ et $A subset.eq B$, pour tout $a in A$,
 
 $
 inf(B) <= a <= sup(B).
 $
 
-Ainsi, $A$ est lui aussi minoré et majoré.
+Ainsi, $A$ est borné. Comme $A != emptyset$, $inf(A)$ et $sup(A)$ existent également.
 
-Comme
-
-$
-A != emptyset,
-$
-
-les nombres
+De plus, $inf(B)$ est un minorant de $A$ et $sup(B)$ est un majorant de $A$. Par définition de l'infimum et du supremum,
 
 $
-inf(A)
+inf(B) <= inf(A)
 quad "et" quad
-sup(A)
-$
-
-existent.
-
-De plus, $inf(B)$ est un minorant de $A$.
-
-Or $inf(A)$ est le plus grand des minorants de $A$, donc
-
-$
-inf(B) <= inf(A).
-$
-
-De même, $sup(B)$ est un majorant de $A$.
-
-Comme $sup(A)$ est le plus petit des majorants de $A$,
-
-$
 sup(A) <= sup(B).
-$
-
-Ainsi,
-
-$
-inf(B) <= inf(A) <= sup(A) <= sup(B).
 $
 
 == Question 2
