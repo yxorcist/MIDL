@@ -1,8 +1,9 @@
 // source-confidence: high
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet.
-// source-uncertainty: the supplied handwritten correction covers question 1 only; no handwritten correction for question 2 was supplied.
+// source-uncertainty: les corrections des questions 1 et 2 ont été rédigées à partir des copies manuscrites validées.
 
 // study-validation: 2026-11-04 — Question 1 : rédaction concise validée sur la copie manuscrite (inégalités larges, raisonnement par définition). Énoncé et question 2 inchangés.
+// study-validation: 2026-11-04 — Question 2 : preuve manuscrite validée ; existence des bornes puis comparaison par définition. Énoncé et question 1 inchangés.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -64,7 +65,14 @@ $
 sup(A) <= inf(B).
 $
 
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Correction non fournie.* La question 2 figure sur la fiche TD02 officielle,
-  mais sa correction n'apparaît pas dans la photographie transmise.
-]
+=== Correction
+
+Tout $b in B$ est un majorant de $A$. Comme $A != emptyset$, la propriété de la borne supérieure garantit l'existence de $sup(A)$.
+
+De même, tout $a in A$ est un minorant de $B$. Comme $B != emptyset$, la propriété de la borne inférieure garantit l'existence de $inf(B)$.
+
+Pour tout $b in B$, puisque $b$ est un majorant de $A$, on a $sup(A) <= b$. Ainsi, $sup(A)$ est un minorant de $B$. Par définition de l'infimum,
+
+$
+sup(A) <= inf(B).
+$
