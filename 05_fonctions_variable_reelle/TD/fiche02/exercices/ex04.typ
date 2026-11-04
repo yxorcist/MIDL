@@ -40,13 +40,13 @@ Pour trouver à partir de quel rang la suite décroît, cherchons quand $frac(x_
 
 $
 frac(1,2)(1+frac(1,n))^3 <= 1
-iff (1+frac(1,n))^3 <= 2
-iff 1+frac(1,n) <= 2^(1/3)
+<=> (1+frac(1,n))^3 <= 2
+<=> 1+frac(1,n) <= 2^(1/3)
 $
 
 $
-iff frac(1,n) <= 2^(1/3)-1
-iff n >= frac(1,2^(1/3)-1) approx 3.85.
+<=> frac(1,n) <= 2^(1/3)-1
+<=> n >= frac(1,2^(1/3)-1) approx 3.85.
 $
 
 Donc, pour $n in {1,2,3}$, $x_(n+1)>x_n$ ; pour $n>=4$, $x_(n+1)<x_n$. La suite est strictement croissante jusqu'à $x_4$, puis strictement décroissante.
