@@ -5,6 +5,7 @@
 
 // study-validation: 2026-11-04 — Question 1 : copie manuscrite validée (quotient, seuil n >= 4, croissance puis décroissance strictes). Question 2 inchangée, non évaluée ici.
 // study-validation: 2026-11-04 — Question 2 : copie manuscrite validée (maximum en x_4 par monotonie ; positivité, limite 0 et caractérisation séquentielle pour l'infimum ; absence de minimum). Question 1 inchangée.
+// study-validation: 2026-11-04 — Révision compacte des questions 1 et 2 suivant l'ordre et les formulations de la copie finale ; méthodes validées conservées, énoncé inchangé.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -26,99 +27,40 @@ $
 
 == Question 1 — Monotonie de $(x_n)$
 
-Pour tout $n in NN^*$,
+Considérons le quotient $frac(x_(n+1),x_n)$ pour étudier la monotonie :
 
 $
 frac(x_(n+1),x_n)
-=
-frac((n+1)^3 2^(-(n+1)),n^3 2^(-n))
-=
-frac(1,2) (1+frac(1,n))^3.
+= frac((n+1)^3 2^(-(n+1)),n^3 2^(-n))
+= frac(1,2) (frac(n+1,n))^3
+= frac(1,2) (1+frac(1,n))^3.
 $
 
-On compare ce quotient à $1$ :
+Pour trouver à partir de quel rang la suite décroît, cherchons quand $frac(x_(n+1),x_n) <= 1$ (car $x_n>0$) :
 
 $
-frac(x_(n+1),x_n) <= 1
+frac(1,2)(1+frac(1,n))^3 <= 1
+iff (1+frac(1,n))^3 <= 2
+iff 1+frac(1,n) <= 2^(1/3)
 $
 
-si et seulement si
-
 $
-(1+frac(1,n))^3 <= 2.
-$
-
-Comme tous les termes sont positifs,
-
-$
-1+frac(1,n) <= 2^(1/3).
+iff frac(1,n) <= 2^(1/3)-1
+iff n >= frac(1,2^(1/3)-1) approx 3.85.
 $
 
-Donc
-
-$
-frac(1,n) <= 2^(1/3)-1,
-$
-
-soit
-
-$
-n >= frac(1,2^(1/3)-1).
-$
-
-Or
-
-$
-frac(1,2^(1/3)-1)
-approx 3.85.
-$
-
-Ainsi,
-
-$
-forall n in {1,2,3},
-quad
-x_(n+1)>x_n,
-$
-
-et
-
-$
-forall n>=4,
-quad
-x_(n+1)<x_n.
-$
-
-La suite est donc strictement croissante jusqu'à $x_4$, puis strictement décroissante à partir du rang $4$.
+Donc, pour $n in {1,2,3}$, $x_(n+1)>x_n$ ; pour $n>=4$, $x_(n+1)<x_n$. La suite est strictement croissante jusqu'à $x_4$, puis strictement décroissante.
 
 == Question 2 — Bornes, minimum et maximum de $A$
 
-D'après la question 1, la suite est strictement croissante jusqu'à $x_4$, puis strictement décroissante. Ainsi, pour tout $n in NN^*$, on a $x_n <= x_4$.
-
-Or $x_4 = frac(4^3, 2^4) = 4$ et $x_4 in A$. Donc
+D'après la question 1, $(x_n)$ croît jusqu'au rang $4$, puis décroît : son plus grand terme est donc $x_4$. Calculons :
 
 $
-sup(A) = max(A) = 4.
+x_4 = frac(4^3,2^4) = frac(2^6,2^4) = 4.
 $
 
-Pour tout $n in NN^*$,
+Comme $x_4 in A$ et $forall n in NN^*, x_n <= 4$, on obtient $sup(A)=max(A)=4$.
 
-$
-x_n = frac(n^3, 2^n) > 0.
-$
+Pour la borne inférieure, calculons la limite : par croissances comparées, $x_n=frac(n^3,2^n) -> 0$.
 
-Ainsi, $0$ est un minorant de $A$ et $0 in.not A$.
-
-Par croissances comparées,
-
-$
-x_n -> 0.
-$
-
-Comme tous les $x_n$ appartiennent à $A$, la caractérisation séquentielle de l'infimum donne
-
-$
-inf(A) = 0.
-$
-
-Puisque $0 in.not A$, $A$ n'admet pas de minimum.
+Or, pour tout $n in NN^*$, $x_n>0$ : ainsi, $0$ est un minorant de $A$ et $0 in.not A$. Comme tous les $x_n$ appartiennent à $A$ et convergent vers $0$, la caractérisation séquentielle de la borne inférieure donne $inf(A)=0$. Puisque $0 in.not A$, $A$ n'admet pas de minimum.
