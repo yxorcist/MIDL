@@ -4,6 +4,7 @@
 // source-note: the abandoned ratio manipulation marked "discontinued" in the pushed file was not retained.
 
 // study-validation: 2026-11-04 — Question 1 : copie manuscrite validée (quotient, seuil n >= 4, croissance puis décroissance strictes). Question 2 inchangée, non évaluée ici.
+// study-validation: 2026-11-04 — Question 2 : copie manuscrite validée (maximum en x_4 par monotonie ; positivité, limite 0 et caractérisation séquentielle pour l'infimum ; absence de minimum). Question 1 inchangée.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -92,74 +93,32 @@ La suite est donc strictement croissante jusqu'à $x_4$, puis strictement décro
 
 == Question 2 — Bornes, minimum et maximum de $A$
 
+D'après la question 1, la suite est strictement croissante jusqu'à $x_4$, puis strictement décroissante. Ainsi, pour tout $n in NN^*$, on a $x_n <= x_4$.
+
+Or $x_4 = frac(4^3, 2^4) = 4$ et $x_4 in A$. Donc
+
+$
+sup(A) = max(A) = 4.
+$
+
 Pour tout $n in NN^*$,
 
 $
-x_n=frac(n^3,2^n)>0.
+x_n = frac(n^3, 2^n) > 0.
 $
 
-Donc $0$ est un minorant de $A$.
+Ainsi, $0$ est un minorant de $A$ et $0 in.not A$.
 
-De plus,
+Par croissances comparées,
 
 $
 x_n -> 0.
 $
 
-Comme $(x_n)_n$ est une suite d'éléments de $A$, la caractérisation séquentielle de la borne inférieure donne
+Comme tous les $x_n$ appartiennent à $A$, la caractérisation séquentielle de l'infimum donne
 
 $
-inf(A)=0.
+inf(A) = 0.
 $
 
-Or
-
-$
-0 in.not A.
-$
-
-Donc $A$ n'admet pas de minimum.
-
-D'après la question 1,
-
-$
-x_1<x_2<x_3<x_4
-$
-
-et, pour tout $n>=4$,
-
-$
-x_n<=x_4.
-$
-
-Ainsi, $x_4$ est un majorant de $A$ qui appartient à $A$.
-
-Par conséquent,
-
-$
-max(A)=sup(A)=x_4.
-$
-
-Enfin,
-
-$
-x_4
-=
-frac(4^3,2^4)
-=
-4.
-$
-
-Donc
-
-$
-sup(A)=max(A)=4
-$
-
-et
-
-$
-inf(A)=0
-$
-
-avec aucun minimum.
+Puisque $0 in.not A$, $A$ n'admet pas de minimum.
