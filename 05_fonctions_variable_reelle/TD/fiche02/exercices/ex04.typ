@@ -3,6 +3,8 @@
 // source-note: the pushed material contains the correction of questions 1 and 2.
 // source-note: the abandoned ratio manipulation marked "discontinued" in the pushed file was not retained.
 
+// study-validation: 2026-11-04 — Question 1 : copie manuscrite validée (quotient, seuil n >= 4, croissance puis décroissance strictes). Question 2 inchangée, non évaluée ici.
+
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
@@ -83,10 +85,10 @@ et
 $
 forall n>=4,
 quad
-x_(n+1)<=x_n.
+x_(n+1)<x_n.
 $
 
-La suite est donc strictement croissante jusqu'à $x_4$, puis décroissante à partir du rang $4$.
+La suite est donc strictement croissante jusqu'à $x_4$, puis strictement décroissante à partir du rang $4$.
 
 == Question 2 — Bornes, minimum et maximum de $A$
 
