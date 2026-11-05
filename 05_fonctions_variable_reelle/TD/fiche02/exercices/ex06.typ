@@ -1,6 +1,7 @@
 // source-confidence: high
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet.
 // source-note: the supplied handwritten correction contains the full proof.
+// study-validation: 2026-11-05 — Copie manuscrite finale validée : preuve par epsilon (sans epsilon/2 initial), somme finie A, contrôle des deux parties et conclusion par 2 epsilon ; énoncé inchangé.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -22,94 +23,27 @@ $
 
 == Correction
 
-Soit $epsilon>0$.
+Soit $epsilon>0$. Comme $x_m->ell$, il existe $N_epsilon in NN$ tel que, pour tout $k>=N_epsilon$, $abs(x_k-ell)<epsilon$.
 
-Comme
+Posons $A=sum_(k=1)^(N_epsilon-1) abs(x_k-ell)$. $A$ étant une constante (une fois $epsilon$ fixé), on a $A/m->0$. Donc il existe $N_A in NN$ tel que, pour tout $m>=N_A$, $frac(A,m)<epsilon$.
 
-$
-x_n->ell,
-$
-
-il existe $N_epsilon in NN$ tel que, pour tout $k>=N_epsilon$,
+Soit $m>=max(N_epsilon,N_A)$. On a :
 
 $
-abs(x_k-ell)<epsilon/2.
+abs(u_m-ell)
+&= abs(frac(1,m) sum_(k=1)^m x_k - frac(1,m) sum_(k=1)^m ell) \
+&= abs(frac(1,m) sum_(k=1)^m (x_k-ell)) \
+&<= frac(1,m) sum_(k=1)^m abs(x_k-ell) \
+&= frac(1,m) sum_(k=1)^(N_epsilon-1) abs(x_k-ell)
+ + frac(1,m) sum_(k=N_epsilon)^m abs(x_k-ell).
 $
 
-Posons
+Par définition de $A$ et de $N_epsilon$, il y a $m-N_epsilon+1$ termes dans la seconde somme, tous strictement inférieurs à $epsilon$. Donc :
 
 $
-A=sum_(k=1)^(N_epsilon-1) abs(x_k-ell).
+abs(u_m-ell)
+&< frac(A,m) + frac(m-N_epsilon+1,m) epsilon \
+&<= frac(A,m) + epsilon < 2 epsilon.
 $
 
-Le nombre $A$ est fixé, donc
-
-$
-A/n->0.
-$
-
-Il existe ainsi $N_A in NN$ tel que, pour tout $n>=N_A$,
-
-$
-A/n<epsilon/2.
-$
-
-Soit maintenant
-
-$
-n>=max(N_epsilon,N_A).
-$
-
-On a
-
-$
-abs(u_n-ell)
-&=
-abs(
-frac(1,n) sum_(k=1)^n x_k
--
-frac(1,n) sum_(k=1)^n ell
-) \
-&=
-abs(
-frac(1,n) sum_(k=1)^n (x_k-ell)
-) \
-&<=
-frac(1,n) sum_(k=1)^n abs(x_k-ell) \
-&=
-frac(1,n) sum_(k=1)^(N_epsilon-1) abs(x_k-ell)
-+
-frac(1,n) sum_(k=N_epsilon)^n abs(x_k-ell).
-$
-
-Par définition de $A$ et de $N_epsilon$,
-
-$
-abs(u_n-ell)
-<
-frac(A,n)
-+
-frac(n-N_epsilon+1,n) frac(epsilon,2).
-$
-
-Comme
-
-$
-frac(n-N_epsilon+1,n)<=1,
-$
-
-on obtient
-
-$
-abs(u_n-ell)
-<
-epsilon/2+epsilon/2
-=
-epsilon.
-$
-
-Donc
-
-$
-u_n->ell.
-$
+Comme $epsilon>0$ est arbitraire, pour toute tolérance $eta>0$, on applique ce raisonnement à $epsilon=eta/2$. On obtient alors, pour $m$ assez grand, $abs(u_m-ell)<eta$. Donc $u_m->ell$.
