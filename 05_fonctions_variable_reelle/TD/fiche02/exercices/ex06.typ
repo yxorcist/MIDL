@@ -3,6 +3,8 @@
 // source-note: the supplied handwritten correction contains the full proof.
 // study-validation: 2026-11-05 — Copie manuscrite finale validée : preuve par epsilon (sans epsilon/2 initial), somme finie A, contrôle des deux parties et conclusion par 2 epsilon ; énoncé inchangé.
 
+// study-validation: 2026-11-05 — Rectification : index n uniformisé avec l'énoncé ; contrôles n >= N_A et n >= N_epsilon explicités pour les deux contributions.
+
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
@@ -23,27 +25,33 @@ $
 
 == Correction
 
-Soit $epsilon>0$. Comme $x_m->ell$, il existe $N_epsilon in NN$ tel que, pour tout $k>=N_epsilon$, $abs(x_k-ell)<epsilon$.
+Soit $epsilon>0$. Comme $x_n->ell$, il existe $N_epsilon in NN^*$ tel que, pour tout $k>=N_epsilon$, $abs(x_k-ell)<epsilon$.
 
-Posons $A=sum_(k=1)^(N_epsilon-1) abs(x_k-ell)$. $A$ étant une constante (une fois $epsilon$ fixé), on a $A/m->0$. Donc il existe $N_A in NN$ tel que, pour tout $m>=N_A$, $frac(A,m)<epsilon$.
+Posons $A=sum_(k=1)^(N_epsilon-1) abs(x_k-ell)$. Une fois $epsilon$ fixé, $A$ est une constante ; donc $A/n->0$. Il existe alors $N_A in NN^*$ tel que, pour tout $n>=N_A$, $frac(A,n)<epsilon$.
 
-Soit $m>=max(N_epsilon,N_A)$. On a :
-
-$
-abs(u_m-ell)
-&= abs(frac(1,m) sum_(k=1)^m x_k - frac(1,m) sum_(k=1)^m ell) \
-&= abs(frac(1,m) sum_(k=1)^m (x_k-ell)) \
-&<= frac(1,m) sum_(k=1)^m abs(x_k-ell) \
-&= frac(1,m) sum_(k=1)^(N_epsilon-1) abs(x_k-ell)
- + frac(1,m) sum_(k=N_epsilon)^m abs(x_k-ell).
-$
-
-Par définition de $A$ et de $N_epsilon$, il y a $m-N_epsilon+1$ termes dans la seconde somme, tous strictement inférieurs à $epsilon$. Donc :
+Soit $n>=max(N_epsilon,N_A)$. On a :
 
 $
-abs(u_m-ell)
-&< frac(A,m) + frac(m-N_epsilon+1,m) epsilon \
-&<= frac(A,m) + epsilon < 2 epsilon.
+abs(u_n-ell)
+&= abs(frac(1,n) sum_(k=1)^n x_k - frac(1,n) sum_(k=1)^n ell) \
+&= abs(frac(1,n) sum_(k=1)^n (x_k-ell)) \
+&<= frac(1,n) sum_(k=1)^n abs(x_k-ell) \
+&= frac(1,n) sum_(k=1)^(N_epsilon-1) abs(x_k-ell)
+ + frac(1,n) sum_(k=N_epsilon)^n abs(x_k-ell).
 $
 
-Comme $epsilon>0$ est arbitraire, pour toute tolérance $eta>0$, on applique ce raisonnement à $epsilon=eta/2$. On obtient alors, pour $m$ assez grand, $abs(u_m-ell)<eta$. Donc $u_m->ell$.
+Par définition de $A$ et puisque $abs(x_k-ell)<epsilon$ pour $k>=N_epsilon$, la seconde somme contient $n-N_epsilon+1$ termes majorés par $epsilon$. Ainsi :
+
+$
+abs(u_n-ell)
+< frac(A,n) + frac(n-N_epsilon+1,n) epsilon.
+$
+
+Or, comme $n>=N_A$, on a $frac(A,n)<epsilon$. Et comme $n>=N_epsilon>=1$, on a $frac(n-N_epsilon+1,n)<=1$. Donc
+
+$
+abs(u_n-ell)
+< epsilon+epsilon=2 epsilon.
+$
+
+Comme $epsilon>0$ est arbitraire, pour toute tolérance $eta>0$, choisissons $epsilon=eta/2$. Le raisonnement donne alors, pour $n$ assez grand, $abs(u_n-ell)<2 (eta/2)=eta$. Donc $u_n->ell$.
