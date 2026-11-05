@@ -1,6 +1,6 @@
 // source-confidence: high
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet.
-// source-note: the handwritten correction determines whether the set of adherence values is empty in all four cases; only the source arguments are retained.
+// study-validation: 2026-11-05 — Exercices 7.1–7.4 validés à partir des preuves manuscrites ; en 7.4, méthode personnelle par Bolzano-Weierstrass (et non sous-suite paire).
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -12,96 +12,58 @@ Pour chacune des suites suivantes, indiquer si l'ensemble des valeurs d'adhéren
 
 == 1. $u_n=n^2 sin(n pi/5)$
 
-Considérons la sous-suite $(u_(5n))_n$.
-
-On a
+Pour tout $n in NN^*$, on a :
 
 $
-u_(5n)
-=
-(5n)^2 sin(n pi)
-=
-0.
+u_(5n)=(5n)^2 sin(n pi)=0.
 $
 
-Ainsi,
-
-$
-u_(5n)->0.
-$
-
-Donc $0$ est une valeur d'adhérence de $(u_n)_n$.
-
-Par conséquent, l'ensemble des valeurs d'adhérence de $(u_n)_n$ n'est pas vide.
+Donc $u_(5n)->0$, d'où $0 in op("Adh")(u_n)$ et $op("Adh")(u_n) != emptyset$.
 
 == 2. $v_n=sin(n)$
 
-Pour tout $n in NN$,
-
 $
--1<=sin(n)<=1.
+forall n in NN^*, quad -1<=sin(n)<=1.
 $
 
-La suite $(v_n)_n$ est donc bornée.
-
-D'après le théorème de Bolzano-Weierstrass, elle possède au moins une sous-suite convergente.
-
-Ainsi, l'ensemble de ses valeurs d'adhérence n'est pas vide.
+Donc $(v_n)$ est bornée. Par le théorème de Bolzano-Weierstrass, elle possède au moins une sous-suite convergente. Ainsi $op("Adh")(v_n) != emptyset$.
 
 == 3. $w_n=tan(frac(n pi,2n+1))$
 
-On a
+Pour tout $n in NN^*$ :
 
 $
-frac(n pi,2n+1)->frac(pi,2)
+0<frac(n pi,2n+1)<frac(n pi,2n)=frac(pi,2).
 $
 
-par valeurs inférieures.
-
-Comme
+De plus,
 
 $
-tan(x)->+infinity
-quad "lorsque" quad
-x->frac(pi,2)^-,
+frac(n pi,2n+1)=frac(pi,2+1/n)->frac(pi,2).
 $
 
-on obtient
+Donc $frac(n pi,2n+1)->frac(pi,2)^-$ (par valeurs inférieures).
+
+Comme $tan(x)->+infinity$ lorsque $x->frac(pi,2)^-$, on obtient :
 
 $
 w_n->+infinity.
 $
 
-Donc $(w_n)_n$ n'admet aucune valeur d'adhérence réelle.
-
-L'ensemble des valeurs d'adhérence est vide.
+La suite diverge vers $+infinity$ ; aucune de ses sous-suites ne converge dans $RR$. Donc $op("Adh")(w_n)=emptyset$.
 
 == 4. $x_n=(-1)^n n ln(1+1/n)$
 
-Considérons la sous-suite des termes d'indice pair.
-
-Pour $n in NN^*$,
+On a $frac(1,n)->0$. Par développement limité (DL) :
 
 $
-x_(2n)
-=
-2n ln(1+frac(1,2n)).
+ln(1+frac(1,n)) ~ frac(1,n)
+quad => quad
+n ln(1+frac(1,n)) ~ 1.
 $
 
-Comme
+Ainsi $n ln(1+frac(1,n))->1$, donc cette suite est bornée.
 
-$
-ln(1+t)~t
-quad "lorsque" quad
-t->0,
-$
+De plus, $abs((-1)^n)=1$ pour tout $n$. Donc $x_n=(-1)^n n ln(1+1/n)$ est bornée.
 
-on obtient
-
-$
-x_(2n)->1.
-$
-
-Donc $1$ est une valeur d'adhérence de $(x_n)_n$.
-
-Par conséquent, l'ensemble de ses valeurs d'adhérence n'est pas vide.
+Par le théorème de Bolzano-Weierstrass, $(x_n)$ possède au moins une sous-suite convergente. Donc $op("Adh")(x_n) != emptyset$.
