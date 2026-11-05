@@ -2,7 +2,7 @@
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet.
 // source-note: the supplied handwritten pages contain the complete correction of question 1 and a counterexample for question 2.
 
-// study-validation: 2026-11-05 — Question 2 : copie manuscrite finale validée (C inclus dans A+B, application de Q1, contre-exemple par annulation au même rang). Rédaction et ordre de la copie conservés ; Question 1 inchangée.
+// study-validation: 2026-11-05 — Questions 1 et 2 : copies manuscrites finales validées. Q1 rédigée avec les deux inégalités et application successive du plus petit majorant ; Q2 par inclusion et contre-exemple au même rang. Ordre et style de la copie conservés, notation polie.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -28,87 +28,30 @@ $
 sup(A+B)=sup(A)+sup(B).
 $
 
-=== Première inégalité
+Posons $x in A+B$. Alors il existe $a in A$ et $b in B$ tels que $x=a+b$.
 
-Soit $x in A+B$.
-
-Il existe $a in A$ et $b in B$ tels que
+Comme $a<=sup(A)$ et $b<=sup(B)$, on a $x=a+b<=sup(A)+sup(B)$. Ceci étant vrai pour tout $x in A+B$, $sup(A)+sup(B)$ est un majorant de $A+B$. Donc
 
 $
-x=a+b.
+sup(A+B) <= sup(A)+sup(B).
 $
 
-Comme
+Ensuite, pour tous $a in A$ et $b in B$, on a $a+b in A+B$, donc
 
 $
-a<=sup(A)
-quad "et" quad
-b<=sup(B),
+a+b <= sup(A+B) <=> b <= sup(A+B)-a.
 $
 
-on obtient
+Fixons $a in A$. Ceci est vrai pour tout $b in B$, alors $sup(B)<=sup(A+B)-a$, d'où $a<=sup(A+B)-sup(B)$.
+
+Cette inégalité étant vraie pour tout $a in A$, on obtient
 
 $
-x<=sup(A)+sup(B).
+sup(A) <= sup(A+B)-sup(B)
+<=> sup(A)+sup(B) <= sup(A+B).
 $
 
-Ainsi, $sup(A)+sup(B)$ est un majorant de $A+B$.
-
-Par conséquent,
-
-$
-sup(A+B)<=sup(A)+sup(B).
-$
-
-=== Seconde inégalité
-
-Pour tout $a in A$ et tout $b in B$,
-
-$
-a+b in A+B,
-$
-
-donc
-
-$
-a+b<=sup(A+B).
-$
-
-Fixons $a in A$. Pour tout $b in B$,
-
-$
-b<=sup(A+B)-a.
-$
-
-Ainsi,
-
-$
-sup(B)<=sup(A+B)-a,
-$
-
-donc
-
-$
-a<=sup(A+B)-sup(B).
-$
-
-Cette inégalité étant vraie pour tout $a in A$,
-
-$
-sup(A)<=sup(A+B)-sup(B).
-$
-
-Par conséquent,
-
-$
-sup(A)+sup(B)<=sup(A+B).
-$
-
-Avec la première inégalité,
-
-$
-sup(A+B)=sup(A)+sup(B).
-$
+On conclut que $sup(A+B)=sup(A)+sup(B)$.
 
 == Question 2
 
@@ -120,22 +63,22 @@ B={y_n | n in NN}, quad
 C={x_n+y_n | n in NN}.
 $
 
-Comme $C subset.eq A+B$, on peut dire que $sup(C) <= sup(A+B)$. De (Q1), on a $sup(A+B)=sup(A)+sup(B)$, d'où
+Comme $C subset.eq A+B$, on a $sup(C)<=sup(A+B)$. Or, de (Q1), on a $sup(A+B)=sup(A)+sup(B)$. Donc
 
 $
-sup(C) <= sup(A)+sup(B).
+sup(C)<=sup(A)+sup(B).
 $
 
 Mais l'égalité n'est pas toujours vraie ici, car il s'agit de l'addition de termes au même rang.
 
-Prenons le contre-exemple : on pose $x_n=(-1)^n$ et $y_n=-x_n$.
+Prenons un contre-exemple : $x_n=(-1)^n$ et $y_n=-x_n$.
 
-Alors, pour tout $n in NN$, on a $x_n+y_n=x_n-x_n=0$.
-
-Donc $C={0}$, alors que $A={-1,1}$ et $B={-1,1}$.
+Alors, pour tout $n in NN$, $x_n+y_n=x_n-x_n=0$. Donc $C={0}$, alors que $A={-1,1}$ et $B={-1,1}$.
 
 Par conséquent,
 
 $
 0=sup(C)<sup(A)+sup(B)=2.
 $
+
+On n'a donc pas toujours l'égalité.
