@@ -1,7 +1,7 @@
 // source-confidence: high
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet.
 // source-note: the supplied handwritten pages contain corrections for all four questions.
-// study-validation: 2026-11-07 — Q3 : preuve personnelle par bornitude des sous-suites convergentes et parité éventuelle ; Q4 : contradiction avec corollaire de Bolzano-Weierstrass. Q1 et Q2 conservées.
+// study-validation: 2026-11-07 — Q1 : même limite pour toute sous-suite ; Q2 : périodicité modulo 8 et sous-suites constantes ; Q3 : unicité via bornitude et parité éventuelle ; Q4 : contradiction via corollaire de Bolzano-Weierstrass.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -13,55 +13,39 @@
 
 Quelles sont les valeurs d'adhérence d'une suite convergente ?
 
-Si
+Soit $u_n->ell$. Pour toute $phi:NN->NN$ strictement croissante, $(u_(phi(n)))$ est une sous-suite de $(u_n)$ ; donc
 
 $
-u_n->ell,
+u_n->ell
+quad => quad
+forall phi " strictement croissante", quad u_(phi(n))->ell.
 $
 
-alors toute suite extraite de $(u_n)_n$ converge également vers $ell$.
-
-Ainsi, l'unique valeur d'adhérence est $ell$ :
+Toute sous-suite ayant la même limite $ell$, on obtient :
 
 $
-"VDA"((u_n)_n)={ell}.
+op("Adh")(u_n)={ell}.
 $
 
 == Question 2
 
-On considère
+Quelles sont les valeurs d'adhérence de la suite $u_n=cos(frac(n pi,4))$, $n>=0$ ?
+
+Comme $u_(n+8)=u_n$, la suite est $8$-périodique.
+
+Pour tout $r in {0,1,2,3,4,5,6,7}$ et tout $k in NN$ :
 
 $
-u_n=cos(frac(n pi,4)).
+u_(8k+r)
+=cos(frac((8k+r) pi,4))
+=cos(frac(r pi,4)).
 $
 
-La suite est $8$-périodique et prend successivement les valeurs
+Chaque $(u_(8k+r))_k$ est donc une sous-suite constante, et tout indice $n$ s'écrit $n=8k+r$ avec $0<=r<=7$. Il n'y a ainsi aucune autre valeur d'adhérence.
 
 $
-1,
-frac(sqrt(2),2),
-0,
--frac(sqrt(2),2),
--1,
--frac(sqrt(2),2),
-0,
-frac(sqrt(2),2).
-$
-
-Chacune de ces valeurs apparaît une infinité de fois. On peut donc, pour chacune, extraire une sous-suite constante.
-
-Ainsi,
-
-$
-"VDA"((u_n)_n)
-=
-{
--1,
--frac(sqrt(2),2),
-0,
-frac(sqrt(2),2),
-1
-}.
+op("Adh")(u_n)
+={-1,-frac(sqrt(2),2),0,frac(sqrt(2),2),1}.
 $
 
 == Question 3
