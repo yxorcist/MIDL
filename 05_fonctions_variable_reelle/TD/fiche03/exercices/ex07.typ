@@ -96,7 +96,7 @@ $
 
 Si $ell>1$, alors $ell^n->+infinity$, ce qui contredit la majoration fixe $ell+1$. On a donc nécessairement $ell=1$ :
 $
-box(lim_(n->infinity)a_n=1.)
+lim_(n->infinity) a_n=1
 $
 
 == Rappel de cours présent en marge
