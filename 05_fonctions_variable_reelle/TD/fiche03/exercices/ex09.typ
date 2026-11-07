@@ -54,7 +54,7 @@ lim_(x->-infinity)(f(0)-x)=+infinity.
 $
 Par comparaison,
 $
-box(lim_(x->-infinity) g(x)=+infinity.)
+lim_(x->-infinity) g(x)=+infinity
 $
 
 De même, pour $x>=0$,
@@ -63,7 +63,7 @@ g(x)=f(x)-x<=f(0)-x.
 $
 Comme $f(0)-x->-infinity$ lorsque $x->+infinity$, on obtient
 $
-box(lim_(x->+infinity) g(x)=-infinity.)
+lim_(x->+infinity) g(x)=-infinity
 $
 
 La fonction $g$ est continue comme différence de deux fonctions continues.
