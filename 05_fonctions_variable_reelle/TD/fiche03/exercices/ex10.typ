@@ -116,13 +116,13 @@ Soient $sqrt(2)<=x<=y$. Un calcul direct donne
 $
 f(y)-f(x)
 &=y/2+1/y-x/2-1/x \
-&=(y-x)/2+(x-y)/(xy) \
-&=(y-x)(1/2-1/(xy)).
+&=(y-x)/2+(x-y)/(x y) \
+&=(y-x)(1/2-1/(x y)).
 $
 
-Puisque $xy>=2$,
+Puisque $x y>=2$,
 $
-0<=1/2-1/(xy)<=1/2.
+0<=1/2-1/(x y)<=1/2.
 $
 Comme $y-x>=0$, on a
 $
