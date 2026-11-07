@@ -103,7 +103,7 @@ ell^2=2.
 $
 Comme $ell>0$, on obtient
 $
-box(lim_(n->infinity)x_n=sqrt(2).)
+lim_(n->infinity) x_n=sqrt(2)
 $
 
 *Autre méthode indiquée dans la copie.* Après avoir montré $x_n>=sqrt(2)$, on utilise directement le signe de $f(x)-x$ pour obtenir la décroissance, puis la continuité de $f$ pour identifier sa limite. Elle conduit à la même équation de point fixe.
@@ -126,7 +126,7 @@ $
 $
 Comme $y-x>=0$, on a
 $
-box(0<=f(y)-f(x)<=1/2(y-x).)
+0<=f(y)-f(x)<=1/2(y-x)
 $
 
 En particulier, puisque $f(sqrt(2))=sqrt(2)$ et $x_n>=sqrt(2)$, on peut prendre $x=sqrt(2)$ et $y=x_n$ :
@@ -161,7 +161,7 @@ L'inégalité est donc vraie au rang $n+1$.
 
 *Conclusion.* Pour tout $n>=1$,
 $
-box(0<=x_n-sqrt(2)<=(1/2)^(n-1)(x_1-sqrt(2)).)
+0<=x_n-sqrt(2)<=(1/2)^(n-1)(x_1-sqrt(2))
 $
 
 Cette majoration donne aussi une convergence géométrique vers $sqrt(2)$, indépendamment de l'argument de convergence monotone.
