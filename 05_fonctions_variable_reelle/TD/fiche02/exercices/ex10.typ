@@ -1,8 +1,7 @@
 // source-confidence: high
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet.
 // source-note: the supplied handwritten pages contain the complete correction of question 1.
-// study-validation: 2026-11-07 — Question 1 rédigée d'après la preuve manuscrite validée : différences consécutives, calcul détaillé du dénominateur commun, écart nul à la limite.
-// source-note: correction de la question 2 ajoutée à partir de la photo 10891 ; preuve d'irrationalité vérifiée.
+// study-validation: 2026-11-07 — Questions 1 et 2 validées sur la copie manuscrite : suites adjacentes, puis irrationalité de e par l'absurde et entiers consécutifs.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -26,52 +25,40 @@ $
 
 Montrer que les suites $(x_n)_(n>=1)$ et $(y_n)_(n>=1)$ sont adjacentes, puis en déduire qu'elles convergent vers une même limite notée $e$.
 
-=== Monotonie de $(x_n)$
+=== Correction de la question 1
 
-Pour tout $n>=1$,
+*Monotonie de $x_n$.*
 
 $
 x_(n+1)-x_n
-&= sum_(k=0)^(n+1) frac(1,k!) - sum_(k=0)^n frac(1,k!) \
-&= frac(1,(n+1)!) > 0.
+&=sum_(k=0)^(n+1) frac(1,k!) - sum_(k=0)^n frac(1,k!) \
+&=frac(1,(n+1)!)>0.
 $
 
 Donc $(x_n)$ est strictement croissante.
 
-=== Monotonie de $(y_n)$
+*Monotonie de $y_n$.*
 
 $
 y_(n+1)-y_n
-&= x_(n+1) + frac(1,(n+1)(n+1)!) - x_n - frac(1,n n!) \
-&= (x_(n+1)-x_n) + frac(1,(n+1)(n+1)!) - frac(1,n n!) \
-&= frac(1,(n+1)!) + frac(1,(n+1)(n+1)!) - frac(1,n n!).
-$
-
-En mettant au même dénominateur $n(n+1)(n+1)!$ :
-
-$
-y_(n+1)-y_n
-&= frac(n(n+1)+n-(n+1)^2,n(n+1)(n+1)!) \
-&= frac(n^2+2n-(n^2+2n+1),n(n+1)(n+1)!) \
-&= -frac(1,n(n+1)(n+1)!) < 0.
+&=x_(n+1)-x_n + frac(1,(n+1)(n+1)!) - frac(1,n n!) \
+&=frac(1,(n+1)!) + frac(1,(n+1)(n+1)!) - frac(1,n n!) \
+&=frac(n(n+1)+n-(n+1)^2,n(n+1)(n+1)!) \
+&=-frac(1,n(n+1)(n+1)!)<0.
 $
 
 Donc $(y_n)$ est strictement décroissante.
 
-=== Écart et conclusion
+*Différence.*
 
 $
-y_n-x_n=frac(1,n n!) > 0
-quad "et" quad
-frac(1,n n!)->0.
+y_n-x_n=frac(1,n n!)->0.
 $
 
-Les deux suites sont donc adjacentes. Par le théorème des suites adjacentes :
+Les suites sont adjacentes ; d'après le théorème des suites adjacentes :
 
 $
-x_n->e
-quad "et" quad
-y_n->e.
+x_n->e quad "et" quad y_n->e.
 $
 
 == Question 2
@@ -114,90 +101,48 @@ En combinant les deux questions précédentes, conclure que $e$ est irrationnel.
 
 === Correction de la question 2
 
-On raisonne par l'absurde : supposons qu'il existe $p in ZZ$ et $q in NN^*$ tels que
+Supposons par l'absurde que $e=frac(p,q) in QQ$, avec $p in ZZ$ et $q in NN^*$.
+
+*a)* D'après la question 1, $(x_n)$ est strictement croissante, $(y_n)$ strictement décroissante, et les deux convergent vers $e$. Donc
 
 $
-e=p/q.
+x_q<e<y_q.
 $
 
-==== a) Encadrement strict de $e$
-
-D'après la question 1, $(x_n)_n$ est strictement croissante et converge vers $e$. Par conséquent,
-
-$
-x_q < e.
-$
-
-De même, $(y_n)_n$ est strictement décroissante et converge vers $e$, donc
-
-$
-e < y_q.
-$
-
-On obtient
-
-$
-x_q < e < y_q.
-$
-
-==== b) Multiplication par $q q!$
-
-D'abord,
+*b)* On a :
 
 $
 q q! x_q
-=
-q q! sum_(k=0)^q 1/k!
-=
-q sum_(k=0)^q q!/k!.
+&=q q! sum_(k=0)^q frac(1,k!) \
+&=q sum_(k=0)^q frac(q!,k!) in ZZ,
 $
 
-Pour $0<=k<=q$, le quotient $q!/k!$ est un entier. Ainsi,
+car $frac(q!,k!) in ZZ$ pour $0<=k<=q$.
 
 $
-q q! x_q in ZZ.
+q q! e=q!p in ZZ,
 $
 
-Ensuite, comme $e=p/q$,
-
-$
-q q! e=q q! p/q=p q! in ZZ.
-$
-
-Enfin,
+et
 
 $
 q q! y_q
-=
-q q! (x_q+1/(q q!))
-=
-q q! x_q+1 in ZZ.
+=q q! (x_q+frac(1,q q!))
+=q q! x_q+1 in ZZ.
 $
 
-==== c) Contradiction
-
-L'encadrement de a), multiplié par le nombre positif $q q!$, donne
+*c)* Comme $q q!>0$, on multiplie l'encadrement de *a)* :
 
 $
-q q! x_q < q q! e < q q! y_q.
+q q! x_q < q q! e < q q! y_q
 $
 
-En utilisant b),
+soit
 
 $
-q q! x_q < p q! < q q! x_q+1.
+q q! x_q < q!p < q q! x_q+1.
 $
 
-Or les deux extrémités sont des entiers consécutifs. Il n'existe aucun entier strictement compris entre eux.
+Or les bornes sont deux entiers consécutifs, et $q!p$ est un entier. Contradiction.
 
-C'est une contradiction. Donc
-
-$
-e in.not QQ.
-$
-
-Ainsi, $e$ est irrationnel.
-
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Vérification.* La preuve manuscrite (photo 10891) établit l'intégralité des trois nombres, puis celle de la contradiction. Cette rédaction explicite l'argument final des entiers consécutifs.
-]
+Donc $e in.not QQ$ : $e$ est irrationnel.
