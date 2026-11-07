@@ -1,6 +1,7 @@
 // source-confidence: high
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet.
 // source-note: the supplied handwritten pages contain the complete correction of question 1.
+// study-validation: 2026-11-07 — Question 1 rédigée d'après la preuve manuscrite validée : différences consécutives, calcul détaillé du dénominateur commun, écart nul à la limite.
 // source-note: correction de la question 2 ajoutée à partir de la photo 10891 ; preuve d'irrationalité vérifiée.
 
 #set page(paper: "a4", margin: 2cm)
@@ -31,98 +32,46 @@ Pour tout $n>=1$,
 
 $
 x_(n+1)-x_n
-=
-frac(1,(n+1)!)
->
-0.
+&= sum_(k=0)^(n+1) frac(1,k!) - sum_(k=0)^n frac(1,k!) \
+&= frac(1,(n+1)!) > 0.
 $
 
-Donc $(x_n)_n$ est strictement croissante.
+Donc $(x_n)$ est strictement croissante.
 
 === Monotonie de $(y_n)$
 
-Pour tout $n>=1$,
+$
+y_(n+1)-y_n
+&= x_(n+1) + frac(1,(n+1)(n+1)!) - x_n - frac(1,n n!) \
+&= (x_(n+1)-x_n) + frac(1,(n+1)(n+1)!) - frac(1,n n!) \
+&= frac(1,(n+1)!) + frac(1,(n+1)(n+1)!) - frac(1,n n!).
+$
+
+En mettant au même dénominateur $n(n+1)(n+1)!$ :
 
 $
 y_(n+1)-y_n
-=
-x_(n+1)-x_n
-+
-frac(1,(n+1)(n+1)!)
--
-frac(1,n n!).
+&= frac(n(n+1)+n-(n+1)^2,n(n+1)(n+1)!) \
+&= frac(n^2+2n-(n^2+2n+1),n(n+1)(n+1)!) \
+&= -frac(1,n(n+1)(n+1)!) < 0.
 $
 
-Comme
+Donc $(y_n)$ est strictement décroissante.
+
+=== Écart et conclusion
 
 $
-x_(n+1)-x_n
-=
-frac(1,(n+1)!),
-$
-
-on obtient
-
-$
-y_(n+1)-y_n
-=
-frac(1,(n+1)!)
-+
-frac(1,(n+1)(n+1)!)
--
-frac(1,n n!).
-$
-
-En mettant au même dénominateur,
-
-$
-y_(n+1)-y_n
-=
-frac(n(n+2)-(n+1)^2,n(n+1)(n+1)!).
-$
-
-Or
-
-$
-n(n+2)-(n+1)^2=-1.
-$
-
-Ainsi,
-
-$
-y_(n+1)-y_n
-=
--frac(1,n(n+1)(n+1)!)
-<
-0.
-$
-
-Donc $(y_n)_n$ est strictement décroissante.
-
-=== Écart entre les deux suites
-
-Pour tout $n>=1$,
-
-$
-y_n-x_n
-=
-frac(1,n n!)
->
-0,
-$
-
-et
-
-$
+y_n-x_n=frac(1,n n!) > 0
+quad "et" quad
 frac(1,n n!)->0.
 $
 
-Les suites $(x_n)_n$ et $(y_n)_n$ sont donc adjacentes.
-
-Par le théorème des suites adjacentes, elles convergent vers une même limite, notée
+Les deux suites sont donc adjacentes. Par le théorème des suites adjacentes :
 
 $
-e.
+x_n->e
+quad "et" quad
+y_n->e.
 $
 
 == Question 2
