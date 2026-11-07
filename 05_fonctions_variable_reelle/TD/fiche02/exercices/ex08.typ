@@ -1,6 +1,7 @@
 // source-confidence: high
 // source-note: statement and numbering cross-checked against the official FVR TD02 sheet.
 // source-note: the supplied handwritten pages contain corrections for all four questions.
+// study-validation: 2026-11-07 — Q3 : preuve personnelle par bornitude des sous-suites convergentes et parité éventuelle ; Q4 : contradiction avec corollaire de Bolzano-Weierstrass. Q1 et Q2 conservées.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -65,110 +66,46 @@ $
 
 == Question 3
 
-On cherche une suite divergente ayant une unique valeur d'adhérence.
+Donner un exemple de suite divergente ayant une unique valeur d'adhérence.
 
-Considérons
-
-$
-u_n=n(1+(-1)^n).
-$
-
-Alors
+Posons $u_n=n(1+(-1)^n)$. Pour $k in NN$ :
 
 $
-u_n
-=
-cases(
-2n & "si " n " est pair",
-0 & "si " n " est impair".
-)
+u_(2k+1)=0,
+quad
+u_(2k)=4k.
 $
 
-La sous-suite $(u_(2n+1))_n$ est constante égale à $0$, donc
+Ainsi $u_(2k+1)->0$, donc $0 in op("Adh")(u_n)$.
+
+*Unicité.* Soit $v_n=u_(phi(n))->ell in RR$ une sous-suite convergente, avec $phi:NN->NN$ strictement croissante. Puisque $(v_n)$ converge, elle est bornée.
+
+Supposons par l'absurde que $phi(n)$ soit pair pour une infinité d'indices $n$. Pour ces indices, $v_n=2phi(n)$. Or $phi(n)->+infinity$ : les termes correspondants deviennent arbitrairement grands, contredisant le caractère borné de $(v_n)$.
+
+Donc $phi(n)$ est impair à partir d'un certain rang ; ainsi $v_n=0$ à partir de ce rang, d'où $ell=0$.
 
 $
-0
+op("Adh")(u_n)={0}.
 $
 
-est une valeur d'adhérence.
-
-Montrons qu'il n'y en a pas d'autre.
-
-Soit $a in RR^*$ et supposons qu'une suite extraite
-
-$
-v_n=u_(phi(n))
-$
-
-converge vers $a$, avec $phi:NN->NN$ strictement croissante.
-
-Prenons
-
-$
-epsilon=abs(a)/2.
-$
-
-Comme $phi(n)>=n$, pour $n>=abs(a)$, on a $phi(n)>=abs(a)$.
-
-Or
-
-$
-v_n
-=
-cases(
-0 & "si " phi(n) " est impair",
-2phi(n) & "si " phi(n) " est pair".
-)
-$
-
-Si $phi(n)$ est impair,
-
-$
-abs(v_n-a)=abs(a)>epsilon.
-$
-
-Si $phi(n)$ est pair, pour $n>=abs(a)$,
-
-$
-abs(v_n-a)
-=
-abs(2phi(n)-a)
->=
-2abs(a)-abs(a)
-=
-abs(a)
->
-epsilon.
-$
-
-Ainsi, à partir d'un certain rang,
-
-$
-abs(v_n-a)>epsilon,
-$
-
-ce qui contredit $v_n->a$.
-
-Donc aucune valeur $a!=0$ n'est valeur d'adhérence.
-
-Par conséquent,
-
-$
-"VDA"((u_n)_n)={0}.
-$
-
-Enfin, la sous-suite $(u_(2n))_n=(4n)_n$ diverge vers $+infinity$.
-
-La suite $(u_n)_n$ ne converge donc pas.
+Enfin, $u_(2k)=4k->+infinity$. La suite $(u_n)$ est donc divergente.
 
 == Question 4
 
-Supposons $(u_n)_n$ bornée et divergente.
+Soit $(u_n)$ une suite réelle bornée et divergente. Montrer qu'elle admet au moins deux valeurs d'adhérence distinctes.
 
-Comme elle est bornée, le théorème de Bolzano-Weierstrass assure qu'elle possède au moins une valeur d'adhérence.
+Comme $(u_n)$ est bornée, le théorème de Bolzano-Weierstrass donne :
 
-Si elle n'en possédait qu'une seule, le corollaire de Bolzano-Weierstrass donnerait que la suite converge vers cette unique valeur d'adhérence.
+$
+op("Adh")(u_n) != emptyset.
+$
 
-C'est impossible puisque $(u_n)_n$ est divergente.
+Supposons par l'absurde qu'il n'y ait qu'une seule valeur d'adhérence $ell in RR$ :
 
-Ainsi, toute suite réelle bornée et divergente possède au moins deux valeurs d'adhérence distinctes.
+$
+op("Adh")(u_n)={ell}.
+$
+
+Puisque $(u_n)$ est bornée, le *corollaire* de Bolzano-Weierstrass implique $u_n->ell$, contradiction avec la divergence de $(u_n)$.
+
+Ainsi, $(u_n)$ admet *au moins deux valeurs d'adhérence distinctes*.
