@@ -63,7 +63,7 @@ Pour $n in NN^*$ fixé, on considère
 
 $
 f(x)=frac(x^n-1,ln(x)),
-quad x in ]0,1[ union ]1,+infinity[.
+quad x>0 quad "et" quad x!=1.
 $
 
 Chercher un prolongement continu sur $[0,+infinity[$.
