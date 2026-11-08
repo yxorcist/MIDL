@@ -1,71 +1,54 @@
 // source-confidence: high
-// source-note: énoncé officiel TD03_continuite.pdf, exercice 2 ; photos 11485 et 11486.
-// source-verification: l'énoncé officiel suppose uniquement f:[0,1]->[0,1] croissante, sans continuité ; la preuve ci-dessous utilise seulement la monotonie et la propriété de borne supérieure.
-// source-verification: l'argument utilise la caractérisation séquentielle de la borne supérieure et la monotonie ; aucune continuité n'est nécessaire.
+// source-note: énoncé officiel TD03_continuite.pdf ; correction adaptée à la copie manuscrite validée le 2026-11-08.
+// study-validation: point fixe obtenu avec la borne supérieure et la croissance, sans hypothèse de continuité.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
-= TD 3 — Exercice 2 — Point fixe d'une application croissante
+= TD 3 — Exercice 2
 
-== Énoncé officiel
+Soit $f: [0,1] -> [0,1]$ croissante. Montrer qu'il existe $b in [0,1]$ tel que $f(b)=b$.
 
-Les notes considèrent une fonction
-
-$
-f:[0,1] -> [0,1]
-$
-
-*croissante* (la continuité n'est pas supposée). On souhaite démontrer qu'il existe $b in [0,1]$ tel que $f(b)=b$.
-
-La correction utilise l'ensemble
+On pose
 
 $
 E={x in [0,1] | x<=f(x)}.
 $
 
-== 1. Montrer que $E$ admet une borne supérieure
+== 1. Existence de la borne supérieure
 
-Comme $f$ est à valeurs dans $[0,1]$, on sait que
+Comme $f(0) in [0,1]$, on a $0<=f(0)$, donc $0 in E$ et $E != emptyset$.
 
-$
-0<=f(0).
-$
+Par construction, $E subset.eq [0,1]$ ; ainsi $E$ est majoré par $1$.
 
-Donc $0 in E$ : l'ensemble $E$ n'est pas vide.
-
-Par construction, $E subset.eq [0,1]$, donc il est majoré par $1$.
-
-Toute partie non vide majorée de $RR$ admet une borne supérieure. On peut ainsi poser
+Par la propriété de la borne supérieure, on pose
 
 $
 b=sup(E) in [0,1].
 $
 
-== 2. Montrer que $b<=f(b)$
+== 2. Montrer $b<=f(b)$
 
-La caractérisation de la borne supérieure garantit l'existence d'une suite $(x_n)$ d'éléments de $E$ telle que
+Par la caractérisation de la borne supérieure, il existe une suite $(x_n)$ d'éléments de $E$ telle que
 
 $
 x_n -> b.
 $
 
-Chaque $x_n$ vérifie $x_n<=f(x_n)$.
-
-Puisque $x_n<=b$ et que $f$ est croissante, on a $f(x_n)<=f(b)$. Comme $x_n in E$, on a donc
+Comme $x_n in E$, on a $x_n<=f(x_n)$. Or $x_n<=b$ et $f$ est croissante, donc
 
 $
 x_n<=f(x_n)<=f(b).
 $
 
-En passant à la limite dans l'inégalité $x_n<=f(b)$, on obtient
+En passant à la limite dans $x_n<=f(b)$ :
 
 $
 b<=f(b).
 $
 
-== 3. Montrer que $f(b)<=b$
+== 3. Montrer $f(b)<=b$
 
 Comme $f$ est croissante et $b<=f(b)$,
 
@@ -73,36 +56,24 @@ $
 f(b)<=f(f(b)).
 $
 
-Cela signifie que *$f(b) in E$* (le nombre $f(b)$ appartient bien à $[0,1]$ puisque $f$ y prend ses valeurs).
+Or $f(b) in [0,1]$ car $f$ est à valeurs dans $[0,1]$. Donc, par définition de $E$,
 
-Or $b$ est un majorant de $E$. Par conséquent,
+$
+f(b) in E.
+$
+
+Puisque $b=sup(E)$, on obtient
 
 $
 f(b)<=b.
 $
 
-En réunissant les deux inégalités,
+Finalement,
 
 $
-b<=f(b)<=b,
-$
-
-d'où
-
-$
+b<=f(b)<=b
+quad => quad
 f(b)=b.
 $
 
-On a donc montré que $f$ possède *au moins un point fixe* dans $[0,1]$.
-
-== Méthode à retenir
-
-1. Construire l'ensemble des points où $x<=f(x)$.
-2. Montrer qu'il est non vide et majoré, puis considérer son supremum $b$.
-3. Utiliser une suite de points de cet ensemble et la monotonie pour montrer $b<=f(b)$.
-4. Exploiter la croissance : $b<=f(b)$ entraîne $f(b)<=f(f(b))$, donc $f(b)$ appartient lui-même à l'ensemble.
-5. Comme $b$ est son supremum, conclure $f(b)<=b$, puis $f(b)=b$.
-
-#block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* Les étapes avec l'ensemble $E$, la borne supérieure $b$ et la monotonie sont visibles sur les photos. Les hypothèses ont été vérifiées dans l'énoncé officiel. Celui-ci ne suppose pas la continuité ; l'argument a été corrigé en conséquence.
-]
+Donc $f$ admet un point fixe dans $[0,1]$.
