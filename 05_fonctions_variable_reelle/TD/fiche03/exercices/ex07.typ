@@ -1,8 +1,7 @@
 // source-confidence: high
-// source-note: TD03_continuite.pdf (UCA 2026-2027), exercice 7.
-// source-note: photos 12234 (questions 1-2) et 12237 (fin 2, questions 3-4 et rappel sur la dérivée).
-// source-reconstruction: transitions de calcul et justification de l'unicité explicitées à partir de l'énoncé et de la correction manuscrite.
-// source-verification: f_(n+1)(a_n)=a_n^2-1>0 ; la limite des racines est 1.
+// source-note: énoncé officiel TD03_continuite.pdf, exercice 7.
+// study-validation: questions 1 et 2 adaptées aux copies manuscrites validées le 2026-11-09.
+// source-note: les questions 3 et 4 ci-dessous sont conservées de la version précédente, non revérifiées dans cette mise à jour.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -10,52 +9,62 @@
 
 = TD 3 — Exercice 7 — Racines de $x^n-x-1$
 
-Pour tout entier $n>=2$, on considère
+Pour $n>=2$, soit
+
 $
 f_n:[1,+infinity[ -> RR, quad f_n(x)=x^n-x-1.
 $
 
 == 1. Montrer que $f_n$ est strictement croissante
 
-*Raisonnement de la copie.* Soient $1<=x<y$. Comme $n>=2$,
+Soient $x,y in [1,+infinity[$ avec $x<y$. Comme $n-1>=1$,
+
 $
 0<=x^(n-1)-1<y^(n-1)-1.
 $
-En multipliant par $x>=1$ puis en comparant avec $y>x$, on obtient
+
+De plus, $0<x<y$. On obtient
+
 $
-x(x^(n-1)-1)<y(y^(n-1)-1).
+x(x^(n-1)-1)
+<=y(x^(n-1)-1)
+<y(y^(n-1)-1).
 $
-Par conséquent,
+
+En soustrayant $1$,
+
 $
 x^n-x-1<y^n-y-1,
 $
-soit $f_n(x)<f_n(y)$.
 
-*Vérification par dérivation.* Sur $[1,+infinity[$,
-$
-f_n'(x)=n x^(n-1)-1>=n-1>0.
-$
-On retrouve que $f_n$ est strictement croissante.
+donc $f_n(x)<f_n(y)$. Ainsi $f_n$ est strictement croissante sur $[1,+infinity[$.
 
-== 2. Existence et unicité de $a_n>1$ tel que $f_n(a_n)=0$
+== 2. Existence et unicité de $a_n$
 
-La fonction $f_n$ est continue sur $[1,10]$ et
+La fonction $f_n$ est continue sur $[1,2]$ et, pour $n>=2$,
+
 $
-f_n(1)=1-1-1=-1<0.
-$
-D'autre part, puisque $n>=2$,
-$
-f_n(10)=10^n-11>=89>0.
+f_n(1)&=1-1-1=-1<0,\
+f_n(2)&=2^n-3>=1>0.
 $
 
-Par le *théorème des valeurs intermédiaires*, il existe $a_n in ]1,10[$ tel que
+Par le TVI,
+
 $
-f_n(a_n)=0
+exists a_n in ]1,2[, quad f_n(a_n)=0.
+$
+
+D'après Q1, $f_n$ est strictement croissante sur $[1,+infinity[$ ; cette racine est donc unique.
+
+Pour chaque $n$ fixé, $a_n$ est l'unique réel $>1$ vérifiant
+
+$
+a_n^n-a_n-1=0
 quad <=> quad
 a_n^n=a_n+1.
 $
 
-Comme $f_n$ est strictement croissante, cet antécédent de $0$ est *unique*.
+Quand $n$ varie, ces réels forment la suite $(a_n)_(n>=2)$.
 
 == 3. Montrer que $(a_n)_(n>=2)$ est décroissante
 
