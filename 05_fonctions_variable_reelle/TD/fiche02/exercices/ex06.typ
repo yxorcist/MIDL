@@ -1,6 +1,6 @@
 // source-confidence: high
-// source-note: TD02, exercice 6 (théorème de Cesàro) ; preuve réécrite d'après la dernière copie manuscrite du 10/11/2026.
-// notation: indice n conservé partout ; séparation en une somme finie et une queue contrôlée par epsilon.
+// source-note: TD02, exercice 6 (théorème de Cesàro) ; dernière copie manuscrite du 10/11/2026.
+// notation: n pour l'indice de la suite, k pour la somme ; démonstration par découpage et epsilon.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -8,16 +8,17 @@
 
 = Exercice 6
 
-Soit $(x_n)_(n>=1)$ une suite convergente vers $ell$. Posons
+Soit $(x_n)_(n>=1)$ une suite convergente vers $ell$. On pose
 $
 u_n=frac(1,n) sum_(k=1)^n x_k.
 $
-Montrer que $u_n->ell$.
+Montrons que $u_n -> ell$.
 
 == Démonstration
 
-Comme $x_n->ell$, pour tout $epsilon>0$, il existe $N_epsilon in NN^*$ tel que
+Comme $x_n -> ell$,
 $
+forall epsilon>0, exists N_epsilon in NN^*,
 forall k>=N_epsilon, quad abs(x_k-ell)<epsilon.
 $
 
@@ -25,21 +26,22 @@ Posons
 $
 A=sum_(k=1)^(N_epsilon-1) abs(x_k-ell).
 $
-$A$ est une constante, donc $A/n->0$. Il existe ainsi $N_A in NN^*$ tel que
+
+$A$ est une constante, donc $A/n -> 0$. Ainsi, il existe $N_A in NN^*$ tel que
 $
-forall n>=N_A, quad frac(A,n)<epsilon.
+forall n>=N_A, quad A/n<epsilon.
 $
 
 Pour tout $n>=max(N_epsilon,N_A)$,
 $
 abs(u_n-ell)
-&= abs(frac(1,n) sum_(k=1)^n (x_k-ell)) \
+&= abs(frac(1,n) sum_(k=1)^n x_k-frac(1,n) sum_(k=1)^n ell) \
 &<= frac(1,n) sum_(k=1)^n abs(x_k-ell) \
 &= frac(1,n) sum_(k=1)^(N_epsilon-1) abs(x_k-ell)
- + frac(1,n) sum_(k=N_epsilon)^n abs(x_k-ell) \
-&<= frac(A,n)+frac(n-N_epsilon+1,n) epsilon \
-&<= frac(A,n)+epsilon \
-&< 2 epsilon.
++ frac(1,n) sum_(k=N_epsilon)^n abs(x_k-ell) \
+&<= A/n + frac(n-N_epsilon+1,n) epsilon \
+&<= A/n+epsilon \
+&< 2epsilon.
 $
 
-Puisque $epsilon>0$ est arbitraire, $u_n->ell$.
+Comme $epsilon>0$ est arbitraire, on obtient $u_n -> ell$.
