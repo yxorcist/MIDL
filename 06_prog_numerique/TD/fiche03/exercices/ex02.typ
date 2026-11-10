@@ -144,7 +144,7 @@ $
 Le dernier coefficient non nul est $a_3$. Par conséquent :
 
 $
-box(deg(P)=3)
+deg(P)=3
 $
 
 *C'est la réponse à l'exercice.* Construire explicitement le polynôme n'est pas demandé.
@@ -170,7 +170,7 @@ $
 Après développement :
 
 $
-box(P(x)=x^3-2x+3)
+P(x)=x^3-2x+3
 $
 
 Quelques contrôles :
