@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="380" viewBox="0 0 940 380">
+<rect width="940" height="380" fill="white"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#39526A"/></marker></defs>
+<g fill="none" stroke="#39526A" stroke-width="3.5" marker-end="url(#arr)">
+<path d="M 245 165 Q 340 97 435 165"/>
+<path d="M 435 206 Q 340 277 245 206"/>
+<path d="M 505 165 Q 600 97 695 165"/>
+<path d="M 695 206 Q 600 277 505 206"/>
+<path d="M 166 157 C 69 42 52 244 150 237"/>
+<path d="M 470 145 C 380 37 560 37 487 145"/>
+<path d="M 774 157 C 872 42 886 244 790 237"/>
+</g>
+<g font-family="DejaVu Sans, sans-serif" font-size="24" font-weight="600" fill="#263C51" text-anchor="middle">
+<text x="338" y="104">0,4</text><text x="340" y="277">0,2</text>
+<text x="600" y="104">0,2</text><text x="600" y="277">0,2</text>
+<text x="88" y="121">0,6</text><text x="470" y="44">0,6</text><text x="853" y="121">0,8</text>
+</g>
+<g fill="#EAF1F5" stroke="#263C51" stroke-width="3">
+<circle cx="200" cy="185" r="48"/><circle cx="470" cy="185" r="48"/><circle cx="740" cy="185" r="48"/>
+</g>
+<g fill="#152B3D" font-family="DejaVu Sans, sans-serif" font-size="30" font-weight="700" text-anchor="middle">
+<text x="200" y="196">M</text><text x="470" y="196">S</text><text x="740" y="196">T</text>
+</g>
+<g fill="#576A7A" font-family="DejaVu Sans, sans-serif" font-size="20" text-anchor="middle">
+<text x="200" y="321">Mer</text><text x="470" y="321">Sable</text><text x="740" y="321">Terrasse</text>
+</g>
+<text x="470" y="363" fill="#586574" font-family="DejaVu Sans, sans-serif" font-size="18" text-anchor="middle">Les flèches indiquent la transition de l'état actuel vers l'état suivant.</text>
+</svg>
