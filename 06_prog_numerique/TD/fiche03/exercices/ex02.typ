@@ -1,7 +1,7 @@
 // source-confidence: high
 // source-note: exercice 2 de TD03_interpolation-approximation.pdf, recoupé avec les photographies du tableau du 23 octobre 2026 (11447, 11452, 11453).
 // source-reconstruction: la table complète des différences divisées et le polynôme sont calculés à partir de l'énoncé imprimé ; le tableau photographié montre la méthode, mais pas tous les nombres.
-// source-uncertainty: la dernière ordonnée paraît être +53 sur les photos du tableau, tandis que le sujet imprimé donne -53. Le calcul ci-dessous suit le sujet : avec +53, le degré serait 5, et non 3.
+// source-verification: photo 12351 (nouveau lot) confirme y_6=-53 sur le tableau, conformément au sujet officiel ; la lecture +53 sur des photos plus éloignées était trompeuse.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -182,5 +182,5 @@ $
 5. Si le polynôme est demandé, lire ses coefficients dans la première ligne de la table.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Écart entre tableau et sujet.* Les photos du tableau semblent indiquer $y_6=53$ ; le sujet officiel indique $y_6=-53$. Avec le signe positif, les différences d'ordre $4$ et $5$ ne s'annulent pas, et l'interpolateur serait de degré $5$. La correction présentée suit le document imprimé.
+  *Contrôle du signe.* La photo 12351 montre clairement $y_6=-53$ ; les vues plus éloignées peuvent donner l'impression d'un signe positif. Le sujet officiel, la photo nette et le polynôme vérifié concordent sur $-53$. Si le signe était $+53$, les différences d'ordre $4$ et $5$ ne s'annuleraient pas et le degré de l'interpolateur serait $5$. Le calcul conserve donc la valeur $-53$.
 ]
