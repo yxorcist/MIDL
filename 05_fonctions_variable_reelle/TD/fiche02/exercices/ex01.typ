@@ -1,6 +1,5 @@
 // source-confidence: high
-// study-validation: 2026-11-03 — TD02 ex01 Q1 (preuve par parité), Q2 (inf(E)=-1 non atteinte) et Q3 (majoration par parité, u_2=2 atteint) validées sur copies manuscrites, 10/10. Rédaction concise ; rappel hors sujet supprimé.
-// source-note: statement and numbering cross-checked against the official FVR TD02 sheet; the supplied handwritten page contains the complete correction of questions 1 to 3.
+// source-note: TD02, exercice 1 ; rédaction alignée sur la nouvelle copie manuscrite du 10/11/2026.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -8,70 +7,47 @@
 
 = Exercice 1 — Examen terminal Juin 2026
 
-On considère
+On pose $E={u_n | n in NN^*}$ avec $u_n=(-1)^n+2/n$.
 
-$
-E
-=
-{u_n | n in NN^*},
-$
-
-où
-
-$
-u_n
-=
-(-1)^n + 2/n.
-$
-
-== Question 1
-
-Soit $p in NN^*$.
-
-$
-u_(2p)=(-1)^(2p)+2/(2p)=1+1/p>-1,
-$
-
-et
-
-$
-u_(2p-1)=(-1)^(2p-1)+2/(2p-1)=-1+2/(2p-1)>-1.
-$
-
-Les indices pairs et impairs couvrent $NN^*$, donc
-
-$
-forall n in NN^*, quad u_n>-1.
-$
-
-== Question 2
-
-D'après la question 1, $u_n>-1$ pour tout $n in NN^*$.
-Donc $-1$ est un minorant de $E$, mais $-1 in.not E$.
-
-Or $u_(2p-1)=-1+2/(2p-1) -> -1$, avec $u_(2p-1) in E$
-pour tout $p in NN^*$. Par conséquent,
-
-$
-inf(E)=-1,
-$
-
-et $E$ n'admet pas de minimum.
-
-== Question 3
+== Question 1 — Minorant
 
 Pour tout $p in NN^*$,
-
 $
-u_(2p)=1+1/p<=2
-quad "et" quad
+u_(2p)=1+1/p>-1,
+quad
+u_(2p-1)=-1+2/(2p-1)>-1.
+$
+
+Donc $forall n in NN^*, u_n>-1$ : $-1$ est un minorant de $E$.
+
+== Question 2 — Infimum et minimum
+
+On a $-1 in.not E$, puisque $u_n>-1$ pour tout $n>=1$.
+
+Or
+$
+u_(2p-1)=-1+2/(2p-1) -> -1 quad (p -> +infinity).
+$
+
+Les termes $u_(2p-1)$ appartiennent à $E$ ; le minorant $-1$ est donc approché par des éléments de $E$.
+
+Ainsi,
+$
+inf(E)=-1, quad "et" quad E " n'admet pas de minimum".
+$
+
+== Question 3 — Supremum et maximum
+
+Pour tout $p in NN^*$,
+$
+u_(2p)=1+1/p<=2,
+quad
 u_(2p-1)=-1+2/(2p-1)<=1<2.
 $
 
-Donc $2$ est un majorant de $E$. Or $u_2=1+1=2 in E$.
+Donc $2$ majore $E$. De plus, $u_2=2 in E$.
 
 Par conséquent,
-
 $
-max(E)=sup(E)=2.
+sup(E)=max(E)=2.
 $
