@@ -23,5 +23,5 @@ Coefficients de Newton (première ligne) : $(-1, 1, 3, 1, 0, 0)$.
 Dernier coefficient non nul : $D_(0,3)=1$. Donc :
 
 $
-box(deg(P)=3)
+deg(P)=3
 $
