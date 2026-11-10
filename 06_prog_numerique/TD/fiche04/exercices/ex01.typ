@@ -154,10 +154,10 @@ Les valeurs propres distinctes sont donc $2$ et $9$. La valeur propre $2$ a une 
 
 === c) Valeurs propres de $B^2$, $B^3$ et $B^n$
 
-Si $Bv=lambda v$ avec $v!=0$, alors
+Si $B v=lambda v$ avec $v!=0$, alors
 
 $
-B^2v=B(Bv)=B(lambda v)=lambda^2 v.
+B^2v=B(B v)=B(lambda v)=lambda^2 v.
 $
 
 Par récurrence sur $n>=1$ :
@@ -171,7 +171,7 @@ Donc les valeurs propres de $B^2$ sont $4$ (multiplicité algébrique $2$) et $8
 Pour tout $n>=1$, le spectre de $B^n$ est
 
 $
-Sp(B^n)={2^n,9^n}.
+"Sp"(B^n)={2^n,9^n}.
 $
 
 Leur multiplicité respective est $2$ et $1$, car $B$ est diagonalisable comme vérifié ci-dessous. Pour $n=0$, $B^0=I_3$ et l'unique valeur propre est $1$.
