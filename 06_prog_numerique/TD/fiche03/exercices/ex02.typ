@@ -1,17 +1,17 @@
 // source-confidence: high
-// source-note: exercice 2 de TD03_interpolation-approximation.pdf, recoupé avec les photographies du tableau du 23 octobre 2026 (11447, 11452, 11453).
-// source-reconstruction: la table complète des différences divisées et le polynôme sont calculés à partir de l'énoncé imprimé ; le tableau photographié montre la méthode, mais pas tous les nombres.
-// source-verification: photo 12351 (nouveau lot) confirme y_6=-53 sur le tableau, conformément au sujet officiel ; la lecture +53 sur des photos plus éloignées était trompeuse.
+// source-note: TD03_interpolation-approximation.pdf, exercice 2 ; valeurs vérifiées avec le sujet officiel.
+// source-verification: le dernier point est (-4, -53), pas (-4, +53).
+// revision-note: présentation alignée sur les indices à partir de 0 et la résolution manuscrite du 10 novembre 2026.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
-= TD 3 — Exercice 2 — Interpolation de Newton et différences divisées
+= TD 3 — Exercice 2 — Différences divisées de Newton
 
-== Données
+== Énoncé et objectif
 
-Le sujet imprimé donne six points appartenant à un polynôme :
+Les six points donnés sont :
 
 #table(
   columns: 6,
@@ -21,104 +21,104 @@ Le sujet imprimé donne six points appartenant à un polynôme :
   [*$y_i$*], [$-1$], [$2$], [$59$], [$4$], [$24$], [$-53$],
 )
 
-*Question.* Déterminer le degré du polynôme en construisant la table des différences divisées de Newton.
+*Question :* déterminer le degré du polynôme passant par ces points, à l'aide de la table des différences divisées.
 
-Il n'est pas nécessaire de réordonner les abscisses : on conserve leur ordre dans le sujet.
+Avec six abscisses distinctes, l'interpolateur est unique et de degré *au plus 5*. Il peut être de degré inférieur : c'est précisément ce que le tableau permet de déterminer.
 
-== 1. Formule de calcul
+On garde l'ordre des points donné dans l'énoncé. Il n'est pas nécessaire de trier les $x_i$.
 
-On prend les indices $i=1,dots,6$ et on définit les différences divisées d'ordre zéro par
+== 1. Définition et indices
+
+On numérote les points de $0$ à $5$.
+
+La différence divisée $D_(i,k)$ utilise les points d'indices $i, i+1, dots, i+k$ :
+
+- $i$ indique le *premier point* ;
+- $k$ indique l'*ordre*, donc $k+1$ points sont utilisés ;
+- le dernier point a pour indice $i+k$.
+
+L'ordre zéro contient simplement les ordonnées :
 
 $
 D_(i,0)=y_i.
 $
 
-Pour tout $k>=1$ et tout $1<=i<=6-k$, on calcule ensuite
+Pour $1 <= k <= 5$ et $0 <= i <= 5-k$, on calcule :
 
 $
-D_(i,k) =
-(D_(i+1,k-1)-D_(i,k-1))/(x_(i+k)-x_i).
+D_(i,k) = (D_(i+1,k-1)-D_(i,k-1))/(x_(i+k)-x_i).
 $
 
-En particulier,
+*Mémo :* « différence du bas moins celle du haut, divisée par la dernière abscisse moins la première ». Chaque valeur utilise *deux différences divisées de l'ordre précédent*.
+
+== 2. Construction colonne par colonne
+
+*Ordre 0 :* on recopie les six valeurs de $y_i$ :
+$(-1, 2, 59, 4, 24, -53)$.
+
+*Ordre 1 :* différences entre deux points consécutifs.
 
 $
-D_(i,1)=(y_(i+1)-y_i)/(x_(i+1)-x_i),
-$
-
-puis
-
-$
-D_(i,2)=(D_(i+1,1)-D_(i,1))/(x_(i+2)-x_i).
-$
-
-À chaque ordre, le dénominateur utilise les deux abscisses *extrêmes* du groupe de points.
-
-== 2. Première colonne de différences
-
-Les différences d'ordre $1$ valent successivement :
-
-$
-D_(1,1)=(2-(-1))/(1-(-2))=1,
-$
-
-$
-D_(2,1)=(59-2)/(4-1)=19,
-$
-
-$
-D_(3,1)=(4-59)/(-1-4)=11,
-$
-
-$
-D_(4,1)=(24-4)/(3-(-1))=5,
-$
-
-$
-D_(5,1)=(-53-24)/(-4-3)=11.
-$
-
-À l'ordre $2$ :
-
-$
-D_(1,2)=(19-1)/(4-(-2))=3,
+D_(0,1)=(2-(-1))/(1-(-2))=1,
 quad
-D_(2,2)=(11-19)/(-1-1)=4,
+D_(1,1)=(59-2)/(4-1)=19,
 $
 
 $
-D_(3,2)=(5-11)/(3-4)=6,
+D_(2,1)=(4-59)/(-1-4)=11,
 quad
-D_(4,2)=(11-5)/(-4-(-1))=-2.
-$
-
-À l'ordre $3$ :
-
-$
-D_(1,3)=(4-3)/(-1-(-2))=1,
+D_(3,1)=(24-4)/(3-(-1))=5,
 $
 
 $
-D_(2,3)=(6-4)/(3-1)=1,
+D_(4,1)=(-53-24)/(-4-3)=11.
+$
+
+*Ordre 2 :* différences de deux valeurs de l'ordre 1 ; le dénominateur utilise les abscisses extrêmes des trois points.
+
+$
+D_(0,2)=(19-1)/(4-(-2))=3,
 quad
-D_(3,3)=(-2-6)/(-4-4)=1.
+D_(1,2)=(11-19)/(-1-1)=4,
 $
 
-Aux ordres suivants, toutes les différences sont nulles :
-
 $
-D_(1,4)=D_(2,4)=0,
+D_(2,2)=(5-11)/(3-4)=6,
 quad
-D_(1,5)=0.
+D_(3,2)=(11-5)/(-4-(-1))=-2.
 $
 
-== 3. Tableau triangulaire
+*Ordre 3 :*
+
+$
+D_(0,3)=(4-3)/(-1-(-2))=1,
+quad
+D_(1,3)=(6-4)/(3-1)=1,
+$
+
+$
+D_(2,3)=(-2-6)/(-4-4)=1.
+$
+
+*Ordres 4 et 5 :*
+
+$
+D_(0,4)=(1-1)/(3-(-2))=0,
+quad
+D_(1,4)=(1-1)/(-4-1)=0,
+$
+
+$
+D_(0,5)=(0-0)/(-4-(-2))=0.
+$
+
+== 3. Tableau des différences divisées
 
 #table(
-  columns: (0.8fr, 0.8fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
+  columns: (0.8fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
   inset: 4pt,
   align: center,
-  [*$x_i$*], [*$D_(i,0)$*], [*ordre 1*], [*ordre 2*], [*ordre 3*], [*ordre 4*], [*ordre 5*],
+  [*$x_i$*], [*$D_(i,0)$*], [*$D_(i,1)$*], [*$D_(i,2)$*], [*$D_(i,3)$*], [*$D_(i,4)$*], [*$D_(i,5)$*],
   [$-2$], [$-1$], [$1$], [$3$], [$1$], [$0$], [$0$],
   [$1$], [$2$], [$19$], [$4$], [$1$], [$0$], [],
   [$4$], [$59$], [$11$], [$6$], [$1$], [], [],
@@ -127,60 +127,72 @@ $
   [$-4$], [$-53$], [], [], [], [], [],
 )
 
-La première ligne du triangle fournit les coefficients de Newton :
+Les coefficients de Newton se trouvent *sur la première ligne* :
 
 $
-b_0=-1,
-quad
-b_1=1,
-quad
-b_2=3,
-quad
-b_3=1,
-quad
-b_4=b_5=0.
+a_0=D_(0,0)=-1,
+quad a_1=D_(0,1)=1,
+quad a_2=D_(0,2)=3,
 $
 
-Les différences d'ordre $4$ sont toutes nulles, mais celles d'ordre $3$ ne le sont pas. Le polynôme est donc *de degré exactement 3*.
-
-== 4. Polynôme sous forme de Newton
-
-La forme de Newton utilise les coefficients de la première ligne :
-
 $
-P(x)=
-b_0
-+b_1(x-x_1)
-+b_2(x-x_1)(x-x_2)
-+b_3(x-x_1)(x-x_2)(x-x_3).
+a_3=D_(0,3)=1,
+quad a_4=D_(0,4)=0,
+quad a_5=D_(0,5)=0.
 $
 
-En substituant les valeurs :
+Le dernier coefficient non nul est $a_3$. Par conséquent :
+
+$
+box(deg(P)=3)
+$
+
+*C'est la réponse à l'exercice.* Construire explicitement le polynôme n'est pas demandé.
+
+== 4. Construction du polynôme (vérification facultative)
+
+À l'ordre $k$, on ajoute le coefficient $a_k$ multiplié par les $k$ facteurs correspondant aux *abscisses précédentes*. Le dernier point de ce groupe est déjà pris en compte lors du calcul de $a_k$.
+
+$
+P(x)=a_0+a_1(x-x_0)
++a_2(x-x_0)(x-x_1)
++a_3(x-x_0)(x-x_1)(x-x_2).
+$
+
+Les termes d'ordres 4 et 5 disparaissent puisque $a_4=a_5=0$.
+
+En remplaçant les coefficients et les abscisses :
 
 $
 P(x)=-1+(x+2)+3(x+2)(x-1)+(x+2)(x-1)(x-4).
 $
 
-En développant :
+Après développement :
 
 $
-P(x)=x^3-2x+3.
+box(P(x)=x^3-2x+3)
 $
 
-On vérifie que cette expression prend bien les six ordonnées du sujet en leurs abscisses respectives, y compris
+Quelques contrôles :
+
+$
+P(-2)=-8+4+3=-1,
+quad
+P(4)=64-8+3=59,
+$
 
 $
 P(-4)=-64+8+3=-53.
 $
 
-== 5. Méthode à retenir
+== 5. Algorithme à retenir
 
-1. Copier les points *dans l'ordre donné*.
-2. Calculer les différences de premier ordre en utilisant deux abscisses consécutives.
-3. Recommencer pour obtenir les ordres supérieurs ; le dénominateur emploie les deux abscisses extrêmes.
-4. Chercher le dernier ordre dont les différences ne sont pas nulles : c'est le degré du polynôme.
-5. Si le polynôme est demandé, lire ses coefficients dans la première ligne de la table.
+1. Recopier les $y_i$ dans la colonne d'ordre $0$.
+2. Pour chaque ordre $k=1, dots, N-1$, remplir la colonne avec les deux valeurs voisines de la précédente.
+3. Au dénominateur, soustraire les *abscisses extrêmes* des $k+1$ points concernés.
+4. Lire les coefficients $a_k=D_(0,k)$ sur la première ligne.
+5. Le *dernier coefficient non nul* donne le degré ; calculer le polynôme uniquement si demandé.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Contrôle du signe.* La photo 12351 montre clairement $y_6=-53$ ; les vues plus éloignées peuvent donner l'impression d'un signe positif. Le sujet officiel, la photo nette et le polynôme vérifié concordent sur $-53$. Si le signe était $+53$, les différences d'ordre $4$ et $5$ ne s'annuleraient pas et le degré de l'interpolateur serait $5$. Le calcul conserve donc la valeur $-53$.
+  *Attention au sujet :* la dernière ordonnée est bien $-53$. Une erreur de signe ici modifierait les dernières différences divisées, et donc le degré.
 ]
