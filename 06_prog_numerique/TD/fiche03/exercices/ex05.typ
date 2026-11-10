@@ -1,5 +1,5 @@
 // source-confidence: high
-// source-note: photo 10963 : début de TD03 exercice 5, transformation logarithmique pour la régression puissance.
+// source-note: photos 10963 et 12398 : TD03 exercice 5, transformation logarithmique de la régression puissance.
 // source-note: sujet imprimé TD03_interpolation-approximation.pdf, exercice 5, donnant explicitement les cinq couples.
 // source-reconstruction: calculs numériques et coefficients de la loi puissance déduits du sujet après la dernière ligne visible sur la photo.
 // source-verification: régression des couples logarithmiques recalculée indépendamment ; le critère minimisé est l'erreur quadratique dans l'espace logarithmique.
@@ -28,7 +28,7 @@ Le sujet fournit les données :
   [0,49], [1,60], [3,36], [6,44], [10,16],
 )
 
-La copie photographie le début de la méthode : il faut transformer le modèle en relation affine, puis appliquer les moindres carrés.
+Les photos 10963 et 12398 montrent la transformation logarithmique en relation affine, puis l'indication d'appliquer une régression linéaire ; les données et calculs numériques qui suivent sont tirés du sujet officiel.
 
 == 2. Linéarisation par le logarithme
 
