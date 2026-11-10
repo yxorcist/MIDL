@@ -1,6 +1,7 @@
 // source-confidence: high
 // source-note: sujet imprimé TD03_interpolation-approximation.pdf, exercice 3, et photos 11009, 11007.
 // source-correction: le sujet exige Neville en x=3 ; les photos antérieures emploient Lagrange, tandis que les nouvelles photos du tableau (11458, 11456, 11468, 11463) développent bien Neville.
+// source-note: photos 12360, 12357 et 12361 (nouveau lot) : récurrence de Neville, tableau numérique et contrôle du degré par différences divisées.
 // source-reconstruction: la table de Neville complète ci-dessous est calculée indépendamment des photos, puis contrôlée par le polynôme interpolateur.
 
 #set page(paper: "a4", margin: 2cm)
