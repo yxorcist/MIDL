@@ -4,66 +4,37 @@
 
 = Exercice 1
 
-On considère $E = RR^3$ et les deux parties de $E$ :
-
 $
-F = {(x,y,z) in E | 3x - 7y + 3z = 1},
+F = {u in E, 3x - 7y + 3z = 1}
 $
 
 $
-G = {(x,y,z) in E | x - y^2 = 0}.
+G = {u in E, x - y^2 = 0},
+quad E = RR^3.
 $
 
-On cherche à déterminer si $F$ et $G$ sont des sous-espaces vectoriels de $E$.
-
-== Ensemble $F$
-
-Tout sous-espace vectoriel de $E$ doit contenir le vecteur nul $0_E = (0,0,0)$.
-
-Or, en substituant les coordonnées de $0_E$ dans l'équation de $F$, on obtient
+== $F$ SEV ?
 
 $
-3 dot 0 - 7 dot 0 + 3 dot 0 = 0 != 1.
+0_E in F ? quad 3 dot 0 - 7 dot 0 + 3 dot 0 != 1
 $
 
-Ainsi, $0_E in.not F$.
+$F$ n'est pas un SEV.
 
-*Conclusion :* $F$ n'est pas un sous-espace vectoriel de $E$.
-
-== Ensemble $G$
-
-Vérifions d'abord si $G$ contient le vecteur nul $0_E = (0,0,0)$ :
+== $G$ SEV ?
 
 $
-0 - 0^2 = 0.
+0_E in G ? quad 0 - 0^2 = 0, quad 0_E in G.
 $
 
-Donc $0_E in G$. Il reste à étudier la stabilité ; pour montrer qu'elle échoue, un contre-exemple suffit.
+Stabilité :
 
-Prenons $u = (1,1,0)$. On a $u in G$, car
-
-$
-1 - 1^2 = 0.
-$
-
-Pour le scalaire $lambda = 2$, on obtient
+Prenons $u = (1,1,0) in G$ car $1 - 1^2 = 0$.
 
 $
-2u = (2,2,0).
+2u = (2,2,0) in G ? quad 2 - 2^2 != 0
 $
 
-Cependant,
+$G$ n'est pas stable par multiplication scalaire.
 
-$
-2 - 2^2 = -2 != 0.
-$
-
-Donc $2u in.not G$. L'ensemble $G$ n'est pas stable par multiplication scalaire.
-
-*Conclusion :* $G$ n'est pas un sous-espace vectoriel de $E$.
-
-== Méthode à retenir
-
-- Si $0_E in.not F$, alors $F$ n'est pas un sous-espace vectoriel.
-- Si $0_E in F$, cela ne suffit pas : il faut également la stabilité par addition et par multiplication scalaire.
-- Un seul contre-exemple à l'une de ces stabilités suffit pour conclure négativement.
+$G$ n'est pas un SEV.
