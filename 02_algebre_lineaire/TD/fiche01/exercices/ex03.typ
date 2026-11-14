@@ -177,7 +177,7 @@ Ainsi $F' subset.eq F$ et $dim F=dim F'$, donc $F'=F$.
 === Méthode 2 — Double inclusion
 
 $
-F'=F iff F' subset.eq F " et " F subset.eq F'.
+F'=F ⇔ F' subset.eq F " et " F subset.eq F'.
 $
 
 On sait déjà que $F' subset.eq F$.
