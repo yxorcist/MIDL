@@ -24,22 +24,73 @@ $
 
 == Question 1.a — Extraire une base de $F$
 
-Les notes donnent directement
+Soient $alpha,beta,gamma in RR$. On pose :
 
 $
-B=(v_1,v_2).
+alpha v_1 + beta v_2 + gamma v_3 = 0.
 $
 
-Ainsi,
+On obtient :
 
 $
-F="Vect"(v_1,v_2)
+cases(
+  2 beta + gamma = 0,
+  -alpha + beta + gamma = 0,
+  alpha - beta - gamma = 0,
+  alpha + beta = 0
+).
 $
 
-et
+Donc :
 
 $
-dim(F)=2.
+cases(
+  gamma = -2 beta,
+  -alpha + beta - 2 beta = 0,
+  alpha - beta + 2 beta = 0,
+  alpha = -beta
+)
+$
+
+soit :
+
+$
+cases(
+  alpha = -beta,
+  beta in RR,
+  gamma = -2 beta
+).
+$
+
+On a une infinité de solutions pour $alpha v_1 + beta v_2 + gamma v_3 = 0$.
+
+On fixe $beta = 1$, alors :
+
+$
+cases(
+  alpha = -1,
+  beta = 1,
+  gamma = -2
+).
+$
+
+Ainsi :
+
+$
+-v_1 + v_2 - 2v_3 = 0,
+$
+
+donc :
+
+$
+v_2 = v_1 + 2v_3.
+$
+
+Par conséquent, $F = "Vect"(v_1,v_3)$. Comme $v_1$ et $v_3$ sont non colinéaires, on obtient :
+
+$
+B_F = (v_1,v_3),
+quad dim(F)=2.
 $
 
 == Question 1.b — Équations cartésiennes de $F$
