@@ -95,230 +95,163 @@ $
 
 == Question 1.b — Équations cartésiennes de $F$
 
-Soit $(x,y,z,t) in F$.
-
-Il existe $alpha,beta in RR$ tels que
-
-$
-(x,y,z,t)
-=
-alpha v_1+beta v_2.
-$
-
-Donc
-
-$
-(x,y,z,t)
-=
-alpha(0,-1,1,1)
-+
-beta(2,1,-1,1),
-$
-
-d'où
+On pose $alpha,beta in RR$, $alpha v_1 + beta v_3 = u$, avec $u in F$ et $u=(x,y,z,t)$.
 
 $
 cases(
-x=2 beta,
-y=-alpha+beta,
-z=alpha-beta,
-t=alpha+beta.
+  x = beta,
+  y = -alpha + beta,
+  z = alpha - beta,
+  t = alpha
 )
+arrow
+cases(
+  x = beta,
+  t = alpha,
+  y = -t + x,
+  z = t - x
+).
 $
 
-On obtient alors
+Donc :
 
 $
-y+z=0
+F = {u in RR^4 | cases(
+  x - y - t = 0,
+  x + z - t = 0
+)}.
 $
 
-et
+== Question 2.a — Montrer que $F=F'$
 
 $
-x-y-t=0.
+F' = "Vect"(w_1,w_2),
+quad w_1=(1,0,0,1),
+quad w_2=(2,-1,1,3).
 $
 
-Ainsi,
+=== Méthode 1 — Inclusion et dimensions
 
-$
-F
-=
-{(x,y,z,t) in RR^4 |
-y+z=0 " et " x-y-t=0}.
-$
+De la question 1, on sait que $dim F=2$. On vérifie $dim F'$.
 
-== Question 2.a — Comparaison avec $F'$
-
-On considère
-
-$
-w_1=(1,0,0,1),
-quad
-w_2=(2,-1,1,3)
-$
-
-et
-
-$
-F'="Vect"(w_1,w_2).
-$
-
-Montrons d'abord que
-
-$
-F' subset.eq F.
-$
-
-À partir des équations cartésiennes de $F$,
-
-$
-y+z=0
-quad "et" quad
-x-y-t=0,
-$
-
-on vérifie que
-
-$
-w_1 in F
-quad "et" quad
-w_2 in F.
-$
-
-Ainsi,
-
-$
-"Vect"(w_1,w_2) subset.eq F,
-$
-
-donc
-
-$
-F' subset.eq F.
-$
-
-Montrons maintenant l'inclusion réciproque. Les notes utilisent la base
-
-$
-(v_1,v_3)
-$
-
-de $F$.
-
-Pour $v_1$, cherchons $a,b in RR$ tels que
-
-$
-v_1=a w_1+b w_2.
-$
-
-Avec
-
-$
-v_1=(0,-1,1,1),
-$
-
-on obtient
+On pose $alpha,beta in RR$, $alpha w_1 + beta w_2 = 0$.
 
 $
 cases(
-a+2b=0,
--b=-1,
-b=1,
-a+3b=1.
+  alpha + 2beta = 0,
+  -beta = 0,
+  beta = 0,
+  alpha + 3beta = 0
 )
+arrow
+cases(
+  alpha = 0,
+  beta = 0
+).
 $
 
-D'où
+Donc $dim F'=2$. On a $dim F=dim F'$.
+
+Vérifions $F' subset.eq F$ :
+
+Pour $w_1=(1,0,0,1)$ :
 
 $
-b=1
-quad "et" quad
-a=-2,
+1 - 0 - 1 = 0,
+quad 1 + 0 - 1 = 0,
 $
 
-donc
+donc $w_1 in F$.
+
+Pour $w_2=(2,-1,1,3)$ :
 
 $
-v_1=-2w_1+w_2.
+2 + 1 - 3 = 0,
+quad 2 + 1 - 3 = 0,
 $
 
-De même, pour
+donc $w_2 in F$.
+
+Ainsi $F' subset.eq F$ et $dim F=dim F'$, donc $F'=F$.
+
+=== Méthode 2 — Double inclusion
 
 $
-v_3=(1,1,-1,0),
+F'=F iff F' subset.eq F " et " F subset.eq F'.
 $
 
-on cherche $alpha,beta in RR$ tels que
+On sait déjà que $F' subset.eq F$.
+
+Vérifions $F subset.eq F'$.
+
+On pose $v_1 = alpha w_1 + beta w_2$, avec $alpha,beta in RR$ :
 
 $
-v_3=alpha w_1+beta w_2.
+cases(
+  alpha + 2beta = 0,
+  -beta = -1,
+  beta = 1,
+  alpha + 3beta = 1
+)
+arrow
+cases(
+  alpha = -2,
+  beta = 1
+).
 $
 
-Le système donne
+Solution : $(-2,1)$, donc $v_1 in F'$.
+
+On pose $v_3 = alpha w_1 + beta w_2$ :
 
 $
-beta=-1
-quad "et" quad
-alpha=3.
+cases(
+  alpha + 2beta = 1,
+  -beta = 1,
+  beta = -1,
+  alpha + 3beta = 0
+)
+arrow
+cases(
+  alpha = 3,
+  beta = -1
+).
 $
 
-Ainsi,
+Solution : $(3,-1)$, donc $v_3 in F'$.
+
+Comme $F="Vect"(v_1,v_3)$, on obtient $F subset.eq F'$.
+
+Donc $F=F'$.
+
+== Question 2.b — Supplémentaire de $F$ dans $RR^4$
+
+Par le théorème de la base incomplète, on peut compléter une famille libre de $F$ en une base de $RR^4$.
+
+Considérons la famille $(e_1,e_2,v_3,v_1)$, où $e_1,e_2$ sont les deux premiers vecteurs de la base canonique.
 
 $
-v_3=3w_1-w_2.
+M = mat(
+  1, 0,  1,  0;
+  0, 1,  1, -1;
+  0, 0, -1,  1;
+  0, 0,  0,  1
+).
 $
 
-Donc
+La matrice est triangulaire supérieure, avec quatre pivots non nuls : $rg(M)=4$.
+
+On pose alors :
 
 $
-v_1,v_3 in F',
+G="Vect"(e_1,e_2).
 $
 
-et comme $(v_1,v_3)$ est une base de $F$,
+On obtient $F + G = RR^4$ et $F inter G = {0}$, donc :
 
 $
-F subset.eq F'.
+F op.plus G = RR^4.
 $
-
-Finalement,
-
-$
-F=F'.
-$
-
-== Question 2.b — Construction d'un supplémentaire
-
-D'après le théorème de la base incomplète, on peut compléter une famille libre de
-$F$ en une base de $RR^4$.
-
-Les notes partent de la base canonique
-
-$
-(e_1,e_2,e_3,e_4)
-$
-
-et considèrent la famille
-
-$
-(e_1,e_2,v_1,v_3).
-$
-
-Cette famille est une base de $RR^4$.
-
-En posant
-
-$
-G="Vect"(e_1,e_2),
-$
-
-on obtient alors
-
-$
-F+G=RR^4.
-$
-
-Comme les dimensions se complètent, $G$ est un supplémentaire de $F$ dans
-$RR^4$.
 
 == Question 3.a — Inclusion dans un hyperplan
 
