@@ -1,0 +1,22 @@
+name: Verify AL Typst
+on:
+  push:
+    branches:
+      - validation/typst-td01-20261115
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: typst-community/setup-typst@v5
+      - name: Compile TD01 exercises 1, 2, and 3
+        run: |
+          set -euo pipefail
+          for f in 02_algebre_lineaire/TD/fiche01/exercices/ex0{1,2,3}.typ; do
+            echo "Compiling $f"
+            typst compile "$f" "/tmp/$(basename "$f" .typ).pdf"
+          done
