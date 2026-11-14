@@ -239,7 +239,7 @@ M = mat(
 ).
 $
 
-La matrice est triangulaire supérieure, avec quatre pivots non nuls : $rg(M)=4$.
+La matrice est triangulaire supérieure, avec quatre pivots non nuls : $"rg"(M)=4$.
 
 On pose alors :
 
@@ -247,11 +247,9 @@ $
 G="Vect"(e_1,e_2).
 $
 
-On obtient $F + G = RR^4$ et $F inter G = {0}$, donc :
+On obtient $F + G = RR^4$ et $F inter G = {0}$.
 
-$
-F op.plus G = RR^4.
-$
+Donc $G$ est un supplémentaire de $F$ dans $RR^4$.
 
 == Question 3.a — Inclusion dans un hyperplan
 
