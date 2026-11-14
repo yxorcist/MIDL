@@ -316,9 +316,9 @@ B_I = ((0,0,-1,1)),
 quad dim I = 1.
 $
 
-== Question 3.c — Montrer que $H=F o.plus I$
+== Question 3.c — Montrer que $H=F ⊕ I$
 
-Pour montrer que $H=F o.plus I$, on vérifie :
+Pour montrer que $H=F ⊕ I$, on vérifie :
 
 - $F inter I = {0_E}$ ;
 - $F subset.eq H$ et $I subset.eq H$ ;
@@ -365,10 +365,10 @@ $
 Donc :
 
 $
-H=F o.plus I.
+H=F ⊕ I.
 $
 
-== Question 3.d — Décomposer $u$ suivant $H=F o.plus I$
+== Question 3.d — Décomposer $u$ suivant $H=F ⊕ I$
 
 $
 u=(1,0,1,0).
