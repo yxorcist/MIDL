@@ -251,254 +251,182 @@ On obtient $F + G = RR^4$ et $F inter G = {0}$.
 
 Donc $G$ est un supplémentaire de $F$ dans $RR^4$.
 
-== Question 3.a — Inclusion dans un hyperplan
-
-Soit
+== Question 3.a — Montrer que $F subset.eq H$
 
 $
-H
-=
-{(x,y,z,t) in RR^4 | x-2y-z=t}.
+H = {u in RR^4 | x - 2y - z - t = 0}.
 $
 
-On vérifie que les vecteurs d'une base de $F$ appartiennent à $H$.
-
-Pour
+Soit $u in F$, $u = alpha v_1 + beta v_3$, avec $alpha,beta in RR$.
 
 $
-v_1=(0,-1,1,1),
+u = (beta, -alpha + beta, alpha - beta, alpha).
 $
 
-on a
+Testons si $u in H$ :
 
 $
-0-2(-1)-1=1.
+beta - 2(-alpha + beta) - (alpha - beta) - alpha
+= beta + 2alpha - 2beta - alpha + beta - alpha
+= 0.
 $
 
-Donc
+Donc $u in H$, et $F subset.eq H$.
+
+== Question 3.b — Déterminer $I = G inter H$
 
 $
-v_1 in H.
+G = {u in RR^4 | cases(
+  x = 0,
+  z + t = 0
+)}.
 $
 
-Pour
+Comme $I=G inter H$, on rassemble les équations :
 
 $
-v_3=(1,1,-1,0),
+I = {u in RR^4 | cases(
+  x = 0,
+  z + t = 0,
+  x - 2y - z - t = 0
+)}.
 $
-
-on a
-
-$
-1-2+1=0.
-$
-
-Donc
-
-$
-v_3 in H.
-$
-
-Ainsi,
-
-$
-F subset.eq H.
-$
-
-== Question 3.b — Détermination de $I$
-
-Les notes introduisent
-
-$
-C
-=
-{(x,y,z,t) in RR^4 |
-x=0 " et " z+t=0}
-$
-
-et déterminent
-
-$
-I=H inter C.
-$
-
-Un vecteur $(x,y,z,t)$ appartient à $I$ si et seulement si
 
 $
 cases(
-x=0,
-z+t=0,
-x-2y-z-t=0.
+  x = 0,
+  z = -t,
+  -2y + t - t = 0
 )
+arrow
+cases(
+  x = 0,
+  y = 0,
+  z = -t,
+  t in RR
+).
 $
 
-De $z+t=0$, on obtient
+On fixe $t=1$, on obtient $(0,0,-1,1)$.
+
+Ainsi :
 
 $
-z=-t.
+B_I = ((0,0,-1,1)),
+quad dim I = 1.
 $
 
-En utilisant $x=0$ dans l'équation de $H$,
+== Question 3.c — Montrer que $H=F o.plus I$
+
+Pour montrer que $H=F o.plus I$, on vérifie :
+
+- $F inter I = {0_E}$ ;
+- $F subset.eq H$ et $I subset.eq H$ ;
+- $dim F + dim I = dim H$.
+
+De la question 3.a, $F subset.eq H$. Par définition de $I=G inter H$, on a $I subset.eq H$.
+
+Des questions précédentes :
 
 $
--2y-z-t=0.
+dim F = 2,
+quad dim I = 1,
+quad dim H = 3.
 $
 
-Comme $z=-t$,
+Donc $dim F + dim I = dim H$.
 
-$
--2y=0,
-$
+Testons $F inter I = {0_E}$.
 
-donc
+On prend $u in I$, $u=(0,0,-alpha,alpha)$, avec $alpha in RR$.
 
-$
-y=0.
-$
-
-Ainsi,
-
-$
-I
-=
-{(0,0,-t,t) : t in RR}.
-$
-
-Donc
-
-$
-I="Vect"((0,0,-1,1)).
-$
-
-Une base de $I$ est
-
-$
-B_I=((0,0,-1,1)).
-$
-
-== Question 3.c — Montrer que $H=F ⊕ I$
-
-L'équation de $H$ s'écrit
-
-$
-x=2y+z+t.
-$
-
-Ainsi,
-
-$
-(x,y,z,t)
-=
-y(2,1,0,0)
-+
-z(1,0,1,0)
-+
-t(1,0,0,1).
-$
-
-La famille
-
-$
-((2,1,0,0),(1,0,1,0),(1,0,0,1))
-$
-
-est libre, donc
-
-$
-dim(H)=3.
-$
-
-Or
-
-$
-dim(F)+dim(I)=2+1=3.
-$
-
-Il reste à vérifier que
-
-$
-F inter I={0}.
-$
-
-Soit $(x,y,z,t) in F inter I$.
-
-Comme le vecteur appartient à $F$,
+Testons si $u in F$ avec les équations cartésiennes de $F$ :
 
 $
 cases(
-y+z=0,
-x-y-t=0.
+  x - y - t = 0,
+  x + z - t = 0
 )
-$
-
-Et comme il appartient à $I$,
-
-$
+arrow
 cases(
-x=0,
-y=0,
-z=-t.
-)
+  -alpha = 0,
+  -2alpha = 0
+).
 $
 
-On obtient alors successivement
+L'unique solution est $alpha=0$, donc $u=0_E$.
+
+Ainsi :
 
 $
-x=0,
-quad
-y=0,
-quad
-z=0,
-quad
-t=0.
+F inter I = {0_E}.
 $
 
-Donc
+Donc :
 
 $
-F inter I={0}.
+H=F o.plus I.
 $
 
-Par conséquent,
-
-$
-H=F ⊕ I.
-$
-
-== Question 3.d — Décomposition d'un vecteur
-
-On considère
+== Question 3.d — Décomposer $u$ suivant $H=F o.plus I$
 
 $
 u=(1,0,1,0).
 $
 
-On vérifie
+Testons $u in H$ :
 
 $
-1-2 dot 0-1=0,
+1 - 2 dot 0 - 1 - 0 = 0.
 $
 
-donc
+Donc $u in H$.
+
+On cherche $u=f+i$ avec $f in F$ et $i in I$.
+
+On pose $j=(0,0,-1,1)$ et :
 
 $
-u in H.
+u=alpha v_1 + beta v_3 + gamma j.
 $
 
-Les notes donnent la décomposition
+Cela donne :
 
 $
-u
-=
--(0,0,-1,1)
-+
-(1,0,0,1).
+cases(
+  1 = beta,
+  0 = -alpha + beta,
+  1 = alpha - beta - gamma,
+  0 = alpha + gamma
+)
+arrow
+cases(
+  alpha = 1,
+  beta = 1,
+  gamma = -1
+).
 $
 
-Le premier terme appartient à $I$ et le second appartient à $F$.
-
-Ainsi $u$ est bien décomposé suivant
+Donc :
 
 $
-H=F ⊕ I.
+u=v_1+v_3-j.
+$
+
+Avec :
+
+$
+f=v_1+v_3=(1,0,0,1) in F
+$
+
+et
+
+$
+i=-j=(0,0,1,-1) in I.
+$
+
+On obtient :
+
+$
+u=f+i=(1,0,0,1)+(0,0,1,-1)=(1,0,1,0).
 $
