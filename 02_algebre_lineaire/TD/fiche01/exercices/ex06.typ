@@ -85,13 +85,9 @@ $
 
 === $F inter G_1$
 
-Soient $f in F$ et $g in G_1$. On pose $f=alpha v$ et $g=beta w_1$, avec $alpha,beta in K$.
+Soit $u in F inter G_1$. Alors $u=alpha v=beta w_1$, avec $alpha,beta in K$.
 
-$
-alpha v = beta w_1
-$
-
-C'est-à-dire :
+On a donc :
 
 $
 alpha(1,0,1,0)=beta(1,1,0,0).
@@ -153,7 +149,7 @@ cases(
 arrow alpha=-beta.
 $
 
-Il existe une infinité de solutions. Par exemple, en prenant $alpha=1$ et $beta=-1$, on obtient :
+Il existe des solutions non triviales. Par exemple, en prenant $alpha=1$ et $beta=-1$, on obtient :
 
 $
 u=(0,-1,1,0) != 0.
@@ -264,13 +260,7 @@ cases(
 ).
 $
 
-On a :
-
-$
-alpha=-4/3 beta
-$
-
-si $3 != 0$ dans $K$ ; plus généralement, le déterminant du système vaut $9-8=1 != 0$ dans tout corps $K$.
+Le déterminant du système vaut $3 dot 3-4 dot 2=1 != 0$.
 
 Donc la solution unique est :
 
