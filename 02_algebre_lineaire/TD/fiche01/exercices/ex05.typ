@@ -1,240 +1,203 @@
-// source-confidence: high
-
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
 = Exercice 5
 
-On travaille dans $CC^2$.
+On travaille dans $E=CC^2$, sur $RR$ ou $CC$.
 
-== Question 1 — Base canonique de $CC^2$ sur $CC$
-
-La base canonique de $CC^2$ sur $CC$ est
+== Question 1 — Base canonique de $CC^2$
 
 $
-C=((1,0),(0,1)).
+B_(CC^2)=((1,0),(0,1)).
 $
 
-Soit $(x,y) in CC^2$. Il existe $alpha,beta in CC$ tels que
+*Libre :*
+
+Soient $alpha,beta in CC$, avec :
 
 $
-(x,y)=alpha(1,0)+beta(0,1),
+alpha(1,0)+beta(0,1)=(0,0).
 $
 
-avec
+On obtient :
 
 $
-alpha=x
-quad "et" quad
-beta=y.
+cases(alpha=0, beta=0).
 $
 
-Ainsi, la famille $C$ est génératrice.
+*Génératrice :*
 
-Elle est également libre, donc $C$ est une base de $CC^2$ sur $CC$.
-
-Par conséquent,
+Soit $(x,y) in CC^2$. On cherche $alpha,beta in CC$ tels que :
 
 $
-dim_CC(CC^2)=2.
+alpha(1,0)+beta(0,1)=(x,y).
 $
 
-== Question 2 — Liberté sur $RR$ et sur $CC$
-
-On considère
+Alors :
 
 $
-v_1=(1-i,i)
-quad "et" quad
-v_2=(2,-1+i).
+cases(x=alpha, y=beta).
+$
+
+Donc $((1,0),(0,1))$ est une base de $CC^2$ sur $CC$.
+
+== Question 2 — Liberté de $(v_1,v_2)$ sur $RR$ et $CC$
+
+$
+v_1=(1-i,i),
+quad v_2=(2,-1+i).
 $
 
 === Sur $RR$
 
-Soient $alpha,beta in RR$ tels que
+Soient $alpha,beta in RR$ tels que :
 
 $
-alpha v_1+beta v_2=(0,0).
+alpha v_1 + beta v_2=(0,0).
 $
 
-Alors
-
-$
-alpha(1-i,i)+beta(2,-1+i)=(0,0),
-$
-
-d'où
+On obtient :
 
 $
 cases(
-alpha+2 beta-alpha i=0,
--beta+(alpha+beta)i=0.
+  alpha - i alpha + 2 beta = 0,
+  alpha i - beta + beta i = 0
+).
+$
+
+En séparant les parties réelles et imaginaires :
+
+$
+cases(
+  alpha + 2beta = 0,
+  -alpha = 0,
+  -beta = 0,
+  alpha + beta = 0
 )
+arrow
+cases(alpha=0, beta=0).
 $
 
-Comme $alpha$ et $beta$ sont réels, l'annulation des parties réelle et imaginaire donne
-
-$
-alpha+2 beta=0,
-quad
--alpha=0,
-quad
--beta=0,
-quad
-alpha+beta=0.
-$
-
-Ainsi,
-
-$
-alpha=beta=0.
-$
-
-La famille $(v_1,v_2)$ est donc libre sur $RR$.
+La solution est unique : la famille $(v_1,v_2)$ est *libre sur $RR$*.
 
 === Sur $CC$
 
-On remarque que
+Soient $alpha,beta in CC$ tels que :
 
 $
-(1+i)v_1=v_2.
+alpha v_1 + beta v_2=(0,0).
 $
 
-Ainsi $v_2$ est un multiple complexe de $v_1$.
+On a :
 
-La famille $(v_1,v_2)$ est donc liée sur $CC$.
+$
+cases(
+  alpha(1-i)+2beta=0,
+  alpha i+beta(-1+i)=0
+).
+$
 
-== Question 3 — Une base de $CC^2$ sur $RR$
+La première équation donne :
 
-On considère
+$
+alpha=-2/(1-i) beta
+=- (2(1+i))/((1-i)(1+i)) beta
+=-(1+i) beta.
+$
+
+En remplaçant dans la seconde :
+
+$
+-(1+i)beta i + beta(-1+i)=0.
+$
+
+Cette égalité est vérifiée pour tout $beta in CC$.
+
+On obtient donc :
+
+$
+cases(
+  alpha=-(1+i)beta,
+  beta in CC
+).
+$
+
+Il existe une infinité de solutions. La famille $(v_1,v_2)$ est *liée sur $CC$*.
+
+En particulier, $v_2=(1+i)v_1$.
+
+== Question 3.a — Une base de $CC^2$ sur $RR$
+
+On considère :
 
 $
 B=((1,0),(i,0),(0,1),(0,i)).
 $
 
-=== a. Liberté et caractère générateur
+*Liberté :*
 
-Soient $lambda_1,lambda_2,lambda_3,lambda_4 in RR$ tels que
+Soient $alpha,beta,gamma,delta in RR$ tels que :
 
 $
-lambda_1(1,0)
-+lambda_2(i,0)
-+lambda_3(0,1)
-+lambda_4(0,i)
-=(0,0).
+alpha(1,0)+beta(i,0)+gamma(0,1)+delta(0,i)=(0,0).
 $
 
-On obtient
+Alors :
 
 $
 cases(
-lambda_1+lambda_2 i=0,
-lambda_3+lambda_4 i=0.
-)
+  alpha+beta i=0,
+  gamma+delta i=0
+).
 $
 
-Comme les coefficients sont réels,
+Comme les coefficients sont réels :
 
 $
-lambda_1=lambda_2=lambda_3=lambda_4=0.
+alpha=beta=gamma=delta=0.
 $
 
-Donc $B$ est une famille libre.
+La solution est unique : la famille est libre sur $RR$.
 
-Soit maintenant $(x,y) in CC^2$.
+*Génératrice :*
 
-Écrivons les parties réelle et imaginaire sous la forme
+Soit $(x,y) in CC^2$.
+
+On pose :
 
 $
-x=alpha_1+alpha_2 i,
+alpha(1,0)+beta(i,0)+gamma(0,1)+delta(0,i)=(x,y)
+$
+
+avec $alpha,beta,gamma,delta in RR$.
+
+Le système est :
+
+$
+cases(
+  x=alpha+beta i,
+  y=gamma+delta i
+).
+$
+
+Pour tout $x,y in CC$, les parties réelles et imaginaires fournissent de tels réels $alpha,beta,gamma,delta$.
+
+La famille est génératrice de $CC^2$ sur $RR$.
+
+Donc $B$ est une base de $CC^2$ sur $RR$.
+
+== Question 3.b — Dimensions
+
+$
+dim_RR(CC^2)=4,
+quad dim_CC(CC^2)=2.
+$
+
+== Question 3.c — Coordonnées dans $B$
+
+$
+[v_1]_B=mat(1; -1; 0; 1),
 quad
-y=alpha_3+alpha_4 i,
-$
-
-avec $alpha_1,alpha_2,alpha_3,alpha_4 in RR$.
-
-Alors
-
-$
-(x,y)
-=
-alpha_1(1,0)
-+alpha_2(i,0)
-+alpha_3(0,1)
-+alpha_4(0,i).
-$
-
-Donc $B$ est génératrice.
-
-Ainsi $B$ est une base de $CC^2$ considéré comme espace vectoriel sur $RR$.
-
-=== b. Dimension
-
-La base $B$ contient quatre vecteurs. On a donc
-
-$
-dim_RR(CC^2)=4.
-$
-
-=== c. Coordonnées de $v_1$ et $v_2$ dans $B$
-
-Pour
-
-$
-v_1=(1-i,i),
-$
-
-on a
-
-$
-v_1
-=
-1(1,0)
--1(i,0)
-+0(0,1)
-+1(0,i).
-$
-
-Donc
-
-$
-[v_1]_B
-=
-mat(
-1;
--1;
-0;
-1
-).
-$
-
-Pour
-
-$
-v_2=(2,-1+i),
-$
-
-on a
-
-$
-v_2
-=
-2(1,0)
-+0(i,0)
--1(0,1)
-+1(0,i).
-$
-
-Donc
-
-$
-[v_2]_B
-=
-mat(
-2;
-0;
--1;
-1
-).
+[v_2]_B=mat(2; 0; -1; 1).
 $
