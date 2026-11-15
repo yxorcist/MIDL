@@ -1,455 +1,310 @@
-// source-confidence: high
-// source-note: numbering and statements are cross-checked against the official TD01 sheet; the clearer handwritten correction supplied later confirms questions 1 to 3.
-
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
 = Exercice 6
 
-Les notes utilisent les sous-espaces suivants de $K^4$ :
+On travaille dans $K^4$ avec :
 
 $
-E
-=
-{(x,y,z,t) in K^4 |
-2x+y+z-t=0
-" et "
-x+y+z=0},
+E = {u in K^4 | cases(
+  2x+y+z-t=0,
+  x+y+z=0
+)},
 $
 
 $
-F="Vect"((1,0,1,0)),
+F="Vect"(v), quad v=(1,0,1,0),
 $
 
-et
-
 $
-G_1="Vect"((1,1,0,0)).
+G_1="Vect"(w_1), quad w_1=(1,1,0,0).
 $
 
-== Question 1.a — Intersections deux à deux
+== Question 1.a — Intersections
 
-=== Intersection $E inter F$
+=== $E inter F$
 
-Soit
+Soit $f in F$ :
 
 $
-u=(x,y,z,t) in K^4.
+f=lambda(1,0,1,0)=(lambda,0,lambda,0),
+quad lambda in K.
 $
 
-Si $u in E$, alors
+Testons si $f in E$ :
 
 $
 cases(
-2x+y+z-t=0,
-x+y+z=0.
+  2lambda+0+lambda-0=0,
+  lambda+0+lambda=0
 )
+arrow
+cases(
+  3lambda=0,
+  2lambda=0
+)
+arrow lambda=0.
 $
 
-Si $u in F$, alors
+Solution unique triviale, donc :
 
 $
-u in "Vect"((1,0,1,0)),
+E inter F={0}.
 $
 
-donc
+=== $E inter G_1$
+
+Soit $g in G_1$ :
 
 $
-x=z
-quad "et" quad
-y=t=0.
+g=lambda(1,1,0,0)=(lambda,lambda,0,0),
+quad lambda in K.
 $
 
-Ainsi, si $u in E inter F$,
+Testons si $g in E$ :
 
 $
 cases(
-2x+y+z-t=0,
-x+y+z=0,
-x=z,
-y=t=0.
+  2lambda+lambda+0-0=0,
+  lambda+lambda+0=0
 )
+arrow
+cases(
+  3lambda=0,
+  2lambda=0
+)
+arrow lambda=0.
 $
 
-En remplaçant $z$ par $x$ et $y=t=0$, on obtient
+Solution unique triviale, donc :
+
+$
+E inter G_1={0}.
+$
+
+=== $F inter G_1$
+
+Soient $f in F$ et $g in G_1$. On pose $f=alpha v$ et $g=beta w_1$, avec $alpha,beta in K$.
+
+$
+alpha v = beta w_1
+$
+
+C'est-à-dire :
+
+$
+alpha(1,0,1,0)=beta(1,1,0,0).
+$
+
+On obtient :
 
 $
 cases(
-3x=0,
-2x=0,
-y=t,
-t=0.
+  alpha=beta,
+  0=beta,
+  alpha=0
 )
-$
-
-Donc
-
-$
-u=(0,0,0,0).
-$
-
-Ainsi,
-
-$
-E inter F={0_(K^4)}.
-$
-
-=== Intersection $E inter G_1$
-
-On pose
-
-$
-w_1=e_1+e_2=(1,1,0,0),
-$
-
-de sorte que
-
-$
-G_1="Vect"(w_1).
-$
-
-Or $w_1$ n'appartient pas à $E$, puisque
-
-$
-2 dot 1+1+0-0 != 0
-$
-
-et
-
-$
-1+1+0 != 0.
-$
-
-Tout vecteur non nul de $G_1$ est un multiple scalaire non nul de $w_1$.
-Ainsi, aucun vecteur non nul de $G_1$ n'appartient à $E$.
-
-Donc
-
-$
-E inter G_1={0_(K^4)}.
-$
-
-=== Intersection $F inter G_1$
-
-Soit $u in F inter G_1$.
-
-Il existe $alpha,beta in K$ tels que
-
-$
-u=alpha(1,0,1,0)=beta(1,1,0,0).
-$
-
-L'égalité coordonnée par coordonnée donne
-
-$
+arrow
 cases(
-alpha=beta,
-beta=0,
-alpha=0.
-)
-$
-
-Donc
-
-$
-alpha=beta=0,
-$
-
-et
-
-$
-F inter G_1={0_(K^4)}.
-$
-
-== Question 1.b — Sommes directes deux à deux
-
-Comme les intersections précédentes sont réduites au vecteur nul, les sommes
-
-$
-E+F,
-quad
-F+G_1,
-quad
-E+G_1
-$
-
-sont directes.
-
-En revanche, la somme
-
-$
-E+F+G_1
-$
-
-n'est pas directe.
-
-En effet,
-
-$
-(0,-1,1,0)
--
-(1,0,1,0)
-+
-(1,1,0,0)
-=
-0_(K^4),
-$
-
-avec
-
-$
-(0,-1,1,0) in E,
-quad
-(1,0,1,0) in F,
-quad
-(1,1,0,0) in G_1,
-$
-
-et ces trois vecteurs ne sont pas tous nuls.
-
-Les notes donnent aussi une vérification équivalente :
-
-$
-(0,-1,1,0)
-=
-(1,0,1,0)
--
-(1,1,0,0).
-$
-
-Le membre de gauche appartient à $E$, tandis que le membre de droite appartient
-à $F+G_1$. Ainsi,
-
-$
-(0,-1,1,0) in E inter (F+G_1)
-$
-
-et
-
-$
-E inter (F+G_1) != {0_(K^4)}.
-$
-
-== Question 2 — Dimensions
-
-Les notes relèvent
-
-$
-dim(E)+dim(F)+dim(G_1)
-=
-2+1+1
-=
-4.
-$
-
-Pour $E$,
-
-$
-E
-=
-{(x,y,z,t) in K^4 |
-2x+y+z-t=0
-" et "
-x+y+z=0}.
-$
-
-La correction donne
-
-$
-E
-=
-"Vect"(
-(1,-1,0,1),
-(0,-1,1,0)
+  alpha=0,
+  beta=0
 ).
 $
 
-Ainsi,
+Donc :
 
 $
-dim(E)=2.
+F inter G_1={0}.
 $
 
-Comme la somme $E+F$ est directe,
+== Question 1.b — Sommes directes
+
+De la question 1.a, les trois intersections deux à deux sont nulles.
+
+Donc $E+F$, $E+G_1$ et $F+G_1$ sont des sommes directes.
+
+Pour $E+F+G_1$, vérifions si :
 
 $
-dim(E+F)
-=
-dim(E)+dim(F)
-=
-3.
+E inter (F+G_1)={0}.
 $
 
-On a donc
+On prend $u in F+G_1$ :
 
 $
-dim(E+F+G_1) >= 3.
+u=alpha v+beta w_1
+=(alpha+beta,beta,alpha,0),
+quad alpha,beta in K.
 $
 
-D'autre part, la somme $E+F+G_1$ n'est pas directe. Les quatre vecteurs obtenus
-en réunissant une base de $E$, une base de $F$ et une base de $G_1$ sont donc
-liés. Par conséquent,
+Testons si $u in E$ :
 
 $
-dim(E+F+G_1) < 4.
+cases(
+  2(alpha+beta)+beta+alpha=0,
+  alpha+beta+beta+alpha=0
+)
+arrow
+cases(
+  3alpha+3beta=0,
+  2alpha+2beta=0
+)
+arrow alpha=-beta.
 $
 
-Ainsi,
+Il existe une infinité de solutions. Par exemple, en prenant $alpha=1$ et $beta=-1$, on obtient :
+
+$
+u=(0,-1,1,0) != 0.
+$
+
+Donc :
+
+$
+E inter (F+G_1) != {0}.
+$
+
+Ainsi, $E+F+G_1$ n'est *pas* une somme directe.
+
+== Question 2 — Dimensions
+
+Pour $E$, on résout le système :
+
+$
+cases(
+  2x+y+z-t=0,
+  x+y+z=0
+)
+arrow
+cases(
+  x=-y-z,
+  t=-y-z
+).
+$
+
+Avec $y,z in K$ :
+
+$
+u=y(-1,1,0,-1)+z(-1,0,1,-1).
+$
+
+Les deux vecteurs sont libres, donc :
+
+$
+dim E=2.
+$
+
+Comme $F$ et $G_1$ sont engendrés chacun par un vecteur non nul :
+
+$
+dim F=1, quad dim G_1=1.
+$
+
+Ainsi :
+
+$
+dim E+dim F+dim G_1=2+1+1=4.
+$
+
+On sait que $E inter F={0}$, donc :
+
+$
+dim(E+F)=dim E+dim F=3.
+$
+
+Par conséquent :
+
+$
+3 <= dim(E+F+G_1).
+$
+
+Mais $E+F+G_1$ n'est pas une somme directe : les quatre générateurs obtenus à partir des bases de $E$, $F$ et $G_1$ sont liés. Donc :
+
+$
+dim(E+F+G_1)<4.
+$
+
+Finalement :
 
 $
 dim(E+F+G_1)=3.
 $
 
-== Question 3 — Somme $E+F+G_2$
+== Question 3 — Somme avec $G_2$
 
-On pose
+On pose :
 
 $
 G_2="Vect"(w_2),
-quad
-w_2=e_1+e_2+e_3=(1,1,1,0).
+quad w_2=(1,1,1,0).
 $
 
-On sait déjà que
+Vérifions si $E inter (F+G_2)={0}$.
+
+Soit $u in F+G_2$ :
 
 $
-E inter F={0_(K^4)},
+u=alpha v+beta w_2
+=(alpha+beta,beta,alpha+beta,0),
+quad alpha,beta in K.
 $
 
-donc la somme $E+F$ est directe.
-
-On utilise
-
-$
-E
-=
-"Vect"(u_1,u_2)
-$
-
-avec
-
-$
-u_1=(1,-1,0,1),
-quad
-u_2=(0,-1,1,0),
-$
-
-et
-
-$
-F="Vect"(v),
-quad
-v=(1,0,1,0).
-$
-
-Il suffit alors de vérifier que
-
-$
-G_2 inter (E+F)
-=
-{0_(K^4)}.
-$
-
-Soit
-
-$
-u in G_2 inter (E+F).
-$
-
-Comme $u in G_2$, il existe $delta in K$ tel que
-
-$
-u=delta w_2.
-$
-
-Comme $u in E+F$, il existe $alpha,beta,gamma in K$ tels que
-
-$
-u
-=
-alpha u_1
-+
-beta u_2
-+
-gamma v.
-$
-
-Ainsi,
-
-$
-alpha u_1
-+
-beta u_2
-+
-gamma v
-=
-delta w_2.
-$
-
-En identifiant les coordonnées, on obtient
+Testons si $u in E$ :
 
 $
 cases(
-delta=alpha+gamma,
-delta=-alpha-beta,
-delta=beta+gamma,
-alpha=0.
+  2(alpha+beta)+beta+(alpha+beta)=0,
+  (alpha+beta)+beta+(alpha+beta)=0
 )
+arrow
+cases(
+  3alpha+4beta=0,
+  2alpha+3beta=0
+).
 $
 
-Donc
+On a :
 
 $
-alpha=0,
-quad
-delta=gamma,
-quad
-delta=-beta.
+alpha=-4/3 beta
 $
 
-La troisième équation donne alors
+si $3 != 0$ dans $K$ ; plus généralement, le déterminant du système vaut $9-8=1 != 0$ dans tout corps $K$.
+
+Donc la solution unique est :
 
 $
-delta
-=
-beta+gamma
-=
--delta+delta
-=
-0.
+cases(
+  alpha=0,
+  beta=0
+).
 $
 
-Ainsi,
+Ainsi :
 
 $
-delta=0,
-quad
-beta=0,
-quad
-gamma=0,
-quad
-alpha=0.
+E inter (F+G_2)={0}.
 $
 
-Donc
+Les vecteurs $v$ et $w_2$ sont non colinéaires, donc :
 
 $
-u=0_(K^4).
+F inter G_2={0}.
 $
 
-Par conséquent,
+Par conséquent, $E+F+G_2$ est une somme directe.
+
+De plus :
 
 $
-G_2 inter (E+F)
-=
-{0_(K^4)}.
+dim E+dim F+dim G_2=2+1+1=4=dim(K^4).
 $
 
-Comme $E+F$ est déjà une somme directe, on conclut que
+Donc :
 
 $
-E+F+G_2
+K^4=E+F+G_2
 $
 
-est une somme directe.
+et la somme est directe.
