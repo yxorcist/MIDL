@@ -10,72 +10,125 @@
 
 === $phi_1$
 
-Pour
-$
-phi_1(x,y)=(x+2y,-2x-3y),
-$
-la correction vérifie directement que, pour $u,v in RR^2$ et $lambda in RR$,
+On considère :
 
 $
-phi_1(lambda u+v)=lambda phi_1(u)+phi_1(v).
+phi_1: RR^2 -> RR^2,
+quad
+(x,y) -> (x+2y,-2x-3y).
 $
 
-Donc $phi_1$ est $RR$-linéaire.
+Soient $u=(x,y)$, $v=(a,b)$ et $lambda in RR$.
+
+$
+phi_1(lambda u+v)
+=phi_1(lambda x+a,lambda y+b)
+$
+
+$
+=(lambda x+a+2lambda y+2b,
+-2lambda x-2a-3lambda y-3b)
+$
+
+$
+=(lambda(x+2y)+(a+2b),
+lambda(-2x-3y)+(-2a-3b))
+$
+
+$
+=lambda phi_1(u)+phi_1(v).
+$
+
+Donc $phi_1$ est une application linéaire.
 
 === $phi_2$
 
-Pour
-$
-phi_2(f)=f(0)+2f(1),
-$
-on a, pour $f_1,f_2 in cal(C)(RR)$ et $lambda in RR$,
+On considère :
 
 $
-phi_2(lambda f_1+f_2)
-=
-lambda phi_2(f_1)+phi_2(f_2).
+phi_2:cal(C)(RR) -> RR,
+quad
+f -> f(0)+2f(1).
 $
 
-Donc $phi_2$ est $RR$-linéaire.
+Soient $u,v in cal(C)(RR)$ et $lambda in RR$.
+
+$
+phi_2(lambda u+v)
+=(lambda u+v)(0)+2(lambda u+v)(1)
+$
+
+$
+=lambda u(0)+v(0)+2lambda u(1)+2v(1)
+$
+
+$
+=lambda (u(0)+2u(1))+(v(0)+2v(1))
+$
+
+$
+=lambda phi_2(u)+phi_2(v).
+$
+
+Donc $phi_2$ est une application linéaire.
 
 === $phi_3$
 
-On considère
-$
-phi_3(P)=(P(0))^2.
-$
-
-La correction choisit un polynôme constant non nul et constate que la compatibilité avec la multiplication scalaire échoue.
-
-Par exemple, avec $P=1$,
+On considère :
 
 $
-phi_3(2P)=4
+phi_3:RR[X] -> RR,
+quad
+P -> (P(0))^2.
 $
 
-alors que
+Soient $P,Q in RR[X]$ et $lambda in RR$.
 
 $
-2phi_3(P)=2.
+phi_3(lambda P+Q)
+=((lambda P+Q)(0))^2
+=(lambda P(0)+Q(0))^2
+$
+
+$
+=lambda^2(P(0))^2+2lambda P(0)Q(0)+(Q(0))^2.
+$
+
+Or :
+
+$
+lambda phi_3(P)+phi_3(Q)
+=lambda (P(0))^2+(Q(0))^2.
+$
+
+Ces expressions ne sont pas toujours égales. Par exemple, pour $P=1$, $Q=0$ et $lambda=2$ :
+
+$
+phi_3(2P+Q)=4 != 2=lambda phi_3(P)+phi_3(Q).
 $
 
 Donc $phi_3$ n'est pas linéaire.
 
 === $phi_4$
 
-Pour
-$
-phi_4(P)=P',
-$
-la linéarité de la dérivation donne
+On considère :
 
 $
-phi_4(lambda P+mu Q)
-=
-lambda phi_4(P)+mu phi_4(Q).
+phi_4:RR_3[X] -> RR_2[X],
+quad
+P -> P'.
 $
 
-Donc $phi_4$ est $RR$-linéaire.
+Soient $P,Q in RR_3[X]$ et $lambda in RR$.
+
+$
+phi_4(lambda P+Q)
+=(lambda P+Q)'
+=lambda P'+Q'
+=lambda phi_4(P)+phi_4(Q).
+$
+
+Donc $phi_4$ est une application linéaire.
 
 == Question 2 — Isomorphisme $phi_1$
 
