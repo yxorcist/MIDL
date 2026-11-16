@@ -101,7 +101,9 @@ lambda phi_3(P)+phi_3(Q)
 =lambda (P(0))^2+(Q(0))^2.
 $
 
-Ces expressions ne sont pas toujours égales. Par exemple, pour $P=1$, $Q=0$ et $lambda=2$ :
+Ces expressions ne sont pas égales en général : le terme croisé $2lambda P(0)Q(0)$ apparaît, et $lambda^2$ n'est pas toujours égal à $lambda$.
+
+Pour donner un contre-exemple explicite, on prend $P=1$, $Q=0$ et $lambda=2$ :
 
 $
 phi_3(2P+Q)=4 != 2=lambda phi_3(P)+phi_3(Q).
@@ -127,6 +129,8 @@ phi_4(lambda P+Q)
 =lambda P'+Q'
 =lambda phi_4(P)+phi_4(Q).
 $
+
+Comme $P'$ est de degré au plus $2$ (ou nul), $phi_4$ est bien définie de $RR_3[X]$ dans $RR_2[X]$.
 
 Donc $phi_4$ est une application linéaire.
 
