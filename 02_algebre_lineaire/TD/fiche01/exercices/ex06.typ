@@ -185,7 +185,7 @@ $
 u=y(-1,1,0,-1)+z(-1,0,1,-1).
 $
 
-Les deux vecteurs sont libres, donc :
+Les deux vecteurs sont libres : leurs deuxième et troisième coordonnées imposent que les deux coefficients soient nuls. Donc :
 
 $
 dim E=2.
@@ -260,16 +260,16 @@ cases(
 ).
 $
 
-Le déterminant du système vaut $3 dot 3-4 dot 2=1 != 0$.
-
-Donc la solution unique est :
+De la première équation, $alpha=-4/3 beta$. En remplaçant dans la seconde :
 
 $
-cases(
-  alpha=0,
-  beta=0
-).
+2(-4/3 beta)+3beta=0
+arrow
+1/3 beta=0
+arrow beta=0.
 $
+
+Donc $alpha=0$ aussi : la solution est uniquement triviale.
 
 Ainsi :
 
@@ -294,7 +294,5 @@ $
 Donc :
 
 $
-K^4=E+F+G_2
+K^4=E "⊕" F "⊕" G_2.
 $
-
-et la somme est directe.
