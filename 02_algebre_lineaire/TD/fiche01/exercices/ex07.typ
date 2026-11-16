@@ -54,7 +54,7 @@ E_2={f in E | f(0)=1}.
 $
 
 $
-0_E notin E_2
+0_E ∉ E_2
 quad "car" quad
 0_E(0)=0 != 1.
 $
