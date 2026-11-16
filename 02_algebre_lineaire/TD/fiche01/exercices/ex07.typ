@@ -209,109 +209,90 @@ est un sous-espace vectoriel de $E$.
 
 == Question 3 — Somme directe
 
-Montrons que
-
-$
-E=E_3 "⊕" E_4.
-$
-
-Il faut vérifier
+On cherche à montrer que $E=E_3 "⊕" E_4$, c'est-à-dire :
 
 $
 E=E_3+E_4
-$
-
-et
-
-$
+quad "et" quad
 E_3 inter E_4={0_E}.
 $
 
 === Montrons que $E=E_3+E_4$
 
-Soit
+Soit $f in E$. Cherchons $f_1 in E_3$ et $f_2 in E_4$ telles que :
 
 $
-f in E.
+f(z)=f_1(z)+f_2(z).
 $
 
-On définit
+Comme $f_1$ est paire et $f_2$ impaire, on a :
 
 $
-f_1(z)
-=
-(f(z)+f(-z))/2
+cases(
+f(z)=f_1(z)+f_2(z),
+f(-z)=f_1(z)-f_2(z)
+).
 $
 
-et
+En additionnant les deux équations :
 
 $
-f_2(z)
-=
-(f(z)-f(-z))/2.
+f(z)+f(-z)=2f_1(z),
 $
 
-On a immédiatement
+d'où :
 
 $
-f=f_1+f_2.
+f_1(z)=(f(z)+f(-z))/2.
 $
 
-Vérifions que $f_1 in E_3$.
-
-Pour tout $z in CC$,
+En les soustrayant :
 
 $
-f_1(-z)
-=
-(f(-z)+f(z))/2
-=
-f_1(z).
+f(z)-f(-z)=2f_2(z),
 $
 
-Donc $f_1$ est paire, ainsi
+d'où :
 
 $
-f_1 in E_3.
+f_2(z)=(f(z)-f(-z))/2.
 $
 
-De même,
+Vérifions leur appartenance aux deux sous-espaces.
+
+Pour $f_1$ :
 
 $
-f_2(-z)
-=
-(f(-z)-f(z))/2
-=
--f_2(z).
+f_1(-z)=(f(-z)+f(z))/2=f_1(z).
 $
 
-Donc $f_2$ est impaire, ainsi
+Donc $f_1 in E_3$.
+
+Pour $f_2$ :
 
 $
-f_2 in E_4.
+f_2(-z)=(f(-z)-f(z))/2=-f_2(z).
 $
 
-Par conséquent,
+Donc $f_2 in E_4$.
+
+De plus :
 
 $
-f=f_1+f_2 in E_3+E_4.
+f_1(z)+f_2(z)
+=(f(z)+f(-z))/2+(f(z)-f(-z))/2
+=f(z).
 $
 
-Donc
+Ainsi, pour tout $f in E$, on a $f=f_1+f_2$ avec $f_1 in E_3$ et $f_2 in E_4$. Donc :
 
 $
 E subset.eq E_3+E_4.
 $
 
-L'inclusion réciproque est immédiate puisque
+L'inclusion réciproque vient de $E_3 subset.eq E$ et $E_4 subset.eq E$.
 
-$
-E_3 subset.eq E
-quad "et" quad
-E_4 subset.eq E.
-$
-
-Ainsi,
+Finalement :
 
 $
 E=E_3+E_4.
@@ -319,61 +300,26 @@ $
 
 === Montrons que $E_3 inter E_4={0_E}$
 
-Soit
+Soit $f in E_3 inter E_4$. Pour tout $z in CC$, puisque $f$ est à la fois paire et impaire :
 
 $
-f in E_3 inter E_4.
-$
-
-Comme $f in E_3$,
-
-$
-f(-z)=f(z)
-$
-
-pour tout $z in CC$.
-
-Comme $f in E_4$,
-
-$
+cases(
+f(-z)=f(z),
 f(-z)=-f(z)
+)
+arrow
+2f(z)=0
+arrow
+f(z)=0.
 $
 
-pour tout $z in CC$.
-
-Donc
-
-$
-f(z)=-f(z),
-$
-
-d'où
-
-$
-2f(z)=0.
-$
-
-Comme on travaille sur $CC$,
-
-$
-f(z)=0
-$
-
-pour tout $z in CC$.
-
-Ainsi,
-
-$
-f=0_E.
-$
-
-Donc
+Donc $f=0_E$ et :
 
 $
 E_3 inter E_4={0_E}.
 $
 
-Finalement,
+Ainsi :
 
 $
 E=E_3 "⊕" E_4.
