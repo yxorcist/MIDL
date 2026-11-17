@@ -1,65 +1,60 @@
-// source-confidence: high
-// source-note: numbering and statement cross-checked against the official TD02 sheet; the supplied handwritten page contains the end of the coefficient computation and the explicit formula.
-
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
 = Exercice 2
 
-On cherche une application linéaire
-
-$
-phi: RR^2 -> RR
-$
-
-telle que
-
-$
-phi(-1,1)=2
-quad "et" quad
-phi(1,1)=4.
-$
-
-Toute application linéaire de $RR^2$ dans $RR$ s'écrit
-
-$
-phi(x,y)=a x+b y
-$
-
-pour certains réels $a,b$.
-
-Les conditions imposées donnent
+On considère une application *linéaire* $phi: RR^2 -> RR$ telle que :
 
 $
 cases(
--a+b=2,
-a+b=4.
+  phi(-1,1)=2,
+  phi(1,1)=4
+).
+$
+
+La linéarité est donnée par l'énoncé : il reste à déterminer $phi$.
+
+Toute application linéaire de $RR^2$ dans $RR$ est de la forme
+
+$
+phi(x,y)=a x+b y,
+quad a,b in RR.
+$
+
+On pose alors le système correspondant aux deux valeurs imposées :
+
+$
+cases(
+  -a+b=2,
+  a+b=4
 )
+arrow
+cases(
+  a=b-2,
+  2b=6
+)
+arrow
+cases(
+  a=1,
+  b=3
+).
 $
 
-En additionnant les deux équations,
+On obtient donc :
 
 $
-2b=6,
+phi(x,y)=x+3y.
 $
 
-donc
+Vérification :
 
 $
-b=3.
+phi(-1,1)=-1+3=2,
+quad
+phi(1,1)=1+3=4.
 $
 
-Puis
+Les coefficients $a$ et $b$ sont déterminés de façon unique par le système. Réciproquement, l'application $(x,y) -> x+3y$ est bien linéaire et vérifie les deux conditions.
 
-$
-a=1.
-$
-
-Le couple $(a,b)$ est donc déterminé de manière unique.
-
-Ainsi, il existe une unique application linéaire vérifiant les conditions de l'énoncé, et elle est donnée par
-
-$
-(phi(x,y)=x+3y).
-$
+Donc l'application linéaire cherchée existe et est unique.
