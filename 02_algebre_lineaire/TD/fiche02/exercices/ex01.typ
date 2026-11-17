@@ -136,99 +136,180 @@ Donc $phi_4$ est une application linéaire.
 
 == Question 2 — Isomorphisme $phi_1$
 
-La matrice de $phi_1$ dans les bases canoniques est
+La matrice de $phi_1$ dans les bases canoniques est :
 
 $
-A=
-mat(
+A=mat(
   1, 2;
   -2, -3;
 ).
 $
 
-Son déterminant vaut $1$, donc $A$ est inversible et $phi_1$ est un isomorphisme.
-
-Pour déterminer la réciproque, on pose
+Les deux espaces sont de dimension $2$ et :
 
 $
-(X,Y)=phi_1(x,y).
+det(A)=1 dot (-3)-2 dot (-2)=-3+4=1 != 0.
 $
 
-On résout
+Donc $phi_1$ est un isomorphisme.
+
+Pour calculer sa réciproque, on applique Gauss-Jordan à la matrice augmentée :
 
 $
-cases(
-X=x+2y,
-Y=-2x-3y.
+mat(
+  1, 2, 1, 0;
+  -2, -3, 0, 1;
 )
 $
 
-et on obtient
+Avec $L_2 <- L_2+2L_1$ :
 
 $
-x=-3X-2Y,
-quad
-y=2X+Y.
+mat(
+  1, 2, 1, 0;
+  0, 1, 2, 1;
+)
 $
 
-Ainsi,
+Puis avec $L_1 <- L_1-2L_2$ :
 
 $
-phi_1^(-1)(X,Y)
-=
-(-3X-2Y,2X+Y).
+mat(
+  1, 0, -3, -2;
+  0, 1, 2, 1;
+).
+$
+
+Ainsi :
+
+$
+A^(-1)=mat(
+  -3, -2;
+  2, 1;
+).
+$
+
+Donc :
+
+$
+phi_1^(-1)(x,y)=(-3x-2y,2x+y).
 $
 
 == Question 3 — Linéarité sur $CC$ et sur $RR$
 
-=== $psi_1$
+=== $psi_1$ — Conjugaison
 
-La première application est la conjugaison complexe.
-
-Elle n'est pas $CC$-linéaire : la correction utilise le scalaire $i$ pour montrer que la compatibilité avec la multiplication scalaire complexe échoue.
-
-En revanche, la conjugaison respecte l'addition et la multiplication par un scalaire réel.
-
-Donc $psi_1$ est $RR$-linéaire mais pas $CC$-linéaire.
-
-=== $psi_2$
-
-On a
-$
-psi_2(z)="Re"(z).
-$
-
-Elle n'est pas $CC$-linéaire. Par exemple,
+On considère :
 
 $
-psi_2(3i)=0
+psi_1:CC -> CC,
+quad z -> overline(z).
 $
 
-alors que
+Sur $CC$, soient $z,u,lambda in CC$. On a :
 
 $
-i psi_2(3)=3i.
+psi_1(lambda z+u)
+=overline(lambda z+u)
+=overline(lambda) overline(z)+overline(u).
 $
 
-Pour un scalaire réel $lambda$,
+Or :
 
 $
-"Re"(lambda z+z')
-=
-lambda "Re"(z)+"Re"(z').
+lambda psi_1(z)+psi_1(u)
+=lambda overline(z)+overline(u).
+$
+
+Ces expressions ne sont pas toujours égales. Contre-exemple : $lambda=i$, $z=1$ et $u=0$ :
+
+$
+psi_1(i)=-i != i=i psi_1(1).
+$
+
+Donc $psi_1$ n'est pas $CC$-linéaire.
+
+Sur $RR$, si $lambda in RR$, alors $overline(lambda)=lambda$. Donc :
+
+$
+psi_1(lambda z+u)
+=lambda overline(z)+overline(u)
+=lambda psi_1(z)+psi_1(u).
+$
+
+Ainsi, $psi_1$ est $RR$-linéaire.
+
+=== $psi_2$ — Partie réelle
+
+On considère :
+
+$
+psi_2:CC -> CC,
+quad z -> "Re"(z).
+$
+
+Sur $CC$, pour $z,u,lambda in CC$ :
+
+$
+psi_2(lambda z+u)="Re"(lambda z)+"Re"(u).
+$
+
+Or :
+
+$
+"Re"(lambda z)
+="Re"(lambda)"Re"(z)-"Im"(lambda)"Im"(z).
+$
+
+Cette expression n'est pas toujours égale à $lambda "Re"(z)$.
+
+Contre-exemple : pour $lambda=i$, $z=1$ et $u=0$ :
+
+$
+psi_2(i)=0 != i=i psi_2(1).
+$
+
+Donc $psi_2$ n'est pas $CC$-linéaire.
+
+Sur $RR$, pour $lambda in RR$ :
+
+$
+psi_2(lambda z+u)
+="Re"(lambda z+u)
+=lambda "Re"(z)+"Re"(u)
+=lambda psi_2(z)+psi_2(u).
 $
 
 Donc $psi_2$ est $RR$-linéaire.
 
 === $psi_3$
 
-On considère
+On considère :
+
 $
-psi_3(z_1,z_2)
-=
-i z_1-(3+2i)z_2.
+psi_3:CC^2 -> CC,
+quad (z,w) -> i z-(3+2i)w.
 $
 
-Cette expression est une combinaison linéaire complexe des coordonnées.
+Sur $CC$, soient $u=(x,y)$, $v=(a,b)$ dans $CC^2$ et $lambda in CC$.
 
-Ainsi $psi_3$ est $CC$-linéaire, donc aussi $RR$-linéaire.
+$
+psi_3(lambda u+v)
+=psi_3(lambda x+a,lambda y+b)
+$
+
+$
+=i(lambda x+a)-(3+2i)(lambda y+b)
+$
+
+$
+=lambda(i x-(3+2i)y)+(i a-(3+2i)b)
+$
+
+$
+=lambda psi_3(u)+psi_3(v).
+$
+
+Donc $psi_3$ est $CC$-linéaire.
+
+Comme $RR subset.eq CC$, cette égalité est également vraie pour tout $lambda in RR$. Ainsi $psi_3$ est aussi $RR$-linéaire.
