@@ -67,12 +67,24 @@ cases(
 )
 $
 
-La résolution donne
+On isole $y$ dans la première équation :
 
 $
-y=-3z
-quad "et" quad
-x=-2z.
+cases(
+y=2x+z,
+-3x+2x+z-3z=0
+)
+arrow
+cases(
+-x-2z=0,
+y=2x+z
+)
+arrow
+cases(
+x=-2z,
+y=-3z,
+z in RR
+).
 $
 
 Donc
@@ -155,20 +167,38 @@ psi(x,y)
 (2x-4y,3x-6y,2y-x).
 $
 
-On factorise :
+Soit $(a,b,c) in RR^3$. On résout $psi(x,y)=(a,b,c)$ :
 
 $
-psi(x,y)
-=
-(x-2y)(2,3,-1).
+cases(
+2x-4y=a,
+3x-6y=b,
+2y-x=c
+)
+arrow
+cases(
+x=2y-c,
+4y-2c-4y=a,
+6y-3c-6y=b
+)
+arrow
+cases(
+a=-2c,
+b=-3c,
+x=2y-c
+).
 $
 
-Ainsi,
+Ainsi, tout vecteur de l'image est de la forme
 
 $
-"Im"(psi)
-=
-"Vect"((2,3,-1)).
+(a,b,c)=c(-2,-3,1).
+$
+
+Réciproquement, pour tout $c in RR$, on peut prendre $y=0$ et $x=-c$. Donc
+
+$
+"Im"(psi)="Vect"((-2,-3,1)).
 $
 
 Donc
@@ -299,34 +329,18 @@ $
 
 On a
 
-$
-"Im"(psi)
-=
-"Vect"((2,3,-1)).
-$
-
-Or
+D'après les questions 1.b et 2.a,
 
 $
-"Ker"(phi)
-=
-"Vect"((-2,-3,1)).
+"Ker"(phi)="Vect"((-2,-3,1))
+quad "et" quad
+"Im"(psi)="Vect"((-2,-3,1)).
 $
 
-Comme
+Les deux sous-espaces ont la même base, donc
 
 $
-(2,3,-1)
-=
--(-2,-3,1),
-$
-
-on a même
-
-$
-"Im"(psi)
-=
-"Ker"(phi).
+"Im"(psi)="Ker"(phi).
 $
 
 En particulier,
@@ -354,7 +368,7 @@ $
 Par conséquent,
 
 $
-(phi compose psi = 0_(RR^2)).
+phi compose psi = 0_(cal(L)(RR^2)).
 $
 
 == Question 4
@@ -403,9 +417,14 @@ mat(
 ).
 $
 
-Le produit vaut
+En développant les coefficients du produit, on obtient
 
 $
+mat(
+  4a-2-3a+3-a, -2+2;
+  -6a+3+3a-3+3a, 3-2;
+)
+=
 mat(
   1, 0;
   0, 1;
@@ -520,112 +539,68 @@ une application linéaire.
 
 La correction donne deux méthodes.
 
-==== Première méthode — par les images et le rang
+==== Première méthode — par le noyau
 
-D'après la question précédente,
-
-$
-"Im"(g compose phi)
-subset.eq
-"Im"(g).
-$
-
-Supposons par l'absurde que
+D'après la question 4.b.i,
 
 $
-g compose phi=id_(RR^3).
+"Ker"(phi) subset.eq "Ker"(g compose phi).
 $
 
-Alors
+On sait, d'après la question 1.b, que
 
 $
-"Im"(g compose phi)
-=
-RR^3,
+dim("Ker"(phi))=1.
 $
-
-donc
-
-$
-"rg"(g compose phi)=3.
-$
-
-Mais
-
-$
-"rg"(g)
-<=
-dim(RR^2)
-=
-2,
-$
-
-alors que l'inclusion précédente impose
-
-$
-"rg"(g compose phi)
-<=
-"rg"(g).
-$
-
-On obtiendrait
-
-$
-3<=2,
-$
-
-ce qui est impossible.
 
 Donc
 
 $
-(g compose phi != id_(RR^3)).
-$
-
-==== Deuxième méthode — par les noyaux
-
-D'après la question précédente,
-
-$
-"Ker"(phi)
-subset.eq
-"Ker"(g compose phi).
+dim("Ker"(g compose phi))>=1.
 $
 
 Or
 
 $
-"Ker"(phi)
-=
-"Vect"((-2,-3,1)),
+"Ker"(id_(RR^3))={0_(RR^3)}
+quad "et" quad
+dim("Ker"(id_(RR^3)))=0.
 $
 
-donc
+Les noyaux sont différents. Ainsi,
 
 $
-"Ker"(phi)
-!=
-{0_(RR^3)}.
+g compose phi != id_(RR^3).
 $
 
-Ainsi,
+==== Deuxième méthode — par l'image
+
+D'après la question 4.b.ii,
 
 $
-"Ker"(g compose phi)
-!=
-{0_(RR^3)}.
+"Im"(g compose phi) subset.eq "Im"(g).
+$
+
+Comme $g:RR^2 -> RR^3$, on sait que
+
+$
+"rg"(g)<=dim(RR^2)=2.
+$
+
+Donc
+
+$
+"rg"(g compose phi)<= "rg"(g)<=2<3.
 $
 
 Mais
 
 $
-"Ker"(id_(RR^3))
-=
-{0_(RR^3)}.
+"rg"(id_(RR^3))=3.
 $
 
-Donc, là encore,
+Les rangs sont différents. Ainsi,
 
 $
-(g compose phi != id_(RR^3)).
+g compose phi != id_(RR^3).
 $
