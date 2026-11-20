@@ -1,5 +1,6 @@
 // source-confidence: high
-// source-note: numbering and statement cross-checked against the official TD02 sheet; the supplied handwritten pages contain the correction of questions 1 to 3.b.
+// source-note: énoncé conservé ; questions 1 à 3.a reprises des solutions manuscrites du 20 novembre 2026.
+// source-note: question 3.b : correction préexistante conservée, non vérifiée sur la dernière copie manuscrite.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -18,30 +19,85 @@ $
 
 === a) Linéarité
 
-Pour tous $P,Q in RR_3[X]$ et $lambda,mu in RR$,
+Pour tous $P,Q in RR_3[X]$ et $lambda in RR$,
+
 $
-phi(lambda P+mu Q)
-=
-lambda phi(P)+mu phi(Q).
+phi(lambda P+Q)=(lambda P+Q)(X+1)-(lambda P+Q)(X)
 $
-Donc $phi$ est linéaire.
+
+$
+=lambda P(X+1)+Q(X+1)-lambda P(X)-Q(X)
+$
+
+$
+=lambda (P(X+1)-P(X))+(Q(X+1)-Q(X))
+$
+
+$
+=lambda phi(P)+phi(Q).
+$
+
+Comme $P(X+1)-P(X)$ appartient à $RR_3[X]$, l'application est bien définie. Donc $phi$ est linéaire : c'est un endomorphisme de $RR_3[X]$.
 
 === b) Noyau
 
-On a
+Soit $P in RR_3[X]$. On pose
+
 $
-phi(P)=0
-<=>
-P(X+1)=P(X).
+P(X)=a+bX+cX^2+dX^3,
+quad a,b,c,d in RR.
 $
 
-Les seuls polynômes vérifiant cette identité sont les polynômes constants. Ainsi
+On utilise
+
 $
-"Ker"(phi)="Vect"(1)
+(X+1)^2=X^2+2X+1,
 $
-et
+
 $
-dim("Ker"(phi))=1.
+(X+1)^3=X^3+3X^2+3X+1.
+$
+
+Donc
+
+$
+P(X+1)=a+b(X+1)+c(X+1)^2+d(X+1)^3
+$
+
+$
+=(a+b+c+d)+(b+2c+3d)X+(c+3d)X^2+dX^3.
+$
+
+En soustrayant $P(X)$, on obtient
+
+$
+phi(P)=(b+c+d)+(2c+3d)X+3dX^2.
+$
+
+Ainsi
+
+$
+P in "Ker"(phi) <=> cases(
+  b+c+d=0,
+  2c+3d=0,
+  3d=0,
+)
+$
+
+$
+<=> cases(
+  a in RR,
+  b=0,
+  c=0,
+  d=0,
+).
+$
+
+Le coefficient $a$ est libre. Donc $P(X)=a$ et
+
+$
+"Ker"(phi)="Vect"(1),
+quad dim("Ker"(phi))=1.
 $
 
 === c) Rang
@@ -76,18 +132,19 @@ $
 cal(C)=(1,X,X^2,X^3).
 $
 
-On calcule
+On calcule les images des vecteurs de la base canonique :
+
 $
-phi(1)=0,
-quad
-phi(X)=1,
+phi(1)=1-1=0,
+quad phi(X)=X+1-X=1,
 $
+
 $
-phi(X^2)=2X+1,
+phi(X^2)=(X+1)^2-X^2=2X+1,
 $
-et
+
 $
-phi(X^3)=3X^2+3X+1.
+phi(X^3)=(X+1)^3-X^3=3X^2+3X+1.
 $
 
 Ainsi
@@ -111,44 +168,31 @@ $
 "Vect"(1,2X+1,3X^2+3X+1).
 $
 
-Ces trois polynômes sont libres. Ils forment donc une base de $"Im"(phi)$.
+La matrice est déjà échelonnée. Les colonnes pivots sont les colonnes 2, 3 et 4. Les polynômes correspondants forment donc une base de $"Im"(phi)$ :
+
+$
+B_"Im"(phi)=(1,1+2X,1+3X+3X^2).
+$
 
 === c) Identification de l'image
 
-On a déjà
+D'après les générateurs trouvés en 2.b,
+
 $
-"Im"(phi)
-subset.eq
-"Vect"(1,X,X^2).
+"Im"(phi) subset.eq "Vect"(1,X,X^2).
 $
 
-Réciproquement,
+Or, d'après la question 1.c,
+
 $
-1 in "Im"(phi),
-$
-$
-X=frac(1,2)(2X+1)-frac(1,2),
-$
-et
-$
-X^2
-=
-frac(1,6)
-(
-2(3X^2+3X+1)-3(2X+1)+1
-).
+dim("Im"(phi))="rg"(phi)=3
+=dim("Vect"(1,X,X^2)).
 $
 
-Ainsi
-$
-"Vect"(1,X,X^2)
-subset.eq
-"Im"(phi).
-$
+Par inclusion et égalité des dimensions,
 
-Donc
 $
-"Im"(phi)="Vect"(1,X,X^2).
+"Im"(phi)="Vect"(1,X,X^2)=RR_2[X].
 $
 
 == Question 3
@@ -171,18 +215,33 @@ $
 === a) Matrices dans les bases demandées
 
 On calcule
+
 $
-phi(H_0)=0,
-quad
-phi(H_1)=1,
+phi(H_0)=1-1=0,
+quad phi(H_1)=X+1-X=1=H_0.
 $
+
 $
-phi(H_2)=2X=2H_1,
+phi(H_2)=(X+1)X-X(X-1)
 $
-et
+
 $
-phi(H_3)=3X^2-3X=3H_2.
+=X((X+1)-(X-1))=2X=2H_1.
 $
+
+$
+phi(H_3)=(X+1)X(X-1)-X(X-1)(X-2)
+$
+
+$
+=X(X-1)((X+1)-(X-2))
+$
+
+$
+=3(X^2-X)=3X^2-3X=3H_2.
+$
+
+On place les coordonnées de ces images en colonnes, dans la base d'arrivée demandée.
 
 Donc
 $
@@ -209,6 +268,8 @@ mat(
 $
 
 === b) Matrice de $phi compose phi$
+
+_Correction préexistante (question non traitée sur les dernières photos)._
 
 On a
 $
