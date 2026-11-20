@@ -71,7 +71,7 @@ $
 En soustrayant $P(X)$, on obtient
 
 $
-phi(P)=(b+c+d)+(2c+3d)X+3dX^2.
+phi(P)=(b+c+d)+(2c+3d)X+3d X^2.
 $
 
 Ainsi
