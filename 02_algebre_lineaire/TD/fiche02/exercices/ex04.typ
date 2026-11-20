@@ -44,7 +44,7 @@ Comme $P(X+1)-P(X)$ appartient à $RR_3[X]$, l'application est bien définie. Do
 Soit $P in RR_3[X]$. On pose
 
 $
-P(X)=a+bX+cX^2+dX^3,
+P(X)=a+b X+c X^2+d X^3,
 quad a,b,c,d in RR.
 $
 
@@ -65,7 +65,7 @@ P(X+1)=a+b(X+1)+c(X+1)^2+d(X+1)^3
 $
 
 $
-=(a+b+c+d)+(b+2c+3d)X+(c+3d)X^2+dX^3.
+=(a+b+c+d)+(b+2c+3d)X+(c+3d)X^2+d X^3.
 $
 
 En soustrayant $P(X)$, on obtient
@@ -171,7 +171,7 @@ $
 La matrice est déjà échelonnée. Les colonnes pivots sont les colonnes 2, 3 et 4. Les polynômes correspondants forment donc une base de $"Im"(phi)$ :
 
 $
-B_"Im"(phi)=(1,1+2X,1+3X+3X^2).
+B_("Im"(phi))=(1,1+2X,1+3X+3X^2).
 $
 
 === c) Identification de l'image
