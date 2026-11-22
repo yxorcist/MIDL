@@ -1,7 +1,7 @@
 // source-confidence: high
-// source-note: photos manuscrites 11280 et 11282, TD03 exercice 3, questions 1 à 3.
+// source-note: résolution manuscrite du deuxième essai de l'étudiant (photos partagées dans la conversation), questions 1 à 4.
 // source-note: sujet officiel TD03_endomorphismes-changements-bases.pdf, exercice 3, questions 1 à 4.
-// source-reconstruction: question 4 absente de la photo ; solution calculée à partir de la matrice de symétrie et de l'équation de D.
+// source-note: les calculs corrigés du deuxième essai sont confirmés pour les quatre questions ; la vérification P^(-1) A P est un complément.
 // source-verification: s(x,y)=(6y-x,y), A²=I, matrice dans B = diag(1,-1), s(3,2)=(9,2).
 
 #set page(paper: "a4", margin: 2cm)
@@ -32,10 +32,27 @@ $
 
 On note $s$ la *symétrie par rapport à $D_1$ parallèlement à $D_2$*.
 
-Tout vecteur $u=(x,y)$ se décompose suivant ces droites :
+On vérifie d'abord que $D_1$ et $D_2$ sont supplémentaires. En effet,
+$
+D_1 intersect D_2 = \{(0,0)\},
+$
+car $y=0$ et $x-3y=0$ imposent $x=y=0$. De plus,
+$
+dim(D_1)+dim(D_2)=1+1=2=dim(RR^2).
+$
+Donc $RR^2=D_1 "⊕" D_2$.
+
+Tout vecteur $u=(x,y)$ se décompose de manière unique suivant ces droites :
 
 $
 u=(3y,y)+(x-3y,0).
+$
+
+En posant $(x,y)=a(3,1)+b(1,0)$, on obtient
+$
+cases(x=3a+b, y=a)
+quad => quad
+cases(a=y, b=x-3y).
 $
 
 Par définition, $s$ conserve la composante dans $D_1$ et change le signe de la composante dans $D_2$. Ainsi
@@ -95,14 +112,34 @@ u_1=(3,1) in D_1,
 quad u_2=(1,0) in D_2.
 $
 
-La symétrie fixe les vecteurs de $D_1$ et change le signe des vecteurs de $D_2$. Donc
+En utilisant $s(x,y)=(6y-x,y)$, on calcule
+$
+s(u_1)=s(3,1)=(3,1),
+quad
+s(u_2)=s(1,0)=(-1,0).
+$
 
+Pour construire la matrice dans $cal(B)$, on exprime *chaque image dans la nouvelle base*.
+
+Pour $s(u_1)=(3,1)=alpha u_1+beta u_2$ :
 $
-s(u_1)=u_1=1 dot u_1+0 dot u_2,
+cases(3=3alpha+beta, 1=alpha)
+quad => quad
+(alpha,beta)=(1,0).
 $
 
+Pour $s(u_2)=(-1,0)=alpha u_1+beta u_2$ :
 $
-s(u_2)=-u_2=0 dot u_1-1 dot u_2.
+cases(-1=3alpha+beta, 0=alpha)
+quad => quad
+(alpha,beta)=(0,-1).
+$
+
+Ainsi,
+$
+[s(u_1)]_cal(B)=mat(1;0),
+quad
+[s(u_2)]_cal(B)=mat(0;-1).
 $
 
 Les colonnes sont à présent les coordonnées des images *dans la base $cal(B)$*. On obtient
@@ -127,7 +164,7 @@ $
 P^(-1) A P=mat(1,0;0,-1)=A'.
 $
 
-== 4. Déterminer l'image de la droite $D$ (complément reconstruit)
+== 4. Déterminer l'image de la droite $D$
 
 Le sujet donne
 
@@ -159,7 +196,7 @@ $
 s(D)="Vect"((9,2)).
 $
 
-Un vecteur $(x,y)$ appartient à cette droite si et seulement si il est de la forme $(9t,2t)$, soit
+Un vecteur $(x,y)$ appartient à cette droite si et seulement s'il est de la forme $(9t,2t)$, avec $t in RR$. Comme $x=9t$ et $y=2t$, on élimine $t$ pour obtenir
 
 $
 2x-9y=0.
@@ -181,5 +218,5 @@ $
 6. Pour obtenir l'image d'une droite, choisir un vecteur directeur, le transformer par $s$, puis écrire l'équation de la droite engendrée par le vecteur obtenu.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* Questions 1 à 3 : démarche manuscrite des photos 11280 et 11282, complétée par des contrôles algébriques. Question 4 : résolution nouvelle inférée de l'énoncé officiel, absente de la correction photographiée.
+  *Provenance.* Les quatre questions suivent la résolution manuscrite du deuxième essai de l'étudiant, vérifiée à partir de l'énoncé officiel. La vérification matricielle $P^(-1) A P=A'$ et le contrôle $A^2=I_2$ sont des compléments de vérification.
 ]
