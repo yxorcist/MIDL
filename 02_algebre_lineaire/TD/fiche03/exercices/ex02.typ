@@ -89,7 +89,7 @@ $
 
 *Conclusion géométrique :* $P="Im"(phi)$ est un plan vectoriel et $D="Ker"(phi)$ est une droite vectorielle. Le vecteur
 $
-boxed(d=(-2,1,2))
+d=(-2,1,2)
 $
 est donc *un vecteur directeur de $D$*.
 
@@ -99,7 +99,7 @@ est donc *un vecteur directeur de $D$*.
 
 Ces conditions d'orthogonalité s'écrivent toutes en une seule équation :
 $
-boxed(A^T n=0).
+A^T n=0.
 $
 
 En effet, les composantes de $A^T n$ sont les produits scalaires de $n$ avec chacune des colonnes de $A$.
@@ -125,14 +125,14 @@ La deuxième équation donne $a=c$ ; les autres donnent $a+2b=0$, soit $b=-a/2$.
 
 En choisissant $a=2$, on obtient le vecteur normal
 $
-boxed(n=(2,-1,2)).
+n=(2,-1,2).
 $
 
 Un vecteur $v=(x,y,z)$ appartient à $P$ exactement lorsque $n dot v=0$ : cette équivalence vaut ici parce que $P$ est un plan vectoriel de dimension $2$, et que le sous-espace défini par $n dot v=0$ a aussi dimension $2$.
 
 Ainsi :
 $
-boxed(P=\\{(x,y,z) in RR^3 : 2x-y+2z=0\\}).
+P=\{(x,y,z) in RR^3 : 2x-y+2z=0\}.
 $
 
 *Attention :* $n$ est un vecteur _normal_ au plan, pas un vecteur directeur de la droite $D$ ; celui-ci a été trouvé dans le noyau.
@@ -159,7 +159,7 @@ Les colonnes pivots sont les colonnes $1$ et $2$. On sélectionne alors *les col
 
 On obtient
 $
-boxed("Im"(phi)="Vect"((-3,2,4),(2,0,-2))).
+"Im"(phi)="Vect"((-3,2,4),(2,0,-2)).
 $
 
 Ces deux vecteurs sont linéairement indépendants : le mineur $det(mat(-3,2;2,0))=-4$ est non nul.
@@ -182,11 +182,11 @@ RR^3=P "⊕" D
 $
 et $phi$ est la projection sur
 $
-boxed(P : 2x-y+2z=0)
+P : 2x-y+2z=0
 $
 parallèlement à
 $
-boxed(D="Vect"((-2,1,2))).
+D="Vect"((-2,1,2)).
 $
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
