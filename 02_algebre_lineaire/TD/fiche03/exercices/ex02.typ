@@ -1,15 +1,19 @@
 // source-confidence: high
-// source-note: photographies 10902 (questions 1-2) et 11280, 11282 (rappel de l'image), recoupées avec l'énoncé officiel TD03_endomorphismes-changements-bases.pdf.
-// source-note: le calcul de A²=A et le rang 2 sont confirmés symboliquement ; noyau et image explicités comme compléments dérivés des données de la photo.
+// source-note: énoncé officiel TD03 et résolution manuscrite de l'exercice 2, complétés par les justifications théoriques discutées.
+// source-note: les rappels sur la transposée, les vecteurs normaux et le pivot de Gauss sont des explications additionnelles.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
 #set par(justify: true, leading: 0.65em)
 
-= TD 3 — Exercice 2 — Reconnaître une projection par sa matrice
+= TD 3 — Exercice 2 — Projection sur un plan parallèlement à une droite
 
-Soit $phi$ l'endomorphisme de $RR^3$ représenté, dans la base canonique, par
+Soit $phi : RR^3 -> RR^3$ définie par
+$
+phi(x,y,z)=(-3x+2y-4z, 2x+2z, 4x-2y+5z).
+$
 
+Dans la base canonique, sa matrice est
 $
 A=mat(
   -3,2,-4;
@@ -18,14 +22,17 @@ A=mat(
 ).
 $
 
-On souhaite montrer que $phi$ est une projection, puis déterminer les dimensions de son image et de son noyau.
+L'énoncé demande :
++ de prouver que $phi$ est une projection sur un plan $P$, parallèlement à une droite $D$ ;
++ de donner une équation cartésienne de $P$ et un vecteur directeur de $D$.
 
-== 1. Vérifier la propriété de projection
+== 1. Prouver qu'il s'agit d'une projection
 
-Un produit matriciel donne
+*Critère :* un endomorphisme est une projection si et seulement si $phi compose phi=phi$, soit, matriciellement, $A^2=A$.
 
+Par multiplication matricielle :
 $
-A^2=
+A^2 =
 mat(
   -3,2,-4;
   2,0,2;
@@ -45,106 +52,16 @@ mat(
 =A.
 $
 
-Ainsi,
-
+Ainsi, $phi$ est une projection. Pour toute projection :
 $
-"Mat"(phi compose phi)=A^2=A="Mat"(phi).
-$
-
-Par unicité de l'application linéaire représentée par une matrice dans des bases fixées,
-
-$
-phi compose phi=phi.
+RR^3="Im"(phi) "⊕" "Ker"(phi).
 $
 
-Donc *$phi$ est une projection*.
+Elle projette sur son image parallèlement à son noyau.
 
-== 2. Déterminer le rang
+== 2. Calculer le noyau et le rang
 
-Les notes procèdent par échelonnement. On peut aussi vérifier le rang directement.
-
-Les colonnes vérifient
-
-$
-C_3=C_1-C_2/2.
-$
-
-Donc
-
-$
-"rg"(A)<=2.
-$
-
-D'autre part, le mineur formé par les deux premières lignes et les deux premières colonnes vaut
-
-$
-det(mat(-3,2;2,0))=-4 != 0.
-$
-
-Donc
-
-$
-"rg"(A)>=2.
-$
-
-Ainsi,
-
-$
-"rg"(phi)="rg"(A)=2.
-$
-
-Par conséquent,
-
-$
-dim("Im"(phi))=2,
-$
-
-et, par le théorème du rang,
-
-$
-dim("Ker"(phi))=3-2=1.
-$
-
-L'image est donc un plan vectoriel de $RR^3$ ; le noyau est une droite vectorielle.
-
-== 3. Équation du plan et direction de la droite (nouvelle photographie)
-
-L'énoncé demande une équation cartésienne du plan $P="Im"(phi)$ et un vecteur directeur de la droite $D="Ker"(phi)$.
-
-D'après la question précédente, $P$ est engendré par les deux colonnes indépendantes
-
-$
-v_1=(-3,2,4),
-quad
-v_2=(2,0,-2).
-$
-
-Ces deux vecteurs vérifient l'équation
-
-$
-2x-y+2z=0.
-$
-
-En effet,
-
-$
-2(-3)-2+2 dot 4=0
-$
-
-et
-
-$
-2 dot 2-0+2(-2)=0.
-$
-
-Le plan d'équation $2x-y+2z=0$ contient donc le plan $P$, et ces deux sous-espaces ont dimension $2$. Par conséquent, ils sont égaux :
-
-$
-P=\{(x,y,z) in RR^3 : 2x-y+2z=0\}.
-$
-
-Pour trouver la droite $D$, on résout $A(x,y,z)^T=0$ :
-
+On résout $A v=0$, c'est-à-dire
 $
 cases(
   -3x+2y-4z=0,
@@ -153,53 +70,125 @@ cases(
 )
 $
 
-La deuxième équation donne $x=-z$, puis la première donne $2y=z$. Ainsi
+La deuxième équation donne $x=-z$. En remplaçant dans la première, on obtient $2y-z=0$, donc $z=2y$ puis $x=-2y$. La troisième équation est alors automatiquement satisfaite.
 
+Par conséquent :
 $
-(x,y,z)=t(-2,1,2),
-quad t in RR.
+(x,y,z)=y(-2,1,2), quad y in RR,
 $
-
-Un vecteur directeur de $D$ est donc
-
+d'où
 $
-d=(-2,1,2),
-quad D="Vect"((-2,1,2)).
+"Ker"(phi)="Vect"((-2,1,2)),
+quad dim("Ker"(phi))=1.
 $
 
-On vérifie que $d$ n'est pas dans $P$, puisque $2(-2)-1+2 dot 2=-1 !=0$ : la droite $D$ est supplémentaire du plan $P$.
-
-*Interprétation géométrique :* $phi$ projette tout vecteur de $RR^3$ sur le plan $2x-y+2z=0$ selon la direction $(-2,1,2)$.
-
-== 4. Conclusion géométrique
-
-Comme $phi$ est une projection, on sait que
-
+Le théorème du rang donne
 $
-RR^3="Im"(phi) "⊕" "Ker"(phi).
+dim("Im"(phi))=3-dim("Ker"(phi))=2.
 $
 
-Donc $phi$ est la projection *sur le plan $"Im"(phi)$ parallèlement à la droite $"Ker"(phi)$*.
-
-=== Complément de calcul — Bases possibles
-
-On peut choisir pour base du plan image les deux premières colonnes de $A$ :
-
+*Conclusion géométrique :* $P="Im"(phi)$ est un plan vectoriel et $D="Ker"(phi)$ est une droite vectorielle. Le vecteur
 $
-"Im"(phi)="Vect"(
-  mat(-3;2;4),
-  mat(2;0;-2)
+boxed(d=(-2,1,2))
+$
+est donc *un vecteur directeur de $D$*.
+
+== 3. Trouver une équation cartésienne du plan image
+
+*Principe :* les colonnes de $A$ engendrent $P="Im"(phi)$. Un *vecteur normal* au plan est un vecteur non nul $n=(a,b,c)$ perpendiculaire à chaque colonne.
+
+Ces conditions d'orthogonalité s'écrivent toutes en une seule équation :
+$
+boxed(A^T n=0).
+$
+
+En effet, les composantes de $A^T n$ sont les produits scalaires de $n$ avec chacune des colonnes de $A$.
+
+Ici :
+$
+A^T=mat(
+  -3,2,4;
+  2,0,-2;
+  -4,2,5
+)
+$
+et on résout
+$
+cases(
+  -3a+2b+4c=0,
+  2a-2c=0,
+  -4a+2b+5c=0.
+)
+$
+
+La deuxième équation donne $a=c$ ; les autres donnent $a+2b=0$, soit $b=-a/2$.
+
+En choisissant $a=2$, on obtient le vecteur normal
+$
+boxed(n=(2,-1,2)).
+$
+
+Un vecteur $v=(x,y,z)$ appartient à $P$ exactement lorsque $n dot v=0$ : cette équivalence vaut ici parce que $P$ est un plan vectoriel de dimension $2$, et que le sous-espace défini par $n dot v=0$ a aussi dimension $2$.
+
+Ainsi :
+$
+boxed(P=\\{(x,y,z) in RR^3 : 2x-y+2z=0\\}).
+$
+
+*Attention :* $n$ est un vecteur _normal_ au plan, pas un vecteur directeur de la droite $D$ ; celui-ci a été trouvé dans le noyau.
+
+== 4. Méthode complémentaire : obtenir une base du plan image
+
+Les colonnes de $A$ sont
+$
+C_1=(-3,2,4), quad
+C_2=(2,0,-2), quad
+C_3=(-4,2,5).
+$
+
+L'élimination de Gauss sur les *lignes* de $A$ donne, par exemple, la forme échelonnée
+$
+mat(
+  2,0,2;
+  0,4,-2;
+  0,0,0
 ).
 $
 
-La résolution de $A x=0$ fournit notamment
+Les colonnes pivots sont les colonnes $1$ et $2$. On sélectionne alors *les colonnes correspondantes de la matrice initiale*, et non celles de la matrice échelonnée.
 
+On obtient
 $
-"Ker"(phi)="Vect"(mat(-2;1;2)).
+boxed("Im"(phi)="Vect"((-3,2,4),(2,0,-2))).
 $
 
-Ces deux descriptions sont cohérentes avec les dimensions obtenues ci-dessus.
+Ces deux vecteurs sont linéairement indépendants : le mineur $det(mat(-3,2;2,0))=-4$ est non nul.
+
+On vérifie aussi la dépendance de la troisième colonne :
+$
+C_3=C_1-C_2/2.
+$
+
+*Différence des méthodes :*
+- $A v=0$ donne le noyau, donc le vecteur directeur de $D$ et, via le théorème du rang, la dimension de $P$.
+- $A^T n=0$ donne un vecteur normal à $P$, donc son équation cartésienne.
+- Les colonnes pivots de $A$ donnent une base de $P$ (deux vecteurs directeurs indépendants).
+
+== 5. Conclusion
+
+Comme $A^2=A$,
+$
+RR^3=P "⊕" D
+$
+et $phi$ est la projection sur
+$
+boxed(P : 2x-y+2z=0)
+$
+parallèlement à
+$
+boxed(D="Vect"((-2,1,2))).
+$
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* La source manuscrite calcule $A^2=A$, indique $"rg"(A)=2$ et interprète image et noyau comme plan et droite. Les bases explicites de la dernière partie sont une vérification supplémentaire, non une transcription du tableau.
+  *Provenance.* L'énoncé et les calculs de projection, de noyau et d'équation cartésienne viennent de l'exercice étudié et de la solution manuscrite. Les explications sur $A^T n=0$, la distinction vecteur normal / vecteur directeur et la méthode des colonnes pivots ont été ajoutées pour consolider la méthode.
 ]
