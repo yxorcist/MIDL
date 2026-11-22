@@ -34,7 +34,7 @@ On note $s$ la *symétrie par rapport à $D_1$ parallèlement à $D_2$*.
 
 On vérifie d'abord que $D_1$ et $D_2$ sont supplémentaires. En effet,
 $
-D_1 intersect D_2 = \{(0,0)\},
+D_1 "∩" D_2 = \{(0,0)\},
 $
 car $y=0$ et $x-3y=0$ imposent $x=y=0$. De plus,
 $
