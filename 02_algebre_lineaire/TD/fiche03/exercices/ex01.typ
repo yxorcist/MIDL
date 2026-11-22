@@ -2,7 +2,7 @@
 // source-note: énoncé officiel TD03_endomorphismes-changements-bases.pdf (2026-2027), exercice 1, questions 1 à 3.
 // source-note: nouvelle solution manuscrite autonome du 22 novembre 2026 : preuve de somme directe, décomposition algébrique, formules de p et s et preuve des trois identités.
 // source-note: résultats numériques et schéma de la question 2 conservés depuis la version précédente (photographies manuscrites 10902).
-// source-reconstruction: les calculs intermédiaires sont mis au propre ; les matrices et les identités facultatives p²=p et s²=Id sont des compléments.
+// source-reconstruction: les calculs intermédiaires sont mis au propre ; les identités facultatives p²=p et s²=Id sont des compléments.
 // source-uncertainty: le schéma SVG reprend la géométrie des droites et des images, sans être le décalque exact du dessin manuscrit.
 
 #set page(paper: "a4", margin: 2cm)
@@ -91,13 +91,6 @@ $
 $
 $
 =(2y-x,y).
-$
-
-On peut en déduire, dans la base canonique :
-$
-"Mat"(p)=mat(0,1;0,1),
-quad
-"Mat"(s)=mat(-1,2;0,1).
 $
 
 === Images des trois vecteurs
@@ -197,5 +190,5 @@ Les définitions donnent aussi $p^2=p$ et $s^2="Id"_(RR^2)$.
   *Provenance.* Énoncé vérifié sur la feuille officielle TD03 (UCA, 2026–2027).
   La preuve de somme directe, la recherche de $a,b$, les formules de $p,s$ et les démonstrations de la question 3 suivent la copie manuscrite récente, avec les corrections algébriques intégrées.
   Les trois images numériques et la figure étaient déjà documentées dans la version antérieure.
-  Les matrices et les compléments de la fin ne sont pas explicitement demandés.
+  Les compléments de la fin ne sont pas explicitement demandés.
 ]
