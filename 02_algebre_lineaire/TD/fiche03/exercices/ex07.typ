@@ -86,7 +86,7 @@ Il reste à vérifier que les images sont bien de degré au plus $2$.
 
 $
 phi(P)(X)
-= (-6a)X^2 + (2a-4b+2c)X + (b-2c).
+= (b-6a)X^2 + (2a-4b+2c)X + (b-2c).
 $
 
 C'est un polynôme de degré au plus $2$. Ainsi *$phi$ est un endomorphisme de $RR_2[X]$*.
