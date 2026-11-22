@@ -37,7 +37,7 @@ $
 
 Les deux sous-espaces sont donc supplémentaires :
 $
-box(D_1 "⊕" D_2=RR^2).
+D_1 "⊕" D_2=RR^2.
 $
 
 *Rappel.* La somme directe signifie que tout vecteur de $RR^2$ admet une décomposition *unique* en un vecteur de $D_1$ et un vecteur de $D_2$.
@@ -70,7 +70,7 @@ $
 
 D'où $a=y$ et $b=x-y$. Ainsi :
 $
-box((x,y)=(y,y)+(x-y,0)).
+(x,y)=(y,y)+(x-y,0).
 $
 
 Les deux termes appartiennent respectivement à $D_1$ et à $D_2$.
@@ -79,7 +79,7 @@ Les deux termes appartiennent respectivement à $D_1$ et à $D_2$.
 
 La projection conserve la composante dans $D_1$ :
 $
-box(p(x,y)=(y,y)).
+p(x,y)=(y,y).
 $
 
 La symétrie conserve la première composante et inverse la seconde :
@@ -90,7 +90,7 @@ $
 =(y-(x-y),y-0)
 $
 $
-box(=(2y-x,y)).
+=(2y-x,y).
 $
 
 On peut en déduire, dans la base canonique :
@@ -142,7 +142,7 @@ $
 
 Cette égalité vaut pour tout $v in RR^2$, donc
 $
-box(p+q="Id"_(RR^2)).
+p+q="Id"_(RR^2).
 $
 
 === Montrer que $s="Id"_(RR^2)-2q$
@@ -157,7 +157,7 @@ $
 
 Donc
 $
-box(s="Id"_(RR^2)-2q).
+s="Id"_(RR^2)-2q.
 $
 
 === Montrer que $s=2p-"Id"_(RR^2)$
@@ -172,14 +172,14 @@ $
 
 Donc
 $
-box(s=2p-"Id"_(RR^2)).
+s=2p-"Id"_(RR^2).
 $
 
 Ainsi, les trois égalités demandées sont démontrées :
 $
-box(p+q="Id"_(RR^2)),
+p+q="Id"_(RR^2),
 quad
-box(s="Id"_(RR^2)-2q=2p-"Id"_(RR^2)).
+s="Id"_(RR^2)-2q=2p-"Id"_(RR^2).
 $
 
 === Compléments (non demandés)
