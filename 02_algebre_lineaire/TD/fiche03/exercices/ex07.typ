@@ -82,7 +82,7 @@ $
 
 Il reste à vérifier que les images sont bien de degré au plus $2$.
 
-Écrivons $P(X)=aX^2+bX+c$. En développant la définition de $phi$, les termes en $X^3$ s'annulent :
+Écrivons $P(X)=a X^2+b X+c$. En développant la définition de $phi$, les termes en $X^3$ s'annulent :
 
 $
 phi(P)(X)
