@@ -1,7 +1,9 @@
 // source-confidence: high
-// source-note: nouvelles photographies 10902, premier exercice de TD03 (droites D1, D2, symétrie et projection).
-// source-note: formules en coordonnées explicitées à partir de la décomposition directe lisible sur la copie.
-// source-uncertainty: quelques légendes du dessin manuscrit sont difficiles à lire ; le schéma SVG est reconstruit à partir des droites et des formules, non décalqué.
+// source-note: énoncé officiel TD03_endomorphismes-changements-bases.pdf (2026-2027), exercice 1, questions 1 à 3.
+// source-note: nouvelle solution manuscrite autonome du 22 novembre 2026 : preuve de somme directe, décomposition algébrique, formules de p et s et preuve des trois identités.
+// source-note: résultats numériques et schéma de la question 2 conservés depuis la version précédente (photographies manuscrites 10902).
+// source-reconstruction: les calculs intermédiaires sont mis au propre ; les matrices et les identités facultatives p²=p et s²=Id sont des compléments.
+// source-uncertainty: le schéma SVG reprend la géométrie des droites et des images, sans être le décalque exact du dessin manuscrit.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -9,79 +11,112 @@
 
 = TD 3 — Exercice 1 — Projection et symétrie sur deux droites supplémentaires
 
-== 1. Décomposition en somme directe
+== 1. Démontrer que $D_1 "⊕" D_2=RR^2$
 
-On considère les deux droites vectorielles
-
+On considère
 $
-D_1={ (t,t) | t in RR }="Vect"((1,1))
+D_1={ (x,y) in RR^2 | y=x }="Vect"((1,1))
 $
-
 et
-
 $
-D_2={ (t,0) | t in RR }="Vect"((1,0)).
-$
-
-Chaque droite est de dimension $1$, avec les bases respectives $((1,1))$ et $((1,0))$.
-
-La famille $((1,1),(1,0))$ est libre dans $RR^2$, et contient deux vecteurs. C'est donc une base de $RR^2$.
-
-Ainsi,
-
-$
-D_1 "⊕" D_2=RR^2.
+D_2={ (x,y) in RR^2 | y=0 }="Vect"((1,0)).
 $
 
-Pour tout $u=(x,y) in RR^2$, la décomposition associée est unique :
-
+Soit $v=(x,y) in D_1 inter D_2$. Alors $y=x$ et $y=0$.
+Ainsi $x=y=0$, donc
 $
-u=(y,y)+(x-y,0),
+D_1 inter D_2={0_(RR^2)}.
 $
 
-où $(y,y) in D_1$ et $(x-y,0) in D_2$.
+De plus,
+$
+dim(D_1)=1,
+quad dim(D_2)=1,
+quad dim(D_1)+dim(D_2)=2=dim(RR^2).
+$
+
+Les deux sous-espaces sont donc supplémentaires :
+$
+box(D_1 "⊕" D_2=RR^2).
+$
+
+*Rappel.* La somme directe signifie que tout vecteur de $RR^2$ admet une décomposition *unique* en un vecteur de $D_1$ et un vecteur de $D_2$.
 
 == 2. Projection et symétrie
 
-On note $p$ la projection *sur $D_1$ parallèlement à $D_2$*, et $s$ la symétrie associée.
+On note $p$ la projection *sur $D_1$ parallèlement à $D_2$*, et $s$ la symétrie *par rapport à $D_1$ parallèlement à $D_2$*.
 
-Par définition, si $u=u_1+u_2$, avec $u_1 in D_1$ et $u_2 in D_2$,
-
+*Définitions.* Pour $v=v_1+v_2$, avec $v_1 in D_1$ et $v_2 in D_2$ :
 $
-p(u)=u_1,
+p(v)=v_1,
 quad
-s(u)=u_1-u_2.
+s(v)=v_1-v_2.
 $
 
-En utilisant la décomposition calculée ci-dessus,
+=== Trouver la décomposition générale
 
+Soit $v=(x,y) in RR^2$. Comme les vecteurs de $D_1$ sont de la forme $(a,a)$ et ceux de $D_2$ de la forme $(b,0)$, on cherche $a,b in RR$ tels que
 $
-p(x,y)=(y,y)
-$
-
-et
-
-$
-s(x,y)=(y,y)-(x-y,0)=(2y-x,y).
+(x,y)=(a,a)+(b,0)=(a+b,a).
 $
 
-Dans la base canonique,
+On identifie les coordonnées :
+$
+cases(
+  x=a+b,
+  y=a.
+)
+$
 
+D'où $a=y$ et $b=x-y$. Ainsi :
+$
+box((x,y)=(y,y)+(x-y,0)).
+$
+
+Les deux termes appartiennent respectivement à $D_1$ et à $D_2$.
+
+=== Formules de $p$ et $s$
+
+La projection conserve la composante dans $D_1$ :
+$
+box(p(x,y)=(y,y)).
+$
+
+La symétrie conserve la première composante et inverse la seconde :
+$
+s(x,y)=(y,y)-(x-y,0)
+$
+$
+=(y-(x-y),y-0)
+$
+$
+box(=(2y-x,y)).
+$
+
+On peut en déduire, dans la base canonique :
 $
 "Mat"(p)=mat(0,1;0,1),
 quad
 "Mat"(s)=mat(-1,2;0,1).
 $
 
-On retrouve les points calculés dans la copie :
+=== Images des trois vecteurs
 
 $
-s(1,0)=(-1,0),
-quad
-s(1,1)=(1,1),
-quad
-s(2,1)=(0,1).
+p(1,0)=(0,0),
+quad s(1,0)=(-1,0);
 $
+$
+p(1,1)=(1,1),
+quad s(1,1)=(1,1);
+$
+$
+p(2,1)=(1,1),
+quad s(2,1)=(0,1).
+$
+
+Pour le dessin : tracer $D_1$ (droite $y=x$) et $D_2$ (axe $y=0$).
+Les déplacements entre $v$, $p(v)$ et $s(v)$ se font parallèlement à $D_2$.
 
 #align(center)[
   #image("../figures/ex01-droites-projection.svg", width: 85%)
@@ -89,40 +124,78 @@ $
 
 == 3. Projection complémentaire et relations
 
-On note $q$ la projection sur $D_2$ parallèlement à $D_1$. Alors
+On note $q$ la projection sur $D_2$ parallèlement à $D_1$.
 
+Pour tout $v in RR^2$, on écrit $v=v_1+v_2$ avec $v_1 in D_1$ et $v_2 in D_2$. Par définition :
 $
-q(x,y)=(x-y,0).
-$
-
-D'après la décomposition en somme directe,
-
-$
-(p+q)(u)=u_1+u_2=u,
+p(v)=v_1,
+quad q(v)=v_2,
+quad s(v)=v_1-v_2,
+quad "Id"_(RR^2)(v)=v_1+v_2.
 $
 
-donc
+=== Montrer que $p+q="Id"_(RR^2)$
 
 $
-p+q="Id"_(RR^2).
+(p+q)(v)=p(v)+q(v)=v_1+v_2=v="Id"_(RR^2)(v).
 $
 
-De même,
-
+Cette égalité vaut pour tout $v in RR^2$, donc
 $
-s=p-q=2p-"Id"_(RR^2).
-$
-
-On en déduit
-
-$
-p=( "Id"_(RR^2)+s )/2
-quad "et" quad
-q=( "Id"_(RR^2)-s )/2.
+box(p+q="Id"_(RR^2)).
 $
 
-Enfin, on vérifie $p^2=p$ et $s^2="Id"_(RR^2)$ : ce sont respectivement une projection et une symétrie.
+=== Montrer que $s="Id"_(RR^2)-2q$
+
+$
+("Id"_(RR^2)-2q)(v)
+=v-2q(v)
+=(v_1+v_2)-2v_2
+=v_1-v_2
+=s(v).
+$
+
+Donc
+$
+box(s="Id"_(RR^2)-2q).
+$
+
+=== Montrer que $s=2p-"Id"_(RR^2)$
+
+$
+(2p-"Id"_(RR^2))(v)
+=2p(v)-v
+=2v_1-(v_1+v_2)
+=v_1-v_2
+=s(v).
+$
+
+Donc
+$
+box(s=2p-"Id"_(RR^2)).
+$
+
+Ainsi, les trois égalités demandées sont démontrées :
+$
+box(p+q="Id"_(RR^2)),
+quad
+box(s="Id"_(RR^2)-2q=2p-"Id"_(RR^2)).
+$
+
+=== Compléments (non demandés)
+
+En isolant $p$ et $q$ dans les égalités précédentes :
+$
+p=("Id"_(RR^2)+s)/2,
+quad
+q=("Id"_(RR^2)-s)/2.
+$
+
+Les définitions donnent aussi $p^2=p$ et $s^2="Id"_(RR^2)$.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Source.* L'énoncé exact n'est pas photographié ; les droites $D_1,D_2$, la décomposition, les applications $p,s,q$ et leurs relations proviennent des deux pages manuscrites. Les matrices et vérifications finales sont des compléments algébriques dérivés de ces données.
+  *Provenance.* Énoncé vérifié sur la feuille officielle TD03 (UCA, 2026–2027).
+  La preuve de somme directe, la recherche de $a,b$, les formules de $p,s$ et les démonstrations de la question 3 suivent la copie manuscrite récente, avec les corrections algébriques intégrées.
+  Les trois images numériques et la figure étaient déjà documentées dans la version antérieure.
+  Les matrices et les compléments de la fin ne sont pas explicitement demandés.
 ]
