@@ -1,6 +1,6 @@
 // source-confidence: high
-// source-note: photographies manuscrites 11481 (feuille de droite) et 11482 (début de feuille de gauche), recoupées avec l'énoncé officiel TD03_endomorphismes-changements-bases.pdf, exercice 4.
-// source-reconstruction: on développe les changements de coordonnées, on vérifie la matrice inverse et on corrige la lisibilité des dernières coordonnées.
+// source-note: énoncé officiel TD03, exercice 4 ; nouvelle solution manuscrite autonome fournie pendant le tutorat (les trois questions).
+// source-reconstruction: la rédaction met en avant la preuve par déterminant et la résolution des systèmes utilisées sur la nouvelle copie ; la formule générale et l'inverse sont des compléments.
 // source-verification: la matrice de passage est inversible, et les trois vecteurs demandés sont vérifiés par multiplication matricielle.
 
 #set page(paper: "a4", margin: 2cm)
@@ -27,38 +27,9 @@ On note $cal(B)=(u_1,u_2,u_3,u_4)$ et $cal(C)$ la base canonique de $RR^4$.
 
 == 1. Vérifier que $cal(B)$ est une base
 
-Pour $alpha,beta,gamma,delta in RR$, supposons
+*Méthode utilisée dans la solution manuscrite : déterminant.*
 
-$
-alpha u_1+beta u_2+gamma u_3+delta u_4=0.
-$
-
-L'égalité coordonnée par coordonnée donne
-
-$
-cases(
-  alpha+beta+gamma+delta=0,
-  beta+gamma+delta=0,
-  gamma+delta=0,
-  delta=0.
-)
-$
-
-En remontant à partir de la dernière ligne, on obtient successivement
-
-$
-delta=0,
-quad gamma=0,
-quad beta=0,
-quad alpha=0.
-$
-
-La famille est libre. Elle contient quatre vecteurs dans un espace de dimension $4$ : *c'est une base de $RR^4$*.
-
-=== Vérification matricielle
-
-Les colonnes des quatre vecteurs dans la base canonique donnent la matrice
-
+On place les vecteurs $u_1,u_2,u_3,u_4$ *en colonnes* dans la matrice :
 $
 P=mat(
   1,1,1,1;
@@ -68,13 +39,18 @@ P=mat(
 ).
 $
 
-Cette matrice triangulaire supérieure a pour déterminant
-
+La matrice est triangulaire supérieure. Son déterminant est donc le produit de ses coefficients diagonaux :
 $
 det(P)=1 dot 1 dot 1 dot 1=1 != 0.
 $
 
-Elle est donc inversible, ce qui constitue une deuxième preuve que $cal(B)$ est une base.
+Ainsi les quatre colonnes sont linéairement indépendantes. Comme $dim(RR^4)=4$, *la famille $cal(B)$ est une base de $RR^4$*.
+
+*Autre justification possible :* résoudre
+$
+alpha u_1+beta u_2+gamma u_3+delta u_4=0.
+$
+Le système triangulaire donne d'abord $delta=0$, puis $gamma=0$, $beta=0$ et $alpha=0$.
 
 == 2. Coordonnées dans la base canonique
 
@@ -106,7 +82,7 @@ $
 [v]_cal(C)=mat(4;3;2;1).
 $
 
-*Méthode matricielle :* $[v]_cal(C)=P[v]_cal(B)$, ce qui fournit le même résultat.
+*Méthode matricielle équivalente :* $[v]_cal(C)=P[v]_cal(B)$, ce qui fournit le même résultat. Attention : $[v]_cal(B)$ est une colonne de *coordonnées*, tandis que $v$ est le vecteur de $RR^4$ lui-même.
 
 == 3. Coordonnées de trois vecteurs dans $cal(B)$
 
@@ -145,6 +121,8 @@ $
 [w]_cal(B)=mat(a-b;b-c;c-d;d).
 $
 
+*C'est exactement la méthode par identification des coefficients utilisée dans la copie :* on pose une combinaison linéaire des quatre vecteurs de la base, puis on résout les quatre équations en partant de la dernière.
+
 === Premier vecteur : $(1,0,0,0)$
 
 $
@@ -167,7 +145,22 @@ $
 
 === Troisième vecteur : $(1,-3,2,4)$
 
-On applique la formule générale avec $a=1$, $b=-3$, $c=2$, $d=4$ :
+Pour obtenir les coordonnées, on résout le système
+$
+cases(
+  alpha+beta+gamma+delta=1,
+  beta+gamma+delta=-3,
+  gamma+delta=2,
+  delta=4.
+)
+$
+
+En remontant :
+$
+delta=4, quad gamma=-2, quad beta=-5, quad alpha=4.
+$
+
+De façon équivalente, on applique la formule générale avec $a=1$, $b=-3$, $c=2$, $d=4$ :
 
 $
 [(1,-3,2,4)]_cal(B)
@@ -232,5 +225,5 @@ Pour calculer des coordonnées :
 4. Pour passer des coordonnées canoniques à celles de $cal(B)$, multiplier par $P^(-1)$.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* Les réponses aux trois questions et les deux méthodes de calcul des coordonnées figurent sur les photographies. Le système général, la matrice inverse explicite et les vérifications sont des développements reconstitués à partir de l'énoncé et des notes.
+  *Provenance.* Les trois questions et leurs calculs ont été repris d'une nouvelle solution manuscrite autonome. Le déterminant triangulaire, la somme $u_1+u_2+u_3+u_4$ et la résolution des systèmes reflètent cette copie. La formule générale et la méthode facultative de la matrice inverse complètent la présentation.
 ]
