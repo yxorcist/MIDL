@@ -72,38 +72,41 @@ $
 
 == 2. Montrer que $(x_n)_(n>=1)$ décroît et converge vers $sqrt(2)$
 
-Comme $x_0>0$, le minimum établi à la question 1 donne
+D'après la question 1, $f$ admet un minimum global en $sqrt(2)$ :
 $
-x_1=f(x_0)>=sqrt(2).
-$
-
-Plus généralement, $f$ prend ses valeurs dans $[sqrt(2),+infinity[$ ; par récurrence,
-$
-forall n>=1,quad x_n>=sqrt(2).
+forall x>0, quad f(x)>=sqrt(2).
 $
 
-Sur cet intervalle, $f(x)-x<=0$. Pour tout $n>=1$,
+On prend $x_0>0$. Puisque $x_1=f(x_0)$, on a $x_1>=sqrt(2)$. De plus, $f$ prend toujours ses valeurs dans $[sqrt(2),+infinity[$. Ainsi, pour tout $n>=1$,
+$
+x_n>=sqrt(2).
+$
+
+On sait aussi, d'après la question 1, que $f(x)-x<=0$ dès que $x>=sqrt(2)$. Par conséquent, pour tout $n>=1$,
 $
 x_(n+1)-x_n=f(x_n)-x_n<=0.
 $
-Ainsi $(x_n)_(n>=1)$ est *décroissante* et *minorée par $sqrt(2)$*. Le théorème de convergence monotone donne une limite
+
+Ainsi, $(x_n)_(n>=1)$ est *décroissante* et *minorée par $sqrt(2)$*. D'après le théorème de convergence des suites monotones, il existe $ell>=sqrt(2)$ tel que
 $
-ell=lim_(n->infinity)x_n>=sqrt(2).
+lim_(n->+infinity) x_n=ell.
 $
 
-La fonction $f$ est continue en $ell>0$. En passant à la limite dans $x_(n+1)=f(x_n)$,
+Comme $f$ est continue sur $]0,+infinity[$ et que $ell>=sqrt(2)>0$, on peut passer à la limite dans $x_(n+1)=f(x_n)$ :
 $
 ell=f(ell)=ell/2+1/ell.
 $
-On résout :
+
+En résolvant,
 $
 ell/2=1/ell
 quad => quad
 ell^2=2.
 $
-Comme $ell>0$, on obtient
+
+Puisque $ell>=sqrt(2)$, on conclut
 $
-lim_(n->infinity) x_n=sqrt(2)
+lim_(n->+infinity) x_n=sqrt(2).
 $
 
 *Autre méthode indiquée dans la copie.* Après avoir montré $x_n>=sqrt(2)$, on utilise directement le signe de $f(x)-x$ pour obtenir la décroissance, puis la continuité de $f$ pour identifier sa limite. Elle conduit à la même équation de point fixe.
