@@ -1,7 +1,7 @@
 // source-confidence: high
 // source-note: TD03_continuite.pdf (UCA 2026-2027), exercice 9 (contrôle continu octobre 2022).
 // source-note: photo 12244 (questions 1-2), photo 12248 (question 3 et unicité).
-// source-reconstruction: signe de g aux extrémités puis TVI et justification de l'unicité explicités.
+// study-validation: Q3 reformulée selon la reprise manuscrite du 2026-11-24 : limites opposées, continuité et TVI pour existence, stricte décroissance pour unicité ; pas de bornes a,b explicites.\n// source-reconstruction: la continuité de g et l'équivalence g(c)=0 <=> f(c)=c sont explicitées pour la rigueur.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -70,29 +70,37 @@ La fonction $g$ est continue comme différence de deux fonctions continues.
 
 == 3. En déduire que $f$ admet un unique point fixe
 
-Puisque $g(x)->+infinity$ quand $x->-infinity$, il existe $a in RR$ tel que $g(a)>0$.
+On cherche un réel $c$ tel que $f(c)=c$, c'est-à-dire $g(c)=0$.
 
-Puisque $g(x)->-infinity$ quand $x->+infinity$, on peut choisir $b>a$ tel que $g(b)<0$.
+D'après la question 2,
+$
+lim_(x->-infinity)g(x)=+infinity
+quad "et" quad
+lim_(x->+infinity)g(x)=-infinity.
+$
 
-La continuité de $g$ sur $[a,b]$ et le *théorème des valeurs intermédiaires* fournissent un $c in [a,b]$ tel que
+Comme $g$ est continue sur $RR$ (différence de fonctions continues), elle prend des valeurs positives et négatives. *Par le théorème des valeurs intermédiaires (TVI)*, il existe $c in RR$ tel que
+$
+g(c)=0.
+$
+
+D'après la question 2, $g$ est *strictement décroissante*, donc elle ne peut s'annuler qu'une seule fois : ce zéro est *unique*.
+
+Enfin,
 $
 g(c)=0
+quad <=> quad
+f(c)-c=0
 quad <=> quad
 f(c)=c.
 $
 
-Ce point fixe est unique : si $c<d$ étaient deux points fixes, la stricte décroissance de $g$ imposerait
-$
-g(c)>g(d),
-$
-alors que $g(c)=g(d)=0$. Contradiction.
-
-Donc *$f$ admet un unique point fixe sur $RR$*.
+Donc $f$ admet *un unique point fixe* sur $RR$.
 
 == Méthode à retenir
 
 Pour une fonction $f$ continue et décroissante sur $RR$, la fonction $g=f-"id"$ est strictement décroissante ; ses limites en $-infinity$ et $+infinity$ permettent d'appliquer le TVI, puis sa stricte décroissance donne l'unicité.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* Photo 12244 : majoration/minoration, stricte décroissance et limites de $g$. Photo 12248 : encadrement de $0$, TVI et unicité. L'énoncé a été vérifié dans TD03_continuite.pdf.
+  *Provenance.* Photo 12244 : majoration/minoration, stricte décroissance et limites de $g$. Photo 12248 : encadrement de $0$, TVI et unicité. Question 3 adaptée à la reprise manuscrite du 2026-11-24 (TVI directement à partir des limites), avec les justifications nécessaires ajoutées. L'énoncé a été vérifié dans TD03_continuite.pdf.
 ]
