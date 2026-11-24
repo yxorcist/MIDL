@@ -24,92 +24,125 @@ $
 
 == 1. Variations de $f$ et signe de $f(x)-x$
 
-La fonction $f$ est dérivable sur $]0,+infinity[$ et
+$f$ est dérivable sur $]0,+infinity[$, et
 $
 f'(x)
-&=1/2-1/x^2 \
-&=(x+sqrt(2))(x-sqrt(2))/(2x^2).
+&= (x/2+1/x)' \
+&= (x/2)' + (1/x)' \
+&= 1/2-1/x^2 \
+&= (x^2-2)/(2x^2) \
+&= (x-sqrt(2))(x+sqrt(2))/(2x^2).
 $
 
-Le dénominateur est strictement positif et $x+sqrt(2)>0$. Ainsi :
-
-- $f'(x)<0$ pour $0<x<sqrt(2)$ ;
-- $f'(sqrt(2))=0$ ;
-- $f'(x)>0$ pour $x>sqrt(2)$.
-
-La fonction $f$ décroît sur $]0,sqrt(2)]$ puis croît sur $[sqrt(2),+infinity[$. De plus,
-$
-lim_(x->0^+)f(x)=+infinity,
-quad
-lim_(x->+infinity)f(x)=+infinity
-$
-et
-$
-f(sqrt(2))=sqrt(2).
-$
-
-Elle admet donc le minimum global $sqrt(2)$ :
-$
-forall x>0, quad f(x)>=sqrt(2).
-$
-
-Étudions maintenant le signe de $f(x)-x$ :
-$
-f(x)-x
-&=1/x-x/2 \
-&=(2-x^2)/(2x) \
-&=(sqrt(2)-x)(sqrt(2)+x)/(2x).
-$
-
-On en déduit
+Sur $]0,+infinity[$, $2x^2>0$ et $x+sqrt(2)>0$. Donc :
 $
 cases(
-  f(x)-x>0 & "si" 0<x<sqrt(2),
-  f(x)-x=0 & "si" x=sqrt(2),
-  f(x)-x<0 & "si" x>sqrt(2).
+  f'(x)<0 & "pour" x in ]0,sqrt(2)[ " : " f " décroît", 
+  f'(sqrt(2))=0,
+  f'(x)>0 & "pour" x in ]sqrt(2),+infinity[ " : " f " croît".
+)
+$
+
+À la racine $sqrt(2)$ de $f'$, on calcule :
+$
+f(sqrt(2))
+&= sqrt(2)/2+1/sqrt(2) \
+&= 1/sqrt(2)+1/sqrt(2) \
+&= 2/sqrt(2) \
+&= sqrt(2).
+$
+
+(On remarque aussi que $f(sqrt(2))=sqrt(2)$ : c'est un point fixe.)
+
+Aux bornes du domaine,
+$
+lim_(x->0^+) f(x)=lim_(x->0^+)(x/2+1/x)=+infinity,
+$
+$
+lim_(x->+infinity) f(x)=lim_(x->+infinity)(x/2+1/x)=+infinity.
+$
+
+Ainsi, $sqrt(2)$ est le *minimum global* de $f$ :
+$
+min f=sqrt(2), quad forall x>0, f(x)>=sqrt(2).
+$
+
+En conclusion, $f$ décroît sur $]0,sqrt(2)]$ puis croît sur $[sqrt(2),+infinity[$.
+
+On étudie ensuite le signe de $f(x)-x$ :
+$
+f(x)-x
+&= x/2+1/x-x \
+&= 1/x-x/2 \
+&= (2-x^2)/(2x) \
+&= (sqrt(2)-x)(sqrt(2)+x)/(2x).
+$
+
+Comme $x>0$,
+$
+cases(
+  f(x)-x>0 & "pour" x in ]0,sqrt(2)[,
+  f(x)-x=0 & "pour" x=sqrt(2),
+  f(x)-x<0 & "pour" x in ]sqrt(2),+infinity[.
 )
 $
 
 == 2. Montrer que $(x_n)_(n>=1)$ décroît et converge vers $sqrt(2)$
 
-D'après la question 1, $f$ admet un minimum global en $sqrt(2)$ :
+On part de la relation
 $
-forall x>0, quad f(x)>=sqrt(2).
-$
-
-On prend $x_0>0$. Puisque $x_1=f(x_0)$, on a $x_1>=sqrt(2)$. De plus, $f$ prend toujours ses valeurs dans $[sqrt(2),+infinity[$. Ainsi, pour tout $n>=1$,
-$
-x_n>=sqrt(2).
+x_(n+1)-x_n=f(x_n)-x_n.
 $
 
-On sait aussi, d'après la question 1, que $f(x)-x<=0$ dès que $x>=sqrt(2)$. Par conséquent, pour tout $n>=1$,
+D'après la question 1, on a
 $
-x_(n+1)-x_n=f(x_n)-x_n<=0.
+min f=sqrt(2), quad forall x in ]0,+infinity[, f(x)>=sqrt(2).
 $
 
-Ainsi, $(x_n)_(n>=1)$ est *décroissante* et *minorée par $sqrt(2)$*. D'après le théorème de convergence des suites monotones, il existe $ell>=sqrt(2)$ tel que
+Donc on cherche à établir
+$
+forall n>=1, quad x_n>=sqrt(2).
+$
+
+On pose $x_0 in ]0,+infinity[$. Comme $f(x)>=sqrt(2)$ pour tout $x>0$ et que $x_1=f(x_0)$, alors
+$
+x_1>=sqrt(2).
+$
+
+Les termes suivants sont eux aussi des images par $f$ de nombres strictement positifs ; ainsi
+$
+forall n>=1, quad x_n>=sqrt(2).
+$
+
+On sait, d'après la question 1, que $f(x)-x<=0$ sur $[sqrt(2),+infinity[$. Comme $x_n>=sqrt(2)$ pour $n>=1$,
+$
+x_(n+1)-x_n=f(x_n)-x_n<=0 quad "pour tout" n>=1.
+$
+
+Ainsi, $(x_n)_(n>=1)$ est *minorée par $sqrt(2)$ et décroissante*. Par le théorème de convergence des suites monotones, il existe $ell>=sqrt(2)$ tel que
 $
 lim_(n->+infinity) x_n=ell.
 $
 
-Comme $f$ est continue sur $]0,+infinity[$ et que $ell>=sqrt(2)>0$, on peut passer à la limite dans $x_(n+1)=f(x_n)$ :
+Comme $f$ est continue sur $]0,+infinity[$ et $ell>0$, on peut passer à la limite dans la relation de récurrence :
 $
 ell=f(ell)=ell/2+1/ell.
 $
 
-En résolvant,
+On reprend l'équation et on la résout :
 $
-ell/2=1/ell
-quad => quad
-ell^2=2.
+ell &= ell/2+1/ell \
+1/ell &= ell/2 \
+2/ell &= ell \
+2 &= ell^2.
 $
 
-Puisque $ell>=sqrt(2)$, on conclut
+Comme $ell>=sqrt(2)>0$, on retient $ell=sqrt(2)$.
+
+Donc
 $
 lim_(n->+infinity) x_n=sqrt(2).
 $
-
-*Autre méthode indiquée dans la copie.* Après avoir montré $x_n>=sqrt(2)$, on utilise directement le signe de $f(x)-x$ pour obtenir la décroissance, puis la continuité de $f$ pour identifier sa limite. Elle conduit à la même équation de point fixe.
 
 == 3. Majorer $x_n-sqrt(2)$
 
