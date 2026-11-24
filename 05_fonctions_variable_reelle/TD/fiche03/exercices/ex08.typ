@@ -2,7 +2,7 @@
 // source-note: TD03_continuite.pdf (UCA 2026-2027), exercice 8.
 // source-note: photo 12242 (TVI, rappel k-Lipschitz, unicité, exemple x+e^(-x)) ; photo 12244 (exemple x+1/(x+1)).
 // source-verification: la question 2 suppose |f(x)-f(y)|<|x-y| pour x!=y, sans constante uniforme k<1.
-// source-reconstruction: continuité issue de l'inégalité stricte et arguments du TAF précisés ; les deux exemples sont sans point fixe.
+// source-reconstruction: Q1 suit la copie manuscrite de l'étudiant (2026-11-24), avec continuité de g et conclusion f(c)=c explicitées ; Q2-Q3 inchangées.\n// source-reconstruction: continuité issue de l'inégalité stricte en Q2 et arguments du TAF précisés ; les deux exemples sont sans point fixe.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -14,26 +14,44 @@ Un *point fixe* de $f$ est un réel $c$ tel que $f(c)=c$.
 
 == 1. Une application continue de $[a,b]$ dans $[a,b]$ possède un point fixe
 
-Soit $f:[a,b]->[a,b]$ continue. On pose
+On a $f:[a,b] -> [a,b]$ continue. On pose
 $
 g(x)=f(x)-x.
 $
-La fonction $g$ est continue sur $[a,b]$.
+On cherche un réel $c$ tel que $g(c)=0$.
 
-Puisque $f(a) in [a,b]$ et $f(b) in [a,b]$,
+Pour tout $x in [a,b]$, on sait que $f(x) in [a,b]$, donc
 $
-g(a)=f(a)-a>=0,
-quad
-g(b)=f(b)-b<=0.
+a<=f(x)<=b.
 $
 
-Ainsi $0$ est compris entre $g(a)$ et $g(b)$. Par le *théorème des valeurs intermédiaires*, il existe $c in [a,b]$ tel que
+*Pour $x=a$ :* comme $f(a)>=a$,
+$
+f(a)-a>=0
+quad => quad g(a)>=0.
+$
+
+*Pour $x=b$ :* comme $f(b)<=b$,
+$
+f(b)-b<=0
+quad => quad g(b)<=0.
+$
+
+La fonction $g$ est continue sur $[a,b]$, car $f$ et la fonction $x mapsto x$ sont continues.
+
+On a donc $g(b)<=0<=g(a)$. *Par le théorème des valeurs intermédiaires (TVI)*,
+$
+exists c in [a,b], quad g(c)=0.
+$
+
+Or
 $
 g(c)=0
-quad <=> quad
-f(c)=c.
+quad <=> quad f(c)-c=0
+quad <=> quad f(c)=c.
 $
-La fonction $f$ admet donc au moins un point fixe.
+
+Donc $f$ admet au moins un point fixe sur $[a,b]$.
 
 == 2. L'inégalité stricte garantit un unique point fixe
 
@@ -118,5 +136,5 @@ Pourtant $h(x)>x$ sur $RR_+$, donc $h$ n'a pas non plus de point fixe.
 Les deux contre-exemples illustrent le rôle de l'intervalle *fermé et borné* dans la question 1 : la condition stricte seule, sur $RR_+$, n'assure pas l'existence d'un point fixe.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* Questions et hypothèses vérifiées dans TD03_continuite.pdf. Photo 12242 : preuve par TVI, unicité, rappel de Lipschitz et premier contre-exemple. Photo 12244 : second contre-exemple avec calcul algébrique. Les conditions du théorème des accroissements finis sont explicitées.
+  *Provenance.* Questions et hypothèses vérifiées dans TD03_continuite.pdf. Question 1 : démarche de la copie manuscrite du 2026-11-24, avec les deux justifications manquantes ajoutées. Photo 12242 : preuve par TVI, unicité, rappel de Lipschitz et premier contre-exemple. Photo 12244 : second contre-exemple avec calcul algébrique. Les conditions du théorème des accroissements finis sont explicitées.
 ]
