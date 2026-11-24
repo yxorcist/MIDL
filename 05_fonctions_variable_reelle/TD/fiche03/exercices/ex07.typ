@@ -87,10 +87,14 @@ La suite $(a_n)_(n>=2)$ est ainsi *strictement décroissante*.
 
 == 4. Calculer la limite de $(a_n)$
 
-La suite est décroissante et minorée par $1$, puisque $a_n>1$. Par le théorème de convergence monotone, elle admet une limite
+D'après la question 3, $(a_n)_(n>=2)$ est décroissante. D'après la question 2, $a_n>1$ pour tout $n>=2$ : elle est donc minorée par $1$.
+
+*Théorème de convergence monotone.* Toute suite réelle décroissante et minorée converge. Ainsi, il existe une limite réelle $ell$ telle que
 $
 ell=lim_(n->infinity)a_n>=1.
 $
+
+Cette étape établit l'existence de $ell$ ; le fait que $1$ soit un minorant ne suffit pas, à lui seul, à affirmer que $ell=1$.
 
 *Argument de la copie.* Pour tout $n>=2$, on a $ell<=a_n$. Comme $f_n$ est croissante,
 $
