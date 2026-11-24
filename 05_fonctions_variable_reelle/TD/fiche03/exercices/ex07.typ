@@ -1,7 +1,8 @@
 // source-confidence: high
 // source-note: énoncé officiel TD03_continuite.pdf, exercice 7.
-// study-validation: questions 1 et 2 adaptées aux copies manuscrites validées le 2026-11-09.
-// source-note: les questions 3 et 4 ci-dessous sont conservées de la version précédente, non revérifiées dans cette mise à jour.
+// source-note: rédaction suivant la copie manuscrite de l'étudiant (deux pages, 2026-11-24).
+// study-validation: conservation de la méthode personnelle ; ajouts minimaux pour la rigueur (continuité, unicité, théorème de convergence monotone).
+// source-note: rappel du professeur en marge conservé à la fin.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -9,94 +10,101 @@
 
 = TD 3 — Exercice 7 — Racines de $x^n-x-1$
 
-Pour $n>=2$, soit
-
+Pour $n>=2$, on considère
 $
 f_n:[1,+infinity[ -> RR, quad f_n(x)=x^n-x-1.
 $
 
 == 1. Montrer que $f_n$ est strictement croissante
 
-Soient $x,y in [1,+infinity[$ avec $x<y$. Comme $n-1>=1$,
+Soient $x,y in [1,+infinity[$ tels que $x<y$, et soit $n>=2$.
 
+Comme $n-1>=1$, on a
 $
-0<=x^(n-1)-1<y^(n-1)-1.
+x<y
+quad => quad x^(n-1)<y^(n-1)
+quad => quad x^(n-1)-1<y^(n-1)-1.
 $
 
-De plus, $0<x<y$. On obtient
-
+Or $x>=1$, donc $x^(n-1)-1>=0$, et $0<x<y$. On peut alors écrire
 $
 x(x^(n-1)-1)
 <=y(x^(n-1)-1)
 <y(y^(n-1)-1).
 $
 
-En soustrayant $1$,
-
+En retranchant $1$ de chaque côté :
 $
 x^n-x-1<y^n-y-1,
 $
+soit $f_n(x)<f_n(y)$.
 
-donc $f_n(x)<f_n(y)$. Ainsi $f_n$ est strictement croissante sur $[1,+infinity[$.
+Donc $f_n$ est *strictement croissante* sur $[1,+infinity[$.
 
 == 2. Existence et unicité de $a_n$
 
-La fonction $f_n$ est continue sur $[1,2]$ et, pour $n>=2$,
-
+On calcule :
 $
-f_n(1)&=1-1-1=-1<0,\
-f_n(2)&=2^n-3>=1>0.
+f_n(1)&=1^n-1-1=-1<0,\
+f_n(2)&=2^n-2-1=2^n-3>=1>0
+quad "pour" n>=2.
 $
 
-Par le TVI,
+Comme $f_n$ est continue sur $[1,2]$ (fonction polynomiale), on a $f_n(1)<0$ et $f_n(2)>0$.
 
+Par le *théorème des valeurs intermédiaires* (TVI),
 $
 exists a_n in ]1,2[, quad f_n(a_n)=0.
 $
 
-D'après Q1, $f_n$ est strictement croissante sur $[1,+infinity[$ ; cette racine est donc unique.
+D'après la question 1, $f_n$ est strictement croissante : ce zéro est *unique*.
 
-Pour chaque $n$ fixé, $a_n$ est l'unique réel $>1$ vérifiant
-
+On obtient donc, pour chaque $n>=2$, un unique $a_n>1$ tel que
 $
+f_n(a_n)=0
+quad <=> quad
 a_n^n-a_n-1=0
 quad <=> quad
 a_n^n=a_n+1.
 $
 
-Quand $n$ varie, ces réels forment la suite $(a_n)_(n>=2)$.
-
 == 3. Montrer que $(a_n)_(n>=2)$ est décroissante
 
-Pour $n>=2$, utilisons l'identité $a_n^n=a_n+1$ :
+On sait, d'après la question 2, que $a_n^n=a_n+1$.
+
+On calcule :
 $
 f_(n+1)(a_n)
-&=a_n^(n+1)-a_n-1 \
-&=a_n dot a_n^n-a_n-1 \
-&=a_n(a_n+1)-a_n-1 \
+&=a_n^(n+1)-a_n-1\
+&=a_n dot a_n^n-a_n-1\
+&=a_n(a_n+1)-a_n-1\
 &=a_n^2-1>0,
 $
 car $a_n>1$.
 
-Or $f_(n+1)(a_(n+1))=0$ et $f_(n+1)$ est strictement croissante. Donc
+Or
+$
+f_(n+1)(a_(n+1))=0<f_(n+1)(a_n).
+$
+
+Comme $f_(n+1)$ est strictement croissante (question 1), on en déduit
 $
 a_(n+1)<a_n.
 $
 
-La suite $(a_n)_(n>=2)$ est ainsi *strictement décroissante*.
+Donc la suite $(a_n)_(n>=2)$ est *strictement décroissante*.
 
 == 4. Calculer la limite de $(a_n)$
 
-D'après la question 3, $(a_n)_(n>=2)$ est décroissante. D'après la question 2, $a_n>1$ pour tout $n>=2$ : elle est donc minorée par $1$.
+La suite $(a_n)$ est décroissante (question 3) et minorée par $1$ car $a_n>1$ (question 2).
 
-*Théorème de convergence monotone.* Toute suite réelle décroissante et minorée converge. Ainsi, il existe une limite réelle $ell$ telle que
+Par le *théorème de convergence monotone*, toute suite réelle décroissante et minorée converge. On peut donc poser
 $
-ell=lim_(n->infinity)a_n>=1.
+ell=lim_(n->+infinity)a_n,
+quad "avec" ell>=1.
 $
 
-Cette étape établit l'existence de $ell$ ; le fait que $1$ soit un minorant ne suffit pas, à lui seul, à affirmer que $ell=1$.
-
-*Argument de la copie.* Pour tout $n>=2$, on a $ell<=a_n$. Comme $f_n$ est croissante,
+Pour tout $n>=2$, on a $ell<=a_n$. Comme $f_n$ est croissante,
 $
 f_n(ell)<=f_n(a_n)=0,
 $
@@ -107,12 +115,16 @@ quad => quad
 ell^n<=ell+1.
 $
 
-Si $ell>1$, alors $ell^n->+infinity$, ce qui contredit la majoration fixe $ell+1$. On a donc nécessairement $ell=1$ :
+La limite $ell$ est un réel fini. Si $ell>1$, alors $ell^n->+infinity$ lorsque $n->+infinity$, alors que $ell+1$ est un nombre fixe et fini. Cela contredit $ell^n<=ell+1$ pour tout $n>=2$.
+
+Donc $ell$ ne peut pas être strictement supérieur à $1$. Or $ell>=1$. Ainsi,
 $
-lim_(n->infinity) a_n=1
+ell=1,
+quad "c'est-à-dire" quad
+lim_(n->+infinity)a_n=1.
 $
 
-== Rappel de cours présent en marge
+== Rappel de cours présent en marge (professeur)
 
 La dérivée en $x_0$ est définie, lorsqu'elle existe et est finie, par
 $
@@ -125,5 +137,5 @@ quad (h->0).
 $
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* Questions 1 à 4 tirées des photos 12234 et 12237 et rapprochées de l'énoncé officiel. Le rappel final figure en marge de la photo 12237 ; les justifications intermédiaires sont explicitées.
+  *Provenance.* Démonstration rédigée selon la copie manuscrite de l'étudiant (questions 1 à 4). Les seules précisions ajoutées concernent la continuité, l'unicité, la justification des inégalités et le théorème de convergence monotone. Le rappel de cours noté en marge par le professeur est conservé.
 ]
