@@ -35,13 +35,10 @@ f'(x)
 $
 
 Sur $]0,+infinity[$, $2x^2>0$ et $x+sqrt(2)>0$. Donc :
-$
-cases(
-  f'(x)<0 & "pour" x in ]0,sqrt(2)[ " : " f " décroît", 
-  f'(sqrt(2))=0,
-  f'(x)>0 & "pour" x in ]sqrt(2),+infinity[ " : " f " croît".
-)
-$
+
+- Pour $0<x<sqrt(2)$, $f'(x)<0$ : $f$ décroît.
+- Pour $x=sqrt(2)$, $f'(sqrt(2))=0$.
+- Pour $x>sqrt(2)$, $f'(x)>0$ : $f$ croît.
 
 À la racine $sqrt(2)$ de $f'$, on calcule :
 $
@@ -78,14 +75,11 @@ f(x)-x
 &= (sqrt(2)-x)(sqrt(2)+x)/(2x).
 $
 
-Comme $x>0$,
-$
-cases(
-  f(x)-x>0 & "pour" x in ]0,sqrt(2)[,
-  f(x)-x=0 & "pour" x=sqrt(2),
-  f(x)-x<0 & "pour" x in ]sqrt(2),+infinity[.
-)
-$
+Comme $x>0$ :
+
+- Pour $0<x<sqrt(2)$, $f(x)-x>0$.
+- Pour $x=sqrt(2)$, $f(x)-x=0$.
+- Pour $x>sqrt(2)$, $f(x)-x<0$.
 
 == 2. Montrer que $(x_n)_(n>=1)$ décroît et converge vers $sqrt(2)$
 
@@ -96,7 +90,7 @@ $
 
 D'après la question 1, on a
 $
-min f=sqrt(2), quad forall x in ]0,+infinity[, f(x)>=sqrt(2).
+min f=sqrt(2), quad forall x>0, f(x)>=sqrt(2).
 $
 
 Donc on cherche à établir
@@ -104,7 +98,7 @@ $
 forall n>=1, quad x_n>=sqrt(2).
 $
 
-On pose $x_0 in ]0,+infinity[$. Comme $f(x)>=sqrt(2)$ pour tout $x>0$ et que $x_1=f(x_0)$, alors
+On pose $x_0>0$. Comme $f(x)>=sqrt(2)$ pour tout $x>0$ et que $x_1=f(x_0)$, alors
 $
 x_1>=sqrt(2).
 $
