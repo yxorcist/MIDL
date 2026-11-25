@@ -50,7 +50,7 @@ Si $d=0$, le polynôme est constant : tout réel est à la fois un point de mini
 
 Supposons $d>=2$. On a
 $
-P(x) sim a_d x^d quad (x->+-infinity).
+P(x) "∼" a_d x^d quad (x->+-infinity).
 $
 
 Comme $d$ est pair, $x^d->+infinity$ quand $x->-infinity$ *et* quand $x->+infinity$.
