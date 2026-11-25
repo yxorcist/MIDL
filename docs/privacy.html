@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIDL — Privacy policy</title>
+<style>:root{color-scheme:light dark;font-family:system-ui,sans-serif;line-height:1.6}body{max-width:48rem;margin:3rem auto;padding:0 1.25rem}a{color:inherit}h1,h2{line-height:1.25}footer{margin-top:3rem;font-size:.9rem}</style>
+</head>
+<body>
+<main>
+<h1>Privacy policy</h1>
+<p>Effective November 26, 2026.</p>
+<p>MIDL is a personal, locally operated study tool. This policy describes its optional Google Drive integration.</p>
+<h2>Data accessed and purpose</h2>
+<p>When the user authorizes rclone to access Google Drive, the tool uses that authorization to locate folders and transfer files. Depending on the configured OAuth scope, access may include Drive file names, identifiers, metadata and content. The intended operations are synchronizing generated PDFs to MIDL/dist and moving user-selected incoming documents to MIDL/INBOX. Synchronization can delete destination files that no longer exist in the local source.</p>
+<h2>Storage and protection</h2>
+<p>Study files are stored on the user's computer and in the user's Google Drive account, as directed by the user. Rclone stores OAuth credentials in its local configuration. MIDL does not operate a hosted backend for collecting Google user data. Users should protect their local rclone configuration and must not commit credentials or private data to the public GitHub repository.</p>
+<h2>Sharing and use</h2>
+<p>MIDL does not sell Google user data, use it for advertising, or transfer it to a developer-operated server. The integration uses Google Drive and rclone to perform the requested file operations. Google and GitHub provide their own services under their respective privacy policies. MIDL does not use Google user data to train AI models.</p>
+<p>MIDL's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+<h2>Retention, deletion and revocation</h2>
+<p>Users control the retention and deletion of their files through their local file system and Google Drive. Users can revoke Google account access through <a href="https://myaccount.google.com/connections">Google Account connections</a> and remove the local remote configuration using rclone. Revoking authorization does not itself delete previously transferred files.</p>
+<h2>Contact</h2>
+<p>For privacy questions, contact the repository maintainer through <a href="https://github.com/yxorcist/MIDL">GitHub</a>. Do not disclose credentials, private files or personal information in public issues.</p>
+</main>
+<footer><a href="./">MIDL</a> · <a href="./privacy.html">Privacy policy</a> · <a href="https://github.com/yxorcist/MIDL">Source code</a></footer>
+</body>
+</html>
