@@ -32,7 +32,7 @@ $
 
 La continuité est essentielle : une fonction simplement positive sur un intervalle compact, mais non continue, n'admet pas nécessairement de minorant strictement positif.
 
-== 2. Montrer que $f(x)>=mx$
+== 2. Montrer que $f(x)>=m x$
 
 Si $x=0$, l'inégalité s'écrit $f(0)=0>=0$, donc elle est vraie.
 
@@ -43,13 +43,13 @@ $
 
 Comme $f(0)=0$ et $f'(c)>=m$,
 $
-f(x)=f'(c)x>=mx
+f(x)=f'(c)x>=m x
 $
 car $x>0$.
 
 *Conclusion :* pour tout $x in [0,1]$,
 $
-f(x)>=mx.
+f(x)>=m x.
 $
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
