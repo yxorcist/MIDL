@@ -16,6 +16,7 @@ _midl() {
       'fvr:Fonctions variable réelle'
       'pn:Programmation numérique'
       'en:Anglais'
+      'lg:Logique'
       'inbox:send file or folder to Google Drive INBOX'
       'compile:compile publishable PDFs'
       'doctor:check MIDL dependencies'
@@ -32,7 +33,7 @@ _midl() {
 
   if (( CURRENT == 3 )); then
     case "${words[2]}" in
-      md|al|fvr) _values 'type' cm td ;;
+      md|al|fvr|lg) _values 'type' cm td ;;
       si|pn)     _values 'type' cm td tp ;;
       pa)        _values 'type' cm tp ;;
       en)        _values 'type' work ;;
