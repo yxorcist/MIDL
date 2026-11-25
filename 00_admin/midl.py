@@ -31,6 +31,7 @@ SUBJECTS = {
     "fvr": ("05_fonctions_variable_reelle", "Fonctions d'une variable réelle", ("cm", "td")),
     "pn": ("06_prog_numerique", "Programmation numérique", ("cm", "td", "tp")),
     "en": ("07_anglais", "Anglais", ("work",)),
+    "lg": ("08_logique", "Logique", ("td",)),
 }
 
 ALIASES = {
@@ -40,6 +41,8 @@ ALIASES = {
     "prognum": "pn",
     "proga": "pa",
     "fonctions": "fvr",
+    "logique": "lg",
+    "logic": "lg",
 }
 
 
