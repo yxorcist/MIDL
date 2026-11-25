@@ -20,9 +20,9 @@ $
 
 La fonction $f_alpha$ est continue sur $]0,+infinity[$ par les opérations usuelles.
 
-Lorsque $x->0^+$, on a $sin(x^alpha) sim x^alpha$, donc
+Lorsque $x->0^+$, on a $sin(x^alpha) "∼" x^alpha$, donc
 $
-f_alpha(x) sim x^(alpha-1).
+f_alpha(x) "∼" x^(alpha-1).
 $
 
 Comme $alpha-1>0$,
