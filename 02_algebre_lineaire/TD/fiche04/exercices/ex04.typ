@@ -10,7 +10,7 @@
 
 = TD 4 — Exercice 4 — Projection sur un plan parallèlement à une droite
 
-Dans $RR^3$, soient $u_1=(3,2,0)$, $u_2=(1,-1,1)$, $u_3=(2,0,1)$. On admet que $cal(B)=(u_1,u_2,u_3)$ est une base. Posons $U="Vect"(u_1,u_2)$ et $D="Vect"(u_3)$ : on a $RR^3=U plus.circle D$. Soit $phi$ la projection sur $U$ parallèlement à $D$.
+Dans $RR^3$, soient $u_1=(3,2,0)$, $u_2=(1,-1,1)$, $u_3=(2,0,1)$. On admet que $cal(B)=(u_1,u_2,u_3)$ est une base. Posons $U="Vect"(u_1,u_2)$ et $D="Vect"(u_3)$ : on a $RR^3=U+D$ (somme directe). Soit $phi$ la projection sur $U$ parallèlement à $D$.
 
 == 1. Matrice dans la base adaptée
 
