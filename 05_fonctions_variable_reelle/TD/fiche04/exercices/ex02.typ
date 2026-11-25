@@ -62,5 +62,5 @@ La dérivée à droite *n'existe pas comme nombre réel fini*. Le graphe admet u
 *Conclusion :* $f$ est prolongeable par continuité en $0$, mais son prolongement n'est *pas dérivable à droite en $0$*.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* Énoncé officiel et photo de l'exercice 2. La limite du quotient est justifiée par l'équivalent $e^t-1 sim t$ et non par une substitution indéterminée.
+  *Provenance.* Énoncé officiel et photo de l'exercice 2. La limite du quotient est justifiée par l'équivalent $e^t-1 "∼" t$ et non par une substitution indéterminée.
 ]
