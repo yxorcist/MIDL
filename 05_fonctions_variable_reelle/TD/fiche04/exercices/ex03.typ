@@ -38,7 +38,7 @@ Le taux d'accroissement est
 $
 (f_alpha(x)-f_alpha(0))/x
 =sin(x^alpha)/x^2
-sim x^(alpha-2).
+"∼" x^(alpha-2).
 $
 
 Trois cas se présentent :
