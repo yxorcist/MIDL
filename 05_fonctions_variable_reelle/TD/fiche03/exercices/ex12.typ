@@ -30,7 +30,7 @@ $
 m=f(x_0)=min_(x in [-R,R])f(x).
 $
 
-Comme $0 in [-R,R]$, on a $m<=f(0)$. Par conséquent, pour tout $x notin [-R,R]$,
+Comme $0 in [-R,R]$, on a $m<=f(0)$. Par conséquent, pour tout réel $x$ hors de $[-R,R]$,
 $
 f(x)>f(0)+1>m.
 $
