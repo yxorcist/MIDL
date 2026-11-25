@@ -121,6 +121,8 @@ midl pn tp 1 3
 # -> 06_prog_numerique/TP/tp01/exercices/ex03.typ
 ```
 
+For the separate Logique TD numbering: `midl lg td 1 5`. Logique follows Méthodes discrètes but its TD exercises restart at 1.
+
 Without the fiche/TP and exercise numbers, `midl` asks for them interactively. For CM, omitting the chapter selects the highest-numbered existing chapter.
 
 Build all publishable Typst sources:
@@ -148,6 +150,7 @@ Generated PDFs are written under `dist/`, mirroring the source tree. CM builds p
 | `fvr` | Fonctions d'une variable réelle | `cm td` |
 | `pn` | Programmation numérique | `cm td tp` |
 | `en` | Anglais | `work` |
+| `lg` | Logique | `td` |
 
 ## Google Drive mirror
 
@@ -165,6 +168,7 @@ MIDL/
 ├── 05_fonctions_variable_reelle/
 ├── 06_prog_numerique/
 ├── 07_anglais/
+├── 08_logique/                 # sources issues des photos ; aucun TD officiel synchronisé
 └── dist/                   # generated PDFs
 ```
 
