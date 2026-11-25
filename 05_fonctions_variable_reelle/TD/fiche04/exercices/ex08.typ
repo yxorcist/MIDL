@@ -49,7 +49,7 @@ $
 f'(x)=(e^x-1-x e^x)/(e^x-1)^2.
 $
 
-La fonction est continue en $0$, car $e^x-1 sim x$, donc
+La fonction est continue en $0$, car $e^x-1 "∼" x$, donc
 $
 lim_(x->0^+)x/(e^x-1)=1=f(0).
 $
