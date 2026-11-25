@@ -140,9 +140,14 @@ $
 
 == 3. Majorer $x_n-sqrt(2)$
 
-=== Encadrement de $f(y)-f(x)$
+Soient $x$ et $y$ tels que $sqrt(2)<=x<=y$.
 
-Soient $sqrt(2)<=x<=y$. Un calcul direct donne
+On veut montrer :
+$
+0<=f(y)-f(x)<=1/2(y-x).
+$
+
+On commence par simplifier $f(y)-f(x)$ :
 $
 f(y)-f(x)
 &=y/2+1/y-x/2-1/x \
@@ -150,51 +155,80 @@ f(y)-f(x)
 &=(y-x)(1/2-1/(x y)).
 $
 
-Puisque $x y>=2$,
+Comme $sqrt(2)<=x<=y$, on sait que $x y>=2$ et $y-x>=0$.
+
+Puisque $x y>=2$ et $x y>0$, on obtient :
 $
 0<=1/2-1/(x y)<=1/2.
 $
-Comme $y-x>=0$, on a
+
+Comme $y-x>=0$, on multiplie cet encadrement par $y-x$ :
 $
-0<=f(y)-f(x)<=1/2(y-x)
+0<=(y-x)(1/2-1/(x y))<=1/2(y-x).
 $
 
-En particulier, puisque $f(sqrt(2))=sqrt(2)$ et $x_n>=sqrt(2)$, on peut prendre $x=sqrt(2)$ et $y=x_n$ :
+Or $(y-x)(1/2-1/(x y))=f(y)-f(x)$. Donc :
 $
-0<=x_(n+1)-sqrt(2)<=1/2 (x_n-sqrt(2))
-quad (n>=1).
-$
-
-=== Récurrence sur le nombre d'itérations
-
-Montrons que, pour tout $n>=1$,
-$
-abs(x_n-sqrt(2)) <= (1/2)^(n-1) abs(x_1-sqrt(2)).
+0<=f(y)-f(x)<=1/2(y-x).
 $
 
-*Initialisation.* Pour $n=1$, l'inégalité devient
-$
-abs(x_1-sqrt(2))<=abs(x_1-sqrt(2)),
-$
-ce qui est vrai.
+On pose maintenant $y=x_n$ et $x=sqrt(2)$. C'est possible pour tout $n>=1$, car la question 2 donne $x_n>=sqrt(2)$.
 
-*Hérédité.* Supposons l'inégalité vraie au rang $n>=1$. Alors
+On obtient alors :
 $
-abs(x_(n+1)-sqrt(2))
-&=abs(f(x_n)-f(sqrt(2))) \
-&<=1/2 abs(x_n-sqrt(2)) \
-&<=1/2 (1/2)^(n-1) abs(x_1-sqrt(2)) \
-&=(1/2)^n abs(x_1-sqrt(2)).
+0<=f(x_n)-f(sqrt(2))<=1/2(x_n-sqrt(2)).
 $
 
-L'inégalité est donc vraie au rang $n+1$.
-
-*Conclusion.* Pour tout $n>=1$,
+Comme $f(x_n)=x_(n+1)$ et $f(sqrt(2))=sqrt(2)$ :
 $
-0<=x_n-sqrt(2)<=(1/2)^(n-1)(x_1-sqrt(2))
+0<=x_(n+1)-sqrt(2)<=1/2(x_n-sqrt(2))
+quad "pour tout" n>=1.
 $
 
-Cette majoration donne aussi une convergence géométrique vers $sqrt(2)$, indépendamment de l'argument de convergence monotone.
+*Récurrence.* On veut montrer que, pour tout $n>=1$, la propriété suivante est vraie :
+$
+P(n): quad 0<=x_n-sqrt(2)<=(1/2)^(n-1)(x_1-sqrt(2)).
+$
+
+*Initialisation.* Au rang $n=1$ :
+$
+0<=x_1-sqrt(2)<=(1/2)^0(x_1-sqrt(2))=x_1-sqrt(2).
+$
+C'est vrai puisque $x_1>=sqrt(2)$. Donc $P(1)$ est vraie.
+
+*Hérédité.* Supposons $P(n)$ vraie pour un entier $n>=1$. Montrons $P(n+1)$.
+
+On sait, grâce à l'encadrement obtenu plus haut, que :
+$
+0<=x_(n+1)-sqrt(2)<=1/2(x_n-sqrt(2)).
+$
+
+Par hypothèse de récurrence :
+$
+0<=x_n-sqrt(2)<=(1/2)^(n-1)(x_1-sqrt(2)).
+$
+
+On multiplie cette inégalité par $1/2>0$ :
+$
+0<=1/2(x_n-sqrt(2))
+&<=1/2 (1/2)^(n-1)(x_1-sqrt(2)) \
+&=(1/2)^n(x_1-sqrt(2)).
+$
+
+Donc, par *transitivité* des inégalités :
+$
+0<=x_(n+1)-sqrt(2)
+&<=1/2(x_n-sqrt(2)) \
+&<=(1/2)^n(x_1-sqrt(2)).
+$
+
+C'est exactement $P(n+1)$.
+
+*Conclusion.* Puisque $P(1)$ est vraie et que $P(n)$ entraîne $P(n+1)$, on conclut par récurrence :
+$
+forall n>=1, quad
+0<=x_n-sqrt(2)<=(1/2)^(n-1)(x_1-sqrt(2)).
+$
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
   *Provenance.* Photo 12248 : dérivée, tableaux de signe et de variation. Photos 12250 et 12253 : monotonie, minoration, point fixe et calcul de $f(y)-f(x)$. Photo 12257 : initialisation, hérédité et majoration finale. Les étapes et les indices sont vérifiés à partir de l'énoncé officiel.
