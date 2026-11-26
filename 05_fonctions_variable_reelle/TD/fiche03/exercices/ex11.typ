@@ -1,7 +1,7 @@
 // source-confidence: high
 // source-note: TD03_continuite.pdf, exercice 11, vérifié dans Google Drive.
 // source-note: photos de la seconde livraison FVR, exercice 11 : signe sur une demi-droite, contradiction par surjectivité, translation f-y.
-// source-reconstruction: explicitation de l'argument de bornitude sur [0,A] et des valeurs non atteintes.
+// source-reconstruction: démarche de la copie manuscrite de l'étudiant (2026-11-27), avec justifications du TVI, de la symétrie en Q2 et de la translation verticale en Q3.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -18,50 +18,100 @@ $
 forall x>=A, quad f(x)!=0.
 $
 
-Si $f$ prenait des valeurs strictement positives et strictement négatives sur $[A,+infinity[$, il existerait $x,y>=A$ avec $f(x)>0$ et $f(y)<0$.
+Par l'absurde, supposons que $f$ ne soit pas de signe constant sur $[A,+infinity[$. Il existe alors $x,y in RR_+$ tels que
+$
+A<=x<y, quad f(x) f(y)<0.
+$
 
-Le *théorème des valeurs intermédiaires* (TVI) sur le segment de bornes $x$ et $y$ donnerait alors un $z$ compris entre eux tel que $f(z)=0$. Comme $z>=A$, ce serait une contradiction.
+Comme $f$ est continue sur $[x,y]$, par le théorème des valeurs intermédiaires (TVI),
+$
+exists z in ]x,y[, quad f(z)=0.
+$
 
-Donc $f$ est *strictement positive partout* sur $[A,+infinity[$, ou *strictement négative partout* sur cette demi-droite.
+Or $z>=A$, ce qui contredit l'hypothèse
+$
+forall x>=A, quad f(x)!=0.
+$
+
+Donc $f$ est de signe constant sur $[A,+infinity[$.
 
 == 2. Le réel $0$ possède une infinité d'antécédents
 
-Raisonnons par l'absurde. Si l'ensemble
-$
-Z={x in RR_+ : f(x)=0}
-$
-était fini, on pourrait choisir $A>=0$ strictement supérieur à tous ses éléments (ou simplement $A=0$ si $Z$ était vide).
+Par l'absurde, supposons que $0$ admette un nombre fini d'antécédents par $f$.
 
-Par la question 1, $f$ aurait alors un signe constant sur $[A,+infinity[$.
-
-D'autre part, $f$ est continue sur le compact $[0,A]$ : d'après le *théorème des bornes atteintes*, son image est bornée. On peut donc trouver $M>0$ tel que
+On pose
 $
-forall x in [0,A], quad abs(f(x))<=M.
+Z={x in RR_+ : f(x)=0}.
 $
 
-- Si $f(x)>0$ pour tout $x>=A$, les valeurs strictement inférieures à $-M$ ne peuvent être atteintes ni avant ni après $A$.
-- Si $f(x)<0$ pour tout $x>=A$, les valeurs strictement supérieures à $M$ ne peuvent être atteintes.
+On choisit $A>max(Z)$ si $Z$ est non vide, et $A=0$ sinon.
 
-Dans les deux cas, la surjectivité de $f$ sur $RR$ est contredite.
+Ainsi,
+$
+forall x>=A, quad f(x)!=0.
+$
 
-Il existe donc *une infinité de $x>=0$ tels que $f(x)=0$*.
+Comme $f$ est continue sur le segment $[0,A]$, le théorème des bornes atteintes garantit que $f$ y est bornée :
+$
+exists M>0, quad forall x in [0,A], quad abs(f(x))<=M.
+$
+
+Donc
+$
+forall x in [0,A], quad -M<=f(x)<=M.
+$
+
+D'après la question 1, $f$ est de signe constant sur $[A,+infinity[$.
+
+Sans perte de généralité, supposons que
+$
+forall x>=A, quad f(x)>0,
+$
+quitte à remplacer $f$ par $-f$, qui est également continue et surjective et possède les mêmes zéros.
+
+En combinant les deux intervalles, on a alors :
+
+- Sur $[0,A]$, $f(x)>=-M$.
+- Sur $[A,+infinity[$, $f(x)>0>=-M$.
+
+Ainsi,
+$
+forall x in RR_+, quad f(x)>=-M.
+$
+
+La valeur $-M-1$ n'admet donc aucun antécédent par $f$, ce qui contredit sa surjectivité.
+
+Donc $0$ admet une infinité d'antécédents par $f$.
 
 == 3. Chaque réel a une infinité d'antécédents
 
-Soit $y in RR$ fixé. Considérons
+On fixe un réel $y in RR$ arbitraire.
+
+On pose
 $
 g:RR_+ -> RR, quad g(x)=f(x)-y.
 $
 
-La fonction $g$ est continue. Elle est surjective : pour $z in RR$, la surjectivité de $f$ fournit $x>=0$ tel que $f(x)=z+y$, donc $g(x)=z$.
-
-D'après la question 2 appliquée à $g$, le réel $0$ admet une infinité d'antécédents par $g$. Or
+Comme $y$ est une constante, $g$ est une translation verticale de $f$ : elle est continue et surjective. En effet, puisque $f(RR_+)=RR$,
 $
-g(x)=0 <=> f(x)=y.
+g(RR_+)={t-y : t in RR}=RR.
 $
 
-*Conclusion :* tout $y in RR$ possède *une infinité d'antécédents* par $f$.
+Ainsi, $g$ vérifie les hypothèses de la question 2.
+
+D'après la question 2 appliquée à $g$, l'équation $g(x)=0$ admet une infinité de solutions.
+
+Or
+$
+g(x)=0
+quad <=> quad f(x)-y=0
+quad <=> quad f(x)=y.
+$
+
+Les solutions de ces deux équations sont exactement les mêmes.
+
+Donc, pour tout $y in RR$, il existe une infinité de $x in RR_+$ tels que $f(x)=y$.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* Sujet officiel TD03, exercice 11, et photos manuscrites de la seconde livraison. L'usage de la bornitude sur $[0,A]$ et le passage de $f$ à $f-y$ explicitent les étapes abrégées dans les notes.
+  *Provenance.* Sujet officiel TD03, exercice 11, et photos manuscrites de la seconde livraison. Démarche de la copie manuscrite du 2026-11-27 : raisonnement par l'absurde, ensemble des zéros, bornitude sur $[0,A]$, symétrie des deux signes et translation verticale. Les hypothèses des théorèmes et les implications sont explicitées.
 ]
