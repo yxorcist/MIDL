@@ -2,7 +2,8 @@
 // source-note: TD03_continuite.pdf (UCA 2026-2027), exercice 8.
 // source-note: photo 12242 (TVI, rappel k-Lipschitz, unicité, exemple x+e^(-x)) ; photo 12244 (exemple x+1/(x+1)).
 // source-verification: la question 2 suppose |f(x)-f(y)|<|x-y| pour x!=y, sans constante uniforme k<1.
-// source-reconstruction: Q1 suit la copie manuscrite de l'étudiant (2026-11-24), avec continuité de g et conclusion f(c)=c explicitées ; Q2-Q3 inchangées.\n// source-reconstruction: continuité issue de l'inégalité stricte en Q2 et arguments du TAF précisés ; les deux exemples sont sans point fixe.
+// source-reconstruction: Q1 suit la copie manuscrite de l'étudiant (2026-11-24), avec continuité de g et conclusion f(c)=c explicitées.
+// source-reconstruction: Q2 et premier exemple de Q3 suivent la copie manuscrite du 2026-11-26 ; rappel de Lipschitz et second exemple conservés.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -55,24 +56,52 @@ Donc $f$ admet au moins un point fixe sur $[a,b]$.
 
 == 2. L'inégalité stricte garantit un unique point fixe
 
-Supposons désormais que $f:[a,b]->[a,b]$ vérifie, pour $x!=y$,
+Soit $f:[a,b]->[a,b]$ telle que, pour tous $x,y in [a,b]$ avec $x!=y$,
 $
 abs(f(x)-f(y))<abs(x-y).
 $
 
-*Existence.* Pour $x!=y$, l'inégalité implique
+On a $f([a,b]) subset.eq [a,b]$.
+
+Pour $x!=y$, on a
+$
+abs(f(x)-f(y))<abs(x-y)
+quad => quad
+abs(f(x)-f(y))<=abs(x-y).
+$
+
+L'inégalité large reste vraie pour $x=y$, car
+$
+abs(f(x)-f(x))=0<=0=abs(x-x).
+$
+
+Ainsi, pour tous $x,y in [a,b]$,
 $
 abs(f(x)-f(y))<=abs(x-y).
 $
-Elle reste vraie pour $x=y$ ; ainsi $f$ est $1$-Lipschitzienne, donc continue. La question 1 fournit au moins un point fixe.
 
-*Unicité.* Raisonnons par l'absurde : supposons qu'il existe deux points fixes distincts $x_0$ et $y_0$. Alors
+On constate que $f$ est $1$-Lipschitzienne, donc continue.
+
+On a $f([a,b]) subset.eq [a,b]$ et $f$ est continue sur $[a,b]$. Par le théorème du point fixe sur un segment, démontré à la question 1,
 $
-abs(x_0-y_0)
-=abs(f(x_0)-f(y_0))
-<abs(x_0-y_0),
+exists c in [a,b], quad f(c)=c.
 $
-ce qui est impossible. *Le point fixe est donc unique.*
+
+Par l'absurde, supposons qu'il existe deux points fixes distincts $x$ et $y$ de $f$. On a alors $x!=y$, $f(x)=x$ et $f(y)=y$.
+
+D'après l'hypothèse,
+$
+abs(f(x)-f(y))<abs(x-y).
+$
+
+Or, puisque $x$ et $y$ sont des points fixes,
+$
+abs(f(x)-f(y))=abs(x-y).
+$
+
+Contradiction.
+
+Donc il existe un unique point fixe de $f$ sur $[a,b]$.
 
 === Rappel de la copie : condition $k$-Lipschitz
 
@@ -94,23 +123,58 @@ Si $k<1$, l'inégalité précédente donne en outre une contraction stricte pour
 
 == 3. Sur $RR_+$, l'inégalité stricte ne garantit pas l'existence
 
-*Premier exemple de la copie.* Pour $x>=0$, posons
+*Premier exemple de la copie.* On pose
 $
-f(x)=x+e^(-x).
+f(x)=x+e^(-x), quad x>=0.
 $
-Alors $f:RR_+->RR_+$ et
+
+Comme $x>=0$ et $e^(-x)>0$, on a $f(x)>0$. Ainsi $f(RR_+) subset.eq RR_+$ et $f$ est continue sur $RR_+$.
+
+On dérive :
 $
-f'(x)=1-e^(-x).
+f'(x)=(x+e^(-x))'=1-e^(-x).
 $
-Pour tout $x>=0$, $0<=f'(x)<1$. Si $0<=x<y$, le théorème des accroissements finis donne un $c in ]x,y[$ tel que
+
+Pour tout $x>=0$, on a
+$
+0<e^(-x)<=1
+quad => quad
+0<=1-e^(-x)<1.
+$
+
+Donc, pour tout $x>=0$,
+$
+0<=f'(x)<1.
+$
+
+Soient $x,y in RR_+$ tels que $0<=x<y$. La fonction $f$ est continue sur $[x,y]$ et dérivable sur $]x,y[$.
+
+Par le théorème des accroissements finis (TAF), il existe $c in ]x,y[$ tel que
 $
 f(y)-f(x)=f'(c)(y-x).
 $
-Donc
+
+Comme $0<=f'(c)<1$ et $y-x>0$, on obtient
 $
-abs(f(y)-f(x))<abs(y-x).
+abs(f(y)-f(x))
+&=abs(f'(c)) abs(y-x) \
+&<abs(y-x).
 $
-Mais $e^(-x)>0$ pour tout $x$, donc $f(x)>x$ : *aucun point fixe*.
+
+Le cas $y<x$ se déduit en échangeant $x$ et $y$. La propriété demandée est donc vraie pour tous $x,y in RR_+$ distincts.
+
+Par l'absurde, supposons qu'il existe $c in RR_+$ tel que $f(c)=c$.
+
+Alors
+$
+f(c)=c
+quad <=> quad c+e^(-c)=c
+quad <=> quad e^(-c)=0.
+$
+
+Contradiction, car $e^(-c)>0$.
+
+Donc $f$ satisfait l'inégalité stricte de la question 2, mais n'admet aucun point fixe sur $RR_+$.
 
 *Autre exemple figurant sur la photo 12244.* Soit
 $
