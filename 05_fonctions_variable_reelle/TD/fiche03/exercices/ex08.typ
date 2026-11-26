@@ -103,24 +103,6 @@ Contradiction.
 
 Donc il existe un unique point fixe de $f$ sur $[a,b]$.
 
-=== Rappel de la copie : condition $k$-Lipschitz
-
-Une fonction $f:I->RR$ est $k$-Lipschitzienne si, pour tous $x,y in I$,
-$
-abs(f(x)-f(y))<=k abs(x-y),
-quad k>=0.
-$
-Cela implique la continuité : pour $epsilon>0$, prendre
-$
-delta=epsilon/(k+1)>0.
-$
-Alors $abs(x-x_0)<delta$ entraîne
-$
-abs(f(x)-f(x_0))<=k abs(x-x_0)<epsilon.
-$
-
-Si $k<1$, l'inégalité précédente donne en outre une contraction stricte pour $x!=y$. *Attention :* l'hypothèse officielle de la question 2 ne demande pas une même constante $k<1$ valable partout.
-
 == 3. Sur $RR_+$, l'inégalité stricte ne garantit pas l'existence
 
 *Premier exemple de la copie.* On pose
@@ -198,6 +180,24 @@ $
 Pourtant $h(x)>x$ sur $RR_+$, donc $h$ n'a pas non plus de point fixe.
 
 Les deux contre-exemples illustrent le rôle de l'intervalle *fermé et borné* dans la question 1 : la condition stricte seule, sur $RR_+$, n'assure pas l'existence d'un point fixe.
+
+== Rappel de la copie : condition $k$-Lipschitz
+
+Une fonction $f:I->RR$ est $k$-Lipschitzienne si, pour tous $x,y in I$,
+$
+abs(f(x)-f(y))<=k abs(x-y),
+quad k>=0.
+$
+Cela implique la continuité : pour $epsilon>0$, prendre
+$
+delta=epsilon/(k+1)>0.
+$
+Alors $abs(x-x_0)<delta$ entraîne
+$
+abs(f(x)-f(x_0))<=k abs(x-x_0)<epsilon.
+$
+
+Si $k<1$, l'inégalité précédente donne en outre une contraction stricte pour $x!=y$. *Attention :* l'hypothèse officielle de la question 2 ne demande pas une même constante $k<1$ valable partout.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
   *Provenance.* Questions et hypothèses vérifiées dans TD03_continuite.pdf. Question 1 : démarche de la copie manuscrite du 2026-11-24, avec les deux justifications manquantes ajoutées. Photo 12242 : preuve par TVI, unicité, rappel de Lipschitz et premier contre-exemple. Photo 12244 : second contre-exemple avec calcul algébrique. Les conditions du théorème des accroissements finis sont explicitées.
