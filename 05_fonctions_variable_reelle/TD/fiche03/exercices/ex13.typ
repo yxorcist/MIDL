@@ -1,7 +1,7 @@
 // source-confidence: high
 // source-note: TD03_continuite.pdf, exercice 13, vérifié dans Google Drive.
 // source-note: photos de la seconde livraison FVR : minimum de f-g et contre-exemple sur [1,+infini[.
-// source-reconstruction: choix explicite d'un contre-exemple avec différence tendant vers 0.
+// source-reconstruction: reprise de la copie manuscrite de l'étudiant (2026-11-27), avec preuve algébrique par l'absurde en Q2.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -11,57 +11,53 @@
 
 == 1. Deux fonctions continues strictement ordonnées sur $[a,b]$
 
-Soient $f,g:[a,b]->RR$ continues, et supposons
+Soient $f,g:[a,b]->RR$ continues, telles que
 $
 forall x in [a,b], quad f(x)>g(x).
 $
 
-Posons
+On pose
 $
 h(x)=f(x)-g(x).
 $
 
-La fonction $h$ est continue sur le *compact* $[a,b]$ et elle est *strictement positive partout*.
+Par les hypothèses sur $f$ et $g$, $h$ est définie, continue et strictement positive sur le compact $[a,b]$.
 
-Par le théorème des bornes atteintes, il existe $x_0 in [a,b]$ où $h$ atteint son minimum :
+Par le théorème des bornes atteintes,
 $
-delta=h(x_0)=min_(x in [a,b])h(x).
-$
-
-Comme $h(x_0)>0$, on a *$delta>0$*. Pour tout $x in [a,b]$,
-$
-f(x)-g(x)=h(x)>=delta,
-$
-soit
-$
-forall x in [a,b], quad f(x)>=g(x)+delta.
+exists x_0 in [a,b], quad delta=h(x_0)=min_(x in [a,b]) h(x).
 $
 
-*Le point décisif est la compacité de $[a,b]$*, qui garantit que le minimum est atteint.
+Or $h(x_0)>0$, donc $delta>0$.
+
+Ainsi, pour tout $x in [a,b]$,
+$
+h(x)=f(x)-g(x)>=delta
+quad <=> quad f(x)>=g(x)+delta.
+$
 
 == 2. Contre-exemple sur $[1,+infinity[$
 
-Considérons
+Prenons $f(x)=1/x$ et $g(x)=0$, définies et continues sur $[1,+infinity[$, avec $f(x)>g(x)$ pour tout $x>=1$.
+
+Comme dans la question 1, on pose $h(x)=f(x)-g(x)$.
+
+Par l'absurde, supposons que
 $
-f(x)=1/x,
-quad
-g(x)=0 quad "pour" x>=1.
+exists delta>0, quad forall x>=1, quad h(x)>=delta.
 $
 
-Les deux fonctions sont continues sur $[1,+infinity[$ et, pour tout $x>=1$,
+Alors, pour tout $x>=1$,
 $
-f(x)-g(x)=1/x>0.
-$
-
-Cependant
-$
-lim_(x->+infinity)(f(x)-g(x))=0.
+f(x)-g(x)>=delta
+quad <=> quad 1/x>=delta
+quad <=> quad x<=1/delta.
 $
 
-Si un $delta>0$ vérifiait $f(x)>=g(x)+delta$ pour *tout* $x>=1$, on aurait $1/x>=delta$ pour tout $x>=1$. En prenant $x>1/delta$, on obtient $1/x<delta$, contradiction.
+Contradiction, car l'intervalle $[1,+infinity[$ n'est pas borné.
 
-*Conclusion :* une inégalité strictement positive *point par point* sur un intervalle non borné n'implique pas un écart uniforme strictement positif.
+Donc il n'existe pas de $delta>0$ tel que $f(x)>=g(x)+delta$ pour tout $x>=1$.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* Sujet officiel TD03, exercice 13. La méthode (minimum strictement positif de $f-g$) correspond aux photos ; le contre-exemple est écrit explicitement pour achever la question 2.
+  *Provenance.* Sujet officiel TD03, exercice 13. Copie manuscrite de l'étudiant (2026-11-27) : minimum strictement positif de $f-g$, puis contre-exemple par l'absurde utilisant la non-bornitude de l'intervalle. En Q2, l'hypothèse porte sur une minoration uniforme, et non sur l'existence d'un minimum.
 ]
