@@ -1,7 +1,7 @@
 // source-confidence: high
 // source-note: TD03_continuite.pdf, exercice 12, vérifié dans Google Drive.
 // source-note: photos de la seconde livraison FVR : minimum sur un compact et étude du signe du coefficient dominant.
-// source-reconstruction: choix explicite du segment compact et cas du polynôme constant.
+// source-reconstruction: reprise des démonstrations manuscrites de l'étudiant (2026-11-27), sans constante +1 en Q1 ; ajout du cas constant et application de Q1 à -P en Q2.
 
 #set page(paper: "a4", margin: 2cm)
 #set text(lang: "fr", size: 11pt)
@@ -11,55 +11,91 @@
 
 == 1. Fonction continue tendant vers $+infinity$ aux deux extrémités
 
-Soit $f:RR -> RR$ continue avec
+Soit $f:RR -> RR$ continue telle que
 $
-lim_(x->-infinity)f(x)=+infinity,
-quad
-lim_(x->+infinity)f(x)=+infinity.
+lim_(x->-infinity) f(x)=lim_(x->+infinity) f(x)=+infinity.
 $
 
-On veut montrer que $f$ admet un *minimum sur $RR$*.
-
-Par les deux hypothèses sur les limites, il existe $R>0$ tel que
+Par les hypothèses sur les limites,
 $
-abs(x)>=R => f(x)>f(0)+1.
+exists R>0, quad forall x in RR, quad abs(x)>R => f(x)>f(0).
 $
 
-Sur le compact $[-R,R]$, la fonction $f$ est continue, donc le *théorème des bornes atteintes* assure l'existence d'un $x_0 in [-R,R]$ tel que
+Comme $f$ est continue sur le compact $[-R,R]$, par le théorème des bornes atteintes,
 $
-m=f(x_0)=min_(x in [-R,R])f(x).
-$
-
-Comme $0 in [-R,R]$, on a $m<=f(0)$. Par conséquent, pour tout réel $x$ hors de $[-R,R]$,
-$
-f(x)>f(0)+1>m.
+exists x_0 in [-R,R], quad m=f(x_0)=min_(x in [-R,R]) f(x).
 $
 
-À l'intérieur de $[-R,R]$, on a par définition $f(x)>=m$. Ainsi
+Or $0 in [-R,R]$, donc $m<=f(0)$.
+
+Ainsi,
 $
-forall x in RR, quad f(x)>=f(x_0).
+abs(x)>R => f(x)>f(0)>=m.
 $
 
-*Conclusion :* $f$ atteint son minimum global en $x_0$.
+Le minimum sur $[-R,R]$ est donc aussi le minimum sur $RR$ :
+$
+forall x in RR, quad f(x)>=f(x_0)
+$
+et
+$
+min_(x in RR) f(x)=f(x_0)=m.
+$
 
 == 2. Un polynôme réel de degré pair possède un extremum global
 
-Soit $P$ de degré pair $d$ et de coefficient dominant non nul $a_d$.
+Soit $P in RR[X]$, de degré $2k$, avec $k in NN$ et $a_(2k)!=0$ son coefficient dominant.
 
-Si $d=0$, le polynôme est constant : tout réel est à la fois un point de minimum et de maximum.
+Si $k=0$, $P$ est constant. Tout réel $a$ vérifie alors $P(x)=P(a)$ pour tout $x in RR$ : $P$ admet un minimum et un maximum.
 
-Supposons $d>=2$. On a
+Supposons désormais $k>=1$. Le polynôme $P$ est continu sur $RR$.
+
+On sait que
 $
-P(x) "∼" a_d x^d quad (x->+-infinity).
+P(x) "∼" a_(2k) x^(2k)
+$
+en $-infinity$ et en $+infinity$.
+
+Comme $x^(2k)=(x^2)^k$, on a
+$
+lim_(x->-infinity) x^(2k)=lim_(x->+infinity) x^(2k)=+infinity.
 $
 
-Comme $d$ est pair, $x^d->+infinity$ quand $x->-infinity$ *et* quand $x->+infinity$.
+Les limites de $P$ dépendent donc du signe de $a_(2k)$.
 
-- Si $a_d>0$, alors $P(x)->+infinity$ aux deux extrémités. La question 1 montre qu'il existe $a in RR$ tel que $forall x in RR, P(x)>=P(a)$.
-- Si $a_d<0$, le polynôme $Q=-P$ possède un coefficient dominant positif. La question 1 appliquée à $Q$ fournit $a in RR$ tel que $-P(x)>=-P(a)$, donc $forall x in RR, P(x)<=P(a)$.
+*Si $a_(2k)<0$ :*
+$
+lim_(x->-infinity) P(x)=lim_(x->+infinity) P(x)=-infinity.
+$
 
-*Conclusion :* tout polynôme réel de degré pair atteint *un minimum ou un maximum global*.
+On pose $Q=-P$. Ainsi, $Q$ est continue et tend vers $+infinity$ aux deux extrémités : elle vérifie les hypothèses de la question 1.
+
+D'après Q1,
+$
+exists a in RR, quad forall x in RR, quad -P(x)>=-P(a).
+$
+
+Donc
+$
+forall x in RR, quad P(x)<=P(a).
+$
+
+Ainsi, $P$ admet un maximum global.
+
+*Si $a_(2k)>0$ :*
+$
+lim_(x->-infinity) P(x)=lim_(x->+infinity) P(x)=+infinity.
+$
+
+Ainsi, $P$ vérifie les hypothèses de la question 1. D'après Q1,
+$
+exists a in RR, quad forall x in RR, quad P(x)>=P(a).
+$
+
+Ainsi, $P$ admet un minimum global.
+
+Donc tout polynôme réel de degré pair admet un minimum ou un maximum global.
 
 #block(stroke: 0.6pt + gray, inset: 8pt)[
-  *Provenance.* TD03, exercice 12, et correction manuscrite : réduction à un compact puis comportement du terme dominant. Les cas du coefficient dominant négatif et du degré nul sont distingués.
+  *Provenance.* TD03, exercice 12, et copies manuscrites de l'étudiant (2026-11-27) : réduction à un compact sans constante supplémentaire, puis comportement du terme dominant. Le degré nul et l'application de Q1 à $-P$ sont explicités.
 ]
